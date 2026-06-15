@@ -284,8 +284,8 @@ export default function SpaceAstrologyConnector() {
               <svg
                 ref={svgRef}
                 viewBox="0 0 400 400"
-                className="w-full h-full cursor-pointer"
-                style={{ overflow: 'visible' }}
+                className="w-full h-full cursor-pointer touch-none"
+                style={{ overflow: 'visible', touchAction: 'none' }}
                 onMouseMove={handleMouseMove}
                 onTouchMove={handleMouseMove}
               >
@@ -687,7 +687,7 @@ export default function SpaceAstrologyConnector() {
               {/* Planetary Buttons */}
               <div className="space-y-2 border-t border-amber-955/15 pt-3">
                 <span className="text-[10px] text-gray-500 font-sans uppercase tracking-wider block text-left">{t('space.focal')}</span>
-                <div className="flex gap-1.5 justify-between mt-1">
+                <div className="flex flex-wrap gap-1.5 justify-center md:justify-between mt-1">
                   {planetsData.map(p => (
                     <button
                       key={p.id}

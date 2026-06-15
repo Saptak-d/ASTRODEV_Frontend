@@ -105,11 +105,11 @@ export default function BirthForm({ onSubmit, loading }) {
         <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
           {t('form.gender.label')} <span className="text-[#1E1410]">*</span>
         </label>
-        <div className="flex gap-2.5">
+        <div className="flex gap-2">
           {genderOptions.map(({ value, icon, labelKey }) => (
             <label
               key={value}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 border rounded-lg cursor-pointer text-xs font-semibold transition select-none font-sans
+              className={`flex-1 flex items-center justify-center gap-1 sm:gap-1.5 py-2.5 border rounded-lg cursor-pointer text-[11px] sm:text-xs font-bold transition select-none font-sans whitespace-nowrap
                 ${formData.gender === value
                   ? 'bg-[#1E1410] text-[#F5F2E9] border-[#1E1410] shadow-sm'
                   : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-[#1E1410]/50 hover:bg-gray-100'
@@ -158,11 +158,11 @@ export default function BirthForm({ onSubmit, loading }) {
           </label>
           <span className="text-[8px] text-gray-400 font-sans">{t('form.tob.hint')}</span>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-1.5 sm:gap-2 items-center">
           <select
             value={hours}
             onChange={(e) => setHours(e.target.value)}
-            className="w-full px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
+            className="w-full px-1.5 sm:px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
           >
             {Array.from({ length: 12 }, (_, i) => i + 1).map(h => (
               <option key={h} className="bg-white text-gray-900" value={h.toString().padStart(2, '0')}>{h.toString().padStart(2, '0')}</option>
@@ -172,7 +172,7 @@ export default function BirthForm({ onSubmit, loading }) {
           <select
             value={minutes}
             onChange={(e) => setMinutes(e.target.value)}
-            className="w-full px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
+            className="w-full px-1.5 sm:px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
           >
             {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')).map(m => (
               <option key={m} className="bg-white text-gray-900" value={m}>{m}</option>
@@ -182,17 +182,17 @@ export default function BirthForm({ onSubmit, loading }) {
           <select
             value={seconds}
             onChange={(e) => setSeconds(e.target.value)}
-            className="w-full px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
+            className="w-full px-1.5 sm:px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
           >
             {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')).map(s => (
               <option key={s} className="bg-white text-gray-900" value={s}>{s}</option>
             ))}
           </select>
-          <div className="flex w-full ml-1 rounded-lg border border-gray-200 overflow-hidden shadow-sm bg-gray-50">
+          <div className="flex w-full ml-0.5 sm:ml-1 rounded-lg border border-gray-200 overflow-hidden shadow-sm bg-gray-50 shrink-0">
             <button
               type="button"
               onClick={() => setAmpm('AM')}
-              className={`flex-1 py-2.5 px-2 text-xs font-bold transition font-sans ${ampm === 'AM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-transparent text-gray-500 hover:bg-gray-100'}`}
+              className={`flex-1 py-2.5 px-1 sm:px-2 text-xs font-bold transition font-sans ${ampm === 'AM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-transparent text-gray-500 hover:bg-gray-100'}`}
             >
               AM
             </button>
@@ -200,7 +200,7 @@ export default function BirthForm({ onSubmit, loading }) {
             <button
               type="button"
               onClick={() => setAmpm('PM')}
-              className={`flex-1 py-2.5 px-2 text-xs font-bold transition font-sans ${ampm === 'PM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-transparent text-gray-500 hover:bg-gray-100'}`}
+              className={`flex-1 py-2.5 px-1 sm:px-2 text-xs font-bold transition font-sans ${ampm === 'PM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-transparent text-gray-500 hover:bg-gray-100'}`}
             >
               PM
             </button>

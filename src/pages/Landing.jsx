@@ -186,7 +186,7 @@ export default function Landing() {
       <div className="absolute bottom-40 right-6 text-[10rem] text-gray-300 opacity-10 pointer-events-none select-none leading-none">🔱</div>
 
       {/* ══════════════════════ HERO ══════════════════════ */}
-      <section className="max-w-[90rem] mx-auto px-6 lg:px-12 pt-6 pb-6 relative z-10" style={{ minHeight: 'calc(100vh - 57px)' }}>
+      <section className="max-w-[90rem] mx-auto px-6 lg:px-12 py-12 lg:py-6 relative z-10" style={{ minHeight: 'calc(100vh - 57px)' }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center h-full">
 
           {/* Left: Hero Copy */}
@@ -201,12 +201,12 @@ export default function Landing() {
               </h1>
             </div>
 
-            <p className="text-lg text-[#4A3E3D] italic leading-relaxed max-w-lg font-serif">
+            <p className="text-lg text-[#4A3E3D] italic leading-relaxed max-w-lg mx-auto lg:mx-0 font-serif">
               {t('hero.tagline')}
             </p>
 
             {/* Feature bullets */}
-            <div className="grid grid-cols-2 gap-2.5 max-w-md">
+            <div className="grid grid-cols-2 gap-2.5 max-w-md mx-auto lg:mx-0">
               {heroFeatures.map(item => (
                 <div key={item.nameKey} className="flex items-start gap-2.5 p-2 bg-white/60 border border-[#D4AF37]/15 rounded-lg text-left shadow-sm hover:border-[#D4AF37]/40 hover:bg-white transition-all group duration-300">
                   <span className="text-[#D4AF37] text-sm mt-0.5 group-hover:scale-110 transition-transform">✦</span>
@@ -219,7 +219,7 @@ export default function Landing() {
             </div>
 
             {/* Premium Price Tag Badge */}
-            <div className="pt-2 max-w-xs">
+            <div className="pt-2 max-w-xs mx-auto lg:mx-0 w-full">
               <div className="bg-[#1E1410] text-[#F5F2E9] border border-[#D4AF37]/35 rounded-xl p-3.5 flex items-center justify-between shadow-xl relative overflow-hidden group hover:border-[#D4AF37]/60 transition-colors">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-[#D4AF37]/5 rounded-full blur-xl pointer-events-none"></div>
                 <div>

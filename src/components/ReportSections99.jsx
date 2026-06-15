@@ -9,10 +9,12 @@ function Section({ title, children, svgContent }) {
         {title}
       </h2>
       {svgContent && (
-        <div
-          className="flex justify-center mb-8 bg-amber-50/50 rounded-lg p-4"
-          dangerouslySetInnerHTML={{ __html: svgContent }}
-        />
+        <div className="flex justify-center mb-8 bg-amber-50/50 rounded-lg p-4">
+          <div
+            className="w-full max-w-[320px] aspect-square"
+            dangerouslySetInnerHTML={{ __html: svgContent }}
+          />
+        </div>
       )}
       <div className="space-y-3">
         {children}
