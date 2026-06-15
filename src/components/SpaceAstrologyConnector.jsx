@@ -1,105 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const planetsData = [
-  {
-    symbol: '☉',
-    id: 'sun',
-    name: 'Surya / Sun',
-    sanskrit: 'सूर्य',
-    color: '#FF8C00',
-    orbitRadius: 40,
-    baseSpeed: 0.003, // baseline
-    retroFreq: 0,
-    astronomy: 'The central star of our solar system. Its massive nuclear fusion reactions generate light and solar winds that form the heliosphere, powering all life on Earth.',
-    astrology: 'Represents the soul (Atman), vital life force, leadership, authority, the father archetype, and your core conscious identity.'
-  },
-  {
-    symbol: '☽',
-    id: 'moon',
-    name: 'Chandra / Moon',
-    sanskrit: 'चन्द्र',
-    color: '#94A3B8',
-    orbitRadius: 58,
-    baseSpeed: 0.039, // ~13x speed of Sun
-    retroFreq: 0,
-    astronomy: "Earth's only natural satellite, orbiting at 384,400 km. Its gravitational pull creates ocean tides and stabilizes Earth's axial tilt, enabling a stable climate.",
-    astrology: 'Governs the mind (Manas), emotional patterns, subconscious memory, maternal instincts, and how we experience inner comfort.'
-  },
-  {
-    symbol: '☿',
-    id: 'mercury',
-    name: 'Budha / Mercury',
-    sanskrit: 'बुध',
-    color: '#10B981',
-    orbitRadius: 76,
-    baseSpeed: 0.0124, // ~4.1x speed of Sun
-    retroFreq: 0.04,
-    astronomy: 'The smallest and innermost planet, orbiting the Sun in just 88 days. It experiences extreme temperature fluctuations due to lack of a thick atmosphere.',
-    astrology: 'Governs communication, analytical intellect, logic, business commerce, language acquisition, and cognitive speed.'
-  },
-  {
-    symbol: '♀',
-    id: 'venus',
-    name: 'Shukra / Venus',
-    sanskrit: 'शुक्र',
-    color: '#EC4899',
-    orbitRadius: 94,
-    baseSpeed: 0.0048, // ~1.6x speed of Sun
-    retroFreq: 0.02,
-    astronomy: 'The hottest planet in our solar system due to a runaway greenhouse effect. Its dense CO2 clouds reflect 70% of sunlight, making it the brightest beacon in the night sky.',
-    astrology: 'Governs romantic relationships, artistic expression, harmony, material luxury, beauty, and how we find value and aesthetic pleasure.'
-  },
-  {
-    symbol: '♂',
-    id: 'mars',
-    name: 'Mangala / Mars',
-    sanskrit: 'मंगल',
-    color: '#EF4444',
-    orbitRadius: 112,
-    baseSpeed: 0.0016, // ~0.53x speed of Sun
-    retroFreq: 0.01,
-    astronomy: 'The red planet, covered in iron oxide (rust) dust. It features Olympus Mons (the largest volcano in the solar system) and displays ancient dried water channels.',
-    astrology: 'Governs physical vitality, courage, ambition, competitive drive, technical skill (engineering), and assertion of willpower.'
-  },
-  {
-    symbol: '♃',
-    id: 'jupiter',
-    name: 'Guru / Jupiter',
-    sanskrit: 'गुरु',
-    color: '#F59E0B',
-    orbitRadius: 130,
-    baseSpeed: 0.00025, // ~0.08x speed of Sun
-    retroFreq: 0.005,
-    astronomy: "A massive gas giant 11 times Earth's diameter. Its immense gravitational field acts as a cosmic vacuum cleaner, pulling in dangerous asteroids and protecting Earth.",
-    astrology: 'Represents higher spiritual wisdom, philosophical growth, expansion of knowledge, wealth, teaching, and providential blessings.'
-  },
-  {
-    symbol: '♄',
-    id: 'saturn',
-    name: 'Shani / Saturn',
-    sanskrit: 'शनि',
-    color: '#818CF8',
-    orbitRadius: 148,
-    baseSpeed: 0.0001, // ~0.03x speed of Sun
-    retroFreq: 0.003,
-    astronomy: 'Famed for its spectacular, complex ring system composed of trillions of water ice particles. It is the most distant planet visible to the naked human eye.',
-    astrology: 'Represents time (Kala), discipline, structural boundaries, heavy responsibilities, patience, and essential lessons of cause and effect (Karma).'
-  }
+  { symbol: '☉', id: 'sun',     nameKey: 'planet.sun.name',     sanskrit: 'सूर्य',  color: '#FF8C00', orbitRadius: 40,  baseSpeed: 0.003,   retroFreq: 0,     astronomyKey: 'space.planet.sun.astronomy',     astrologyKey: 'space.planet.sun.astrology',     rulesKey: 'space.rules.sun'     },
+  { symbol: '☽', id: 'moon',    nameKey: 'planet.moon.name',    sanskrit: 'चन्द्र', color: '#94A3B8', orbitRadius: 58,  baseSpeed: 0.039,   retroFreq: 0,     astronomyKey: 'space.planet.moon.astronomy',    astrologyKey: 'space.planet.moon.astrology',    rulesKey: 'space.rules.moon'    },
+  { symbol: '☿', id: 'mercury', nameKey: 'planet.mercury.name', sanskrit: 'बुध',    color: '#10B981', orbitRadius: 76,  baseSpeed: 0.0124,  retroFreq: 0.04,  astronomyKey: 'space.planet.mercury.astronomy', astrologyKey: 'space.planet.mercury.astrology', rulesKey: 'space.rules.mercury' },
+  { symbol: '♀', id: 'venus',   nameKey: 'planet.venus.name',   sanskrit: 'शुक्र',  color: '#EC4899', orbitRadius: 94,  baseSpeed: 0.0048,  retroFreq: 0.02,  astronomyKey: 'space.planet.venus.astronomy',   astrologyKey: 'space.planet.venus.astrology',   rulesKey: 'space.rules.venus'   },
+  { symbol: '♂', id: 'mars',    nameKey: 'planet.mars.name',    sanskrit: 'मंगल',   color: '#EF4444', orbitRadius: 112, baseSpeed: 0.0016,  retroFreq: 0.01,  astronomyKey: 'space.planet.mars.astronomy',    astrologyKey: 'space.planet.mars.astrology',    rulesKey: 'space.rules.mars'    },
+  { symbol: '♃', id: 'jupiter', nameKey: 'planet.jupiter.name', sanskrit: 'गुरु',   color: '#F59E0B', orbitRadius: 130, baseSpeed: 0.00025, retroFreq: 0.005, astronomyKey: 'space.planet.jupiter.astronomy', astrologyKey: 'space.planet.jupiter.astrology', rulesKey: 'space.rules.jupiter' },
+  { symbol: '♄', id: 'saturn',  nameKey: 'planet.saturn.name',  sanskrit: 'शनि',    color: '#818CF8', orbitRadius: 148, baseSpeed: 0.0001,  retroFreq: 0.003, astronomyKey: 'space.planet.saturn.astronomy',  astrologyKey: 'space.planet.saturn.astrology',  rulesKey: 'space.rules.saturn'  },
 ];
 
 const zodiacs = [
-  { sign: '♈', name: 'Aries (मेष)', element: 'Fire', description: 'Cardinal fire — sparks direct, courageous action and pioneering drive.' },
-  { sign: '♉', name: 'Taurus (वृषभ)', element: 'Earth', description: 'Fixed earth — grounds energy in stable comfort, beauty, and patient growth.' },
-  { sign: '♊', name: 'Gemini (मिथुन)', element: 'Air', description: 'Mutable air — fuels intellectual curiosity, adaptability, and lively communication.' },
-  { sign: '♋', name: 'Cancer (कर्क)', element: 'Water', description: 'Cardinal water — nurtures deep emotional security, intuition, and protective care.' },
-  { sign: '♌', name: 'Leo (सिंह)', element: 'Fire', description: 'Fixed fire — radiates sovereign self-expression, creative pride, and warmth.' },
-  { sign: '♍', name: 'Virgo (कन्या)', element: 'Earth', description: 'Mutable earth — seeks precision, practical healing, and selfless service.' },
-  { sign: '♎', name: 'Libra (तुला)', element: 'Air', description: 'Cardinal air — seeks social harmony, balanced relationships, and justice.' },
-  { sign: '♏', name: 'Scorpio (वृश्चिक)', element: 'Water', description: 'Fixed water — processes intense transformation, deep secrets, and raw power.' },
-  { sign: '♐', name: 'Sagittarius (धनु)', element: 'Fire', description: 'Mutable fire — aims for higher learning, travel adventure, and dharmic wisdom.' },
-  { sign: '♑', name: 'Capricorn (मकर)', element: 'Earth', description: 'Cardinal earth — builds structured mastery, career ambition, and long-term duty.' },
-  { sign: '♒', name: 'Aquarius (कुम्भ)', element: 'Air', description: 'Fixed air — drives visionary social progress, unconventional innovation, and freedom.' },
-  { sign: '♓', name: 'Pisces (मीन)', element: 'Water', description: 'Mutable water — dissolves boundaries in spiritual oneness, dream artistry, and empathy.' }
+  { sign: '♈', nameKey: 'zodiac.aries.name',       element: 'Fire',  descKey: 'space.zodiac.aries.desc'       },
+  { sign: '♉', nameKey: 'zodiac.taurus.name',      element: 'Earth', descKey: 'space.zodiac.taurus.desc'      },
+  { sign: '♊', nameKey: 'zodiac.gemini.name',      element: 'Air',   descKey: 'space.zodiac.gemini.desc'      },
+  { sign: '♋', nameKey: 'zodiac.cancer.name',      element: 'Water', descKey: 'space.zodiac.cancer.desc'      },
+  { sign: '♌', nameKey: 'zodiac.leo.name',         element: 'Fire',  descKey: 'space.zodiac.leo.desc'         },
+  { sign: '♍', nameKey: 'zodiac.virgo.name',       element: 'Earth', descKey: 'space.zodiac.virgo.desc'       },
+  { sign: '♎', nameKey: 'zodiac.libra.name',       element: 'Air',   descKey: 'space.zodiac.libra.desc'       },
+  { sign: '♏', nameKey: 'zodiac.scorpio.name',     element: 'Water', descKey: 'space.zodiac.scorpio.desc'     },
+  { sign: '♐', nameKey: 'zodiac.sagittarius.name', element: 'Fire',  descKey: 'space.zodiac.sagittarius.desc' },
+  { sign: '♑', nameKey: 'zodiac.capricorn.name',   element: 'Earth', descKey: 'space.zodiac.capricorn.desc'   },
+  { sign: '♒', nameKey: 'zodiac.aquarius.name',    element: 'Air',   descKey: 'space.zodiac.aquarius.desc'    },
+  { sign: '♓', nameKey: 'zodiac.pisces.name',      element: 'Water', descKey: 'space.zodiac.pisces.desc'      },
 ];
 
 const constellationPaths = [
@@ -114,6 +38,7 @@ const constellationPaths = [
 ];
 
 export default function SpaceAstrologyConnector() {
+  const { t } = useLanguage();
   const [selectedPlanet, setSelectedPlanet] = useState(planetsData[0]);
   const [isAnimating, setIsAnimating] = useState(true);
   const [isRetrogradeSim, setIsRetrogradeSim] = useState(true);
@@ -342,13 +267,13 @@ export default function SpaceAstrologyConnector() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16 space-y-3">
           <span className="text-[#D4AF37] text-xs font-sans font-bold uppercase tracking-[0.4em] block drop-shadow-md">
-            ✦ Dynamic Geocentric Solar System ✦
+            {t('space.badge')}
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-widest text-amber-50">
-            Celestial Orbits & Destiny
+            {t('space.title')}
           </h2>
           <p className="text-gray-400 font-sans max-w-xl mx-auto text-sm leading-relaxed">
-            Vedic astrology charts the skies from a geocentric coordinate frame. Click, drag, or play to watch planets orbit against background constellations.
+            {t('space.subtitle')}
           </p>
         </div>
 
@@ -664,7 +589,7 @@ export default function SpaceAstrologyConnector() {
                         textAnchor="middle"
                         className="select-none font-sans pointer-events-none tracking-wider uppercase drop-shadow"
                       >
-                        {p.id === 'sun' ? 'Sun' : p.id === 'moon' ? 'Moon' : p.name.split(' / ')[1]}
+                        {p.sanskrit}
                       </text>
                     </g>
                   );
@@ -704,17 +629,17 @@ export default function SpaceAstrologyConnector() {
             {/* Box 1: Simulation Controls Panel */}
             <div className="bg-[#1C120F]/65 border border-amber-955/20 rounded-2xl p-6 backdrop-blur-md space-y-4 text-left">
               <div className="flex items-center justify-between">
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#D4AF37]">Simulation Live Stream</span>
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#D4AF37]">{t('space.sim.title')}</span>
                 <span className="text-[10px] font-sans text-gray-500 uppercase tracking-wider flex items-center gap-1.5 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-ping"></span> Live 1x
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-ping"></span> {t('space.sim.live')}
                 </span>
               </div>
 
               {/* Retrograde toggler */}
               <div className="flex items-center justify-between border-t border-amber-955/15 pt-3">
                 <div className="space-y-0.5 text-left">
-                  <span className="text-xs font-sans font-bold text-gray-300 block">Apparent Retrograde</span>
-                  <span className="text-[10px] font-sans text-gray-500 block">Simulate geo-reversal loops (℞)</span>
+                  <span className="text-xs font-sans font-bold text-gray-300 block">{t('space.retro.label')}</span>
+                  <span className="text-[10px] font-sans text-gray-500 block">{t('space.retro.hint')}</span>
                 </div>
                 <button
                   onClick={() => setIsRetrogradeSim(!isRetrogradeSim)}
@@ -732,8 +657,8 @@ export default function SpaceAstrologyConnector() {
               <div className="space-y-2 border-t border-amber-955/15 pt-3">
                 <div className="flex items-center justify-between">
                   <div className="text-left">
-                    <span className="text-xs font-sans font-bold text-gray-300 block">Simulation Speed</span>
-                    <span className="text-[10px] font-sans text-gray-500 block">Adjust orbital speeds in real-time</span>
+                    <span className="text-xs font-sans font-bold text-gray-300 block">{t('space.speed.label')}</span>
+                    <span className="text-[10px] font-sans text-gray-500 block">{t('space.speed.hint')}</span>
                   </div>
                   <span className="text-[10.5px] font-sans text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
                     {speedMultiplier.toFixed(2)}x
@@ -745,7 +670,7 @@ export default function SpaceAstrologyConnector() {
                     className="px-3 py-1.5 rounded-lg bg-[#130E0C] border border-amber-900/35 text-[10px] font-sans font-bold uppercase tracking-wider text-gray-300 hover:border-[#D4AF37]/50 hover:text-white transition-all shadow-md shrink-0 flex items-center gap-1"
                   >
                     <span>{isAnimating ? '⏸' : '▶'}</span>
-                    <span>{isAnimating ? 'Pause' : 'Play'}</span>
+                    <span>{isAnimating ? t('space.pause') : t('space.play')}</span>
                   </button>
                   <input
                     type="range"
@@ -761,7 +686,7 @@ export default function SpaceAstrologyConnector() {
 
               {/* Planetary Buttons */}
               <div className="space-y-2 border-t border-amber-955/15 pt-3">
-                <span className="text-[10px] text-gray-500 font-sans uppercase tracking-wider block text-left">Focal Planetary Focus:</span>
+                <span className="text-[10px] text-gray-500 font-sans uppercase tracking-wider block text-left">{t('space.focal')}</span>
                 <div className="flex gap-1.5 justify-between mt-1">
                   {planetsData.map(p => (
                     <button
@@ -774,7 +699,7 @@ export default function SpaceAstrologyConnector() {
                           ? 'bg-[#D4AF37] border-[#D4AF37] text-[#1E1410] scale-110 shadow-lg shadow-amber-500/20'
                           : 'bg-[#130E0C] border-amber-900/25 text-gray-400 hover:border-amber-900/50 hover:text-gray-200'
                       }`}
-                      title={p.name.split(' / ')[1]}
+                      title={p.sanskrit}
                     >
                       {p.symbol}
                     </button>
@@ -791,10 +716,10 @@ export default function SpaceAstrologyConnector() {
                 <div className="flex items-center justify-between border-b border-amber-955/20 pb-3">
                   <div>
                     <h3 className="text-xl font-bold uppercase tracking-wider text-amber-50">
-                      {selectedPlanet.name}
+                      {t(selectedPlanet.nameKey)}
                     </h3>
                     <p className="text-[10px] font-sans text-[#D4AF37] tracking-wider uppercase italic">
-                      Sanskrit: {selectedPlanet.sanskrit}
+                      {t('space.sanskrit.label')} {selectedPlanet.sanskrit}
                     </p>
                   </div>
                   <span className="text-3xl font-sans" style={{ color: selectedPlanet.color }}>
@@ -805,21 +730,15 @@ export default function SpaceAstrologyConnector() {
                 {/* Structured Cosmic Metadata Grid */}
                 <div className="grid grid-cols-2 gap-2">
                   <div className="bg-[#0A0706]/90 border border-amber-955/15 rounded-xl p-2.5">
-                    <span className="text-[8px] font-sans text-gray-500 uppercase tracking-widest block font-bold">Vedic Rulership</span>
+                    <span className="text-[8px] font-sans text-gray-500 uppercase tracking-widest block font-bold">{t('space.vedic.ruler')}</span>
                     <span className="text-[10.5px] font-bold text-amber-300 mt-0.5 block truncate">
-                      {selectedPlanet.id === 'sun' && 'Leo (सिंह)'}
-                      {selectedPlanet.id === 'moon' && 'Cancer (कर्क)'}
-                      {selectedPlanet.id === 'mercury' && 'Gemini & Virgo'}
-                      {selectedPlanet.id === 'venus' && 'Taurus & Libra'}
-                      {selectedPlanet.id === 'mars' && 'Aries & Scorpio'}
-                      {selectedPlanet.id === 'jupiter' && 'Sagittarius & Pisces'}
-                      {selectedPlanet.id === 'saturn' && 'Capricorn & Aquarius'}
+                      {t(selectedPlanet.rulesKey)}
                     </span>
                   </div>
                   <div className="bg-[#0A0706]/90 border border-amber-955/15 rounded-xl p-2.5">
-                    <span className="text-[8px] font-sans text-gray-500 uppercase tracking-widest block font-bold">Chart Radius</span>
+                    <span className="text-[8px] font-sans text-gray-500 uppercase tracking-widest block font-bold">{t('space.chart.radius')}</span>
                     <span className="text-[10.5px] font-bold text-amber-300 mt-0.5 block">
-                      {selectedPlanet.orbitRadius}px Orbit
+                      {selectedPlanet.orbitRadius}{t('space.orbit')}
                     </span>
                   </div>
                 </div>
@@ -829,15 +748,15 @@ export default function SpaceAstrologyConnector() {
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">{activeZodiac.sign}</span>
                     <div>
-                      <p className="text-[8px] font-sans text-gray-500 uppercase tracking-widest leading-none">Active Transit Alignment</p>
+                      <p className="text-[8px] font-sans text-gray-500 uppercase tracking-widest leading-none">{t('space.transit')}</p>
                       <p className="text-xs font-bold text-amber-100 uppercase tracking-wide mt-1">
-                        Transiting {activeZodiac.name}
+                        {t('space.transiting')} {t(activeZodiac.nameKey)}
                       </p>
                     </div>
                   </div>
                   {activePlanetIsRetro && (
                     <span className="bg-red-950 border border-red-500/40 text-red-400 font-sans font-bold text-[8px] px-1.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse flex items-center gap-0.5">
-                      <span>℞</span> Retro
+                      <span>℞</span> {t('space.retro.badge')}
                     </span>
                   )}
                 </div>
@@ -845,26 +764,26 @@ export default function SpaceAstrologyConnector() {
                 {/* Physics description */}
                 <div className="bg-[#0A0706]/75 border border-amber-955/10 rounded-xl p-3.5 space-y-1">
                   <h4 className="text-[9px] uppercase font-sans font-bold tracking-widest text-[#D4AF37] flex items-center gap-1.5">
-                    <span>🔭</span> Astronomical Physics
+                    {t('space.astro.physics')}
                   </h4>
                   <p className="text-[11px] text-gray-400 leading-relaxed font-sans">
-                    {selectedPlanet.astronomy}
+                    {t(selectedPlanet.astronomyKey)}
                   </p>
                 </div>
 
                 {/* Astrological connection */}
                 <div className="bg-[#0A0706]/75 border border-amber-955/10 rounded-xl p-3.5 space-y-1">
                   <h4 className="text-[9px] uppercase font-sans font-bold tracking-widest text-sky-400 flex items-center gap-1.5">
-                    <span>☸</span> Astrological Correspondence
+                    {t('space.astro.corr')}
                   </h4>
                   <p className="text-[11px] text-gray-300 leading-relaxed font-sans">
-                    {selectedPlanet.astrology}
+                    {t(selectedPlanet.astrologyKey)}
                   </p>
                 </div>
 
                 {/* Transiting description */}
                 <div className="border-t border-amber-955/15 pt-2 text-[10.5px] font-sans text-gray-500 italic leading-relaxed">
-                  {activeZodiac.description}
+                  {t(activeZodiac.descKey)}
                 </div>
               </div>
         </div>

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function BirthForm({ onSubmit, loading }) {
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,21 +34,30 @@ export default function BirthForm({ onSubmit, loading }) {
     });
   };
 
+  const genderOptions = [
+    { value: 'Male',   icon: '♂', labelKey: 'form.gender.male' },
+    { value: 'Female', icon: '♀', labelKey: 'form.gender.female' },
+    { value: 'Other',  icon: '⚬', labelKey: 'form.gender.other' },
+  ];
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto bg-white p-6 border border-gray-100 shadow-xl rounded-2xl relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#1E1410] to-transparent"></div>
       
       <div className="text-center space-y-1 pb-2 border-b border-gray-100">
         <h2 className="text-sm font-extrabold text-gray-800 tracking-widest uppercase">
-          Birth Detail Profile
+          {t('form.title')}
         </h2>
         <p className="text-[9px] text-gray-400 uppercase tracking-wider font-sans">
-          ✦ Astrological Computation Engine ✦
+          {t('form.subtitle')}
         </p>
       </div>
 
+      {/* Full Name */}
       <div className="space-y-1.5">
-        <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">Full Name</label>
+        <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+          {t('form.name.label')}
+        </label>
         <input
           required
           type="text"
@@ -53,13 +65,16 @@ export default function BirthForm({ onSubmit, loading }) {
           value={formData.name}
           onChange={handleChange}
           className="w-full px-3.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none placeholder-gray-400 transition-all font-sans"
-          placeholder="Enter your full name"
+          placeholder={t('form.name.placeholder')}
         />
       </div>
 
+      {/* Email + Phone */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
         <div className="space-y-1.5">
-          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email Address</label>
+          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            {t('form.email.label')}
+          </label>
           <input
             required
             type="email"
@@ -67,51 +82,61 @@ export default function BirthForm({ onSubmit, loading }) {
             value={formData.email}
             onChange={handleChange}
             className="w-full px-3.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none placeholder-gray-400 transition-all font-sans"
-            placeholder="Enter your email"
+            placeholder={t('form.email.placeholder')}
           />
         </div>
         <div className="space-y-1.5">
-          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">Phone (Optional)</label>
+          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            {t('form.phone.label')}
+          </label>
           <input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
             className="w-full px-3.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none placeholder-gray-400 transition-all font-sans"
-            placeholder="+91 XXXXX XXXXX"
+            placeholder={t('form.phone.placeholder')}
           />
         </div>
       </div>
 
       {/* Gender */}
       <div className="space-y-1.5">
-        <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">Gender <span className="text-[#1E1410]">*</span></label>
+        <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+          {t('form.gender.label')} <span className="text-[#1E1410]">*</span>
+        </label>
         <div className="flex gap-2.5">
-          {['Male', 'Female', 'Other'].map(g => (
-            <label key={g} className={`flex-1 flex items-center justify-center gap-1.5 py-2 border rounded-lg cursor-pointer text-xs font-semibold transition select-none font-sans
-              ${formData.gender === g
-                ? 'bg-[#1E1410] text-[#F5F2E9] border-[#1E1410] shadow-sm'
-                : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-[#1E1410]/50 hover:bg-gray-100'
-              }`}>
+          {genderOptions.map(({ value, icon, labelKey }) => (
+            <label
+              key={value}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 border rounded-lg cursor-pointer text-xs font-semibold transition select-none font-sans
+                ${formData.gender === value
+                  ? 'bg-[#1E1410] text-[#F5F2E9] border-[#1E1410] shadow-sm'
+                  : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-[#1E1410]/50 hover:bg-gray-100'
+                }`}
+            >
               <input
                 type="radio"
                 name="gender"
-                value={g}
-                checked={formData.gender === g}
+                value={value}
+                checked={formData.gender === value}
                 onChange={handleChange}
                 className="sr-only"
                 required
               />
-              {g === 'Male' ? '♂' : g === 'Female' ? '♀' : '⚬'} {g}
+              {icon} {t(labelKey)}
             </label>
           ))}
         </div>
       </div>
 
+      {/* Date of Birth */}
       <div className="space-y-1.5">
         <div className="flex justify-between items-baseline">
-          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">Date of Birth</label>
-          <span className="text-[8px] text-gray-400 font-sans">Used for Vimshottari Mahadasha cycles</span>
+          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            {t('form.dob.label')}
+          </label>
+          <span className="text-[8px] text-gray-400 font-sans">{t('form.dob.hint')}</span>
         </div>
         <input
           required
@@ -125,10 +150,13 @@ export default function BirthForm({ onSubmit, loading }) {
         />
       </div>
 
+      {/* Time of Birth */}
       <div className="space-y-1.5">
         <div className="flex justify-between items-baseline">
-          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">Time of Birth</label>
-          <span className="text-[8px] text-gray-400 font-sans">Determines exact Lagna & Moon Nakshatra</span>
+          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            {t('form.tob.label')}
+          </label>
+          <span className="text-[8px] text-gray-400 font-sans">{t('form.tob.hint')}</span>
         </div>
         <div className="flex gap-2 items-center">
           <select
@@ -180,10 +208,13 @@ export default function BirthForm({ onSubmit, loading }) {
         </div>
       </div>
 
+      {/* Birth Place */}
       <div className="space-y-1.5">
         <div className="flex justify-between items-baseline">
-          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">Birth Place</label>
-          <span className="text-[8px] text-gray-400 font-sans">Used to calculate exact coordinates</span>
+          <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            {t('form.birthplace.label')}
+          </label>
+          <span className="text-[8px] text-gray-400 font-sans">{t('form.birthplace.hint')}</span>
         </div>
         <input
           required
@@ -192,21 +223,22 @@ export default function BirthForm({ onSubmit, loading }) {
           value={formData.birthPlace}
           onChange={handleChange}
           className="w-full px-3.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none placeholder-gray-400 transition-all font-sans"
-          placeholder="City, State — e.g. Kolkata, West Bengal"
+          placeholder={t('form.birthplace.placeholder')}
         />
       </div>
 
+      {/* Submit */}
       <div className="pt-1 text-center space-y-3">
         <button
           type="submit"
           disabled={loading}
           className="w-full bg-[#1E1410] text-[#F5F2E9] py-3.5 rounded-lg text-xs font-extrabold tracking-widest hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-50 shadow-md uppercase font-sans cursor-pointer"
         >
-          {loading ? 'ALIGNING WITH THE HEAVENS...' : 'REVEAL MY DESTINY'}
+          {loading ? t('form.submit.loading') : t('form.submit.cta')}
         </button>
 
         <p className="text-[8.5px] text-gray-400 font-sans tracking-widest uppercase">
-          🔒 Secured SSL Connection • Lahiri Ayanamsha Compliant • ISO Certified Wisdom
+          {t('form.ssl')}
         </p>
       </div>
     </form>
