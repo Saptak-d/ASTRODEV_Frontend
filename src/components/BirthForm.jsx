@@ -18,7 +18,15 @@ export default function BirthForm({ onSubmit, loading }) {
   const [ampm, setAmpm] = useState('AM');
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    let { name, value } = e.target;
+    if (name === 'birthDate' && value) {
+      const parts = value.split('-');
+      if (parts[0] && parts[0].length > 4) {
+        parts[0] = parts[0].slice(0, 4);
+        value = parts.join('-');
+      }
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -40,10 +48,12 @@ export default function BirthForm({ onSubmit, loading }) {
     { value: 'Other',  icon: '⚬', labelKey: 'form.gender.other' },
   ];
 
+  const selectStyle = { color: '#111827', backgroundColor: '#ffffff' };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto bg-white p-6 border border-gray-100 shadow-xl rounded-2xl relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#1E1410] to-transparent"></div>
-      
+
       <div className="text-center space-y-1 pb-2 border-b border-gray-100">
         <h2 className="text-sm font-extrabold text-gray-800 tracking-widest uppercase">
           {t('form.title')}
@@ -146,7 +156,8 @@ export default function BirthForm({ onSubmit, loading }) {
           onChange={handleChange}
           min="1900-01-01"
           max="2099-12-31"
-          className="w-full px-3.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none transition-all font-sans"
+          style={{ color: '#111827' }}
+          className="w-full px-3.5 py-2.5 text-xs bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none transition-all font-sans"
         />
       </div>
 
@@ -158,53 +169,80 @@ export default function BirthForm({ onSubmit, loading }) {
           </label>
           <span className="text-[8px] text-gray-400 font-sans">{t('form.tob.hint')}</span>
         </div>
-        <div className="flex gap-1.5 sm:gap-2 items-center">
-          <select
-            value={hours}
-            onChange={(e) => setHours(e.target.value)}
-            className="w-full px-1.5 sm:px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
-          >
-            {Array.from({ length: 12 }, (_, i) => i + 1).map(h => (
-              <option key={h} className="bg-white text-gray-900" value={h.toString().padStart(2, '0')}>{h.toString().padStart(2, '0')}</option>
-            ))}
-          </select>
-          <span className="text-gray-400 font-bold">:</span>
-          <select
-            value={minutes}
-            onChange={(e) => setMinutes(e.target.value)}
-            className="w-full px-1.5 sm:px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
-          >
-            {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')).map(m => (
-              <option key={m} className="bg-white text-gray-900" value={m}>{m}</option>
-            ))}
-          </select>
-          <span className="text-gray-400 font-bold">:</span>
-          <select
-            value={seconds}
-            onChange={(e) => setSeconds(e.target.value)}
-            className="w-full px-1.5 sm:px-2.5 py-2.5 text-xs bg-gray-50 text-gray-900 border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none text-center appearance-none cursor-pointer font-sans"
-          >
-            {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')).map(s => (
-              <option key={s} className="bg-white text-gray-900" value={s}>{s}</option>
-            ))}
-          </select>
-          <div className="flex w-full ml-0.5 sm:ml-1 rounded-lg border border-gray-200 overflow-hidden shadow-sm bg-gray-50 shrink-0">
-            <button
-              type="button"
-              onClick={() => setAmpm('AM')}
-              className={`flex-1 py-2.5 px-1 sm:px-2 text-xs font-bold transition font-sans ${ampm === 'AM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-transparent text-gray-500 hover:bg-gray-100'}`}
+
+        <div className="flex gap-1.5 sm:gap-2 items-end">
+
+          {/* Hours */}
+          <div className="flex-1 flex flex-col items-center gap-0.5">
+            <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">HH</span>
+            <select
+              value={hours}
+              onChange={(e) => setHours(e.target.value)}
+              style={selectStyle}
+              className="w-full px-1 py-2.5 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans"
             >
-              AM
-            </button>
-            <div className="w-px bg-gray-200"></div>
-            <button
-              type="button"
-              onClick={() => setAmpm('PM')}
-              className={`flex-1 py-2.5 px-1 sm:px-2 text-xs font-bold transition font-sans ${ampm === 'PM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-transparent text-gray-500 hover:bg-gray-100'}`}
-            >
-              PM
-            </button>
+              {Array.from({ length: 12 }, (_, i) => i + 1).map(h => (
+                <option key={h} value={h.toString().padStart(2, '0')}>{h.toString().padStart(2, '0')}</option>
+              ))}
+            </select>
           </div>
+
+          <span className="text-gray-400 font-bold pb-2.5">:</span>
+
+          {/* Minutes */}
+          <div className="flex-1 flex flex-col items-center gap-0.5">
+            <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">MM</span>
+            <select
+              value={minutes}
+              onChange={(e) => setMinutes(e.target.value)}
+              style={selectStyle}
+              className="w-full px-1 py-2.5 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans"
+            >
+              {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')).map(m => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
+          </div>
+
+          <span className="text-gray-400 font-bold pb-2.5">:</span>
+
+          {/* Seconds */}
+          <div className="flex-1 flex flex-col items-center gap-0.5">
+            <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">SS</span>
+            <select
+              value={seconds}
+              onChange={(e) => setSeconds(e.target.value)}
+              style={selectStyle}
+              className="w-full px-1 py-2.5 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans"
+            >
+              {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')).map(s => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* AM / PM */}
+          <div className="flex flex-col items-center gap-0.5 shrink-0">
+            <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider invisible">·</span>
+            <div className="flex rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+              <button
+                type="button"
+                onClick={() => setAmpm('AM')}
+                className={`py-2.5 px-2 sm:px-3 text-xs font-bold transition font-sans ${ampm === 'AM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+              >
+                AM
+              </button>
+              <div className="w-px bg-gray-200"></div>
+              <button
+                type="button"
+                onClick={() => setAmpm('PM')}
+                className={`py-2.5 px-2 sm:px-3 text-xs font-bold transition font-sans ${ampm === 'PM' ? 'bg-[#1E1410] text-[#F5F2E9]' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+              >
+                PM
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
 

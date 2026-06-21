@@ -51,6 +51,27 @@ export const getPaya = (moonHouse) => {
 
 export const formatDegree = (d) => { const deg=Math.floor(d); const min=Math.floor((d-deg)*60); return `${deg}° ${min}'`; };
 
+const formatTimezone = (offsetVal) => {
+  const offset = parseFloat(offsetVal !== undefined ? offsetVal : '5.5');
+  const sign = offset >= 0 ? "+" : "";
+  const names = {
+    "5.5": "India Standard Time",
+    "-5": "Eastern Standard Time",
+    "-6": "Central Standard Time",
+    "-7": "Mountain Standard Time",
+    "-8": "Pacific Standard Time",
+    "0": "Greenwich Mean Time",
+    "1": "Central European Time",
+    "2": "Eastern European Time",
+    "9": "Japan Standard Time",
+    "8": "Australian Western Standard Time",
+    "9.5": "Australian Central Standard Time",
+    "10": "Australian Eastern Standard Time"
+  };
+  const name = names[String(offset)] || "Local Time";
+  return `UTC ${sign}${offset} (${name})`;
+};
+
 // ─── Rule-Based Derivation Helpers ───────────────────────────────────────────
 
 const mercuryCommunicationStyle = {
@@ -402,7 +423,7 @@ export const generateFullReport = (report) => {
       { label: "Place of Birth",     value: report.birthPlace },
       { label: "Latitude",           value: report.latitude ? `${Math.abs(report.latitude).toFixed(4)}° ${report.latitude >= 0 ? 'N' : 'S'}` : (fData.birth_details?.latitude ? `${Math.abs(fData.birth_details.latitude).toFixed(4)}° ${fData.birth_details.latitude >= 0 ? 'N' : 'S'}` : "Not Specified") },
       { label: "Longitude",          value: report.longitude ? `${Math.abs(report.longitude).toFixed(4)}° ${report.longitude >= 0 ? 'E' : 'W'}` : (fData.birth_details?.longitude ? `${Math.abs(fData.birth_details.longitude).toFixed(4)}° ${fData.birth_details.longitude >= 0 ? 'E' : 'W'}` : "Not Specified") },
-      { label: "Time Zone",          value: `UTC +${fData.birth_details?.timezone || '5.5'} (India Standard Time)` },
+      { label: "Time Zone",          value: formatTimezone(fData.birth_details?.timezone) },
       { label: "Ayanamsa",           value: "Lahiri (Chitra Paksha) — Standard Indian Ayanamsa" },
       { label: "Birth Weekday",      value: panchang.weekday || bDateObj.toLocaleDateString('en-US', { weekday: 'long' }) },
       { label: "Birth Tithi",        value: panchang.tithi || "Calculated from birth chart" },
@@ -421,7 +442,7 @@ export const generateFullReport = (report) => {
       { label: "Tithi",              value: panchang.tithi || "Derived from Sun-Moon angle" },
       { label: "Paksha",             value: panchang.paksha || (moon.house <= 6 ? "Shukla Paksha — Waxing Moon phase, associated with growth and new beginnings" : "Krishna Paksha — Waning Moon phase, associated with introspection and completion") },
       { label: "Nakshatra",          value: `${moon.nakshatra || "Moon Nakshatra"} — ruled by ${nakAttrs.ruling_planet || "its lord"}, deity: ${nakAttrs.deity || "divine force"}` },
-      { label: "Yoga",               value: panchang.yoga || "Derived from Sun + Moon longitudes" },
+      { label: "Yoga",               value: panchang.yoga || "Derived from Sun + Moon longitudes (5th Panchanga limb — 27 Nithya Yogas)" },
       { label: "Karana",             value: panchang.karana || "Half of Tithi period — governs the activity of the birth moment" },
       { label: "Nakshatra Pada",     value: moon.pada ? `Pada ${moon.pada} — indicates specific qualities and sub-rulership within the Nakshatra` : "Determined from Moon's degree within the Nakshatra" },
     ],
@@ -561,21 +582,33 @@ export const generateFullReport = (report) => {
       };
     }),
 
-    "18. Dasha Analysis (Next 5 Years)": (() => {
+    "18. Dasha Analysis (Lifetime + 10-Year Forecast)": (() => {
       const now = new Date();
-      const fiveYearsLater = new Date(now.getFullYear() + 5, now.getMonth(), now.getDate());
-      const upcomingIn5Yrs = (dashas.upcoming || []).filter(d => new Date(d.start_date) <= fiveYearsLater);
+      const tenYearsLater = new Date(now.getFullYear() + 10, now.getMonth(), now.getDate());
+      const upcomingIn10Yrs = (dashas.upcoming || []).filter(d => {
+        const sd = d.start_date || d.startDate;
+        return sd && new Date(sd) <= tenYearsLater;
+      });
       const dashaMeanings = { Sun: "authority, career clarity, health focus, father's matters", Moon: "emotional growth, public dealings, home changes, mother's matters", Mars: "energy, courage, property, siblings, competitive drives", Mercury: "business, learning, communication, travel, intellectual ventures", Jupiter: "expansion, fortune, wisdom, children, spiritual growth", Venus: "love, luxury, creativity, relationships, financial ease", Saturn: "karmic lessons, discipline, slow but lasting progress, service", Rahu: "ambition, foreign elements, technology, sudden changes", Ketu: "spiritual awakening, detachment, research, liberation" };
-      return [
-        { label: "Current Mahadasha",  value: dashas.current?.mahadasha ? `${dashas.current.mahadasha} Mahadasha — ruling life themes of ${dashaMeanings[dashas.current.mahadasha] || "planetary domain"}.` : "Mahadasha derived from Moon's Nakshatra at birth" },
-        { label: "Current Antardasha", value: dashas.current?.antardasha ? `${dashas.current.antardasha} Antardasha within ${dashas.current.mahadasha} Mahadasha — activating a sub-theme of ${dashaMeanings[dashas.current.antardasha] || "sub-period focus"}.` : "Sub-period of the current Mahadasha" },
-        { label: "Current Period Theme", value: dashas.current?.mahadasha ? `The ${dashas.current.mahadasha} Mahadasha is the dominant karmic force shaping ${pronoun} life. This period activates ${pronoun} ${dashaMeanings[dashas.current.mahadasha] || "primary planetary themes"} — with the specific sub-themes shifting every few months through the Antardasha cycle.` : `The operating Dasha is the primary filter through which all karma manifests during this period.` },
-        { label: "Period Dates",       value: dashas.current?.start_date && dashas.current?.end_date ? `${new Date(dashas.current.start_date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} → ${new Date(dashas.current.end_date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}` : "Calculated from Moon's Nakshatra and exact degree at birth" },
-        ...upcomingIn5Yrs.map(d => ({
-          label: `${d.mahadasha} – ${d.antardasha}`,
-          value: `${new Date(d.start_date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} → ${new Date(d.end_date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} — ${dashaMeanings[d.antardasha] || dashaMeanings[d.mahadasha] || "planetary sub-period"}`
-        }))
+
+      // Current 4-tier dasha display
+      const currentItems = [
+        { label: "Current Mahadasha",       value: dashas.current?.mahadasha ? `${dashas.current.mahadasha} Mahadasha — ruling life themes of ${dashaMeanings[dashas.current.mahadasha] || "planetary domain"}.` : "Mahadasha derived from Moon's Nakshatra at birth" },
+        { label: "Mahadasha Period",        value: dashas.current?.mahadasha_start && dashas.current?.mahadasha_end ? `${new Date(dashas.current.mahadasha_start).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} → ${new Date(dashas.current.mahadasha_end).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}` : "Calculated from Moon's Nakshatra" },
+        { label: "Current Antardasha",      value: dashas.current?.antardasha ? `${dashas.current.antardasha} Antardasha within ${dashas.current.mahadasha} Mahadasha — activating: ${dashaMeanings[dashas.current.antardasha] || "sub-period focus"}.` : "Sub-period of the current Mahadasha" },
+        { label: "Antardasha Period",       value: dashas.current?.start_date && dashas.current?.end_date ? `${new Date(dashas.current.start_date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} → ${new Date(dashas.current.end_date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}` : "Calculated from Moon's Nakshatra and exact degree at birth" },
+        { label: "Pratyantardasha",         value: dashas.current?.pratyantardasha ? `${dashas.current.pratyantardasha} Pratyantardasha (3rd level) — ${dashaMeanings[dashas.current.pratyantardasha] || "tertiary sub-period"}. Period: ${dashas.current.pratyantar_start ? `${new Date(dashas.current.pratyantar_start).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} → ${new Date(dashas.current.pratyantar_end).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}` : "see detailed dasha chart"}` : "Pratyantardasha calculated from Antardasha" },
+        { label: "Sookshma Dasha",          value: dashas.current?.sookshma ? `${dashas.current.sookshma} Sookshma Dasha (4th level — finest influence) — ${dashaMeanings[dashas.current.sookshma] || "micro-period influence"}. Period: ${dashas.current.sookshma_start ? `${new Date(dashas.current.sookshma_start).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} → ${new Date(dashas.current.sookshma_end).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}` : "see detailed dasha chart"}` : "4th-level Sookshma Dasha from engine" },
+        { label: "Current Period Theme",    value: dashas.current?.mahadasha ? `The ${dashas.current.mahadasha} Mahadasha is the dominant karmic force. Sub-themes shift every few months through the Antardasha (${dashas.current.antardasha}) and Pratyantardasha (${dashas.current.pratyantardasha || "calculated"}) cycles.` : "The operating Dasha is the primary filter through which all karma manifests during this period." },
       ];
+
+      // Upcoming 10-year forecast entries
+      const upcomingItems = upcomingIn10Yrs.map(d => ({
+        label: `${d.mahadasha} – ${d.antardasha}`,
+        value: `${new Date(d.start_date || d.startDate).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} → ${new Date(d.end_date || d.endDate).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} — ${dashaMeanings[d.antardasha] || dashaMeanings[d.mahadasha] || "planetary sub-period"}`
+      }));
+
+      return [...currentItems, ...upcomingItems];
     })(),
 
     "19. Yogas & Special Combinations": yogas.length > 0
@@ -598,6 +631,19 @@ export const generateFullReport = (report) => {
       { label: "Spiritual Practice",   value: use(spiritualPath, spiritualGrowthByJupiter[jupiter.sign] || "Daily meditation, mantra chanting, and acts of selfless service are the highest remedies for any chart — they generate positive karma that transcends planetary limitations.") },
       { label: "General Guidance",     value: `The most powerful remedy for any chart is living in alignment with dharma — fulfilling ${pronoun} duties with integrity, practising gratitude, serving others, and dedicating actions to the divine. ${nakAttrs.gana === "Deva" ? "Being of Deva Gana, " + subjPronoun + " thrives through selfless service and spiritual practice." : nakAttrs.gana === "Manushya" ? "Being of Manushya Gana, " + subjPronoun + " grows through balancing material responsibility with spiritual aspiration." : "Being of Rakshasa Gana, " + subjPronoun + " transforms through disciplined spiritual practice and channelling intensity into dharmic pursuits."}` },
     ],
+
+    "21. Lifetime Dasha Timeline": (() => {
+      const timeline = dashas.mahadasha_timeline || [];
+      if (!timeline.length) {
+        return [{ label: "Dasha Timeline", value: "Lifetime Mahadasha timeline calculated from Moon's birth Nakshatra. Available from engine output." }];
+      }
+      return timeline.map((m, idx) => ({
+        label: `${idx + 1}. ${m.lord} Mahadasha (${m.duration_years} yrs)`,
+        value: `${new Date(m.start_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })} → ${new Date(m.end_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}${
+          m.lord === dashas.current?.mahadasha ? " ◀ CURRENT" : ""
+        }`
+      }));
+    })(),
 
     "raw_charts": {
       ascendantSign: asc.ascendant_sign || "Aries",
