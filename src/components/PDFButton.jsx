@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
 
-export default function PDFButton({ reportId, userName, endpoint = 'pdf' }) {
-  const [downloading, setDownloading] = useState(false);
+const LANGUAGES = [
+  { key: 'hindi',    label: 'हिंदी',   flag: '🕉', sublabel: 'Hindi' },
+  { key: 'english',  label: 'English', flag: '🇬🇧', sublabel: 'English' },
+  { key: 'sanskrit', label: 'संस्कृत', flag: '📜', sublabel: 'Sanskrit' },
+  { key: 'bengali',  label: 'বাংলা',   flag: '✦', sublabel: 'Bengali' },
+];
 
-  const handleDownload = async () => {
+export default function PDFButton({ reportId, userName }) {
+  const [downloading, setDownloading] = useState(null); // null or lang key
+
+  const handleDownload = async (lang) => {
     if (downloading) return;
-    setDownloading(true);
+    setDownloading(lang);
 
     try {
       const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
-      const res = await fetch(`${apiBase}/api/reports/${reportId}/${endpoint}`);
+      const res = await fetch(`${apiBase}/api/reports/${reportId}/pdf?lang=${lang}`);
       if (!res.ok) throw new Error('PDF generation failed');
 
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
 
-      // Build a filename that includes the user's name
       const safeName = (userName || 'report')
         .trim()
         .replace(/[^a-zA-Z0-9\s]/g, '')
         .replace(/\s+/g, '_');
-      const filename = `${safeName}.pdf`;
+      const filename = `${safeName}_${lang}.pdf`;
 
       const a = document.createElement('a');
       a.href = url;
@@ -33,25 +39,58 @@ export default function PDFButton({ reportId, userName, endpoint = 'pdf' }) {
       console.error('Download failed:', err);
       alert('PDF download failed. Please try again.');
     } finally {
-      setDownloading(false);
+      setDownloading(null);
     }
   };
 
   return (
-    <button
-      onClick={handleDownload}
-      disabled={downloading}
-      className="inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-[#C69214] disabled:opacity-60 disabled:cursor-wait text-[#2A1B18] font-bold py-3 px-6 rounded shadow-sm tracking-wider transition uppercase text-sm"
-    >
-      {downloading ? (
-        <>
-          <span className="animate-spin inline-block">⏳</span> Generating PDF…
-        </>
-      ) : (
-        <>
-          <span>📥</span> Download Printable PDF Book
-        </>
-      )}
-    </button>
+    <div className="flex flex-col items-start gap-2">
+      {/* Label */}
+      <span className="text-[10px] text-[#D4AF37] font-sans tracking-[0.2em] font-bold uppercase">
+        📥 Download PDF In
+      </span>
+
+      {/* Language buttons */}
+      <div className="flex flex-wrap gap-2">
+        {LANGUAGES.map(({ key, label, flag, sublabel }) => {
+          const isActive = downloading === key;
+          return (
+            <button
+              key={key}
+              id={`pdf-btn-${key}`}
+              onClick={() => handleDownload(key)}
+              disabled={!!downloading}
+              className={`
+                inline-flex items-center gap-1.5
+                border font-bold py-2 px-4 rounded-lg
+                text-sm tracking-wide transition-all duration-200
+                ${isActive
+                  ? 'bg-[#D4AF37] text-[#2A1B18] border-[#D4AF37] cursor-wait scale-95'
+                  : 'bg-transparent text-[#D4AF37] border-[#D4AF37]/60 hover:bg-[#D4AF37] hover:text-[#2A1B18] hover:border-[#D4AF37]'
+                }
+                disabled:opacity-60
+              `}
+            >
+              {isActive ? (
+                <>
+                  <span className="animate-spin inline-block text-base">⏳</span>
+                  <span className="text-xs">Generating…</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-base">{flag}</span>
+                  <div className="flex flex-col leading-none text-left">
+                    <span className="text-sm font-bold">{label}</span>
+                    {sublabel !== label && (
+                      <span className="text-[9px] opacity-70 tracking-wider uppercase">{sublabel}</span>
+                    )}
+                  </div>
+                </>
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }

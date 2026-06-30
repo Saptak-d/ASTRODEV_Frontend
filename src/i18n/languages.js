@@ -6,6 +6,7 @@ export const LANGUAGES = [
   { code: 'en', label: 'EN', nativeLabel: 'English' },
   { code: 'hi', label: 'हि', nativeLabel: 'हिन्दी' },
   { code: 'sa', label: 'सं', nativeLabel: 'संस्कृत' },
+  { code: 'bn', label: 'বাং', nativeLabel: 'বাংলা' },
 ];
 
 export const STORAGE_KEY = 'astrodev_language';
