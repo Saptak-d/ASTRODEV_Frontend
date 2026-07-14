@@ -63,13 +63,13 @@ export default function PaymentSuccess() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0F0A06] flex flex-col items-center justify-center gap-4">
+      <div className="min-h-screen bg-[#F5F2E9] flex flex-col items-center justify-center gap-4">
         <style>{`
           @keyframes omPulse{0%,100%{opacity:.4;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
           .om-p{animation:omPulse 2.4s ease-in-out infinite}
         `}</style>
         <div className="om-p text-6xl text-[#D4AF37]" style={{ fontFamily: 'serif' }}>ॐ</div>
-        <p className="text-[#9A8B7A] text-xs tracking-[0.3em] uppercase">Loading Success Details…</p>
+        <p className="text-[#2A1B18] text-xs tracking-[0.3em] uppercase">Loading Success Details…</p>
       </div>
     );
   }
@@ -85,14 +85,14 @@ export default function PaymentSuccess() {
     { icon: '✅', text: 'Payment Received Securely' },
     { icon: '🔮', text: 'Pandit Ji is reading your birth chart' },
     { icon: '📜', text: 'Your Kundli report is being prepared' },
-    { icon: '📱', text: 'Delivery to your WhatsApp & Email within 6 hours' },
+    { icon: '📱', text: 'Delivery to your WhatsApp & Email within 2 to 3 days' },
   ];
 
   return (
-    <div className="min-h-screen bg-[#0F0A06] flex flex-col items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-[#F5F2E9] flex flex-col items-center justify-center px-4 py-10">
       <style>{`
         @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes omGlow{0%,100%{text-shadow:0 0 20px rgba(212,175,55,.3)}50%{text-shadow:0 0 60px rgba(212,175,55,1),0 0 20px rgba(212,175,55,.6)}}
+        @keyframes omGlow{0%,100%{text-shadow:0 0 20px rgba(212,175,55,.2)}50%{text-shadow:0 0 60px rgba(212,175,55,.8),0 0 20px rgba(212,175,55,.4)}}
         @keyframes popIn{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
         @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
         @keyframes pulse6{0%,100%{opacity:.6}50%{opacity:1}}
@@ -110,19 +110,19 @@ export default function PaymentSuccess() {
       {/* Success badge */}
       <div className="fu1 flex flex-col items-center mb-6">
         <div
-          className="pop w-16 h-16 rounded-full bg-[#1A1108] border-2 border-[#D4AF37] flex items-center justify-center mb-4"
-          style={{ boxShadow: '0 0 40px rgba(212,175,55,0.35)' }}
+          className="pop w-16 h-16 rounded-full bg-white border-2 border-[#D4AF37] flex items-center justify-center mb-4"
+          style={{ boxShadow: '0 0 30px rgba(212,175,55,0.2)' }}
         >
           <span className="text-3xl">✅</span>
         </div>
-        <p className="text-[9px] tracking-[0.4em] text-[#D4AF37]/60 uppercase font-bold mb-1">
+        <p className="text-[9px] tracking-[0.4em] text-[#A68015] uppercase font-bold mb-1 font-sans">
           ✦ Payment Successful ✦
         </p>
         <div className="om-glow text-4xl text-[#D4AF37] mb-2" style={{ fontFamily: 'serif' }}>ॐ</div>
-        <h1 className="fu2 text-2xl font-extrabold text-[#F5F2E9] tracking-widest uppercase text-center">
+        <h1 className="fu2 text-2xl font-extrabold text-[#2A1B18] tracking-widest uppercase text-center">
           Pandit Ji is Preparing<br />Your Kundli
         </h1>
-        <p className="fu2 text-[#D4AF37] text-[10px] tracking-widest uppercase mt-1 font-semibold">
+        <p className="fu2 text-[#A68015] text-[10px] tracking-widest uppercase mt-1 font-semibold font-sans">
           पंडितजी आपकी कुंडली तैयार कर रहे हैं
         </p>
       </div>
@@ -130,10 +130,10 @@ export default function PaymentSuccess() {
       <div className="w-full max-w-md space-y-4">
 
         {/* Delivery Promise */}
-        <div className="fu3 bg-[#1A1108] border border-[#D4AF37]/25 rounded-2xl overflow-hidden">
-          <div className="h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+        <div className="fu3 bg-white border border-[#E4E0D5] rounded-2xl overflow-hidden shadow-sm">
+          <div className="h-[3px] bg-[#D4AF37]" />
           <div className="px-6 py-5 text-center">
-            <p className="text-[9px] tracking-[0.3em] text-[#D4AF37]/70 uppercase font-bold mb-4">
+            <p className="text-[9px] tracking-[0.3em] text-[#A68015] uppercase font-bold mb-4 font-sans">
               📱 Delivery Timeline
             </p>
             <div className="space-y-3">
@@ -147,52 +147,52 @@ export default function PaymentSuccess() {
                   <div
                     className={`w-8 h-8 rounded-full border flex-shrink-0 flex items-center justify-center text-sm transition-all duration-500 ${
                       i <= step
-                        ? 'border-[#D4AF37] bg-[#D4AF37]/10'
+                        ? 'border-[#D4AF37] bg-[#FAF9F5]'
                         : 'border-[#D4AF37]/20 bg-transparent'
                     }`}
                   >
                     {i <= step ? s.icon : <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/30 inline-block" />}
                   </div>
-                  <p className="text-[#C9B99A] text-xs">{s.text}</p>
+                  <p className="text-[#4E3F3E] text-xs font-sans">{s.text}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-5 py-3 px-4 bg-[#D4AF37]/10 rounded-xl border border-[#D4AF37]/20">
-              <p className="pulse text-[#D4AF37] text-xs font-bold">
-                ⏱ Your report will be delivered within <span className="text-base">6 hours</span>
+            <div className="mt-5 py-3 px-4 bg-[#FAF9F5] rounded-xl border border-[#D4AF37]/30">
+              <p className="pulse text-[#A68015] text-xs font-bold font-sans">
+                ⏱ Your report will be delivered within <span className="text-base">2 to 3 days</span>
               </p>
             </div>
           </div>
         </div>
 
         {/* Contact details (masked) */}
-        <div className="fu4 bg-[#1A1108] border border-[#D4AF37]/15 rounded-2xl px-6 py-5">
-          <p className="text-[9px] tracking-[0.3em] text-[#D4AF37]/70 uppercase font-bold mb-3">
+        <div className="fu4 bg-white border border-[#E4E0D5] rounded-2xl px-6 py-5 shadow-sm">
+          <p className="text-[9px] tracking-[0.3em] text-[#A68015] uppercase font-bold mb-3 font-sans">
             📬 Delivery Destination
           </p>
           <div className="space-y-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-[#9A8B7A] text-[10px] uppercase tracking-widest">Name</span>
-              <span className="text-[#F5F2E9] text-xs font-bold">{name}</span>
+              <span className="text-[#6F5D5B] text-[10px] uppercase tracking-widest font-sans">Name</span>
+              <span className="text-[#2A1B18] text-xs font-bold font-sans">{name}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-[#9A8B7A] text-[10px] uppercase tracking-widest">WhatsApp</span>
-              <span className="text-[#F5F2E9] text-xs font-bold font-mono">{maskPhone(phone)}</span>
+              <span className="text-[#6F5D5B] text-[10px] uppercase tracking-widest font-sans">WhatsApp</span>
+              <span className="text-[#2A1B18] text-xs font-bold font-mono">{maskPhone(phone)}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-[#9A8B7A] text-[10px] uppercase tracking-widest">Email</span>
-              <span className="text-[#F5F2E9] text-xs font-bold font-mono">{maskEmail(email)}</span>
+              <span className="text-[#6F5D5B] text-[10px] uppercase tracking-widest font-sans">Email</span>
+              <span className="text-[#2A1B18] text-xs font-bold font-mono">{maskEmail(email)}</span>
             </div>
           </div>
-          <p className="mt-3 text-[#9A8B7A] text-[9px] italic text-center">
+          <p className="mt-3 text-[#6F5D5B] text-[9px] italic text-center font-sans">
             Your Kundli report will be sent to the above contacts
           </p>
         </div>
 
         {/* Birth summary */}
-        <div className="fu5 bg-[#1A1108] border border-[#D4AF37]/15 rounded-2xl px-6 py-4">
-          <p className="text-[9px] tracking-[0.3em] text-[#D4AF37]/70 uppercase font-bold mb-3">
+        <div className="fu5 bg-white border border-[#E4E0D5] rounded-2xl px-6 py-4 shadow-sm">
+          <p className="text-[9px] tracking-[0.3em] text-[#A68015] uppercase font-bold mb-3 font-sans">
             🪐 Birth Details Received
           </p>
           <div className="grid grid-cols-3 gap-2 text-center">
@@ -201,35 +201,35 @@ export default function PaymentSuccess() {
               { icon: '🕐', label: 'Time', val: birthTime },
               { icon: '📍', label: 'Place', val: birthPlace },
             ].map((d) => (
-              <div key={d.label} className="bg-[#0F0A06] rounded-xl p-2.5 border border-[#D4AF37]/10">
+              <div key={d.label} className="bg-[#FAF9F5] rounded-xl p-2.5 border border-[#EAE6DB]">
                 <span className="text-base">{d.icon}</span>
-                <p className="text-[7px] text-[#D4AF37]/60 uppercase tracking-wider font-bold mt-1">{d.label}</p>
-                <p className="text-[9px] font-bold text-[#C9B99A] mt-0.5 leading-tight">{d.val}</p>
+                <p className="text-[7px] text-[#A68015] uppercase tracking-wider font-bold mt-1 font-sans">{d.label}</p>
+                <p className="text-[9px] font-bold text-[#4E3F3E] mt-0.5 leading-tight font-sans">{d.val}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Pandit ji blessing */}
-        <div className="fu5 bg-gradient-to-br from-[#1A1108] to-[#0F0A06] border border-[#D4AF37]/20 rounded-2xl px-6 py-5 text-center">
-          <p className="text-[9px] tracking-[0.3em] text-[#D4AF37]/60 uppercase font-bold mb-3">✦ पंडितजी का आशीर्वाद ✦</p>
-          <p className="text-[#C9B99A] text-sm leading-relaxed italic" style={{ fontFamily: 'serif' }}>
+        <div className="fu5 bg-white border border-[#E4E0D5] rounded-2xl px-6 py-5 text-center shadow-sm">
+          <p className="text-[9px] tracking-[0.3em] text-[#A68015] uppercase font-bold mb-3 font-sans">✦ पंडितजी का आशीर्वाद ✦</p>
+          <p className="text-[#4E3F3E] text-sm leading-relaxed italic" style={{ fontFamily: 'serif' }}>
             "आपकी जन्म कुंडली पूरी श्रद्धा से तैयार की जाएगी।<br />
             इसमें आपके भूत, वर्तमान और भविष्य का ज्ञान निहित है।"
           </p>
-          <p className="mt-2 text-[#D4AF37]/60 text-[9px] italic">— Pandit Ji</p>
+          <p className="mt-2 text-[#A68015] text-[9px] italic font-sans">— Pandit Ji</p>
         </div>
 
         {/* Footer links */}
         <div className="fu6 text-center pb-4 space-y-2">
           {reportId && (
-            <p className="text-[#9A8B7A] text-[9px] font-mono">
+            <p className="text-[#6F5D5B] text-[9px] font-mono">
               Order Ref: {reportId.split('-')[0].toUpperCase()}
             </p>
           )}
           <Link
             to="/generate"
-            className="block text-[#9A8B7A] hover:text-[#D4AF37] text-[10px] uppercase tracking-widest transition-colors"
+            className="block text-[#6F5D5B] hover:text-[#A68015] text-[10px] uppercase tracking-widest transition-colors font-sans"
           >
             ✦ Generate Another Kundli ✦
           </Link>
