@@ -9,8 +9,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
-const AMOUNT_DISPLAY = '₹99';
-const AMOUNT_PAISE = 9900;
+const AMOUNT_DISPLAY = '₹1';
+const AMOUNT_PAISE = 100;
 
 // Load Razorpay checkout script dynamically
 function loadRazorpayScript() {
