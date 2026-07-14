@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import BirthForm from '../components/BirthForm';
 import SpaceAstrologyConnector from '../components/SpaceAstrologyConnector';
+import LoadingScreen from '../components/LoadingScreen';
+import { storePdf } from '../utils/pdfCache';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Landing() {
@@ -24,21 +26,51 @@ export default function Landing() {
       }
     }
   }, [location]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [loading,  setLoading]  = useState(false);
+  const [error,    setError]    = useState(null);
+  const [loadStep, setLoadStep] = useState(0);
+  const [loadName, setLoadName] = useState('');
 
   const handleFormSubmit = async (formData) => {
     setLoading(true);
     setError(null);
+    setLoadName(formData.name || '');
+    setLoadStep(0);
+
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
     try {
-      const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+      setLoadStep(1);
       const response = await axios.post(`${apiBase}/api/reports/create`, formData);
-      navigate(`/report/${response.data.reportId}`);
+      const { reportId } = response.data;
+
+      setLoadStep(2);
+      await new Promise(r => setTimeout(r, 300));
+      setLoadStep(3);
+
+      // Pre-generate Hindi PDF while loader is showing
+      setLoadStep(4);
+      const pdfRes = await fetch(`${apiBase}/api/reports/${reportId}/pdf?lang=hindi`);
+      if (!pdfRes.ok) throw new Error('PDF generation failed');
+      const pdfBlob = await pdfRes.blob();
+
+      // Store in module-level cache — survives SPA navigation reliably
+      storePdf(reportId, pdfBlob);
+
+      setLoadStep(5);
+      await new Promise(r => setTimeout(r, 500));
+
+      navigate(`/report/${reportId}`, {
+        state: {
+          userName:  formData.name,
+          birthDate: formData.birthDate,
+          birthTime: formData.birthTime,
+          birthPlace: formData.birthPlace,
+        },
+      });
     } catch (err) {
       console.error('Report compilation error:', err);
-      setError(err.response?.data?.error?.message || 'Unable to align with your celestial path.');
-    } finally {
       setLoading(false);
+      setError(err.response?.data?.error?.message || 'Unable to align with your celestial path.');
     }
   };
 
@@ -124,6 +156,11 @@ export default function Landing() {
     element: z.element,
     ruler: t(z.rulerKey)
   }));
+
+  // Show full-screen loader while generating report + PDF
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="bg-[#F5F2E9] text-[#2A1B18] min-h-screen relative overflow-hidden font-serif">

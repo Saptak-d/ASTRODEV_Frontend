@@ -13,3 +13,9 @@ h1, h2, h3, h4, h5, h6 {
 * {
   font-family: 'Kruti Dev 010', sans-serif !important;
 }
+
+/* Exempt form inputs, selects, textareas, and buttons from the global legacy font override */
+input, select, textarea, button, input *, select *, textarea *, button * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+

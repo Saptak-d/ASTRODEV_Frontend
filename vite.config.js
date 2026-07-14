@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:8888', // Fallback local API link
+        target: 'http://localhost:8080', // Backend server port
         changeOrigin: true,
         secure: false,
       }

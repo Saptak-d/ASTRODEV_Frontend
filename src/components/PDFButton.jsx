@@ -15,7 +15,7 @@ export default function PDFButton({ reportId, userName }) {
     setDownloading(lang);
 
     try {
-      const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+      const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
       const res = await fetch(`${apiBase}/api/reports/${reportId}/pdf?lang=${lang}`);
       if (!res.ok) throw new Error('PDF generation failed');
 

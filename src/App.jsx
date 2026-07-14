@@ -6,6 +6,12 @@ import Footer from './components/Footer';
 import Landing from './pages/Landing';
 import GenerateReport from './pages/GenerateReport';
 import ReportViewer from './pages/ReportViewer';
+import Checkout from './pages/Checkout';
+import PaymentSuccess from './pages/PaymentSuccess';
+import PaymentFailed from './pages/PaymentFailed';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminRoute from './components/AdminRoute';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -22,6 +28,20 @@ export default function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/generate" element={<GenerateReport />} />
               <Route path="/report/:id" element={<ReportViewer />} />
+              
+              {/* Payment Flow */}
+              <Route path="/checkout/:reportId" element={<Checkout />} />
+              <Route path="/payment/success" element={<PaymentSuccess />} />
+              <Route path="/payment/failed" element={<PaymentFailed />} />
+
+              {/* Admin Panel */}
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/dashboard" element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              } />
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
@@ -33,3 +53,4 @@ export default function App() {
     </LanguageProvider>
   );
 }
+
