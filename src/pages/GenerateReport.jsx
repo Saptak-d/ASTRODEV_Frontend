@@ -29,6 +29,7 @@ export default function GenerateReport() {
           birthDate: formData.birthDate,
           birthTime: formData.birthTime,
           birthPlace: formData.birthPlace,
+          preferredLanguage: formData.preferredLanguage,
         },
       });
 
@@ -43,9 +44,6 @@ export default function GenerateReport() {
     }
   };
 
-  if (loading) {
-    return <LoadingScreen />;
-  }
 
   return (
     <div className="min-h-[calc(100vh-120px)] bg-[#F5F2E9] flex flex-col items-center justify-center px-4 py-10">

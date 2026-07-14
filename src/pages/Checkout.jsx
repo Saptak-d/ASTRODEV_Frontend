@@ -146,7 +146,6 @@ export default function Checkout() {
               return;
             }
 
-            // ── Success ──────────────────────────────────────────────────
             navigate('/payment/success', {
               state: {
                 reportId,
@@ -156,6 +155,7 @@ export default function Checkout() {
                 birthDate: state.birthDate,
                 birthTime: state.birthTime,
                 birthPlace: state.birthPlace,
+                preferredLanguage: state.preferredLanguage,
               },
             });
           } catch {

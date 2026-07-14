@@ -11,6 +11,7 @@ export default function BirthForm({ onSubmit, loading }) {
     birthDate: '',
     birthPlace: '',
     gender: '',
+    preferredLanguage: 'hindi',
   });
   const [hours, setHours] = useState('12');
   const [minutes, setMinutes] = useState('00');
@@ -198,6 +199,39 @@ export default function BirthForm({ onSubmit, loading }) {
                 required
               />
               {icon} {t(labelKey)}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Report Language */}
+      <div className="space-y-1">
+        <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
+          Report Language · रिपोर्ट की भाषा <span className="text-[#1E1410]">*</span>
+        </label>
+        <div className="flex gap-2">
+          {[
+            { value: 'hindi', label: 'हिन्दी (Hindi)' },
+            { value: 'english', label: 'English' }
+          ].map((lang) => (
+            <label
+              key={lang.value}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 border rounded-lg cursor-pointer text-xs font-bold transition select-none font-sans
+                ${formData.preferredLanguage === lang.value
+                  ? 'bg-[#1E1410] text-[#F5F2E9] border-[#1E1410] shadow-sm'
+                  : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-[#1E1410]/50 hover:bg-gray-100'
+                }`}
+            >
+              <input
+                type="radio"
+                name="preferredLanguage"
+                value={lang.value}
+                checked={formData.preferredLanguage === lang.value}
+                onChange={handleChange}
+                className="sr-only"
+                required
+              />
+              {lang.label}
             </label>
           ))}
         </div>

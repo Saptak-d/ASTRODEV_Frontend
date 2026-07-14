@@ -56,6 +56,7 @@ export default function Landing() {
           birthDate:  formData.birthDate,
           birthTime:  formData.birthTime,
           birthPlace: formData.birthPlace,
+          preferredLanguage: formData.preferredLanguage,
         },
       });
     } catch (err) {
