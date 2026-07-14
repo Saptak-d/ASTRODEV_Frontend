@@ -149,10 +149,6 @@ export default function Landing() {
     ruler: t(z.rulerKey)
   }));
 
-  // Show full-screen loader while generating report + PDF
-  if (loading) {
-    return <LoadingScreen />;
-  }
 
   return (
     <div className="bg-[#F5F2E9] text-[#2A1B18] min-h-screen relative overflow-hidden font-serif">
