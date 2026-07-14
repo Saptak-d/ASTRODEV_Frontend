@@ -45,25 +45,16 @@ export default function Landing() {
 
       setLoadStep(2);
       await new Promise(r => setTimeout(r, 300));
-      setLoadStep(3);
 
-      // Pre-generate Hindi PDF while loader is showing
-      setLoadStep(4);
-      const pdfRes = await fetch(`${apiBase}/api/reports/${reportId}/pdf?lang=hindi`);
-      if (!pdfRes.ok) throw new Error('PDF generation failed');
-      const pdfBlob = await pdfRes.blob();
-
-      // Store in module-level cache — survives SPA navigation reliably
-      storePdf(reportId, pdfBlob);
-
-      setLoadStep(5);
-      await new Promise(r => setTimeout(r, 500));
-
-      navigate(`/report/${reportId}`, {
+      // ── Redirect to secure payment checkout ───────────────────────────────
+      // Do NOT generate PDF here — generation only happens AFTER payment is verified.
+      navigate(`/checkout/${reportId}`, {
         state: {
-          userName:  formData.name,
-          birthDate: formData.birthDate,
-          birthTime: formData.birthTime,
+          name:       formData.name,
+          email:      formData.email,
+          phone:      formData.phone,
+          birthDate:  formData.birthDate,
+          birthTime:  formData.birthTime,
           birthPlace: formData.birthPlace,
         },
       });
@@ -73,6 +64,7 @@ export default function Landing() {
       setError(err.response?.data?.error?.message || 'Unable to align with your celestial path.');
     }
   };
+
 
   const zodiacs = [
     { sign: '♈', nameKey: 'zodiac.aries.name',       nameHi: 'मेष',      element: 'Fire',  rulerKey: 'ruler.mars',    descKey: 'zodiac.aries.desc' },
