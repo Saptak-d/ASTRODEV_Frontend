@@ -32,7 +32,7 @@ export default function AdminDashboard() {
   const [timeNow, setTimeNow] = useState(Date.now());
   const navigate = useNavigate();
 
-  const apiBase = import.meta.env.VITE_API_BASE_URL || '';
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
 
   // ── Auto-refresh countdown timers every second ──────────────────────────────
   useEffect(() => {

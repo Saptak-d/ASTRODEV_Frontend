@@ -37,7 +37,7 @@ export default function Checkout() {
   const [error, setError] = useState(null);
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
-  const apiBase = import.meta.env.VITE_API_BASE_URL || '';
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
 
   // ── Load Razorpay script + create order ──────────────────────────────────
   useEffect(() => {

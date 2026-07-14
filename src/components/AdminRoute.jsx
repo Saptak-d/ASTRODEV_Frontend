@@ -16,7 +16,7 @@ export default function AdminRoute({ children }) {
   const [status, setStatus] = useState('checking'); // 'checking' | 'ok' | 'unauthorized'
 
   useEffect(() => {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || '';
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
     fetch(`${apiBase}/api/admin/me`, { credentials: 'include' })
       .then((res) => {
         if (res.ok) setStatus('ok');

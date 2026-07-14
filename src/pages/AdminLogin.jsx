@@ -15,7 +15,7 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const apiBase = import.meta.env.VITE_API_BASE_URL || '';
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
