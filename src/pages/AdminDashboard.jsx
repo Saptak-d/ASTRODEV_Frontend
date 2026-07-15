@@ -240,16 +240,26 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#0F0A06] text-[#F5F2E9] flex flex-col">
+      <style>{`
+        /* Hide scrollbars for cleaner horizontal tabs */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
       
       {/* Navbar Header */}
-      <header className="bg-[#1A1108] border-b border-[#D4AF37]/20 px-6 py-4 flex items-center justify-between">
+      <header className="bg-[#1A1108] border-b border-[#D4AF37]/20 px-4 md:px-6 py-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <span className="text-3xl text-[#D4AF37]" style={{ fontFamily: 'serif' }}>ॐ</span>
+          <span className="text-2xl md:text-3xl text-[#D4AF37]" style={{ fontFamily: 'serif' }}>ॐ</span>
           <div>
-            <h1 className="text-sm font-extrabold tracking-widest uppercase text-[#F5F2E9]">
+            <h1 className="text-xs md:text-sm font-extrabold tracking-widest uppercase text-[#F5F2E9]">
               AstroDev Dashboard
             </h1>
-            <p className="text-[8px] text-[#9A8B7A] uppercase tracking-wider">
+            <p className="text-[7px] md:text-[8px] text-[#9A8B7A] uppercase tracking-wider">
               Manual Fulfillment Panel
             </p>
           </div>
@@ -257,14 +267,14 @@ export default function AdminDashboard() {
 
         <button
           onClick={handleLogout}
-          className="text-xs border border-red-500/30 hover:border-red-500 text-red-400 hover:text-red-300 py-1.5 px-4 rounded-lg transition-all"
+          className="text-[10px] md:text-xs border border-red-500/30 hover:border-red-500 text-red-400 hover:text-red-300 py-1 md:py-1.5 px-3 md:px-4 rounded-lg transition-all whitespace-nowrap"
         >
           Logout
         </button>
       </header>
 
       {/* Stats Counter Section */}
-      <section className="p-6 grid grid-cols-2 md:grid-cols-5 gap-3">
+      <section className="p-4 md:p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         {[
           { label: 'All Registrations', count: stats.totalReports, color: 'border-amber-500/40 text-amber-400', desc: 'Total in DB' },
           { label: 'Paid Orders', count: stats.totalPaid, color: 'border-yellow-500/40 text-yellow-400', desc: 'Successful payments' },
@@ -272,21 +282,21 @@ export default function AdminDashboard() {
           { label: 'Pending Delivery', count: stats.readyNotSent, color: 'border-blue-500/40 text-blue-400', desc: 'Paid & NOT Sent' },
           { label: 'Delivered', count: stats.sent, color: 'border-green-500/40 text-green-400', desc: 'Sent to Customer' },
         ].map((s) => (
-          <div key={s.label} className={`bg-[#1A1108] border ${s.color} rounded-xl p-4 flex flex-col justify-between shadow-md`}>
-            <p className="text-[9px] text-[#9A8B7A] uppercase tracking-widest font-semibold">{s.label}</p>
+          <div key={s.label} className={`bg-[#1A1108] border ${s.color} rounded-xl p-3 md:p-4 flex flex-col justify-between shadow-md`}>
+            <p className="text-[8px] md:text-[9px] text-[#9A8B7A] uppercase tracking-widest font-semibold">{s.label}</p>
             <div className="flex items-baseline justify-between mt-2">
-              <span className="text-2xl font-black">{s.count}</span>
-              <span className="text-[7px] text-[#9A8B7A]/70 uppercase tracking-widest">{s.desc}</span>
+              <span className="text-xl md:text-2xl font-black">{s.count}</span>
+              <span className="text-[6px] md:text-[7px] text-[#9A8B7A]/70 uppercase tracking-widest">{s.desc}</span>
             </div>
           </div>
         ))}
       </section>
 
       {/* Tabs Menu */}
-      <section className="px-6 flex border-b border-[#D4AF37]/10">
+      <section className="px-4 md:px-6 flex overflow-x-auto no-scrollbar border-b border-[#D4AF37]/10 whitespace-nowrap">
         {[
-          { key: 'all', label: '📋 All Registrations', count: stats.totalReports },
-          { key: 'paid', label: '💰 Paid Orders', count: stats.totalPaid },
+          { key: 'all', label: '📋 All', count: stats.totalReports },
+          { key: 'paid', label: '💰 Paid', count: stats.totalPaid },
           { key: 'unpaid', label: '⏳ Unpaid', count: stats.totalUnpaid },
           { key: 'pending_delivery', label: '📥 Pending Delivery', count: stats.readyNotSent },
           { key: 'sent', label: '✅ Sent Archive', count: stats.sent },
@@ -294,14 +304,14 @@ export default function AdminDashboard() {
           <button
             key={t.key}
             onClick={() => setActiveTab(t.key)}
-            className={`py-3 px-5 text-xs font-bold uppercase tracking-wider border-b-2 transition-all flex items-center gap-2 ${
+            className={`py-3 px-4 text-[11px] md:text-xs font-bold uppercase tracking-wider border-b-2 transition-all flex items-center gap-1.5 flex-shrink-0 ${
               activeTab === t.key
                 ? 'border-[#D4AF37] text-[#D4AF37] bg-[#1A1108]/30'
                 : 'border-transparent text-[#9A8B7A] hover:text-[#C9B99A]'
             }`}
           >
             <span>{t.label}</span>
-            <span className="bg-[#0F0A06] text-[#D4AF37] text-[9px] font-mono px-1.5 py-0.5 rounded-full border border-[#D4AF37]/25">
+            <span className="bg-[#0F0A06] text-[#D4AF37] text-[8px] md:text-[9px] font-mono px-1.5 py-0.5 rounded-full border border-[#D4AF37]/25">
               {t.count}
             </span>
           </button>
@@ -309,7 +319,7 @@ export default function AdminDashboard() {
       </section>
 
       {/* Main Content Table Area */}
-      <main className="flex-grow p-6">
+      <main className="flex-grow p-4 md:p-6">
         {loading ? (
           <div className="h-64 flex flex-col items-center justify-center gap-3">
             <span className="animate-spin text-2xl">⏳</span>
@@ -329,116 +339,213 @@ export default function AdminDashboard() {
             <p className="text-[#9A8B7A] text-xs mt-1">There are no records matching the current filter.</p>
           </div>
         ) : (
-          <div className="bg-[#1A1108] border border-[#D4AF37]/15 rounded-2xl overflow-x-auto shadow-xl">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="bg-[#0F0A06] border-b border-[#D4AF37]/10 text-[#9A8B7A] uppercase tracking-wider text-[9px]">
-                  <th className="py-4 px-4 font-bold">Ref / Name</th>
-                  <th className="py-4 px-4 font-bold">Contact Details</th>
-                  <th className="py-4 px-4 font-bold">Birth Details</th>
-                  <th className="py-4 px-4 font-bold">Paid or Not</th>
-                  <th className="py-4 px-4 font-bold text-center">PDF Sent Status</th>
-                  <th className="py-4 px-4 font-bold text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#D4AF37]/10">
-                {orders.map((o) => (
-                  <tr key={o.id} className="hover:bg-[#0F0A06]/40 transition-colors">
-                    
-                    {/* ID / Name */}
-                    <td className="py-4 px-4">
-                      <p className="font-extrabold text-[#F5F2E9] text-sm">{o.name}</p>
+          <>
+            {/* Desktop Table View */}
+            <div className="hidden md:block bg-[#1A1108] border border-[#D4AF37]/15 rounded-2xl overflow-x-auto shadow-xl">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-[#0F0A06] border-b border-[#D4AF37]/10 text-[#9A8B7A] uppercase tracking-wider text-[9px]">
+                    <th className="py-4 px-4 font-bold">Ref / Name</th>
+                    <th className="py-4 px-4 font-bold">Contact Details</th>
+                    <th className="py-4 px-4 font-bold">Birth Details</th>
+                    <th className="py-4 px-4 font-bold">Paid or Not</th>
+                    <th className="py-4 px-4 font-bold text-center">PDF Sent Status</th>
+                    <th className="py-4 px-4 font-bold text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#D4AF37]/10">
+                  {orders.map((o) => (
+                    <tr key={o.id} className="hover:bg-[#0F0A06]/40 transition-colors">
+                      
+                      {/* ID / Name */}
+                      <td className="py-4 px-4">
+                        <p className="font-extrabold text-[#F5F2E9] text-sm">{o.name}</p>
+                        <p className="text-[9px] font-mono text-[#D4AF37] mt-0.5">
+                          Ref: {o.id.split('-')[0].toUpperCase()}
+                        </p>
+                        <span className="text-[8px] px-1.5 py-0.5 mt-1 inline-block rounded bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37]">
+                          {o.gender || 'Not specified'}
+                        </span>
+                      </td>
+
+                      {/* Contacts */}
+                      <td className="py-4 px-4">
+                        <p className="font-semibold text-[#C9B99A]">{o.phone || 'No phone'}</p>
+                        <p className="text-[#9A8B7A] text-[11px] mt-0.5">{o.email || 'No email'}</p>
+                      </td>
+
+                      {/* Birth info */}
+                      <td className="py-4 px-4">
+                        <p className="text-[#C9B99A] font-semibold">{o.birthPlace}</p>
+                        <p className="text-[#9A8B7A] text-[10px] mt-0.5">
+                          {o.birthDate ? o.birthDate.split('T')[0] : ''} &bull; {o.birthTime}
+                        </p>
+                      </td>
+
+                      {/* Paid or Not */}
+                      <td className="py-4 px-4">
+                        {o.paymentStatus === 'PAID' ? (
+                          <span className="px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[9px] font-extrabold tracking-wider">
+                            PAID
+                          </span>
+                        ) : (
+                          <span className="px-2.5 py-1 rounded-full bg-gray-500/10 border border-gray-500/20 text-gray-400 text-[9px] font-extrabold tracking-wider">
+                            NOT PAID
+                          </span>
+                        )}
+                      </td>
+
+                      {/* PDF Sent Status Checkbox / Checkmark */}
+                      <td className="py-4 px-4 text-center">
+                        {o.deliveryStatus === 'SENT' ? (
+                          <span 
+                            className="text-lg text-green-400 font-bold select-none cursor-pointer hover:scale-110 active:scale-95 inline-block transition-transform" 
+                            title="Sent (Click to uncheck)" 
+                            onClick={() => toggleDeliveryStatus(o.id, o.deliveryStatus)}
+                          >
+                            ✅
+                          </span>
+                        ) : (
+                          <input
+                            type="checkbox"
+                            checked={false}
+                            onChange={() => toggleDeliveryStatus(o.id, o.deliveryStatus)}
+                            className="w-4 h-4 rounded border-gray-600 bg-transparent text-yellow-600 focus:ring-yellow-500 cursor-pointer transition-all"
+                            disabled={actionLoading === o.id}
+                          />
+                        )}
+                      </td>
+
+                      {/* Action buttons */}
+                      <td className="py-4 px-4 text-right space-y-1.5">
+                        <div className="flex justify-end gap-1.5">
+                          
+                          {/* View PDF */}
+                          {o.hasPdf ? (
+                            <button
+                              onClick={() => handlePdfAction(o.id, 'view')}
+                              disabled={downloadingId === o.id}
+                              className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/35 text-[#D4AF37] px-3 py-1.5 rounded text-[10px] uppercase font-bold transition-all disabled:opacity-50"
+                            >
+                              👁 View
+                            </button>
+                          ) : (
+                            <span className="text-[10px] text-[#9A8B7A] italic">PDF not available</span>
+                          )}
+
+                          {/* Download PDF */}
+                          {o.hasPdf && (
+                            <button
+                              onClick={() => handlePdfAction(o.id, 'download')}
+                              disabled={downloadingId === o.id}
+                              className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/35 text-[#D4AF37] px-3 py-1.5 rounded text-[10px] uppercase font-bold transition-all disabled:opacity-50"
+                            >
+                              📥 Download
+                            </button>
+                          )}
+                        </div>
+                      </td>
+
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Card-Based View */}
+            <div className="block md:hidden space-y-3">
+              {orders.map((o) => (
+                <div key={o.id} className="bg-[#1A1108] border border-[#D4AF37]/15 rounded-xl p-4 space-y-3 shadow-md">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-extrabold text-[#F5F2E9] text-sm">{o.name}</h3>
                       <p className="text-[9px] font-mono text-[#D4AF37] mt-0.5">
                         Ref: {o.id.split('-')[0].toUpperCase()}
                       </p>
                       <span className="text-[8px] px-1.5 py-0.5 mt-1 inline-block rounded bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37]">
                         {o.gender || 'Not specified'}
                       </span>
-                    </td>
-
-                    {/* Contacts */}
-                    <td className="py-4 px-4">
-                      <p className="font-semibold text-[#C9B99A]">{o.phone || 'No phone'}</p>
-                      <p className="text-[#9A8B7A] text-[11px] mt-0.5">{o.email || 'No email'}</p>
-                    </td>
-
-                    {/* Birth info */}
-                    <td className="py-4 px-4">
-                      <p className="text-[#C9B99A] font-semibold">{o.birthPlace}</p>
-                      <p className="text-[#9A8B7A] text-[10px] mt-0.5">
-                        {o.birthDate ? o.birthDate.split('T')[0] : ''} &bull; {o.birthTime}
-                      </p>
-                    </td>
-
-                    {/* Paid or Not */}
-                    <td className="py-4 px-4">
+                    </div>
+                    <div>
                       {o.paymentStatus === 'PAID' ? (
-                        <span className="px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[9px] font-extrabold tracking-wider">
+                        <span className="px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[8px] font-extrabold tracking-wider">
                           PAID
                         </span>
                       ) : (
-                        <span className="px-2.5 py-1 rounded-full bg-gray-500/10 border border-gray-500/20 text-gray-400 text-[9px] font-extrabold tracking-wider">
+                        <span className="px-2 py-0.5 rounded-full bg-gray-500/10 border border-gray-500/20 text-gray-400 text-[8px] font-extrabold tracking-wider">
                           NOT PAID
                         </span>
                       )}
-                    </td>
+                    </div>
+                  </div>
 
-                    {/* PDF Sent Status Checkbox / Checkmark */}
-                    <td className="py-4 px-4 text-center">
+                  <div className="grid grid-cols-2 gap-3 text-[10px] text-[#9A8B7A] border-t border-b border-[#D4AF37]/10 py-2">
+                    <div>
+                      <p className="text-[8px] uppercase font-bold text-[#D4AF37] tracking-wider mb-1">Contact</p>
+                      <p className="font-semibold text-[#C9B99A] truncate">{o.phone || 'No phone'}</p>
+                      <p className="text-[#9A8B7A] truncate">{o.email || 'No email'}</p>
+                    </div>
+                    <div>
+                      <p className="text-[8px] uppercase font-bold text-[#D4AF37] tracking-wider mb-1">Birth Details</p>
+                      <p className="font-semibold text-[#C9B99A] truncate">{o.birthPlace}</p>
+                      <p className="text-[#9A8B7A]">
+                        {o.birthDate ? o.birthDate.split('T')[0] : ''} &bull; {o.birthTime}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center text-xs pt-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[8px] text-[#9A8B7A] uppercase font-bold tracking-wider">PDF Sent:</span>
                       {o.deliveryStatus === 'SENT' ? (
                         <span 
-                          className="text-lg text-green-400 font-bold select-none cursor-pointer hover:scale-110 active:scale-95 inline-block transition-transform" 
+                          className="text-base text-green-400 font-bold select-none cursor-pointer hover:scale-110 active:scale-95 inline-block transition-transform" 
                           title="Sent (Click to uncheck)" 
                           onClick={() => toggleDeliveryStatus(o.id, o.deliveryStatus)}
                         >
-                          ✅
+                          ✅ Sent
                         </span>
                       ) : (
-                        <input
-                          type="checkbox"
-                          checked={false}
-                          onChange={() => toggleDeliveryStatus(o.id, o.deliveryStatus)}
-                          className="w-4 h-4 rounded border-gray-600 bg-transparent text-yellow-600 focus:ring-yellow-500 cursor-pointer transition-all"
-                          disabled={actionLoading === o.id}
-                        />
+                        <label className="flex items-center gap-1.5 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={false}
+                            onChange={() => toggleDeliveryStatus(o.id, o.deliveryStatus)}
+                            className="w-3.5 h-3.5 rounded border-gray-600 bg-transparent text-yellow-600 focus:ring-yellow-500 cursor-pointer transition-all"
+                            disabled={actionLoading === o.id}
+                          />
+                          <span className="text-[#9A8B7A] text-[10px]">Mark Sent</span>
+                        </label>
                       )}
-                    </td>
+                    </div>
 
-                    {/* Action buttons */}
-                    <td className="py-4 px-4 text-right space-y-1.5">
-                      <div className="flex justify-end gap-1.5">
-                        
-                        {/* View PDF */}
-                        {o.hasPdf ? (
+                    <div className="flex gap-1.5">
+                      {o.hasPdf ? (
+                        <>
                           <button
                             onClick={() => handlePdfAction(o.id, 'view')}
                             disabled={downloadingId === o.id}
-                            className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/35 text-[#D4AF37] px-3 py-1.5 rounded text-[10px] uppercase font-bold transition-all disabled:opacity-50"
+                            className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/35 text-[#D4AF37] px-2 py-1 rounded text-[9px] uppercase font-bold transition-all disabled:opacity-50"
                           >
                             👁 View
                           </button>
-                        ) : (
-                          <span className="text-[10px] text-[#9A8B7A] italic">PDF not available</span>
-                        )}
-
-                        {/* Download PDF */}
-                        {o.hasPdf && (
                           <button
                             onClick={() => handlePdfAction(o.id, 'download')}
                             disabled={downloadingId === o.id}
-                            className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/35 text-[#D4AF37] px-3 py-1.5 rounded text-[10px] uppercase font-bold transition-all disabled:opacity-50"
+                            className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/35 text-[#D4AF37] px-2 py-1 rounded text-[9px] uppercase font-bold transition-all disabled:opacity-50"
                           >
                             📥 Download
                           </button>
-                        )}
-                      </div>
-                    </td>
-
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                        </>
+                      ) : (
+                        <span className="text-[9px] text-[#9A8B7A] italic">PDF N/A</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </main>
     </div>
