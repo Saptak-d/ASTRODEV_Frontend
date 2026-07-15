@@ -20,7 +20,7 @@ export default function AdminLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setError('कृपया ईमेल और पासवर्ड भरें।');
+      setError('कृपया यूज़रनेम और पासवर्ड भरें।');
       return;
     }
 
@@ -90,15 +90,16 @@ export default function AdminLogin() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1">
             <label className="block text-[9px] font-bold text-[#D4AF37] uppercase tracking-widest">
-              Email Address
+              Username
             </label>
             <input
               required
-              type="email"
+              type="text"
+              autoComplete="username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 text-xs bg-[#0F0A06] text-[#F5F2E9] border border-[#D4AF37]/20 rounded-lg focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] outline-none placeholder-[#9A8B7A]/50 transition-all font-sans"
-              placeholder="admin@example.com"
+              placeholder="Enter your username"
             />
           </div>
 
