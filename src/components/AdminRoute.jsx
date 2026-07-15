@@ -5,8 +5,7 @@
  * Checks /api/admin/me on mount — if the backend says unauthenticated,
  * redirects to /admin/login.
  *
- * NOTE: This is a UX guard only. The REAL security boundary is the
- * adminAuthMiddleware on every backend /api/admin/* endpoint.
+ * Checks both localStorage JWT and falls back to HttpOnly cookie.
  */
 
 import React, { useEffect, useState } from 'react';
@@ -17,7 +16,17 @@ export default function AdminRoute({ children }) {
 
   useEffect(() => {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
-    fetch(`${apiBase}/api/admin/me`, { credentials: 'include' })
+    const token = localStorage.getItem('admin_token');
+
+    const headers = {};
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    fetch(`${apiBase}/api/admin/me`, {
+      headers,
+      credentials: 'include'
+    })
       .then((res) => {
         if (res.ok) setStatus('ok');
         else setStatus('unauthorized');

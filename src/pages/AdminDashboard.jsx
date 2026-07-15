@@ -59,9 +59,21 @@ export default function AdminDashboard() {
         queryParams = '?deliveryStatus=SENT';
       }
 
+      const token = localStorage.getItem('admin_token');
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const [ordersRes, statsRes] = await Promise.all([
-        fetch(`${apiBase}/api/admin/orders${queryParams}`, { credentials: 'include' }),
-        fetch(`${apiBase}/api/admin/orders/stats`, { credentials: 'include' }),
+        fetch(`${apiBase}/api/admin/orders${queryParams}`, {
+          headers,
+          credentials: 'include'
+        }),
+        fetch(`${apiBase}/api/admin/orders/stats`, {
+          headers,
+          credentials: 'include'
+        }),
       ]);
 
       if (!ordersRes.ok || !statsRes.ok) {
@@ -94,9 +106,15 @@ export default function AdminDashboard() {
     setActionLoading(reportId);
     try {
       const nextStatus = currentStatus === 'SENT' ? 'NOT_SENT' : 'SENT';
+      const token = localStorage.getItem('admin_token');
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const res = await fetch(`${apiBase}/api/admin/orders/${reportId}/mark-sent`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ status: nextStatus }),
         credentials: 'include',
       });
@@ -121,7 +139,14 @@ export default function AdminDashboard() {
     setDownloadingId(reportId);
 
     try {
+      const token = localStorage.getItem('admin_token');
+      const headers = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const res = await fetch(`${apiBase}/api/admin/orders/${reportId}/pdf-url`, {
+        headers,
         credentials: 'include',
       });
 
@@ -154,8 +179,18 @@ export default function AdminDashboard() {
   // ── Logout ──────────────────────────────────────────────────────────────────
   const handleLogout = async () => {
     try {
-      await fetch(`${apiBase}/api/admin/logout`, { method: 'POST', credentials: 'include' });
+      const token = localStorage.getItem('admin_token');
+      const headers = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+      await fetch(`${apiBase}/api/admin/logout`, {
+        method: 'POST',
+        headers,
+        credentials: 'include'
+      });
     } catch (e) {}
+    localStorage.removeItem('admin_token');
     navigate('/admin/login');
   };
 

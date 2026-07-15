@@ -1,8 +1,8 @@
 /**
  * AdminLogin.jsx
  * --------------
- * Secure admin login page. Authenticates using email and password.
- * Backend sets an HttpOnly JWT cookie "admin_token".
+ * Secure admin login page. Authenticates using username and password.
+ * On success, JWT is stored in localStorage and used for all admin API calls.
  */
 
 import React, { useState } from 'react';
@@ -32,7 +32,6 @@ export default function AdminLogin() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
-        // credentials: 'include' is critical to accept HttpOnly cookie from server
         credentials: 'include',
       });
 
@@ -40,6 +39,11 @@ export default function AdminLogin() {
 
       if (!res.ok) {
         throw new Error(data.error || 'लॉगिन विफल रहा। विवरण जांचें।');
+      }
+
+      // Store JWT in localStorage for cross-origin auth
+      if (data.token) {
+        localStorage.setItem('admin_token', data.token);
       }
 
       // Redirect to protected admin dashboard
