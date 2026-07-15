@@ -23,11 +23,13 @@ export default function AdminDashboard() {
     generating: 0,
     failed: 0,
     overdue: 0,
+    totalReports: 0,
+    totalUnpaid: 0,
   });
-  const [activeTab, setActiveTab] = useState('queue'); // 'queue' | 'generating' | 'failed' | 'sent'
+  const [activeTab, setActiveTab] = useState('all'); // 'all' | 'paid' | 'unpaid' | 'sent' | 'pending_delivery'
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [actionLoading, setActionLoading] = useState(null); // reportId being marked as sent
+  const [actionLoading, setActionLoading] = useState(null); // reportId being marked as sent/unsent
   const [downloadingId, setDownloadingId] = useState(null); // reportId being downloaded
   const [timeNow, setTimeNow] = useState(Date.now());
   const navigate = useNavigate();
@@ -47,12 +49,12 @@ export default function AdminDashboard() {
     try {
       // Map tab keys to API query parameters
       let queryParams = '';
-      if (activeTab === 'queue') {
-        queryParams = '?reportStatus=READY&deliveryStatus=NOT_SENT';
-      } else if (activeTab === 'generating') {
-        queryParams = '?reportStatus=GENERATING';
-      } else if (activeTab === 'failed') {
-        queryParams = '?reportStatus=GENERATION_FAILED';
+      if (activeTab === 'paid') {
+        queryParams = '?paymentStatus=PAID';
+      } else if (activeTab === 'unpaid') {
+        queryParams = '?paymentStatus=PENDING';
+      } else if (activeTab === 'pending_delivery') {
+        queryParams = '?deliveryStatus=NOT_SENT&paymentStatus=PAID';
       } else if (activeTab === 'sent') {
         queryParams = '?deliveryStatus=SENT';
       }
@@ -86,20 +88,22 @@ export default function AdminDashboard() {
     fetchData();
   }, [fetchData]);
 
-  // ── Mark as Sent ────────────────────────────────────────────────────────────
-  const handleMarkSent = async (reportId) => {
+  // ── Toggle Delivery Status (Sent/Not Sent) ───────────────────────────────
+  const toggleDeliveryStatus = async (reportId, currentStatus) => {
     if (actionLoading) return;
     setActionLoading(reportId);
     try {
+      const nextStatus = currentStatus === 'SENT' ? 'NOT_SENT' : 'SENT';
       const res = await fetch(`${apiBase}/api/admin/orders/${reportId}/mark-sent`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: nextStatus }),
         credentials: 'include',
       });
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || 'Failed to update order status');
+        throw new Error(errData.error || 'Failed to update delivery status');
       }
 
       // Re-fetch list
@@ -227,11 +231,11 @@ export default function AdminDashboard() {
       {/* Stats Counter Section */}
       <section className="p-6 grid grid-cols-2 md:grid-cols-5 gap-3">
         {[
-          { label: 'Fulfillment Queue', count: stats.readyNotSent, color: 'border-yellow-500/40 text-yellow-400', desc: 'Paid & Ready' },
+          { label: 'All Registrations', count: stats.totalReports, color: 'border-amber-500/40 text-amber-400', desc: 'Total in DB' },
+          { label: 'Paid Orders', count: stats.totalPaid, color: 'border-yellow-500/40 text-yellow-400', desc: 'Successful payments' },
+          { label: 'Unpaid', count: stats.totalUnpaid, color: 'border-gray-500/40 text-gray-400', desc: 'Checkout pending' },
+          { label: 'Pending Delivery', count: stats.readyNotSent, color: 'border-blue-500/40 text-blue-400', desc: 'Paid & NOT Sent' },
           { label: 'Delivered', count: stats.sent, color: 'border-green-500/40 text-green-400', desc: 'Sent to Customer' },
-          { label: 'Generating', count: stats.generating, color: 'border-blue-500/40 text-blue-400', desc: 'Puppeteer Run' },
-          { label: 'Failed', count: stats.failed, color: 'border-red-500/40 text-red-400', desc: 'Regen Required' },
-          { label: 'Total Overdue', count: stats.overdue, color: 'border-red-700/60 text-red-500 bg-red-950/10', desc: 'Past 6hr Deadline' },
         ].map((s) => (
           <div key={s.label} className={`bg-[#1A1108] border ${s.color} rounded-xl p-4 flex flex-col justify-between shadow-md`}>
             <p className="text-[9px] text-[#9A8B7A] uppercase tracking-widest font-semibold">{s.label}</p>
@@ -246,9 +250,10 @@ export default function AdminDashboard() {
       {/* Tabs Menu */}
       <section className="px-6 flex border-b border-[#D4AF37]/10">
         {[
-          { key: 'queue', label: '📥 Fulfillment Queue', count: stats.readyNotSent },
-          { key: 'generating', label: '⏳ Generating', count: stats.generating },
-          { key: 'failed', label: '⚠️ Failed', count: stats.failed },
+          { key: 'all', label: '📋 All Registrations', count: stats.totalReports },
+          { key: 'paid', label: '💰 Paid Orders', count: stats.totalPaid },
+          { key: 'unpaid', label: '⏳ Unpaid', count: stats.totalUnpaid },
+          { key: 'pending_delivery', label: '📥 Pending Delivery', count: stats.readyNotSent },
           { key: 'sent', label: '✅ Sent Archive', count: stats.sent },
         ].map((t) => (
           <button
@@ -285,8 +290,8 @@ export default function AdminDashboard() {
         ) : orders.length === 0 ? (
           <div className="bg-[#1A1108] border border-[#D4AF37]/10 p-12 rounded-2xl text-center max-w-lg mx-auto my-12">
             <p className="text-3xl mb-3">🔭</p>
-            <p className="text-[#C9B99A] text-sm font-semibold uppercase tracking-wider">No Orders Found</p>
-            <p className="text-[#9A8B7A] text-xs mt-1">There are no paid orders matching the current filter.</p>
+            <p className="text-[#C9B99A] text-sm font-semibold uppercase tracking-wider">No Registrations Found</p>
+            <p className="text-[#9A8B7A] text-xs mt-1">There are no records matching the current filter.</p>
           </div>
         ) : (
           <div className="bg-[#1A1108] border border-[#D4AF37]/15 rounded-2xl overflow-x-auto shadow-xl">
@@ -296,8 +301,8 @@ export default function AdminDashboard() {
                   <th className="py-4 px-4 font-bold">Ref / Name</th>
                   <th className="py-4 px-4 font-bold">Contact Details</th>
                   <th className="py-4 px-4 font-bold">Birth Details</th>
-                  <th className="py-4 px-4 font-bold">Payment Info</th>
-                  <th className="py-4 px-4 font-bold">Time Left / Due</th>
+                  <th className="py-4 px-4 font-bold">Paid or Not</th>
+                  <th className="py-4 px-4 font-bold text-center">PDF Sent Status</th>
                   <th className="py-4 px-4 font-bold text-right">Actions</th>
                 </tr>
               </thead>
@@ -309,7 +314,7 @@ export default function AdminDashboard() {
                     <td className="py-4 px-4">
                       <p className="font-extrabold text-[#F5F2E9] text-sm">{o.name}</p>
                       <p className="text-[9px] font-mono text-[#D4AF37] mt-0.5">
-                        ID: {o.id.split('-')[0].toUpperCase()}
+                        Ref: {o.id.split('-')[0].toUpperCase()}
                       </p>
                       <span className="text-[8px] px-1.5 py-0.5 mt-1 inline-block rounded bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37]">
                         {o.gender || 'Not specified'}
@@ -330,24 +335,37 @@ export default function AdminDashboard() {
                       </p>
                     </td>
 
-                    {/* Payment info */}
+                    {/* Paid or Not */}
                     <td className="py-4 px-4">
-                      <p className="font-bold text-[#F5F2E9]">{formatAmount(o.paymentAmount)}</p>
-                      <p className="text-[#9A8B7A] text-[10px] mt-0.5 font-mono">ID: {o.razorpayPaymentId || '—'}</p>
-                      <p className="text-[9px] text-[#9A8B7A] mt-0.5">{formatDate(o.paidAt)}</p>
+                      {o.paymentStatus === 'PAID' ? (
+                        <span className="px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[9px] font-extrabold tracking-wider">
+                          PAID
+                        </span>
+                      ) : (
+                        <span className="px-2.5 py-1 rounded-full bg-gray-500/10 border border-gray-500/20 text-gray-400 text-[9px] font-extrabold tracking-wider">
+                          NOT PAID
+                        </span>
+                      )}
                     </td>
 
-                    {/* Deadline */}
-                    <td className="py-4 px-4">
-                      {renderDeadline(o)}
+                    {/* PDF Sent Status Checkbox / Checkmark */}
+                    <td className="py-4 px-4 text-center">
                       {o.deliveryStatus === 'SENT' ? (
-                        <p className="text-green-400 text-[10px] mt-0.5">
-                          Sent: {formatDate(o.deliveredAt)}
-                        </p>
+                        <span 
+                          className="text-lg text-green-400 font-bold select-none cursor-pointer hover:scale-110 active:scale-95 inline-block transition-transform" 
+                          title="Sent (Click to uncheck)" 
+                          onClick={() => toggleDeliveryStatus(o.id, o.deliveryStatus)}
+                        >
+                          ✅
+                        </span>
                       ) : (
-                        <p className="text-[#9A8B7A] text-[10px] mt-0.5">
-                          Due: {formatDate(o.deliveryDueAt)}
-                        </p>
+                        <input
+                          type="checkbox"
+                          checked={false}
+                          onChange={() => toggleDeliveryStatus(o.id, o.deliveryStatus)}
+                          className="w-4 h-4 rounded border-gray-600 bg-transparent text-yellow-600 focus:ring-yellow-500 cursor-pointer transition-all"
+                          disabled={actionLoading === o.id}
+                        />
                       )}
                     </td>
 
@@ -362,10 +380,10 @@ export default function AdminDashboard() {
                             disabled={downloadingId === o.id}
                             className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/35 text-[#D4AF37] px-3 py-1.5 rounded text-[10px] uppercase font-bold transition-all disabled:opacity-50"
                           >
-                            👁 View PDF
+                            👁 View
                           </button>
                         ) : (
-                          <span className="text-[10px] text-[#9A8B7A] italic">PDF Generating...</span>
+                          <span className="text-[10px] text-[#9A8B7A] italic">PDF not available</span>
                         )}
 
                         {/* Download PDF */}
@@ -379,17 +397,6 @@ export default function AdminDashboard() {
                           </button>
                         )}
                       </div>
-
-                      {/* Mark as Sent (Fulfillment Queue ONLY) */}
-                      {o.deliveryStatus === 'NOT_SENT' && o.reportStatus === 'READY' && (
-                        <button
-                          onClick={() => handleMarkSent(o.id)}
-                          disabled={actionLoading === o.id}
-                          className="bg-[#D4AF37] hover:brightness-110 text-[#0F0A06] w-full px-3 py-1.5 rounded text-[10px] uppercase font-black tracking-wider transition-all disabled:opacity-50"
-                        >
-                          {actionLoading === o.id ? 'Marking...' : 'Mark as Sent ✅'}
-                        </button>
-                      )}
                     </td>
 
                   </tr>
