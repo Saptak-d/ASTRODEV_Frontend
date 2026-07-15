@@ -209,14 +209,16 @@ export default function BirthForm({ onSubmit, loading }) {
         <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
           Report Language · रिपोर्ट की भाषा <span className="text-[#1E1410]">*</span>
         </label>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           {[
             { value: 'hindi', label: 'हिन्दी (Hindi)' },
-            { value: 'english', label: 'English' }
+            { value: 'english', label: 'English' },
+            { value: 'sanskrit', label: 'संस्कृत (Sanskrit)' },
+            { value: 'bengali', label: 'বাংলা (Bengali)' }
           ].map((lang) => (
             <label
               key={lang.value}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 border rounded-lg cursor-pointer text-xs font-bold transition select-none font-sans
+              className={`flex items-center justify-center gap-1.5 py-2 border rounded-lg cursor-pointer text-xs font-bold transition select-none font-sans
                 ${formData.preferredLanguage === lang.value
                   ? 'bg-[#1E1410] text-[#F5F2E9] border-[#1E1410] shadow-sm'
                   : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-[#1E1410]/50 hover:bg-gray-100'

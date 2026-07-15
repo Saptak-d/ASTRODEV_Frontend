@@ -9,8 +9,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
-const AMOUNT_DISPLAY = '₹1';
-const AMOUNT_PAISE = 100;
+const AMOUNT_DISPLAY = '₹99';
+const AMOUNT_PAISE = 9900;
 
 // Load Razorpay checkout script dynamically
 function loadRazorpayScript() {
@@ -280,7 +280,9 @@ export default function Checkout() {
             <div className="flex items-center justify-between border-t border-[#EAE6DB] pt-4">
               <div>
                 <p className="text-[#2A1B18] text-[10px] uppercase tracking-widest font-extrabold font-sans">Personalized Kundli Report</p>
-                <p className="text-[#6F5D5B] text-[9px] mt-0.5 font-sans">Hindi PDF · WhatsApp + Email delivery</p>
+                <p className="text-[#6F5D5B] text-[9px] mt-0.5 font-sans">
+                  {state.preferredLanguage === 'english' ? 'English' : state.preferredLanguage === 'sanskrit' ? 'Sanskrit' : state.preferredLanguage === 'bengali' ? 'Bengali' : 'Hindi'} PDF · WhatsApp + Email delivery
+                </p>
               </div>
               <div className="text-right">
                 <p className="text-2xl font-extrabold text-[#A68015] font-sans">{AMOUNT_DISPLAY}</p>
@@ -295,11 +297,11 @@ export default function Checkout() {
           <p className="text-[9px] tracking-[0.3em] text-[#A68015] uppercase font-bold mb-3 font-sans">✦ What You Get</p>
           <ul className="space-y-2">
             {[
-              '🔮 Complete Vedic Kundli in Hindi',
+              `🔮 Complete Vedic Kundli in ${state.preferredLanguage === 'english' ? 'English' : state.preferredLanguage === 'sanskrit' ? 'Sanskrit' : state.preferredLanguage === 'bengali' ? 'Bengali' : 'Hindi'}`,
               '🪐 Planet positions, houses & Nakshatras',
               '📊 Dasha timeline & current period',
               '🧘 Life guidance from Pandit Ji',
-              '📱 Delivered via WhatsApp & Email within 6 hours',
+              '📱 Delivered via WhatsApp & Email within 2 to 3 days',
             ].map((item) => (
               <li key={item} className="flex items-start gap-2 text-[#4E3F3E] text-[10px] font-sans">
                 <span className="shrink-0 mt-0.5">{item.split(' ')[0]}</span>
