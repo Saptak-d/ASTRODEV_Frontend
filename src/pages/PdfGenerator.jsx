@@ -19,7 +19,7 @@ export default function PdfGenerator() {
   // Loading Steps State
   const [activeStep, setActiveStep] = useState(0);
 
-  const pdfServiceUrl = import.meta.env.VITE_PDF_SERVICE_URL || 'https://astrodev-pdf-service.onrender.com';
+  const pdfServiceUrl = import.meta.env.VITE_PDF_SERVICE_URL || 'https://astrodev-pdf.onrender.com';
 
   // Step names for simulated progress while waiting for actual response
   const LOADING_STEPS = [
