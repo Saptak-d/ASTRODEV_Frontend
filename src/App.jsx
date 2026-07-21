@@ -12,6 +12,7 @@ import PaymentFailed from './pages/PaymentFailed';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminRoute from './components/AdminRoute';
+import PdfGenerator from './pages/PdfGenerator';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -27,7 +28,9 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/generate" element={<GenerateReport />} />
+              <Route path="/pdf-generator" element={<PdfGenerator />} />
               <Route path="/report/:id" element={<ReportViewer />} />
+
               
               {/* Payment Flow */}
               <Route path="/checkout/:reportId" element={<Checkout />} />
