@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import html2pdf from 'html2pdf.js';
 import BirthForm from '../components/BirthForm';
 
 export default function PdfGenerator() {
@@ -111,7 +112,42 @@ export default function PdfGenerator() {
         }
       );
 
-      // Extract filename from response headers if available
+      const contentType = response.headers['content-type'] || '';
+
+      // Check if response is JSON containing HTML fallback payload
+      if (contentType.includes('application/json') || response.data?.type === 'application/json') {
+        const text = await response.data.text();
+        const data = JSON.parse(text);
+
+        if (data.fallbackHtml && data.html) {
+          console.log('[PDF Gen] Server Puppeteer unavailable, rendering PDF on client via html2pdf.js...');
+          const container = document.createElement('div');
+          container.style.position = 'fixed';
+          container.style.left = '-9999px';
+          container.style.top = '0';
+          container.style.width = '800px';
+          container.innerHTML = data.html;
+          document.body.appendChild(container);
+
+          const opt = {
+            margin:       0,
+            filename:     data.fileName || 'Kundli_Report.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, logging: false },
+            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+          };
+
+          const pdfBlob = await html2pdf().set(opt).from(container).output('blob');
+          document.body.removeChild(container);
+
+          const blobUrl = URL.createObjectURL(pdfBlob);
+          setPdfBlobUrl(blobUrl);
+          setPdfFileName(data.fileName || 'Kundli_Report.pdf');
+          return;
+        }
+      }
+
+      // Standard Server PDF Response
       let fileName = 'kundli_report.pdf';
       const contentDisposition = response.headers['content-disposition'];
       if (contentDisposition) {
