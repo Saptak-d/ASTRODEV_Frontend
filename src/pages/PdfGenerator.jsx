@@ -128,17 +128,20 @@ export default function PdfGenerator() {
           container.style.left = '0';
           container.style.width = '794px';
           container.style.zIndex = '-99999';
-          container.style.opacity = '0.01';
+          container.style.opacity = '0.99';
           container.style.pointerEvents = 'none';
           container.style.backgroundColor = '#ffffff';
           container.innerHTML = data.html;
           document.body.appendChild(container);
 
+          // Allow DOM & SVG charts 400ms to calculate layout dimensions
+          await new Promise((resolve) => setTimeout(resolve, 400));
+
           const opt = {
             margin:       0,
             filename:     data.fileName || 'Kundli_Report.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true, logging: false, windowWidth: 794 },
+            html2canvas:  { scale: 2, useCORS: true, logging: false, windowWidth: 794, scrollX: 0, scrollY: 0 },
             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
           };
 
