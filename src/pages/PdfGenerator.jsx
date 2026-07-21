@@ -201,6 +201,7 @@ export default function PdfGenerator() {
               <input
                 required
                 type="text"
+                autoComplete="username"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
                 className="w-full px-4 py-2.5 text-xs bg-[#0F0A06] text-[#F5F2E9] border border-[#D4AF37]/10 rounded-xl focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] outline-none placeholder-[#9A8B7A]/40 transition-all font-sans"
@@ -215,6 +216,7 @@ export default function PdfGenerator() {
               <input
                 required
                 type="password"
+                autoComplete="current-password"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
                 className="w-full px-4 py-2.5 text-xs bg-[#0F0A06] text-[#F5F2E9] border border-[#D4AF37]/10 rounded-xl focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] outline-none placeholder-[#9A8B7A]/40 transition-all font-sans"
