@@ -122,10 +122,15 @@ export default function PdfGenerator() {
         if (data.fallbackHtml && data.html) {
           console.log('[PDF Gen] Server Puppeteer unavailable, rendering PDF on client via html2pdf.js...');
           const container = document.createElement('div');
-          container.style.position = 'fixed';
-          container.style.left = '-9999px';
+          container.id = 'pdf-render-temp-container';
+          container.style.position = 'absolute';
           container.style.top = '0';
-          container.style.width = '800px';
+          container.style.left = '0';
+          container.style.width = '794px';
+          container.style.zIndex = '-99999';
+          container.style.opacity = '0.01';
+          container.style.pointerEvents = 'none';
+          container.style.backgroundColor = '#ffffff';
           container.innerHTML = data.html;
           document.body.appendChild(container);
 
@@ -133,8 +138,8 @@ export default function PdfGenerator() {
             margin:       0,
             filename:     data.fileName || 'Kundli_Report.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true, logging: false },
-            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            html2canvas:  { scale: 2, useCORS: true, logging: false, windowWidth: 794 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
           };
 
           const pdfBlob = await html2pdf().set(opt).from(container).output('blob');
