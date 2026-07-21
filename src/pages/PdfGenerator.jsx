@@ -21,7 +21,7 @@ export default function PdfGenerator() {
 
   const pdfServiceUrl = import.meta.env.VITE_PDF_SERVICE_URL || 'https://astrodev-pdf-service.onrender.com';
 
-  // Step names for simulated progress while wait for actual response
+  // Step names for simulated progress while waiting for actual response
   const LOADING_STEPS = [
     'Connecting to secure astrological PDF server...',
     'Geocoding birth coordinates and timezone offset...',
@@ -57,7 +57,7 @@ export default function PdfGenerator() {
       }
     } catch (err) {
       console.error('Authentication failed:', err);
-      setLoginError(err.response?.data?.error || 'प्रवेश विफल रहा। ईमेल और पासवर्ड की जांच करें।');
+      setLoginError(err.response?.data?.error || 'Authentication failed. Please check your email and password.');
     } finally {
       setLoginLoading(false);
     }
@@ -130,7 +130,7 @@ export default function PdfGenerator() {
       // If unauthorized, return to login page
       if (err.response?.status === 401 || err.response?.status === 403) {
         handleLogout();
-        setLoginError('आपकी सत्र अवधि समाप्त हो गई है। कृपया पुनः लॉग इन करें।');
+        setLoginError('Your session has expired. Please log in again.');
       } else {
         // Try reading error from blob if possible
         if (err.response?.data instanceof Blob) {
@@ -138,14 +138,14 @@ export default function PdfGenerator() {
           reader.onload = () => {
             try {
               const parsed = JSON.parse(reader.result);
-              setGenError((parsed.detail || parsed.error) || 'PDF उत्पन्न करने में त्रुटि।');
+              setGenError((parsed.detail || parsed.error) || 'Error generating PDF.');
             } catch {
-              setGenError('PDF उत्पन्न करने में त्रुटि। सर्वर लॉग की जांच करें।');
+              setGenError('Error generating PDF. Please check server logs.');
             }
           };
           reader.readAsText(err.response.data);
         } else {
-          setGenError(err.response?.data?.detail || err.response?.data?.error || 'PDF उत्पन्न करने में विफलता। कृपया PDF backend सर्वर चालू है यह जांचें।');
+          setGenError(err.response?.data?.detail || err.response?.data?.error || 'PDF generation failed. Please verify the PDF backend service is running.');
         }
       }
     } finally {
@@ -172,14 +172,14 @@ export default function PdfGenerator() {
             AstroDev PDF Engine
           </h1>
           <p className="text-[#9A8B7A] text-[10px] tracking-[0.25em] uppercase">
-            सुरक्षित रिपोर्ट जनरेटर · Direct PDF Generator Service
+            Secure Report Generator · Direct PDF Generator Service
           </p>
         </div>
 
         <div className="w-full max-w-md bg-[#1A1108] border border-[#D4AF37]/20 rounded-3xl p-6 shadow-2xl animate-slideup" style={{ animationDelay: '0.1s' }}>
           <div className="text-center space-y-1 pb-4 border-b border-[#D4AF37]/10 mb-6">
             <h2 className="text-sm font-bold text-[#D4AF37] tracking-widest uppercase">
-              सेवा प्रमाणीकरण
+              Service Authentication
             </h2>
             <p className="text-[9px] text-[#9A8B7A] uppercase tracking-wider">
               Enter Admin Credentials to Access PDF Generator
@@ -227,7 +227,7 @@ export default function PdfGenerator() {
               disabled={loginLoading}
               className="w-full mt-4 bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0F0A06] py-3.5 rounded-xl text-xs font-bold tracking-widest hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-50 shadow-lg uppercase font-sans cursor-pointer"
             >
-              {loginLoading ? 'प्रमाणित किया जा रहा है...' : 'सुरक्षित प्रवेश · Access Engine'}
+              {loginLoading ? 'Authenticating...' : 'Secure Access · Access Engine'}
             </button>
           </form>
         </div>
@@ -257,7 +257,7 @@ export default function PdfGenerator() {
           <div className="spin-ring w-12 h-12 rounded-full border-4 border-gray-100 border-t-[#D4AF37] mb-8" />
           
           <h2 className="text-[#2A1B18] font-extrabold text-lg tracking-wider mb-2">
-            तैयार किया जा रहा है...
+            Generating PDF...
           </h2>
           <p className="text-xs text-gray-400 uppercase tracking-widest mb-6 font-sans">
             PDF is Preparing
@@ -303,10 +303,10 @@ export default function PdfGenerator() {
           </div>
 
           <h2 className="text-xl font-extrabold text-[#2A1B18] tracking-wide mb-1">
-            कुंडली तैयार है!
+            Kundli PDF is Ready!
           </h2>
           <p className="text-[#D4AF37] font-bold text-sm tracking-wider mb-2">
-            PDF is Ready for {clientName}
+            PDF Generated for {clientName}
           </p>
           <p className="text-xs text-gray-400 tracking-wider mb-6 uppercase font-sans">
             Success Code: Direct Download Stream
@@ -363,7 +363,7 @@ export default function PdfGenerator() {
       <div className="text-center mb-6">
         <div className="text-4xl text-[#D4AF37] mb-2 font-serif">ॐ</div>
         <h1 className="text-2xl font-extrabold tracking-widest text-[#2A1B18] uppercase mb-1">
-          हस्तलिखित जन्म कुंडली
+          Birth Horoscope PDF Generator
         </h1>
         <p className="text-xs text-[#9A8B7A] tracking-wider uppercase">
           Direct PDF Generator Portal
