@@ -5,6 +5,7 @@ const LANGUAGES = [
   { key: 'english',  label: 'English', flag: '🇬🇧', sublabel: 'English' },
   { key: 'sanskrit', label: 'संस्कृत', flag: '📜', sublabel: 'Sanskrit' },
   { key: 'bengali',  label: 'বাংলা',   flag: '✦', sublabel: 'Bengali' },
+  { key: 'tamil',    label: 'தமிழ்',   flag: '🪔', sublabel: 'Tamil' },
 ];
 
 export default function PDFButton({ reportId, userName }) {

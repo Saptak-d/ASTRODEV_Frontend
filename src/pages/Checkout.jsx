@@ -281,7 +281,7 @@ export default function Checkout() {
               <div>
                 <p className="text-[#2A1B18] text-[10px] uppercase tracking-widest font-extrabold font-sans">Personalized Kundli Report</p>
                 <p className="text-[#6F5D5B] text-[9px] mt-0.5 font-sans">
-                  {state.preferredLanguage === 'english' ? 'English' : state.preferredLanguage === 'sanskrit' ? 'Sanskrit' : state.preferredLanguage === 'bengali' ? 'Bengali' : 'Hindi'} PDF · WhatsApp + Email delivery
+                  {state.preferredLanguage === 'english' ? 'English' : state.preferredLanguage === 'sanskrit' ? 'Sanskrit' : state.preferredLanguage === 'bengali' ? 'Bengali' : state.preferredLanguage === 'tamil' ? 'Tamil' : 'Hindi'} PDF · WhatsApp + Email delivery
                 </p>
               </div>
               <div className="text-right">
@@ -297,7 +297,7 @@ export default function Checkout() {
           <p className="text-[9px] tracking-[0.3em] text-[#A68015] uppercase font-bold mb-3 font-sans">✦ What You Get</p>
           <ul className="space-y-2">
             {[
-              `🔮 Complete Vedic Kundli in ${state.preferredLanguage === 'english' ? 'English' : state.preferredLanguage === 'sanskrit' ? 'Sanskrit' : state.preferredLanguage === 'bengali' ? 'Bengali' : 'Hindi'}`,
+              `🔮 Complete Vedic Kundli in ${state.preferredLanguage === 'english' ? 'English' : state.preferredLanguage === 'sanskrit' ? 'Sanskrit' : state.preferredLanguage === 'bengali' ? 'Bengali' : state.preferredLanguage === 'tamil' ? 'Tamil' : 'Hindi'}`,
               '🪐 Planet positions, houses & Nakshatras',
               '📊 Dasha timeline & current period',
               '🧘 Life guidance from Pandit Ji',
