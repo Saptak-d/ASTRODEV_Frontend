@@ -129,7 +129,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center justify-between pt-3 border-t border-[#D4AF37]/10">
-            <span className="text-xs text-gray-400 font-sans">Language / भाषा</span>
+            <span className="text-xs text-gray-400 font-sans">{t('nav.languageLabel')}</span>
             <div className="flex items-center gap-0.5 bg-[#1C120F] border border-[#D4AF37]/30 rounded-full px-1 py-1">
               {LANGUAGES.map((lang) => (
                 <button

@@ -23,18 +23,18 @@ export default function BirthForm({ onSubmit, loading }) {
   const [year, setYear] = useState('');
 
   const MONTHS = [
-    { value: '01', label: 'जनवरी (January)' },
-    { value: '02', label: 'फ़रवरी (February)' },
-    { value: '03', label: 'मार्च (March)' },
-    { value: '04', label: 'अप्रैल (April)' },
-    { value: '05', label: 'मई (May)' },
-    { value: '06', label: 'जून (June)' },
-    { value: '07', label: 'जुलाई (July)' },
-    { value: '08', label: 'अगस्त (August)' },
-    { value: '09', label: 'सितंबर (September)' },
-    { value: '10', label: 'अक्टूबर (October)' },
-    { value: '11', label: 'नवंबर (November)' },
-    { value: '12', label: 'दिसंबर (December)' },
+    { value: '01', labelKey: 'month.01' },
+    { value: '02', labelKey: 'month.02' },
+    { value: '03', labelKey: 'month.03' },
+    { value: '04', labelKey: 'month.04' },
+    { value: '05', labelKey: 'month.05' },
+    { value: '06', labelKey: 'month.06' },
+    { value: '07', labelKey: 'month.07' },
+    { value: '08', labelKey: 'month.08' },
+    { value: '09', labelKey: 'month.09' },
+    { value: '10', labelKey: 'month.10' },
+    { value: '11', labelKey: 'month.11' },
+    { value: '12', labelKey: 'month.12' },
   ];
 
   const YEARS = Array.from({ length: 117 }, (_, i) => (2026 - i).toString());
@@ -77,7 +77,7 @@ export default function BirthForm({ onSubmit, loading }) {
     e.preventDefault();
 
     if (!day || !month || !year) {
-      alert("कृपया जन्म तिथि का चयन करें।");
+      alert(t('form.alert.selectDob'));
       return;
     }
 
@@ -91,7 +91,7 @@ export default function BirthForm({ onSubmit, loading }) {
       testDate.getMonth() !== monthNum - 1 ||
       testDate.getDate() !== dayNum
     ) {
-      alert("कृपया एक वैध जन्म तिथि चुनें। (Selected date is invalid)");
+      alert(t('form.alert.invalidDob'));
       return;
     }
 
@@ -207,7 +207,7 @@ export default function BirthForm({ onSubmit, loading }) {
       {/* Report Language */}
       <div className="space-y-1">
         <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
-          Report Language · रिपोर्ट की भाषा <span className="text-[#1E1410]">*</span>
+          {t('form.reportLanguage')} <span className="text-[#1E1410]">*</span>
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {[
@@ -258,7 +258,7 @@ export default function BirthForm({ onSubmit, loading }) {
               style={selectStyle}
               className="w-full px-2 py-2 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans"
             >
-              <option value="">दिन (Day)</option>
+              <option value="">{t('form.dob.day')}</option>
               {Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0')).map(d => (
                 <option key={d} value={d}>{d}</option>
               ))}
@@ -274,9 +274,9 @@ export default function BirthForm({ onSubmit, loading }) {
               style={selectStyle}
               className="w-full px-2 py-2 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans"
             >
-              <option value="">महीना (Month)</option>
+              <option value="">{t('form.dob.month')}</option>
               {MONTHS.map(m => (
-                <option key={m.value} value={m.value}>{m.label}</option>
+                <option key={m.value} value={m.value}>{t(m.labelKey)}</option>
               ))}
             </select>
           </div>
@@ -290,7 +290,7 @@ export default function BirthForm({ onSubmit, loading }) {
               style={selectStyle}
               className="w-full px-2 py-2 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans"
             >
-              <option value="">वर्ष (Year)</option>
+              <option value="">{t('form.dob.year')}</option>
               {YEARS.map(y => (
                 <option key={y} value={y}>{y}</option>
               ))}

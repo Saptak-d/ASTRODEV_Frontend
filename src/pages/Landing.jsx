@@ -68,28 +68,28 @@ export default function Landing() {
 
 
   const zodiacs = [
-    { sign: '♈', nameKey: 'zodiac.aries.name',       nameHi: 'मेष',      element: 'Fire',  rulerKey: 'ruler.mars',    descKey: 'zodiac.aries.desc' },
-    { sign: '♉', nameKey: 'zodiac.taurus.name',      nameHi: 'वृषभ',     element: 'Earth', rulerKey: 'ruler.venus',   descKey: 'zodiac.taurus.desc' },
-    { sign: '♊', nameKey: 'zodiac.gemini.name',      nameHi: 'मिथुन',    element: 'Air',   rulerKey: 'ruler.mercury', descKey: 'zodiac.gemini.desc' },
-    { sign: '♋', nameKey: 'zodiac.cancer.name',      nameHi: 'कर्क',     element: 'Water', rulerKey: 'ruler.moon',    descKey: 'zodiac.cancer.desc' },
-    { sign: '♌', nameKey: 'zodiac.leo.name',         nameHi: 'सिंह',     element: 'Fire',  rulerKey: 'ruler.sun',     descKey: 'zodiac.leo.desc' },
-    { sign: '♍', nameKey: 'zodiac.virgo.name',       nameHi: 'कन्या',    element: 'Earth', rulerKey: 'ruler.mercury', descKey: 'zodiac.virgo.desc' },
-    { sign: '♎', nameKey: 'zodiac.libra.name',       nameHi: 'तुला',     element: 'Air',   rulerKey: 'ruler.venus',   descKey: 'zodiac.libra.desc' },
-    { sign: '♏', nameKey: 'zodiac.scorpio.name',     nameHi: 'वृश्चिक',  element: 'Water', rulerKey: 'ruler.mars',    descKey: 'zodiac.scorpio.desc' },
-    { sign: '♐', nameKey: 'zodiac.sagittarius.name', nameHi: 'धनु',      element: 'Fire',  rulerKey: 'ruler.jupiter', descKey: 'zodiac.sagittarius.desc' },
-    { sign: '♑', nameKey: 'zodiac.capricorn.name',   nameHi: 'मकर',      element: 'Earth', rulerKey: 'ruler.saturn',  descKey: 'zodiac.capricorn.desc' },
-    { sign: '♒', nameKey: 'zodiac.aquarius.name',    nameHi: 'कुम्भ',    element: 'Air',   rulerKey: 'ruler.saturn',  descKey: 'zodiac.aquarius.desc' },
-    { sign: '♓', nameKey: 'zodiac.pisces.name',      nameHi: 'मीन',      element: 'Water', rulerKey: 'ruler.jupiter', descKey: 'zodiac.pisces.desc' },
+    { sign: '♈', nameKey: 'zodiac.aries.name',       subKey: 'zodiac.aries.sub',       element: 'Fire',  rulerKey: 'ruler.mars',    descKey: 'zodiac.aries.desc' },
+    { sign: '♉', nameKey: 'zodiac.taurus.name',      subKey: 'zodiac.taurus.sub',      element: 'Earth', rulerKey: 'ruler.venus',   descKey: 'zodiac.taurus.desc' },
+    { sign: '♊', nameKey: 'zodiac.gemini.name',      subKey: 'zodiac.gemini.sub',      element: 'Air',   rulerKey: 'ruler.mercury', descKey: 'zodiac.gemini.desc' },
+    { sign: '♋', nameKey: 'zodiac.cancer.name',      subKey: 'zodiac.cancer.sub',      element: 'Water', rulerKey: 'ruler.moon',    descKey: 'zodiac.cancer.desc' },
+    { sign: '♌', nameKey: 'zodiac.leo.name',         subKey: 'zodiac.leo.sub',         element: 'Fire',  rulerKey: 'ruler.sun',     descKey: 'zodiac.leo.desc' },
+    { sign: '♍', nameKey: 'zodiac.virgo.name',       subKey: 'zodiac.virgo.sub',       element: 'Earth', rulerKey: 'ruler.mercury', descKey: 'zodiac.virgo.desc' },
+    { sign: '♎', nameKey: 'zodiac.libra.name',       subKey: 'zodiac.libra.sub',       element: 'Air',   rulerKey: 'ruler.venus',   descKey: 'zodiac.libra.desc' },
+    { sign: '♏', nameKey: 'zodiac.scorpio.name',     subKey: 'zodiac.scorpio.sub',     element: 'Water', rulerKey: 'ruler.mars',    descKey: 'zodiac.scorpio.desc' },
+    { sign: '♐', nameKey: 'zodiac.sagittarius.name', subKey: 'zodiac.sagittarius.sub', element: 'Fire',  rulerKey: 'ruler.jupiter', descKey: 'zodiac.sagittarius.desc' },
+    { sign: '♑', nameKey: 'zodiac.capricorn.name',   subKey: 'zodiac.capricorn.sub',   element: 'Earth', rulerKey: 'ruler.saturn',  descKey: 'zodiac.capricorn.desc' },
+    { sign: '♒', nameKey: 'zodiac.aquarius.name',    subKey: 'zodiac.aquarius.sub',    element: 'Air',   rulerKey: 'ruler.saturn',  descKey: 'zodiac.aquarius.desc' },
+    { sign: '♓', nameKey: 'zodiac.pisces.name',      subKey: 'zodiac.pisces.sub',      element: 'Water', rulerKey: 'ruler.jupiter', descKey: 'zodiac.pisces.desc' },
   ];
 
   const planets = [
-    { symbol: '☉', nameKey: 'planet.sun.name',     sanskrit: 'सूर्य',  rulesKey: 'planet.sun.rules',     color: '#E8730A', bg: 'from-orange-50 to-amber-50' },
-    { symbol: '☽', nameKey: 'planet.moon.name',    sanskrit: 'चन्द्र', rulesKey: 'planet.moon.rules',    color: '#94A3B8', bg: 'from-slate-50 to-gray-50'  },
-    { symbol: '♂', nameKey: 'planet.mars.name',    sanskrit: 'मंगल',   rulesKey: 'planet.mars.rules',    color: '#B91C1C', bg: 'from-red-50 to-rose-50'    },
-    { symbol: '☿', nameKey: 'planet.mercury.name', sanskrit: 'बुध',    rulesKey: 'planet.mercury.rules', color: '#15803D', bg: 'from-green-50 to-emerald-50'},
-    { symbol: '♃', nameKey: 'planet.jupiter.name', sanskrit: 'गुरु',   rulesKey: 'planet.jupiter.rules', color: '#CA8A04', bg: 'from-yellow-50 to-amber-50' },
-    { symbol: '♀', nameKey: 'planet.venus.name',   sanskrit: 'शुक्र',  rulesKey: 'planet.venus.rules',   color: '#DB2777', bg: 'from-pink-50 to-rose-50'   },
-    { symbol: '♄', nameKey: 'planet.saturn.name',  sanskrit: 'शनि',    rulesKey: 'planet.saturn.rules',  color: '#3730A3', bg: 'from-indigo-50 to-violet-50'},
+    { symbol: '☉', nameKey: 'planet.sun.name',     subKey: 'planet.sun.sub',     rulesKey: 'planet.sun.rules',     color: '#E8730A', bg: 'from-orange-50 to-amber-50' },
+    { symbol: '☽', nameKey: 'planet.moon.name',    subKey: 'planet.moon.sub',    rulesKey: 'planet.moon.rules',    color: '#94A3B8', bg: 'from-slate-50 to-gray-50'  },
+    { symbol: '♂', nameKey: 'planet.mars.name',    subKey: 'planet.mars.sub',    rulesKey: 'planet.mars.rules',    color: '#B91C1C', bg: 'from-red-50 to-rose-50'    },
+    { symbol: '☿', nameKey: 'planet.mercury.name', subKey: 'planet.mercury.sub', rulesKey: 'planet.mercury.rules', color: '#15803D', bg: 'from-green-50 to-emerald-50'},
+    { symbol: '♃', nameKey: 'planet.jupiter.name', subKey: 'planet.jupiter.sub', rulesKey: 'planet.jupiter.rules', color: '#CA8A04', bg: 'from-yellow-50 to-amber-50' },
+    { symbol: '♀', nameKey: 'planet.venus.name',   subKey: 'planet.venus.sub',   rulesKey: 'planet.venus.rules',   color: '#DB2777', bg: 'from-pink-50 to-rose-50'   },
+    { symbol: '♄', nameKey: 'planet.saturn.name',  subKey: 'planet.saturn.sub',  rulesKey: 'planet.saturn.rules',  color: '#3730A3', bg: 'from-indigo-50 to-violet-50'},
   ];
 
   const elementKeyMap = { Fire: 'zodiac.element.fire', Earth: 'zodiac.element.earth', Air: 'zodiac.element.air', Water: 'zodiac.element.water' };
@@ -99,7 +99,7 @@ export default function Landing() {
     {
       id: 'kundli',
       titleKey: 'services.kundli.title',
-      titleHi: 'कुंडली',
+      subKey: 'services.kundli.sub',
       icon: '☸',
       descKey: 'services.kundli.desc',
       ctaKey: 'services.kundli.cta',
@@ -109,7 +109,7 @@ export default function Landing() {
     {
       id: 'milan',
       titleKey: 'services.milan.title',
-      titleHi: 'कुंडली मिलान',
+      subKey: 'services.milan.sub',
       icon: '⚭',
       descKey: 'services.milan.desc',
       disabled: true
@@ -117,7 +117,7 @@ export default function Landing() {
     {
       id: 'varshphal',
       titleKey: 'services.varshaphal.title',
-      titleHi: 'वर्षफल',
+      subKey: 'services.varshaphal.sub',
       icon: '⏳',
       descKey: 'services.varshaphal.desc',
       disabled: true
@@ -125,7 +125,7 @@ export default function Landing() {
     {
       id: 'remedies',
       titleKey: 'services.remedies.title',
-      titleHi: 'उपाय',
+      subKey: 'services.remedies.sub',
       icon: '💎',
       descKey: 'services.remedies.desc',
       disabled: true
@@ -143,7 +143,7 @@ export default function Landing() {
 
   const wheelSectors = zodiacs.map((z, i) => ({
     name: t(z.nameKey).toUpperCase(),
-    nameHi: z.nameHi,
+    sub: t(z.subKey),
     symbol: z.sign,
     angle: i * 30,
     element: z.element,
@@ -318,7 +318,7 @@ export default function Landing() {
                   </div>
                   <div>
                     <h3 className="font-extrabold text-base text-[#F5F2E9] leading-tight">{t(service.titleKey)}</h3>
-                    <p className="text-[10px] text-[#D4AF37] font-sans tracking-widest uppercase mt-0.5">{service.titleHi}</p>
+                    <p className="text-[10px] text-[#D4AF37] font-sans tracking-widest uppercase mt-0.5">{t(service.subKey)}</p>
                   </div>
                   <p className="text-xs text-gray-400 leading-relaxed font-sans">{t(service.descKey)}</p>
                 </div>
@@ -369,7 +369,7 @@ export default function Landing() {
                 }`}
               >
                 <div className="text-4xl mb-2" style={{ color: p.color }}>{p.symbol}</div>
-                <div className="text-[11px] font-sans text-gray-400 tracking-wider mb-1">{p.sanskrit}</div>
+                <div className="text-[11px] font-sans text-gray-400 tracking-wider mb-1">{t(p.subKey)}</div>
                 <h4 className="font-extrabold text-xs text-[#2A1B18] leading-tight">{t(p.nameKey)}</h4>
                 <p className="text-[9px] text-gray-500 font-sans tracking-wider uppercase mt-1">{t(p.rulesKey)}</p>
               </div>
@@ -405,7 +405,7 @@ export default function Landing() {
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h3 className="font-extrabold text-base text-[#2A1B18]">{t(z.nameKey)}</h3>
-                    <p className="text-[12px] text-[#D4AF37] font-sans font-bold">{z.nameHi}</p>
+                    <p className="text-[12px] text-[#D4AF37] font-sans font-bold">{t(z.subKey)}</p>
                   </div>
                   <span className={`text-4xl transition-all duration-300 ${hoveredZodiac === idx ? 'scale-125' : 'opacity-40'}`}
                     style={{ color: hoveredZodiac === idx ? elementColors[z.element] : '#2A1B18' }}
