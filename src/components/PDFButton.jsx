@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const LANGUAGES = [
   { key: 'hindi',    label: 'हिंदी',   flag: '🕉', sublabel: 'Hindi' },
   { key: 'english',  label: 'English', flag: '🇬🇧', sublabel: 'English' },
+  { key: 'marathi',  label: 'मराठी',   flag: '🚩', sublabel: 'Marathi' },
   { key: 'sanskrit', label: 'संस्कृत', flag: '📜', sublabel: 'Sanskrit' },
   { key: 'bengali',  label: 'বাংলা',   flag: '✦', sublabel: 'Bengali' },
   { key: 'tamil',    label: 'தமிழ்',   flag: '🪔', sublabel: 'Tamil' },

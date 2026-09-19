@@ -213,6 +213,7 @@ export default function BirthForm({ onSubmit, loading }) {
           {[
             { value: 'hindi', label: 'हिन्दी (Hindi)' },
             { value: 'english', label: 'English' },
+            { value: 'marathi', label: 'मराठी (Marathi)' },
             { value: 'tamil', label: 'தமிழ் (Tamil)' },
             { value: 'bengali', label: 'বাংলা (Bengali)' },
             { value: 'sanskrit', label: 'संस्कृत (Sanskrit)' },

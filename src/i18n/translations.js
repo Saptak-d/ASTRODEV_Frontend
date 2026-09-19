@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────
 //  AstroDev — i18n Translations
-//  Languages: en (English) | hi (Hindi) | sa (Sanskrit) | bn (Bengali) | ta (Tamil)
+//  Languages: en (English) | hi (Hindi) | sa (Sanskrit) | bn (Bengali) | ta (Tamil) | mr (Marathi)
 // ─────────────────────────────────────────────────────────────
 
 const translations = {
@@ -12,6 +12,7 @@ const translations = {
     sa: 'गृहम्',
     bn: 'হোম',
     ta: 'முகப்பு',
+    mr: 'होम',
   },
   'nav.services': {
     en: 'SERVICES',
@@ -19,6 +20,7 @@ const translations = {
     sa: 'सेवाः',
     bn: 'সেবাসমূহ',
     ta: 'சேவைகள்',
+    mr: 'सेवा',
   },
   'nav.kundli': {
     en: 'Sacred Kundli Reading',
@@ -26,6 +28,7 @@ const translations = {
     sa: 'पवित्र जन्मपत्रिका',
     bn: 'পবিত্র কুণ্ডলী পাঠ',
     ta: 'புனித ஜாதகம்',
+    mr: 'पवित्र कुंडली वाचन',
   },
   'nav.milan': {
     en: 'Kundli Milan (Soon)',
@@ -33,6 +36,7 @@ const translations = {
     sa: 'जन्मपत्रिका मेलनम् (शीघ्रम्)',
     bn: 'কুণ্ডলী মিলান (শীঘ্রই)',
     ta: 'ஜாதகப் பொருத்தம் (விரைவில்)',
+    mr: 'कुंडली मिलान (लवकरच)',
   },
   'nav.varshaphal': {
     en: 'Varshaphal Return (Soon)',
@@ -40,6 +44,7 @@ const translations = {
     sa: 'वर्षफलम् (शीघ्रम्)',
     bn: 'বর্ষফল (শীঘ্রই)',
     ta: 'வருட பலன் (விரைவில்)',
+    mr: 'वर्षफल (लवकरच)',
   },
   'nav.gemstone': {
     en: 'Gemstone Guidance (Soon)',
@@ -47,6 +52,7 @@ const translations = {
     sa: 'रत्नमार्गदर्शनम् (शीघ्रम्)',
     bn: 'রত্নপাথর নির্দেশনা (শীঘ্রই)',
     ta: 'ரத்தின வழிகாட்டுதல் (விரைவில்)',
+    mr: 'रत्न मार्गदर्शन (लवकरच)',
   },
   'nav.languageLabel': {
     en: 'Language',
@@ -54,6 +60,7 @@ const translations = {
     sa: 'भाषा',
     bn: 'ভাষা',
     ta: 'மொழி',
+    mr: 'भाषा',
   },
 
   // ── HERO SECTION ─────────────────────────────────────────────
@@ -63,6 +70,7 @@ const translations = {
     sa: '✦ प्राचीनं वैदिकं ज्ञानम्, आधुनिकी दृष्टिः ✦',
     bn: '✦ প্রাচীন বৈদিক জ্ঞান, আধুনিক অন্তর্দৃষ্টি ✦',
     ta: '✦ பண்டைய வேத ஞானம், நவீன பார்வை ✦',
+    mr: '✦ प्राचीन वैदिक ज्ञान, आधुनिक दृष्टी ✦',
   },
   'hero.tagline': {
     en: 'Unveil the celestial blueprint written at the moment of your birth — your path, your dharma, your destiny.',
@@ -70,6 +78,7 @@ const translations = {
     sa: 'जन्मक्षणे लिखितं नाक्षत्रिकं विन्यासं प्रकाशयतु — तव मार्गः, तव धर्मः, तव भवितव्यम्।',
     bn: 'জন্মের মুহূর্তে লেখা আকাশীয় নকশা উন্মোচন করুন — আপনার পথ, আপনার ধর্ম, আপনার ভাগ্য।',
     ta: 'உங்கள் பிறந்த தருணத்தில் எழுதப்பட்ட பிரபஞ்ச வரைபடத்தை அறியுங்கள் — உங்கள் பாதை, உங்கள் தர்மம், உங்கள் விதி.',
+    mr: 'तुमच्या जन्माच्या वेळी कोरलेला खगोलीय आराखडा जाणून घ्या — तुमचा मार्ग, तुमचा धर्म, तुमचे भाग्य.',
   },
   'hero.feature.genuine': {
     en: '100% Genuine',
@@ -77,6 +86,7 @@ const translations = {
     sa: '100% प्रामाणिकम्',
     bn: '১০০% খাঁটি',
     ta: '100% உண்மையானது',
+    mr: '१००% अस्सल',
   },
   'hero.feature.genuine.desc': {
     en: 'Authentic Vedic Methods',
@@ -84,6 +94,7 @@ const translations = {
     sa: 'प्रामाणिक वैदिकाः पद्धतयः',
     bn: 'প্রামাণিক বৈদিক পদ্ধতি',
     ta: 'பாரம்பரிய வேத முறைகள்',
+    mr: 'प्रामाणिक वैदिक पद्धती',
   },
   'hero.feature.experts': {
     en: 'Expert Astrologers',
@@ -91,6 +102,7 @@ const translations = {
     sa: 'विशेषज्ञाः ज्योतिषाचार्याः',
     bn: 'বিশেষজ্ঞ জ্যোতিষী',
     ta: 'நிபுணத்துவ ஜோதிடர்கள்',
+    mr: 'तज्ज्ञ ज्योतिषी',
   },
   'hero.feature.experts.desc': {
     en: 'Verified & Experienced',
@@ -98,6 +110,7 @@ const translations = {
     sa: 'सत्यापिताः अनुभविनश्च',
     bn: 'যাচাইকৃত ও অভিজ্ঞ',
     ta: 'சரிபார்க்கப்பட்ட & அனுபவம் வாய்ந்தவர்கள்',
+    mr: 'प्रमाणित आणि अनुभवी',
   },
   'hero.feature.trusted': {
     en: 'Highly Trusted',
@@ -105,6 +118,7 @@ const translations = {
     sa: 'अत्यन्तं विश्वसनीयम्',
     bn: 'অত্যন্ত বিশ্বস্ত',
     ta: 'மிகவும் நம்பகமானது',
+    mr: 'अत्यंत विश्वासार्ह',
   },
   'hero.feature.trusted.desc': {
     en: 'Accurate Predictions',
@@ -112,6 +126,7 @@ const translations = {
     sa: 'सटीकानि भविष्यवचनानि',
     bn: 'নির্ভুল ভবিষ্যদ্বাণী',
     ta: 'துல்லியமான கணிப்புகள்',
+    mr: 'अचूक भविष्यकथन',
   },
   'hero.feature.detailed': {
     en: 'Detailed Analysis',
@@ -119,6 +134,7 @@ const translations = {
     sa: 'विस्तृतं विश्लेषणम्',
     bn: 'বিস্তারিত বিশ্লেষণ',
     ta: 'விரிவான பகுப்பாய்வு',
+    mr: 'सविस्तर विश्लेषण',
   },
   'hero.feature.detailed.desc': {
     en: '33-Page PDF Report',
@@ -126,6 +142,7 @@ const translations = {
     sa: '33 पृष्ठानां PDF प्रतिवेदनम्',
     bn: '৩৩ পৃষ্ঠার PDF রিপোর্ট',
     ta: '33 பக்க PDF அறிக்கை',
+    mr: '३३ पानी PDF अहवाल',
   },
   'hero.feature.privacy': {
     en: 'Total Privacy',
@@ -133,6 +150,7 @@ const translations = {
     sa: 'पूर्णं गोपनीयम्',
     bn: 'সম্পূর্ণ গোপনীয়তা',
     ta: 'முழுமையான தனியுரிமை',
+    mr: 'संपूर्ण गोपनीयता',
   },
   'hero.feature.privacy.desc': {
     en: '100% Confidential',
@@ -140,6 +158,7 @@ const translations = {
     sa: '100% गोपनीयम्',
     bn: '১০০% গোপনীয়',
     ta: '100% ரகசியமானது',
+    mr: '१००% गोपनीय',
   },
   'hero.feature.instant': {
     en: 'Instant Access',
@@ -147,6 +166,7 @@ const translations = {
     sa: 'तत्कालं प्राप्यम्',
     bn: 'তাৎক্ষণিক অ্যাক্সেস',
     ta: 'உடனடி அணுகல்',
+    mr: 'त्वरित प्रवेश',
   },
   'hero.feature.instant.desc': {
     en: 'Download Immediately',
@@ -154,13 +174,15 @@ const translations = {
     sa: 'तत्क्षणं डाउनलोडयतु',
     bn: 'এখনই ডাউনলোড করুন',
     ta: 'உடனே பதிவிறக்குங்கள்',
+    mr: 'लगेच डाउनलोड करा',
   },
   'hero.price.label': {
     en: 'Full Vedic PDF Analysis',
     hi: 'पूर्ण वैदिक PDF विश्लेषण',
     sa: 'पूर्णं वैदिकं PDF विश्लेषणम्',
-    bn: 'সম্পূর্ণ বৈদিক PDF विश्लेषण',
+    bn: 'সম্পূর্ণ বৈদিক PDF বিশ্লেষণ',
     ta: 'முழுமையான வேத PDF பகுப்பாய்வு',
+    mr: 'संपूर्ण वैदिक PDF विश्लेषण',
   },
   'hero.price.off': {
     en: '80% OFF',
@@ -168,6 +190,7 @@ const translations = {
     sa: '80% न्यूनम्',
     bn: '৮০% ছাড়',
     ta: '80% தள்ளுபடி',
+    mr: '८०% सूट',
   },
 
   // ── SERVICES SECTION ─────────────────────────────────────────
@@ -177,6 +200,7 @@ const translations = {
     sa: '✦ पवित्राणि वैदिकानि अर्पणानि ✦',
     bn: '✦ পবিত্র বৈদিক সেবাসমূহ ✦',
     ta: '✦ புனித வேத சேவைகள் ✦',
+    mr: '✦ पवित्र वैदिक सेवा ✦',
   },
   'services.title': {
     en: 'Divine Guidance Suite',
@@ -184,6 +208,7 @@ const translations = {
     sa: 'दिव्यं मार्गदर्शनं समूहः',
     bn: 'দিব্য নির্দেশনা সমূহ',
     ta: 'எங்களின் வேத ஜோதிட சேவைகள்',
+    mr: 'दिव्य मार्गदर्शन कक्ष',
   },
   'services.subtitle': {
     en: 'A curated collection of Vedic readings mapping your life path, relationships, and planetary remedies.',
@@ -191,6 +216,7 @@ const translations = {
     sa: 'वैदिकपाठानां संग्रहः यः तव जीवनमार्गं, सम्बन्धानि, ग्रहोपायांश्च दर्शयति।',
     bn: 'বৈদিক পাঠের একটি বাছাই সংগ্রহ যা আপনার জীবন পথ, সম্পর্ক এবং গ্রহ প্রতিকার দর্শায়।',
     ta: 'ஆயிரம் ஆண்டுகால பாரம்பரிய வேத ஜோதிட வழிகாட்டுதல் மூலம் உங்கள் வாழ்வின் வினாக்களுக்கு விடை காணுங்கள்.',
+    mr: 'तुमचा जीवनमार्ग, नातेसंबंध आणि ग्रहांचे उपाय दर्शविणाऱ्या वैदिक वाचनांचा संग्रह.',
   },
   'services.open': {
     en: 'Open Now',
@@ -198,6 +224,7 @@ const translations = {
     sa: 'अधुना उपलब्धम्',
     bn: 'এখন উপলব্ধ',
     ta: 'இப்போது கிடைக்கிறது',
+    mr: 'आता उपलब्ध',
   },
   'services.soon': {
     en: 'Coming Soon',
@@ -205,6 +232,7 @@ const translations = {
     sa: 'शीघ्रम् आगच्छति',
     bn: 'শীঘ্রই আসছে',
     ta: 'விரைவில் வருகிறது',
+    mr: 'लवकरच येत आहे',
   },
   'services.awaiting': {
     en: 'Awaiting celestial alignment',
@@ -212,6 +240,7 @@ const translations = {
     sa: 'नाक्षत्रिकसंरेखणस्य प्रतीक्षायाम्',
     bn: 'আকাশীয় সংযোগের অপেক্ষায়',
     ta: 'கிரக சேர்க்கைக்காக காத்திருக்கிறது',
+    mr: 'खगोलीय संरेखनाची प्रतीक्षा',
   },
   'services.off': {
     en: '80% Off',
@@ -219,6 +248,7 @@ const translations = {
     sa: '80% न्यूनम्',
     bn: '৮০% ছাড়',
     ta: '80% தள்ளுபடி',
+    mr: '८०% सूट',
   },
   // Service 1
   'services.kundli.title': {
@@ -227,6 +257,7 @@ const translations = {
     sa: 'पवित्रा जन्मपत्रिका वाचनम्',
     bn: 'পবিত্র কুণ্ডলী পাঠ',
     ta: 'முழுமையான ஜாதக கணிப்பு',
+    mr: 'पवित्र कुंडली वाचन',
   },
   'services.kundli.sub': {
     en: 'Kundali Reading',
@@ -234,6 +265,7 @@ const translations = {
     sa: 'जन्मपत्रिका',
     bn: 'কুণ্ডলী',
     ta: 'ஜாதக கணிப்பு',
+    mr: 'कुंडली वाचन',
   },
   'services.kundli.desc': {
     en: 'Unveil your D1, D9, and D10 divisional charts, celestial planetary alignments, Vimshottari Dasha life-cycles, and receive your personal 33-page sacred consultation book.',
@@ -241,6 +273,7 @@ const translations = {
     sa: 'तव D1, D9, D10 विभागचक्राणि, ग्रहीयसंरेखणानि, विंशोत्तरीदशाजीवनचक्राणि प्रकाशयतु तथा व्यक्तिगतं 33 पृष्ठीयं पवित्रं परामर्शपुस्तिकां प्राप्नुतु।',
     bn: 'আপনার D1, D9 এবং D10 বিভাগীয় চার্ট, গ্রহীয় সংযোগ, বিংশোত্তরী দশা জীবন-চক্র উন্মোচন করুন এবং আপনার ব্যক্তিগত ৩৩ পৃষ্ঠার পবিত্র পরামর্শ পুস্তিকা পান।',
     ta: '33 பக்கங்கள் கொண்ட விரிவான வேத ஜாதக அறிக்கை. கிரக நிலைகள், தசா புக்தி மற்றும் பண்டிதரின் வழிகாட்டுதல் அடங்கியது.',
+    mr: 'तुमचे D1, D9, आणि D10 वर्ग चार्ट, ग्रहांचे संरेखण, विंशोत्तरी दशा जीवन-चक्रे जाणून घ्या आणि तुमची वैयक्तिक ३३ पानी पवित्र सल्लागार पुस्तिका मिळवा.',
   },
   'services.kundli.cta': {
     en: 'Unveil Your Chart',
@@ -248,6 +281,7 @@ const translations = {
     sa: 'तव चक्रं प्रकाशयतु',
     bn: 'আপনার চার্ট উন্মোচন করুন',
     ta: 'ஜாதகம் பெறுங்கள்',
+    mr: 'तुमची पत्रिका पहा',
   },
   // Service 2
   'services.milan.title': {
@@ -256,6 +290,7 @@ const translations = {
     sa: 'जन्मपत्रिकामेलनं अनुकूलता च',
     bn: 'কুণ্ডলী মিলান ও সামঞ্জস্য',
     ta: 'திருமண ஜாதகப் பொருத்தம்',
+    mr: 'कुंडली मिलान आणि सुसंगतता',
   },
   'services.milan.sub': {
     en: 'Kundli Milan',
@@ -263,6 +298,7 @@ const translations = {
     sa: 'जन्मपत्रिका मेलनम्',
     bn: 'কুণ্ডলী মিলান',
     ta: 'ஜாதகப் பொருத்தம்',
+    mr: 'कुंडली मिलान',
   },
   'services.milan.desc': {
     en: 'Ancient Ashtakoota and Guna Milan compatibility wisdom to illuminate the divine harmony of two souls on a shared cosmic journey.',
@@ -270,6 +306,7 @@ const translations = {
     sa: 'प्राचीनं अष्टकूटं गुणमिलनं च द्वयोः आत्मनोः दिव्यं समन्वयं प्रकाशयति।',
     bn: 'প্রাচীন অষ্টকূট ও গুণ মিলান সামঞ্জস্য জ্ঞান দুই আত্মার দিব্য সামঞ্জস্য আলোকিত করে।',
     ta: 'அஷ்டகூட முறைப்படி 36 குணங்கள் பொருத்தம், மாங்கல்ய தோஷம் மற்றும் திருமண வாழ்வின் இணக்கத்தன்மை பகுப்பாய்வு.',
+    mr: 'दोन आत्म्यांच्या दिव्य सुसंवादाचे दर्शन घडविणारे प्राचीन अष्टकूट आणि गुण मिलान सुसंगतता ज्ञान.',
   },
   // Service 3
   'services.varshaphal.title': {
@@ -278,6 +315,7 @@ const translations = {
     sa: 'वर्षफलं सौरपूर्वानुमानम्',
     bn: 'বর্ষফল সৌর পূর্বাভাস',
     ta: 'வருட பலன் கணிப்பு',
+    mr: 'वर्षफल सौर अंदाज',
   },
   'services.varshaphal.sub': {
     en: 'Varshaphal',
@@ -285,6 +323,7 @@ const translations = {
     sa: 'वर्षफलम्',
     bn: 'বর্ষফল',
     ta: 'வருட பலன்',
+    mr: 'वर्षफल',
   },
   'services.varshaphal.desc': {
     en: 'Your annual solar return chart — a sacred map of the year ahead, revealing planetary themes, transits, and transformational windows.',
@@ -292,6 +331,7 @@ const translations = {
     sa: 'तव वार्षिकं सौरप्रत्यागमनचक्रं — आगामिवर्षस्य पवित्रं मानचित्रम्, ग्रहविषयान्, पारगमनानि, परिवर्तनात्मकाश्च अवसरान् दर्शयति।',
     bn: 'আপনার বার্ষিক সৌর প্রত্যাবর্তন চার্ট — আসন্ন বছরের একটি পবিত্র মানচিত্র, গ্রহীয় বিষয়, গোচর এবং রূপান্তরকারী সুযোগ প্রকাশ করে।',
     ta: 'தாஜிக முறைப்படி வரவிருக்கும் ஆண்டிற்கான துல்லியமான கிரக சுழற்சி மற்றும் பலன்கள்.',
+    mr: 'तुमचा वार्षिक सौर परतीचा चार्ट — येणाऱ्या वर्षाचा पवित्र नकाशा, ग्रहांचे गोचर आणि परिवर्तनाचे क्षण दर्शवतो.',
   },
   // Service 4
   'services.remedies.title': {
@@ -300,6 +340,7 @@ const translations = {
     sa: 'रत्नं उपायज्ञानं च',
     bn: 'রত্নপাথর ও প্রতিকার জ্ঞান',
     ta: 'ரத்தினம் மற்றும் பரிகார வழிகாட்டுதல்',
+    mr: 'रत्न आणि उपाय ज्ञान',
   },
   'services.remedies.sub': {
     en: 'Remedies',
@@ -307,6 +348,7 @@ const translations = {
     sa: 'उपायाः',
     bn: 'প্রতিকার',
     ta: 'பரிகாரங்கள்',
+    mr: 'उपाय',
   },
   'services.remedies.desc': {
     en: 'Receive tailored planetary remedies — sacred gemstones, Vedic mantras, fasting days, and ritual practices to balance your karmic path.',
@@ -314,6 +356,7 @@ const translations = {
     sa: 'अनुकूलानि ग्रहोपायानि प्राप्नुतु — पवित्राणि रत्नानि, वैदिकमन्त्राणि, व्रतदिनानि, अनुष्ठानाभ्यासाश्च तव कर्ममार्गं संतुलयितुम्।',
     bn: 'কাস্টমাইজড গ্রহীয় প্রতিকার পান — পবিত্র রত্নপাথর, বৈদিক মন্ত্র, উপবাসের দিন এবং আচার অনুশীলন আপনার কর্মপথ সুষম করতে।',
     ta: 'உங்களுக்கான தனிப்பட்ட கிரக பரிகாரங்கள் — அதிர்ஷ்ட ரத்தினங்கள், வேத மந்திரங்கள், விரத நாட்கள் மற்றும் கர்ம வினைகளை சமன் செய்யும் வழிபாட்டு முறைகள்.',
+    mr: 'तुमच्या कर्म मार्गाचा समतोल राखण्यासाठी योग्य ग्रह उपाय — पवित्र रत्ने, वैदिक मंत्र, उपवास दिवस आणि विधी मिळवा.',
   },
 
   // ── PLANETS SECTION ──────────────────────────────────────────
@@ -323,6 +366,7 @@ const translations = {
     sa: '✦ नाक्षत्रिकाः शासकाः ✦',
     bn: '✦ আকাশীয় শাসকবৃন্দ ✦',
     ta: '✦ நவகிரகங்களின் ஆட்சி ✦',
+    mr: '✦ खगोलीय अधिपती ✦',
   },
   'planets.title': {
     en: 'Seven Sovereigns of Time',
@@ -330,6 +374,7 @@ const translations = {
     sa: 'कालस्य सप्त सम्राटः',
     bn: 'কালের সাত সম্রাট',
     ta: 'காலத்தின் ஏழு நவகிரக அரசர்கள்',
+    mr: 'काळाचे सात सम्राट',
   },
   'planets.subtitle': {
     en: 'ग्रह — The planetary forces shaping your every breath',
@@ -337,105 +382,120 @@ const translations = {
     sa: 'ग्रहाः — ते ग्रहीयशक्तयः याः तव प्रतिश्वासं रूपयन्ति',
     bn: 'গ্রহ — সেই গ্রহীয় শক্তি যা আপনার প্রতিটি শ্বাসকে রূপ দেয়',
     ta: 'கிரகங்கள் — உங்கள் ஒவ்வொரு நொடியையும் இயக்கும் பிரபஞ்ச சக்திகள்',
+    mr: 'ग्रह — तुमच्या प्रत्येक श्वासाला आकार देणाऱ्या खगोलीय शक्ती',
   },
   // Planet display names
   'planet.sun.name': {
-    en: 'Surya / Sun',
+    en: 'Sun / Surya',
     hi: 'सूर्य',
     sa: 'सूर्यः',
     bn: 'সূর্য',
-    ta: 'சூரியன் (ஞாயிறு)',
+    ta: 'சூரியன்',
+    mr: 'सूर्य / Surya',
   },
   'planet.sun.sub': {
     en: 'Surya',
     hi: 'सूर्य',
     sa: 'सूर्यः',
     bn: 'সূর্য',
-    ta: 'ஞாயிறு (சூரியன்)',
+    ta: 'ஞாயிறு',
+    mr: 'सूर्य',
   },
   'planet.moon.name': {
-    en: 'Chandra / Moon',
+    en: 'Moon / Chandra',
     hi: 'चन्द्र',
     sa: 'चन्द्रः',
     bn: 'চন্দ্র',
-    ta: 'சந்திரன் (திங்கள்)',
+    ta: 'சந்திரன்',
+    mr: 'चंद्र / Chandra',
   },
   'planet.moon.sub': {
     en: 'Chandra',
     hi: 'चन्द्र',
     sa: 'चन्द्रः',
     bn: 'চন্দ্র',
-    ta: 'திங்கள் (சந்திரன்)',
+    ta: 'திங்கள்',
+    mr: 'चंद्र',
   },
   'planet.mars.name': {
-    en: 'Mangala / Mars',
+    en: 'Mars / Mangala',
     hi: 'मंगल',
     sa: 'मंगलः',
     bn: 'মঙ্গল',
-    ta: 'செவ்வாய் (மங்களன்)',
+    ta: 'செவ்வாய்',
+    mr: 'मंगळ / Mangala',
   },
   'planet.mars.sub': {
     en: 'Mangala',
     hi: 'मंगल',
     sa: 'मंगलः',
     bn: 'মঙ্গল',
-    ta: 'செவ்வாய்',
+    ta: 'மங்களன்',
+    mr: 'मंगळ',
   },
   'planet.mercury.name': {
-    en: 'Budha / Mercury',
+    en: 'Mercury / Budha',
     hi: 'बुध',
     sa: 'बुधः',
     bn: 'বুধ',
-    ta: 'புதன் (புதன் பகவான்)',
+    ta: 'புதன்',
+    mr: 'बुध / Budha',
   },
   'planet.mercury.sub': {
     en: 'Budha',
     hi: 'बुध',
     sa: 'बुधः',
     bn: 'বুধ',
-    ta: 'புதன்',
+    ta: 'புதன் பகவான்',
+    mr: 'बुध',
   },
   'planet.jupiter.name': {
-    en: 'Guru / Jupiter',
+    en: 'Jupiter / Guru',
     hi: 'गुरु',
     sa: 'गुरुः',
     bn: 'গুরু',
     ta: 'குரு (வியாழன்)',
+    mr: 'गुरू / Guru',
   },
   'planet.jupiter.sub': {
     en: 'Guru',
     hi: 'गुरु',
     sa: 'गुरुः',
     bn: 'গুরু',
-    ta: 'வியாழன் (குரு)',
+    ta: 'வியாழன்',
+    mr: 'गुरू',
   },
   'planet.venus.name': {
-    en: 'Shukra / Venus',
+    en: 'Venus / Shukra',
     hi: 'शुक्र',
     sa: 'शुक्रः',
     bn: 'শুক্র',
     ta: 'சுக்கிரன் (வெள்ளி)',
+    mr: 'शुक्र / Shukra',
   },
   'planet.venus.sub': {
     en: 'Shukra',
     hi: 'शुक्र',
     sa: 'शुक्रः',
     bn: 'শুক্র',
-    ta: 'வெள்ளி (சுக்கிரன்)',
+    ta: 'வெள்ளி',
+    mr: 'शुक्र',
   },
   'planet.saturn.name': {
-    en: 'Shani / Saturn',
+    en: 'Saturn / Shani',
     hi: 'शनि',
     sa: 'शनिः',
     bn: 'শনি',
     ta: 'சனி பகவான்',
+    mr: 'शनी / Shani',
   },
   'planet.saturn.sub': {
     en: 'Shani',
     hi: 'शनि',
     sa: 'शनिः',
     bn: 'শনি',
-    ta: 'சனி பகவான்',
+    ta: 'சனி',
+    mr: 'शनी',
   },
   // Planet rules
   'planet.sun.rules': {
@@ -444,6 +504,7 @@ const translations = {
     sa: 'आत्मा पहचानश्च',
     bn: 'আত্মা ও পরিচয়',
     ta: 'ஆன்மா & அடையாளம்',
+    mr: 'आत्मा आणि ओळख',
   },
   'planet.moon.rules': {
     en: 'Mind & Emotion',
@@ -451,6 +512,7 @@ const translations = {
     sa: 'मनः भावनाश्च',
     bn: 'মন ও আবেগ',
     ta: 'மனம் & உணர்வுகள்',
+    mr: 'मन आणि भावना',
   },
   'planet.mars.rules': {
     en: 'Drive & Power',
@@ -458,6 +520,7 @@ const translations = {
     sa: 'संकल्पः शक्तिश्च',
     bn: 'সংকল্প ও শক্তি',
     ta: 'ஆற்றல் & வீரம்',
+    mr: 'ऊर्जा आणि पराक्रम',
   },
   'planet.mercury.rules': {
     en: 'Intellect & Speech',
@@ -465,13 +528,15 @@ const translations = {
     sa: 'बुद्धिः वाक्च',
     bn: 'বুদ্ধি ও বাণী',
     ta: 'புத்தி & வாக்கு',
+    mr: 'बुद्धी आणि वाणी',
   },
   'planet.jupiter.rules': {
     en: 'Wisdom & Dharma',
     hi: 'ज्ञान और धर्म',
     sa: 'ज्ञानं धर्मश्च',
-    bn: 'জ্ঞান ও ধর্ম',
+    bn: 'ज्ञान ও ধর্ম',
     ta: 'ஞானம் & தர்மம்',
+    mr: 'ज्ञान आणि धर्म',
   },
   'planet.venus.rules': {
     en: 'Pleasure & Beauty',
@@ -479,13 +544,15 @@ const translations = {
     sa: 'सुखं सौन्दर्यं च',
     bn: 'সুখ ও সৌন্দর্য',
     ta: 'செல்வம் & அழகு',
+    mr: 'सुख आणि सौंदर्य',
   },
   'planet.saturn.rules': {
     en: 'Karma & Discipline',
     hi: 'कर्म और अनुशासन',
     sa: 'कर्म अनुशासनं च',
-    bn: 'কর্ম ও শৃঙ্খলা',
+    bn: 'कर्म ও শৃঙ্খলা',
     ta: 'கர்மா & ஒழுக்கம்',
+    mr: 'कर्म आणि शिस्त',
   },
 
   // ── ZODIAC SECTION ───────────────────────────────────────────
@@ -495,6 +562,7 @@ const translations = {
     sa: '✦ द्वादश द्वाराणि ✦',
     bn: '✦ দ্বাদশ দ্বার ✦',
     ta: '✦ பன்னிரு ராசிகள் ✦',
+    mr: '✦ बारा राशींचे द्वार ✦',
   },
   'zodiac.title': {
     en: 'Gates of Destiny',
@@ -502,6 +570,7 @@ const translations = {
     sa: 'भवितव्यस्य द्वाराणि',
     bn: 'ভাগ্যের দ্বার',
     ta: 'விதியின் பன்னிரு ராசி வாசல்கள்',
+    mr: 'भाग्याची द्वारे',
   },
   'zodiac.subtitle': {
     en: 'राशि — The zodiac signs mapping your conscious and cosmic nature',
@@ -509,6 +578,7 @@ const translations = {
     sa: 'राशिः — राशिचिह्नानि यानि तव चेतनां ब्रह्माण्डीयस्वभावं च मापयन्ति',
     bn: 'রাশি — রাশিচক্র চিহ্ন যা আপনার চেতন ও মহাজাগতিক প্রকৃতি পরিমাপ করে',
     ta: 'ராசி — உங்கள் பிரபஞ்ச மற்றும் உள்ளுணர்வு சுபாவத்தை உணர்த்தும் ராசி மண்டலங்கள்',
+    mr: 'राशी — तुमचा जागरूक आणि वैश्विक स्वभाव दर्शवणारी राशीचक्रे',
   },
   // Zodiac sign primary names & subs
   'zodiac.aries.name': {
@@ -517,13 +587,15 @@ const translations = {
     sa: 'मेषः',
     bn: 'মেষ',
     ta: 'மேஷம்',
+    mr: 'मेष',
   },
   'zodiac.aries.sub': {
     en: 'Mesha',
     hi: 'मेष',
     sa: 'मेषः',
     bn: 'মেষ',
-    ta: 'Aries / மேஷம்',
+    ta: 'மேஷ ராசி',
+    mr: 'मेष',
   },
   'zodiac.taurus.name': {
     en: 'Taurus',
@@ -531,13 +603,15 @@ const translations = {
     sa: 'वृषभः',
     bn: 'বৃষ',
     ta: 'ரிஷபம்',
+    mr: 'वृषभ',
   },
   'zodiac.taurus.sub': {
     en: 'Vrishabha',
     hi: 'वृषभ',
     sa: 'वृषभः',
     bn: 'বৃষ',
-    ta: 'Taurus / ரிஷபம்',
+    ta: 'ரிஷப ராசி',
+    mr: 'वृषभ',
   },
   'zodiac.gemini.name': {
     en: 'Gemini',
@@ -545,13 +619,15 @@ const translations = {
     sa: 'मिथुनम्',
     bn: 'মিথুন',
     ta: 'மிதுனம்',
+    mr: 'मिथुन',
   },
   'zodiac.gemini.sub': {
     en: 'Mithuna',
     hi: 'मिथुन',
     sa: 'मिथुनम्',
     bn: 'মিথুন',
-    ta: 'Gemini / மிதுனம்',
+    ta: 'மிதுன ராசி',
+    mr: 'मिथुन',
   },
   'zodiac.cancer.name': {
     en: 'Cancer',
@@ -559,13 +635,15 @@ const translations = {
     sa: 'कर्कटः',
     bn: 'কর্কট',
     ta: 'கடகம்',
+    mr: 'कर्क',
   },
   'zodiac.cancer.sub': {
     en: 'Karka',
     hi: 'कर्क',
     sa: 'कर्कटः',
     bn: 'কর্কট',
-    ta: 'Cancer / கடகம்',
+    ta: 'கடக ராசி',
+    mr: 'कर्क',
   },
   'zodiac.leo.name': {
     en: 'Leo',
@@ -573,13 +651,15 @@ const translations = {
     sa: 'सिंहः',
     bn: 'সিংহ',
     ta: 'சிம்மம்',
+    mr: 'सिंह',
   },
   'zodiac.leo.sub': {
     en: 'Simha',
     hi: 'सिंह',
     sa: 'सिंहः',
     bn: 'সিংহ',
-    ta: 'Leo / சிம்மம்',
+    ta: 'சிம்ம ராசி',
+    mr: 'सिंह',
   },
   'zodiac.virgo.name': {
     en: 'Virgo',
@@ -587,13 +667,15 @@ const translations = {
     sa: 'कन्या',
     bn: 'কন্যা',
     ta: 'கன்னி',
+    mr: 'कन्या',
   },
   'zodiac.virgo.sub': {
     en: 'Kanya',
     hi: 'कन्या',
     sa: 'कन्या',
     bn: 'কন্যা',
-    ta: 'Virgo / கன்னி',
+    ta: 'கன்னி ராசி',
+    mr: 'कन्या',
   },
   'zodiac.libra.name': {
     en: 'Libra',
@@ -601,13 +683,15 @@ const translations = {
     sa: 'तुला',
     bn: 'তুলা',
     ta: 'துலாம்',
+    mr: 'तूळ',
   },
   'zodiac.libra.sub': {
     en: 'Tula',
     hi: 'तुला',
     sa: 'तुला',
     bn: 'তুলা',
-    ta: 'Libra / துலாம்',
+    ta: 'துலா ராசி',
+    mr: 'तूळ',
   },
   'zodiac.scorpio.name': {
     en: 'Scorpio',
@@ -615,13 +699,15 @@ const translations = {
     sa: 'वृश्चिकः',
     bn: 'বৃশ্চিক',
     ta: 'விருச்சிகம்',
+    mr: 'वृश्चिक',
   },
   'zodiac.scorpio.sub': {
     en: 'Vrishchika',
     hi: 'वृश्चिक',
     sa: 'वृश्चिकः',
     bn: 'বৃশ্চিক',
-    ta: 'Scorpio / விருச்சிகம்',
+    ta: 'விருச்சிக ராசி',
+    mr: 'वृश्चिक',
   },
   'zodiac.sagittarius.name': {
     en: 'Sagittarius',
@@ -629,13 +715,15 @@ const translations = {
     sa: 'धनुः',
     bn: 'ধনু',
     ta: 'தனுசு',
+    mr: 'धनु',
   },
   'zodiac.sagittarius.sub': {
     en: 'Dhanu',
     hi: 'धनु',
     sa: 'धनुः',
     bn: 'ধনু',
-    ta: 'Sagittarius / தனுசு',
+    ta: 'தனுசு ராசி',
+    mr: 'धनु',
   },
   'zodiac.capricorn.name': {
     en: 'Capricorn',
@@ -643,13 +731,15 @@ const translations = {
     sa: 'मकरः',
     bn: 'মকর',
     ta: 'மகரம்',
+    mr: 'मकर',
   },
   'zodiac.capricorn.sub': {
     en: 'Makara',
     hi: 'मकर',
     sa: 'मकरः',
     bn: 'মকর',
-    ta: 'Capricorn / மகரம்',
+    ta: 'மகர ராசி',
+    mr: 'मकर',
   },
   'zodiac.aquarius.name': {
     en: 'Aquarius',
@@ -657,13 +747,15 @@ const translations = {
     sa: 'कुम्भः',
     bn: 'কুম্ভ',
     ta: 'கும்பம்',
+    mr: 'कुंभ',
   },
   'zodiac.aquarius.sub': {
     en: 'Kumbha',
     hi: 'कुम्भ',
     sa: 'कुम्भः',
     bn: 'কুম্ভ',
-    ta: 'Aquarius / கும்பம்',
+    ta: 'கும்ப ராசி',
+    mr: 'कुंभ',
   },
   'zodiac.pisces.name': {
     en: 'Pisces',
@@ -671,13 +763,15 @@ const translations = {
     sa: 'मीनः',
     bn: 'মীন',
     ta: 'மீனம்',
+    mr: 'मीन',
   },
   'zodiac.pisces.sub': {
     en: 'Meena',
     hi: 'मीन',
     sa: 'मीनः',
     bn: 'মীন',
-    ta: 'Pisces / மீனம்',
+    ta: 'மீன ராசி',
+    mr: 'मीन',
   },
   // Ruler planet names
   'ruler.sun': {
@@ -686,6 +780,7 @@ const translations = {
     sa: 'सूर्यः',
     bn: 'সূর্য',
     ta: 'சூரியன்',
+    mr: 'सूर्य',
   },
   'ruler.moon': {
     en: 'Moon',
@@ -693,6 +788,7 @@ const translations = {
     sa: 'चन्द्रः',
     bn: 'চন্দ্র',
     ta: 'சந்திரன்',
+    mr: 'चंद्र',
   },
   'ruler.mars': {
     en: 'Mars',
@@ -700,6 +796,7 @@ const translations = {
     sa: 'मंगलः',
     bn: 'মঙ্গল',
     ta: 'செவ்வாய்',
+    mr: 'मंगळ',
   },
   'ruler.mercury': {
     en: 'Mercury',
@@ -707,6 +804,7 @@ const translations = {
     sa: 'बुधः',
     bn: 'বুধ',
     ta: 'புதன்',
+    mr: 'बुध',
   },
   'ruler.jupiter': {
     en: 'Jupiter',
@@ -714,6 +812,7 @@ const translations = {
     sa: 'गुरुः',
     bn: 'গুরু',
     ta: 'குரு',
+    mr: 'गुरू',
   },
   'ruler.venus': {
     en: 'Venus',
@@ -721,6 +820,7 @@ const translations = {
     sa: 'शुक्रः',
     bn: 'শুক্র',
     ta: 'சுக்கிரன்',
+    mr: 'शुक्र',
   },
   'ruler.saturn': {
     en: 'Saturn',
@@ -728,6 +828,7 @@ const translations = {
     sa: 'शनिः',
     bn: 'শনি',
     ta: 'சனி',
+    mr: 'शनी',
   },
   // Zodiac element labels
   'zodiac.element.fire': {
@@ -736,6 +837,7 @@ const translations = {
     sa: 'अग्निः',
     bn: 'অগ্নি',
     ta: 'நெருப்பு (அக்னி)',
+    mr: 'अग्नी',
   },
   'zodiac.element.earth': {
     en: 'Earth',
@@ -743,6 +845,7 @@ const translations = {
     sa: 'पृथिवी',
     bn: 'পৃথিবী',
     ta: 'பூமி (பிருத்வி)',
+    mr: 'पृथ्वी',
   },
   'zodiac.element.air': {
     en: 'Air',
@@ -750,6 +853,7 @@ const translations = {
     sa: 'वायुः',
     bn: 'বায়ু',
     ta: 'காற்று (வாயு)',
+    mr: 'वायू',
   },
   'zodiac.element.water': {
     en: 'Water',
@@ -757,6 +861,7 @@ const translations = {
     sa: 'जलम्',
     bn: 'জল',
     ta: 'நீர் (ஜலம்)',
+    mr: 'जल',
   },
 
   // Zodiac sign descriptions
@@ -766,6 +871,7 @@ const translations = {
     sa: 'अग्न्यात्मा — साहसी, आदिमः, कर्मणा आध्यात्मिकरूपेण जागृतश्च।',
     bn: 'অগ্নির আত্মা — সাহসী, আদিম এবং কর্মের মাধ্যমে আধ্যাত্মিকভাবে জাগ্রত।',
     ta: 'நெருப்பின் ஆன்மா — தைரியமான, சுறுசுறுப்பான மற்றும் செயல் மூலம் விழிப்படையக்கூடிய ஆற்றல்.',
+    mr: 'अग्नी तत्त्वाचा आत्मा — धाडसी, आक्रमक आणि कृतीतून आध्यात्मिकरित्या जागृत होणारा.',
   },
   'zodiac.taurus.desc': {
     en: 'Rooted in the material and the divine — patient, sensual, and enduring.',
@@ -773,6 +879,7 @@ const translations = {
     sa: 'भौतिके दिव्ये च निहितः — धैर्यवान्, संवेदनशीलः, स्थायी च।',
     bn: 'ভৌতিক ও দিব্যে নিহিত — ধৈর্যশীল, সংবেদনশীল এবং স্থায়ী।',
     ta: 'நிலையான ஆற்றல் — பொறுமை, விசுவாசம் மற்றும் நீடித்த உழைப்பால் வெற்றி காணும் குணம்.',
+    mr: 'भौतिक आणि दिव्यात रुजलेला — संयमी, सौंदर्यप्रेमी आणि दीर्घकाळ टिकणारा.',
   },
   'zodiac.gemini.desc': {
     en: 'The twin flame of intellect — curious, communicative, eternally seeking.',
@@ -780,6 +887,7 @@ const translations = {
     sa: 'बुद्धेः युगलज्वाला — जिज्ञासुः, संप्रेषणशीलः, सदा अन्वेषकः।',
     bn: 'বুদ্ধির যমজ শিখা — কৌতূহলী, যোগাযোগমুখর, চিরকাল অন্বেষণকারী।',
     ta: 'அறிவின் ஒளி — சுறுசுறுப்பான பேச்சு, கற்றல் ஆர்வம் மற்றும் புதிய சிந்தனைகள்.',
+    mr: 'बुद्धिमत्तेची दुहेरी ज्योत — जिज्ञासू, संवादकुशल, सदैव शोधणारा.',
   },
   'zodiac.cancer.desc': {
     en: 'Lunar wisdom keeper — nurturing, deeply intuitive, emotionally vast.',
@@ -787,6 +895,7 @@ const translations = {
     sa: 'चन्द्रज्ञानरक्षकः — पोषकः, गहनप्रज्ञः, भावनात्मकरूपेण विस्तीर्णः।',
     bn: 'চন্দ্র জ্ঞানের রক্ষক — পোষণকারী, গভীর অন্তর্জ্ঞানসম্পন্ন, আবেগীয়ভাবে বিশাল।',
     ta: 'சந்திரனின் அருள் — ஆழமான உள்ளுணர்வு, பாசம் மற்றும் குடும்பத்தை அரவணைக்கும் குணம்.',
+    mr: 'चंद्राच्या ज्ञानाचा संरक्षक — संवेदनक्षम, अंतर्ज्ञानी आणि अपार भावनिक.',
   },
   'zodiac.leo.desc': {
     en: 'The sovereign soul — radiant, authoritative, born of solar divine light.',
@@ -794,6 +903,7 @@ const translations = {
     sa: 'सम्राट् आत्मा — तेजस्वी, अधिकारयुक्तः, सौरदिव्यप्रकाशजातः।',
     bn: 'সম্রাট আত্মা — তেজস্বী, কর্তৃত্বসম্পন্ন, সৌর দিব্য আলোয় জন্মিত।',
     ta: 'சூரியனின் கம்பீரம் — தலைமைப் பண்பு, தாராள குணம் மற்றும் ராஜ நடை.',
+    mr: 'राजेशाही आत्मा — तेजस्वी, प्रभावशाली, सौर दिव्य प्रकाशातून निर्माण झालेला.',
   },
   'zodiac.virgo.desc': {
     en: 'Sacred perfectionist — analytical, devotional, and spiritually discerning.',
@@ -801,6 +911,7 @@ const translations = {
     sa: 'पवित्रपूर्णतावादी — विश्लेषणात्मकः, भक्तिमान्, आध्यात्मिकविवेकशीलश्च।',
     bn: 'পবিত্র পরিপূর্ণতাবাদী — বিশ্লেষণাত্মক, ভক্তিপূর্ণ এবং আধ্যাত্মিকভাবে বিচক্ষণ।',
     ta: 'நுணுக்கமான பார்வை — பகுத்தறிவு, சேவை மனப்பான்மை மற்றும் நேர்த்தியான உழைப்பு.',
+    mr: 'पवित्र परिपूर्णतावादी — विश्लेषक, समर्पित आणि आध्यात्मिक विवेक असलेला.',
   },
   'zodiac.libra.desc': {
     en: 'Cosmic scales of justice — harmonious, relational, and dharma-aligned.',
@@ -808,6 +919,7 @@ const translations = {
     sa: 'न्यायस्य ब्रह्माण्डीयतुलाः — समरसः, सम्बन्धात्मकः, धर्मसंरेखितश्च।',
     bn: 'ন্যায়ের মহাজাগতিক তুলা — সামঞ্জস্যপূর্ণ, সম্পর্কমুখী এবং ধর্ম-সংরেখিত।',
     ta: 'தர்மத்தின் துலாக்கோல் — நியாயம், நேர்மை, சமநிலை மற்றும் கலை நயம்.',
+    mr: 'न्यायाचा वैश्विक तराजू — सुसंवादी, समतोल आणि धर्माशी एकरूप.',
   },
   'zodiac.scorpio.desc': {
     en: 'The great transformer — mystical, intense, seeker of hidden truths.',
@@ -815,20 +927,23 @@ const translations = {
     sa: 'महारूपान्तरकः — रहस्यमयः, तीव्रः, गूढसत्यानामन्वेषकश्च।',
     bn: 'মহান রূপান্তরক — রহস্যময়, তীব্র, গুপ্ত সত্যের অন্বেষক।',
     ta: 'மர்மங்களின் ஆய்வாளர் — அசைக்க முடியாத மன உறுதி, விடாமுயற்சி மற்றும் ஆழ்ந்த சிந்தனை.',
+    mr: 'महान परिवर्तक — गूढ, तीव्र, लपलेल्या सत्यांचा शोध घेणारा.',
   },
   'zodiac.sagittarius.desc': {
     en: 'The cosmic archer — philosophical, expansive, following the path of dharma.',
     hi: 'ब्रह्मांडीय धनुर्धारी — दार्शनिक, विस्तृत, धर्म मार्ग का अनुसरण करने वाला।',
     sa: 'ब्रह्माण्डीयधनुर्धरः — दार्शनिकः, विस्तृतः, धर्ममार्गानुसारी।',
-    bn: 'মহাজাগতিক ধনুর্ধর — দার্শনিক, विस्तृत, ধর্মপথের অনুসরণকারী।',
+    bn: 'মহাজাগতিক ধনুর্ধর — দার্শনিক, বিস্তৃত, ধর্মপথের অনুসরণকারী।',
     ta: 'ஞானத்தின் வில்லாளி — தத்துவ சிந்தனை, ஆன்மீக நாட்டம் மற்றும் நேர்மையான வழிகாட்டல்.',
+    mr: 'वैश्विक धनुर्धर — तत्त्वज्ञानी, विशाल दृष्टीकोन असलेला, धर्ममार्गाचा प्रवासी.',
   },
   'zodiac.capricorn.desc': {
     en: 'The mountain climber of destiny — disciplined, structured, karmically resolved.',
     hi: 'भाग्य का पर्वतारोही — अनुशासित, संरचित, कर्मिक रूप से दृढ़।',
     sa: 'भवितव्यस्य पर्वतारोही — अनुशासितः, सुसंरचितः, कर्मकृतनिश्चयश्च।',
-    bn: 'ভাগ্যের পর্বতারোহী — শৃঙ্খলাবদ্ধ, কাঠামোবদ্ধ, কর্মিকভাবে দৃঢ়।',
+    bn: 'ভাগ্যের পর্বতারোহী — শৃঙ্খলাবদ্ধ, কাঠামোবদ্ধ, কর্মিকভাবে दृढ़।',
     ta: 'உழைப்பின் சிகரம் — கடமையுணர்வு, பொறுமை, விடாமுயற்சி மற்றும் தலைமை தகுதி.',
+    mr: 'भाग्याचा गिर्यारोहक — शिस्तबद्ध, संयमित आणि कर्मात दृढनिश्चयी.',
   },
   'zodiac.aquarius.desc': {
     en: 'The divine visionary — humanitarian, innovative, futuristic and free.',
@@ -836,6 +951,7 @@ const translations = {
     sa: 'दिव्यदूरदर्शी — मानवहितैषी, नवप्रवर्तनशीलः, भविष्योन्मुखः स्वतन्त्रश्च।',
     bn: 'দিব্য দূরদর্শী — মানবতাবাদী, উদ্ভাবনী, ভবিষ্যৎমুখী এবং স্বাধীন।',
     ta: 'எதிர்கால சிந்தனையாளர் — புதுமை விரும்பி, மனிதநேயம் மற்றும் சுதந்திர உணர்வு.',
+    mr: 'दिव्य दूरदृष्टी — मानवतावादी, नाविन्यपूर्ण, भविष्यवादी आणि स्वतंत्र.',
   },
   'zodiac.pisces.desc': {
     en: 'The ocean of moksha — spiritually dissolving, compassionate, transcendent.',
@@ -843,6 +959,7 @@ const translations = {
     sa: 'मोक्षसागरः — आध्यात्मिकरूपेण विलयनशीलः, करुणामयः, अतिक्रामकश्च।',
     bn: 'মোক্ষের সাগর — আধ্যাত্মিকভাবে বিলীন, করুণাময়, অতিক্রামক।',
     ta: 'மோட்சத்தின் கடல் — எல்லையற்ற பக்தி, ஆன்மீக விடுதலை மற்றும் கருணை உள்ளம்.',
+    mr: 'मोक्षाचा महासागर — आध्यात्मिक एकात्मता, दयाळू, पलीकडच्या विश्वाशी जोडलेला.',
   },
 
   // ── FINAL CTA SECTION ────────────────────────────────────────
@@ -852,6 +969,7 @@ const translations = {
     sa: 'तव भवितव्यं प्रकाशनस्य प्रतीक्षते',
     bn: 'আপনার ভাগ্য প্রকাশের অপেক্ষায়',
     ta: 'உங்கள் வாழ்க்கை விதியை அறியுங்கள்',
+    mr: 'तुमचे भाग्य उलगडण्याची वाट पाहत आहे',
   },
   'cta.subtitle': {
     en: 'Enter the sacred coordinates of your birth to generate your comprehensive 33-page destiny analysis.',
@@ -859,6 +977,7 @@ const translations = {
     sa: 'तव व्यापकं 33 पृष्ठीयं भवितव्यविश्लेषणं जनयितुं जन्मस्य पवित्रनिर्देशाङ्कान् प्रविशतु।',
     bn: 'আপনার ব্যাপক ৩৩ পৃষ্ঠার ভাগ্য বিশ্লেষণ তৈরি করতে জন্মের পবিত্র স্থানাঙ্ক প্রবেশ করুন।',
     ta: 'உங்கள் பிறந்த நேரம் மற்றும் இடத்தை உள்ளிட்டு, உங்களுக்கான முழுமையான 33 பக்க வேத ஜோதிட அறிக்கையைப் பெறுங்கள்.',
+    mr: 'तुमचे सविस्तर ३३ पानी भाग्य विश्लेषण मिळवण्यासाठी तुमच्या जन्माचे अचूक तपशील नोंदवा.',
   },
   'cta.step1.title': {
     en: '01. Birth Coordinates',
@@ -866,6 +985,7 @@ const translations = {
     sa: '01. जन्मनिर्देशाङ्काः',
     bn: '০১. জন্ম স্থানাঙ্ক',
     ta: '01. பிறந்த நேரக் கணிப்பு',
+    mr: '०१. जन्माचे तपशील',
   },
   'cta.step1.desc': {
     en: 'We map the precise geo-coordinates and time of birth to freeze the celestial skies as they were at the exact moment of your birth.',
@@ -873,6 +993,7 @@ const translations = {
     sa: 'वयं सटीकान् भूनिर्देशाङ्कान् जन्मसमयं च मापयामः यथा नभः तव जन्मक्षणे यथावत् स्थाप्येत।',
     bn: 'আমরা সঠিক ভূ-স্থানাঙ্ক এবং জন্মসময় নির্ধারণ করি যাতে আপনার জন্মের মুহূর্তে আকাশ যেমন ছিল তা স্থির করা যায়।',
     ta: 'நீங்கள் பிறந்த தருணத்தில் வான்வெளியில் கிரகங்கள் நின்ற துல்லியமான நிலைகளை கணித்து வரைபடமாக்குகிறோம்.',
+    mr: 'आम्ही अचूक भौगोलिक निर्देशांक आणि जन्मवेळ मोजून तुमच्या जन्माच्या क्षणी आकाश कसे होते त्याचे अचूक चित्र उभे करतो.',
   },
   'cta.step2.title': {
     en: '02. Planetary Dashas',
@@ -880,6 +1001,7 @@ const translations = {
     sa: '02. ग्रहीयदशाः',
     bn: '০২. গ্রহীয় দশা',
     ta: '02. தசா புக்தி சுழற்சி',
+    mr: '०२. ग्रहांच्या महादशा',
   },
   'cta.step2.desc': {
     en: 'Compute the Vimshottari Dasha cycles to map out the cosmic timelines governing your past, present, and future lifecycle periods.',
@@ -887,6 +1009,7 @@ const translations = {
     sa: 'तव भूतकाल-वर्तमानकाल-भविष्यकालीनजीवनकालान् शासितुं ब्रह्माण्डीयसमयरेखान् मापयितुं विंशोत्तरीदशाचक्राणि गणयतु।',
     bn: 'বিংশোত্তরী দশা চক্র গণনা করুন যা আপনার অতীত, वर्तमान এবং ভবিষ্যৎ জীবনকাল পরিচালনাকারী মহাজাগতিক সময়রেখা মানচিত্র করে।',
     ta: 'விம்சோத்தரி தசா புக்தி சுழற்சியைக் கணக்கிட்டு, உங்கள் கடந்த காலம், நிகழ்காலம் மற்றும் எதிர்கால பலன்களை கணிக்கிறோம்.',
+    mr: 'तुमच्या भूत, वर्तमान आणि भविष्यातील जीवनचक्रांचे नियमन करणाऱ्या विंशोत्तरी दशा कालखंडांची अचूक गणना.',
   },
   'cta.step3.title': {
     en: '03. Sacred Remedies',
@@ -894,6 +1017,7 @@ const translations = {
     sa: '03. पवित्रोपायाः',
     bn: '০৩. পবিত্র প্রতিকার',
     ta: '03. சாஸ்திர பரிகாரங்கள்',
+    mr: '०३. पवित्र उपाय',
   },
   'cta.step3.desc': {
     en: 'Receive customized planetary remedies — sacred gemstones, Vedic mantras, and ritual practices to align your karmic flow.',
@@ -901,6 +1025,7 @@ const translations = {
     sa: 'अनुकूलानि ग्रहोपायानि प्राप्नुतु — पवित्राणि रत्नानि, वैदिकमन्त्राणि, अनुष्ठानाभ्यासाश्च तव कर्मप्रवाहं संरेखयितुम्।',
     bn: 'কাস্টমাইজড গ্রহীয় প্রতিকার পান — পবিত্র রত্নপাথর, বৈদিক মন্ত্র এবং আচার অনুশীলন আপনার কর্মপ্রবাহ সংরেখিত করতে।',
     ta: 'கிரக தோஷ நிவர்த்திக்கான ரத்தினங்கள், மூல மந்திரங்கள் மற்றும் எளிய வழிபாட்டு முறைகள்.',
+    mr: 'तुमच्या कर्माचा प्रवाह संतुलित करण्यासाठी विशेष ग्रह उपाय — पवित्र रत्ने, वैदिक मंत्र आणि पूजा विधी मिळवा.',
   },
   'cta.button': {
     en: 'Reveal Your Destiny ✦',
@@ -908,6 +1033,7 @@ const translations = {
     sa: 'तव भवितव्यं प्रकाशयतु ✦',
     bn: 'আপনার ভাগ্য প্রকাশ করুন ✦',
     ta: 'உங்கள் ஜாதகத்தைப் பெறுங்கள் ✦',
+    mr: 'तुमचे भाग्य जाणून घ्या ✦',
   },
   'cta.note': {
     en: 'No account required • Free instant access',
@@ -915,6 +1041,7 @@ const translations = {
     sa: 'खातं नापेक्षितम् • निःशुल्कं तत्कालं प्राप्यम्',
     bn: 'কোনো অ্যাকাউন্ট প্রয়োজন নেই • বিনামূল্যে তাৎক্ষণিক অ্যাক্সেস',
     ta: 'கணக்கு தேவையில்லை • உடனடியாகப் பெறலாம்',
+    mr: 'खाते उघडण्याची गरज नाही • त्वरित मोफत प्रवेश',
   },
 
   // ── BIRTH FORM ───────────────────────────────────────────────
@@ -924,6 +1051,7 @@ const translations = {
     sa: 'जन्मविवरणप्रोफ़ाइलम्',
     bn: 'জন্ম বিবরণ প্রোফাইল',
     ta: 'உங்கள் ஜாதகத்தை கணிக்கவும்',
+    mr: 'जन्म तपशील प्रोफाइल',
   },
   'form.subtitle': {
     en: '✦ Astrological Computation Engine ✦',
@@ -931,6 +1059,7 @@ const translations = {
     sa: '✦ ज्योतिषगणनायन्त्रम् ✦',
     bn: '✦ জ্যোতিষ গণনা ইঞ্জিন ✦',
     ta: '✦ வேத ஜோதிட கணிப்பு தளம் ✦',
+    mr: '✦ ज्योतिषीय गणना प्रणाली ✦',
   },
   'form.name.label': {
     en: 'Full Name',
@@ -938,6 +1067,7 @@ const translations = {
     sa: 'पूर्णनाम',
     bn: 'পূর্ণ নাম',
     ta: 'முழுப் பெயர்',
+    mr: 'पूर्ण नाव',
   },
   'form.name.placeholder': {
     en: 'Enter your full name',
@@ -945,6 +1075,7 @@ const translations = {
     sa: 'तव पूर्णनाम प्रविशतु',
     bn: 'আপনার পূর্ণ নাম লিখুন',
     ta: 'உங்கள் பெயரை உள்ளிடவும்',
+    mr: 'तुमचे पूर्ण नाव लिहा',
   },
   'form.email.label': {
     en: 'Email Address',
@@ -952,6 +1083,7 @@ const translations = {
     sa: 'विद्युत्संदेशपत्रम्',
     bn: 'ইমেইল ঠিকানা',
     ta: 'மின்னஞ்சல் முகவரி',
+    mr: 'ईमेल पत्ता',
   },
   'form.email.placeholder': {
     en: 'Enter your email',
@@ -959,6 +1091,7 @@ const translations = {
     sa: 'तव ईमेल प्रविशतु',
     bn: 'আপনার ইমেইল লিখুন',
     ta: 'உங்கள் மின்னஞ்சலை உள்ளிடவும்',
+    mr: 'तुमचा ईमेल लिहा',
   },
   'form.phone.label': {
     en: 'Phone (Optional)',
@@ -966,6 +1099,7 @@ const translations = {
     sa: 'दूरभाषः (ऐच्छिकम्)',
     bn: 'ফোন (ঐচ্ছিক)',
     ta: 'தொலைபேசி எண் (விருப்பம்)',
+    mr: 'फोन (ऐच्छिक)',
   },
   'form.phone.placeholder': {
     en: '+91 XXXXX XXXXX',
@@ -973,6 +1107,7 @@ const translations = {
     sa: '+91 XXXXX XXXXX',
     bn: '+91 XXXXX XXXXX',
     ta: '+91 XXXXX XXXXX',
+    mr: '+91 XXXXX XXXXX',
   },
   'form.gender.label': {
     en: 'Gender',
@@ -980,6 +1115,7 @@ const translations = {
     sa: 'लिङ्गम्',
     bn: 'লিঙ্গ',
     ta: 'பாலினம்',
+    mr: 'लिंग',
   },
   'form.gender.male': {
     en: 'Male',
@@ -987,6 +1123,7 @@ const translations = {
     sa: 'पुरुषः',
     bn: 'পুরুষ',
     ta: 'ஆண்',
+    mr: 'पुरुष',
   },
   'form.gender.female': {
     en: 'Female',
@@ -994,6 +1131,7 @@ const translations = {
     sa: 'स्त्री',
     bn: 'মহিলা',
     ta: 'பெண்',
+    mr: 'स्त्री',
   },
   'form.gender.other': {
     en: 'Other',
@@ -1001,6 +1139,7 @@ const translations = {
     sa: 'अन्यत्',
     bn: 'অন্যান্য',
     ta: 'மற்றவை',
+    mr: 'इतर',
   },
   'form.reportLanguage': {
     en: 'Report Language',
@@ -1008,6 +1147,7 @@ const translations = {
     sa: 'प्रतिवेदनस्य भाषा',
     bn: 'রিপোর্টের ভাষা',
     ta: 'அறிக்கையின் மொழி',
+    mr: 'अहवालाची भाषा',
   },
   'form.dob.label': {
     en: 'Date of Birth',
@@ -1015,6 +1155,7 @@ const translations = {
     sa: 'जन्मतिथिः',
     bn: 'জন্ম তারিখ',
     ta: 'பிறந்த தேதி',
+    mr: 'जन्मतारीख',
   },
   'form.dob.day': {
     en: 'Day (DD)',
@@ -1022,6 +1163,7 @@ const translations = {
     sa: 'दिनम् (DD)',
     bn: 'দিন (DD)',
     ta: 'நாள் (DD)',
+    mr: 'दिवस (DD)',
   },
   'form.dob.month': {
     en: 'Month (MM)',
@@ -1029,6 +1171,7 @@ const translations = {
     sa: 'मासः (MM)',
     bn: 'মাস (MM)',
     ta: 'மாதம் (MM)',
+    mr: 'महिना (MM)',
   },
   'form.dob.year': {
     en: 'Year (YYYY)',
@@ -1036,6 +1179,7 @@ const translations = {
     sa: 'वर्षम् (YYYY)',
     bn: 'বছর (YYYY)',
     ta: 'வருடம் (YYYY)',
+    mr: 'वर्ष (YYYY)',
   },
   'form.dob.hint': {
     en: 'Used for Vimshottari Mahadasha cycles',
@@ -1043,6 +1187,7 @@ const translations = {
     sa: 'विंशोत्तरीमहादशाचक्रेभ्यः उपयुक्तम्',
     bn: 'বিংশোত্তরী মহাদশা চক্রের জন্য ব্যবহৃত',
     ta: 'விம்சோத்தரி மகா தசா சுழற்சிக்கு பயன்படுகிறது',
+    mr: 'विंशोत्तरी महादशा चक्रांच्या गणनेसाठी आवश्यक',
   },
   'form.tob.label': {
     en: 'Time of Birth',
@@ -1050,6 +1195,7 @@ const translations = {
     sa: 'जन्मकालः',
     bn: 'জন্ম সময়',
     ta: 'பிறந்த நேரம்',
+    mr: 'जन्म वेळ',
   },
   'form.tob.hint': {
     en: 'Determines exact Lagna & Moon Nakshatra',
@@ -1057,6 +1203,7 @@ const translations = {
     sa: 'सटीकं लग्नं चन्द्रनक्षत्रं च निर्धारयति',
     bn: 'সঠিক লগ্ন ও চন্দ্র নক্ষত্র নির্ধারণ করে',
     ta: 'துல்லியமான லக்னம் & சந்திர நட்சத்திரத்தை அறிய',
+    mr: 'अचूक लग्न आणि चंद्र नक्षत्र ठरवते',
   },
   'form.birthplace.label': {
     en: 'Birth Place',
@@ -1064,6 +1211,7 @@ const translations = {
     sa: 'जन्मस्थानम्',
     bn: 'জন্মস্থান',
     ta: 'பிறந்த இடம்',
+    mr: 'जन्म ठिकाण',
   },
   'form.birthplace.hint': {
     en: 'Used to calculate exact coordinates',
@@ -1071,6 +1219,7 @@ const translations = {
     sa: 'सटीकनिर्देशाङ्कगणनाय उपयुक्तम्',
     bn: 'সঠিক স্থানাঙ্ক গণনার জন্য ব্যবহৃত',
     ta: 'அட்சரேகை மற்றும் தீர்க்கரேகை கணக்கீட்டிற்கு',
+    mr: 'अचूक भौगोलिक निर्देशांकांच्या गणनेसाठी',
   },
   'form.birthplace.placeholder': {
     en: 'City, State — e.g. Chennai, Tamil Nadu',
@@ -1078,6 +1227,7 @@ const translations = {
     sa: 'नगरं, राज्यम् — यथा कोलकाता, पश्चिमबंगालम्',
     bn: 'শহর, রাজ্য — যেমন কলকাতা, পশ্চিমবঙ্গ',
     ta: 'நகரம், மாநிலம் — எ.கா: சென்னை, தமிழ்நாடு',
+    mr: 'शहर, राज्य — उदा. पुणे, महाराष्ट्र',
   },
   'form.submit.loading': {
     en: 'ALIGNING WITH THE HEAVENS...',
@@ -1085,6 +1235,7 @@ const translations = {
     sa: 'नभसा संरेखयामः...',
     bn: 'আকাশের সাথে সংযুক্ত হচ্ছে...',
     ta: 'கிரக நிலைகள் கணக்கிடப்படுகின்றன...',
+    mr: 'ग्रहांचे संरेखण होत आहे...',
   },
   'form.submit.cta': {
     en: 'REVEAL MY DESTINY',
@@ -1092,6 +1243,7 @@ const translations = {
     sa: 'मम भवितव्यं प्रकाशयतु',
     bn: 'আমার ভাগ্য প্রকাশ করুন',
     ta: 'ஜாதகத்தை கணிக்கவும்',
+    mr: 'माझे भविष्य उलगडा',
   },
   'form.ssl': {
     en: '🔒 Secured SSL Connection • Lahiri Ayanamsha Compliant • ISO Certified Wisdom',
@@ -1099,6 +1251,7 @@ const translations = {
     sa: '🔒 सुरक्षितं SSL संयोजनम् • लाहिड़ीअयनांशानुपालनम् • ISO प्रमाणितं ज्ञानम्',
     bn: '🔒 সুরক্ষিত SSL সংযোগ • লাহিড়ী অয়নাংশ অনুগামী • ISO প্রত্যয়িত জ্ঞান',
     ta: '🔒 பாதுகாப்பான SSL இணைப்பு • லஹிரி அயனாம்சம் • சான்றளிக்கப்பட்ட வேத கணிப்பு',
+    mr: '🔒 सुरक्षित SSL कनेक्शन • लाहिरी अयनांश प्रमाणित • ISO प्रमाणित ज्ञान',
   },
   'form.alert.selectDob': {
     en: 'Please select your date of birth.',
@@ -1106,6 +1259,7 @@ const translations = {
     sa: 'कृपया जन्मतिथिं चिनोतु।',
     bn: 'অনুগ্রহ করে জন্ম তারিখ নির্বাচন করুন।',
     ta: 'தயவுசெய்து பிறந்த தேதியைத் தேர்ந்தெடுக்கவும்.',
+    mr: 'कृपया तुमची जन्मतारीख निवडा.',
   },
   'form.alert.invalidDob': {
     en: 'Please select a valid date of birth.',
@@ -1113,21 +1267,46 @@ const translations = {
     sa: 'कृपया मान्यां जन्मतिथिं चिनोतु।',
     bn: 'অনুগ্রহ করে একটি বৈধ জন্ম তারিখ নির্বাচন করুন।',
     ta: 'தயவுசெய்து சரியான பிறந்த தேதியைத் தேர்ந்தெடுக்கவும்.',
+    mr: 'कृपया योग्य जन्मतारीख निवडा.',
   },
 
   // Month names
-  'month.01': { en: 'January', hi: 'जनवरी', sa: 'पौष-माघ', bn: 'জানুয়ারি', ta: 'ஜனவரி (January)' },
-  'month.02': { en: 'February', hi: 'फ़रवरी', sa: 'माघ-फाल्गुन', bn: 'ফেব্রুয়ারি', ta: 'பிப்ரவரி (February)' },
-  'month.03': { en: 'March', hi: 'मार्च', sa: 'फाल्गुन-चैत्र', bn: 'মার্চ', ta: 'மார்ச் (March)' },
-  'month.04': { en: 'April', hi: 'अप्रैल', sa: 'चैत्र-वैशाख', bn: 'এপ্রিল', ta: 'ஏப்ரல் (April)' },
-  'month.05': { en: 'May', hi: 'मई', sa: 'वैशाख-ज्येष्ठ', bn: 'মে', ta: 'மே (May)' },
-  'month.06': { en: 'June', hi: 'जून', sa: 'ज्येष्ठ-आषाढ़', bn: 'জুন', ta: 'ஜூன் (June)' },
-  'month.07': { en: 'July', hi: 'जुलाई', sa: 'आषाढ़-श्रावण', bn: 'জুলাই', ta: 'ஜூலை (July)' },
-  'month.08': { en: 'August', hi: 'अगस्त', sa: 'श्रावण-भाद्रपद', bn: 'আগস্ট', ta: 'ஆகஸ்ட் (August)' },
-  'month.09': { en: 'September', hi: 'सितंबर', sa: 'भाद्रपद-आश्विन', bn: 'সেপ্টেম্বর', ta: 'செப்டம்பர் (September)' },
-  'month.10': { en: 'October', hi: 'अक्टूबर', sa: 'आश्विन-कार्तिक', bn: 'অক্টোবর', ta: 'அக்டோபர் (October)' },
-  'month.11': { en: 'November', hi: 'नवंबर', sa: 'कार्तिक-मार्गशीर्ष', bn: 'নভেম্বর', ta: 'நவம்பர் (November)' },
-  'month.12': { en: 'December', hi: 'दिसंबर', sa: 'मार्गशीर्ष-पौष', bn: 'ডিসেম্বর', ta: 'டிசம்பர் (December)' },
+  'month.01': { en: 'January', hi: 'जनवरी', sa: 'पौष-माघ', bn: 'জানুয়ারি', ta: 'ஜனவரி (January)',
+    mr: 'जानेवारी',
+  },
+  'month.02': { en: 'February', hi: 'फ़रवरी', sa: 'माघ-फाल्गुन', bn: 'ফেব্রুয়ারি', ta: 'பிப்ரவரி (February)',
+    mr: 'फेब्रुवारी',
+  },
+  'month.03': { en: 'March', hi: 'मार्च', sa: 'फाल्गुन-चैत्र', bn: 'মার্চ', ta: 'மார்ச் (March)',
+    mr: 'मार्च',
+  },
+  'month.04': { en: 'April', hi: 'अप्रैल', sa: 'चैत्र-वैशाख', bn: 'এপ্রিল', ta: 'ஏப்ரல் (April)',
+    mr: 'एप्रिल',
+  },
+  'month.05': { en: 'May', hi: 'मई', sa: 'वैशाख-ज्येष्ठ', bn: 'মে', ta: 'மே (May)',
+    mr: 'मे',
+  },
+  'month.06': { en: 'June', hi: 'जून', sa: 'ज्येष्ठ-आषाढ़', bn: 'জুন', ta: 'ஜூன் (June)',
+    mr: 'जून',
+  },
+  'month.07': { en: 'July', hi: 'जुलाई', sa: 'आषाढ़-श्रावण', bn: 'জুলাই', ta: 'ஜூலை (July)',
+    mr: 'जुलै',
+  },
+  'month.08': { en: 'August', hi: 'अगस्त', sa: 'श्रावण-भाद्रपद', bn: 'আগস্ট', ta: 'ஆகஸ்ட் (August)',
+    mr: 'ऑगस्ट',
+  },
+  'month.09': { en: 'September', hi: 'सितंबर', sa: 'भाद्रपद-आश्विन', bn: 'সেপ্টেম্বর', ta: 'செப்டம்பர் (September)',
+    mr: 'सप्टेंबर',
+  },
+  'month.10': { en: 'October', hi: 'अक्टूबर', sa: 'आश्विन-कार्तिक', bn: 'অক্টোবর', ta: 'அக்டோபர் (October)',
+    mr: 'ऑक्टोबर',
+  },
+  'month.11': { en: 'November', hi: 'नवंबर', sa: 'कार्तिक-मार्गशीर्ष', bn: 'নভেম্বর', ta: 'நவம்பர் (November)',
+    mr: 'नोव्हेंबर',
+  },
+  'month.12': { en: 'December', hi: 'दिसंबर', sa: 'मार्गशीर्ष-पौष', bn: 'ডিসেম্বর', ta: 'டிசம்பர் (December)',
+    mr: 'डिसेंबर',
+  },
 
   // ── GENERATE REPORT PAGE ─────────────────────────────────────
   'generate.title': {
@@ -1136,6 +1315,7 @@ const translations = {
     sa: 'तव पवित्रां जन्मपत्रिकां प्रकाशयतु',
     bn: 'আপনার পবিত্র কুণ্ডলী প্রকাশ করুন',
     ta: 'உங்கள் புனித ஜாதகத்தைக் காணுங்கள்',
+    mr: 'तुमची पवित्र कुंडली पहा',
   },
   'generate.subtitle': {
     en: 'Please share your birth details below to align with your cosmic path.',
@@ -1143,6 +1323,7 @@ const translations = {
     sa: 'तव ब्रह्माण्डीयमार्गेण संरेखयितुं नीचे तव जन्मविवरणं वितरतु।',
     bn: 'আপনার মহাজাগতিক পথের সাথে সংযুক্ত হতে নিচে আপনার জন্ম বিবরণ শেয়ার করুন।',
     ta: 'உங்கள் பிரபஞ்ச பாதையை அறிய கீழே உங்கள் பிறப்பு விவரங்களை உள்ளிடவும்.',
+    mr: 'तुमच्या वैश्विक मार्गाशी जोडण्यासाठी खालील जन्म तपशील भरा.',
   },
   'generate.error': {
     en: 'Error:',
@@ -1150,6 +1331,7 @@ const translations = {
     sa: 'दोषः:',
     bn: 'ত্রুটি:',
     ta: 'பிழை:',
+    mr: 'त्रुटी:',
   },
 
   // ── SPACE ASTROLOGY CONNECTOR ────────────────────────────────
@@ -1159,6 +1341,7 @@ const translations = {
     sa: '✦ गतिशीलं भूकेन्द्रीयं सौरमण्डलम् ✦',
     bn: '✦ গতিশীল ভূকেন্দ্রীক সৌরজগৎ ✦',
     ta: '✦ பிரபஞ்ச சூரிய குடும்ப சுழற்சி ✦',
+    mr: '✦ गतिमान भूकेंद्री सौरमाला ✦',
   },
   'space.title': {
     en: 'Celestial Orbits & Destiny',
@@ -1166,6 +1349,7 @@ const translations = {
     sa: 'नाक्षत्रिककक्षाः भवितव्यं च',
     bn: 'আকাশীয় কক্ষপথ ও ভাগ্য',
     ta: 'கிரக சுற்றுப்பாதைகளும் மனித விதியும்',
+    mr: 'खगोलीय कक्षा आणि भाग्य',
   },
   'space.subtitle': {
     en: 'Vedic astrology charts the skies from a geocentric coordinate frame. Click, drag, or play to watch planets orbit against background constellations.',
@@ -1173,6 +1357,7 @@ const translations = {
     sa: 'वैदिकज्योतिषं भूकेन्द्रीयनिर्देशाङ्कात् आकाशं मापयति। ग्रहान् नक्षत्राणां समक्षं भ्रमितुं क्लिक, ड्रैग वा प्ले करोतु।',
     bn: 'বৈদিক জ্যোতিষ ভূকেন্দ্রীক স্থানাঙ্ক থেকে আকাশ মানচিত্র করে। গ্রহদের নক্ষত্রের বিপরীতে কক্ষপথে দেখতে ক্লিক, ড্র্যাগ বা প্লে করুন।',
     ta: 'வேத ஜோதிடம் பூமியை மையமாகக் கொண்டு வானியல் நிலைகளைக் கணிக்கிறது. கிரகங்களின் இயக்கத்தைக் காண இயக்கிப் பார்க்கவும்.',
+    mr: 'वैदिक ज्योतिष भूकेंद्री समन्वयातून आकाशाचा वेध घेते. नक्षत्रांच्या पार्श्वभूमीवर ग्रहांची कक्षा पाहण्यासाठी क्लिक, ड्रॅग किंवा प्ले करा.',
   },
   'space.sim.title': {
     en: 'Simulation Live Stream',
@@ -1180,6 +1365,7 @@ const translations = {
     sa: 'अनुकरणं प्रत्यक्षप्रसारणम्',
     bn: 'সিমুলেশন লাইভ স্ট্রিম',
     ta: 'நேரலை கிரக சுழற்சி',
+    mr: 'थेट सिम्युलेशन',
   },
   'space.sim.live': {
     en: 'Live 1x',
@@ -1187,6 +1373,7 @@ const translations = {
     sa: 'प्रत्यक्षम् 1x',
     bn: 'লাইভ ১x',
     ta: 'நேரலை 1x',
+    mr: 'थेट 1x',
   },
   'space.retro.label': {
     en: 'Apparent Retrograde',
@@ -1194,6 +1381,7 @@ const translations = {
     sa: 'प्रत्यक्षवक्रगतिः',
     bn: 'আপাত বক্রী গতি',
     ta: 'வக்ர கதி (பின்னோக்கிய இயக்கம்)',
+    mr: 'वक्री गती',
   },
   'space.retro.hint': {
     en: 'Simulate geo-reversal loops (℞)',
@@ -1201,6 +1389,7 @@ const translations = {
     sa: 'भूउत्क्रमणलूपअनुकरणम् (℞)',
     bn: 'ভূ-বিপরীত লুপ অনুকরণ (℞)',
     ta: 'வக்ர சுழற்சியைக் காட்டுகிறது (℞)',
+    mr: 'वक्री भ्रमण लूप पहा (℞)',
   },
   'space.speed.label': {
     en: 'Simulation Speed',
@@ -1208,6 +1397,7 @@ const translations = {
     sa: 'अनुकरणगतिः',
     bn: 'সিমুলেশন গতি',
     ta: 'இயக்க வேகம்',
+    mr: 'सिम्युलेशन गती',
   },
   'space.speed.hint': {
     en: 'Adjust orbital speeds in real-time',
@@ -1215,6 +1405,7 @@ const translations = {
     sa: 'कक्षीयगतीः वास्तविककाले समायोजयतु',
     bn: 'কক্ষপথের গতি রিয়েল-টাইমে সামঞ্জস্য করুন',
     ta: 'சுற்றுப்பாதை வேகத்தை மாற்றியமைக்கலாம்',
+    mr: 'कक्षा गती त्वरित बदला',
   },
   'space.pause': {
     en: 'Pause',
@@ -1222,6 +1413,7 @@ const translations = {
     sa: 'विरामः',
     bn: 'বিরতি',
     ta: 'நிறுத்து',
+    mr: 'थांबवा',
   },
   'space.play': {
     en: 'Play',
@@ -1229,6 +1421,7 @@ const translations = {
     sa: 'चलयतु',
     bn: 'চালান',
     ta: 'இயக்கு',
+    mr: 'सुरू करा',
   },
   'space.focal': {
     en: 'Focal Planetary Focus:',
@@ -1236,6 +1429,7 @@ const translations = {
     sa: 'केन्द्रीयग्रहः:',
     bn: 'কেন্দ্রীয় গ্রহ:',
     ta: 'தேர்ந்தெடுக்கப்பட்ட கிரகம்:',
+    mr: 'निवडलेला ग्रह:',
   },
   'space.sanskrit.label': {
     en: 'Sanskrit:',
@@ -1243,6 +1437,7 @@ const translations = {
     sa: 'संस्कृतम्:',
     bn: 'সংস্কৃত:',
     ta: 'வேதப் பெயர்:',
+    mr: 'संस्कृत नाव:',
   },
   'space.vedic.ruler': {
     en: 'Vedic Rulership',
@@ -1250,6 +1445,7 @@ const translations = {
     sa: 'वैदिकस्वामित्वम्',
     bn: 'বৈদিক স্বামিত্ব',
     ta: 'ஆட்சி ராசி',
+    mr: 'वैदिक स्वामित्व',
   },
   'space.chart.radius': {
     en: 'Chart Radius',
@@ -1257,6 +1453,7 @@ const translations = {
     sa: 'चक्रत्रिज्या',
     bn: 'চার্ট ব্যাসার্ধ',
     ta: 'சுற்று ஆரம்',
+    mr: 'चार्ट त्रिज्या',
   },
   'space.orbit': {
     en: 'px Orbit',
@@ -1264,6 +1461,7 @@ const translations = {
     sa: 'px कक्षाः',
     bn: 'px কক্ষপথ',
     ta: 'px சுற்றுப்பாதை',
+    mr: 'px कक्षा',
   },
   'space.transit': {
     en: 'Active Transit Alignment',
@@ -1271,6 +1469,7 @@ const translations = {
     sa: 'सक्रियपारगमनसंरेखणम्',
     bn: 'সক্রিয় গোচর সংযোজন',
     ta: 'தற்போதைய கோசார நிலை',
+    mr: 'सक्रिय गोचर संरेखण',
   },
   'space.transiting': {
     en: 'Transiting',
@@ -1278,6 +1477,7 @@ const translations = {
     sa: 'पारगच्छन्',
     bn: 'গোচরগামী',
     ta: 'கோசாரம்',
+    mr: 'गोचर भ्रमण',
   },
   'space.retro.badge': {
     en: 'Retro',
@@ -1285,6 +1485,7 @@ const translations = {
     sa: 'वक्रः',
     bn: 'বক্রী',
     ta: 'வக்ரம்',
+    mr: 'वक्री',
   },
   'space.astro.physics': {
     en: '🔭 Astronomical Physics',
@@ -1292,6 +1493,7 @@ const translations = {
     sa: '🔭 खगोलभौतिकम्',
     bn: '🔭 জ্যোতির্বিজ্ঞান পদার্থবিদ্যা',
     ta: '🔭 வானியல் மற்றும் அறிவியல் பார்வை',
+    mr: '🔭 खगोल भौतिकी',
   },
   'space.astro.corr': {
     en: '☸ Astrological Correspondence',
@@ -1299,6 +1501,7 @@ const translations = {
     sa: '☸ ज्योतिषीयसम्बन्धः',
     bn: '☸ জ্যোতিষীয় সংযোগ',
     ta: '☸ ஜோதிட காரகத்துவங்கள்',
+    mr: '☸ ज्योतिषीय महत्त्व',
   },
   // Zodiac descriptions in SpaceAstrologyConnector
   'space.zodiac.aries.desc': {
@@ -1307,6 +1510,7 @@ const translations = {
     sa: 'कर्दिनलाग्निः — साहसं प्रज्वलयति अग्रणीभावनां च।',
     bn: 'কার্ডিনাল অগ্নি — সাহসী ক্রিয়া ও পথিকৃৎ মনোভাব প্রজ্বলিত করে।',
     ta: 'சர நெருப்பு — துணிச்சலான செயல், தலைமை வேகம் மற்றும் முன்னோடி முயற்சிகளைத் தூண்டுகிறது.',
+    mr: 'चर अग्नी — धाडसी कृती आणि पुढाकार घेण्याची वृत्ती जागृत करतो.',
   },
   'space.zodiac.taurus.desc': {
     en: 'Fixed earth — grounds energy in stable comfort, beauty, and patient growth.',
@@ -1314,6 +1518,7 @@ const translations = {
     sa: 'स्थिरापृथिवी — ऊर्जां स्थिरसुखे सौन्दर्ये च स्थापयति।',
     bn: 'স্থির পৃথিবী — শক্তিকে স্থিতিশীল আরাম, সৌন্দর্য এবং ধৈর্যশীল বৃদ্ধিতে স্থাপিত করে।',
     ta: 'ஸ்திர நிலம் — அமைதியான வளர்ச்சி, அழகு, பொறுமை மற்றும் பாதுகாப்பான வளம்.',
+    mr: 'स्थिर पृथ्वी — स्थिरता, सौंदर्य आणि संयमी विकासाचा पाया रचतो.',
   },
   'space.zodiac.gemini.desc': {
     en: 'Mutable air — fuels intellectual curiosity, adaptability, and lively communication.',
@@ -1321,6 +1526,7 @@ const translations = {
     sa: 'परिवर्तनशीलवायुः — बौद्धिकजिज्ञासां अनुकूलनशीलतां च पोषयति।',
     bn: 'পরিবর্তনশীল বায়ু — বৌদ্ধিক কৌতূহল, অভিযোজনযোগ্যতা এবং প্রাণবন্ত যোগাযোগ উৎসাহিত করে।',
     ta: 'உபய காற்று — அறிவு தாகம், எதையும் ஏற்கும் மனநிலை மற்றும் உற்சாகமான உரையாடல்.',
+    mr: 'द्विस्वभाव वायू — बौद्धिक जिज्ञासा, अनुकूलन आणि प्रभावी संवाद वाढवतो.',
   },
   'space.zodiac.cancer.desc': {
     en: 'Cardinal water — nurtures deep emotional security, intuition, and protective care.',
@@ -1328,6 +1534,7 @@ const translations = {
     sa: 'कर्दिनलजलम् — गहनभावनात्मकसुरक्षां अन्तर्ज्ञानं च पोषयति।',
     bn: 'কার্ডিনাল জল — গভীর আবেগীয় নিরাপত্তা, অন্তর্জ্ঞান এবং সুরক্ষামূলক যত্ন লালন করে।',
     ta: 'சர நீர் — ஆழ்ந்த பாசம், உள்ளுணர்வு மற்றும் குடும்ப நலனில் அக்கறை.',
+    mr: 'चर जल — भावनिक सुरक्षा, अंतर्ज्ञान आणि प्रेमाची काळजी घेतो.',
   },
   'space.zodiac.leo.desc': {
     en: 'Fixed fire — radiates sovereign self-expression, creative pride, and warmth.',
@@ -1335,6 +1542,7 @@ const translations = {
     sa: 'स्थिराग्निः — सर्वोच्चात्माभिव्यक्तिं रचनात्मकगर्वं च प्रकाशयति।',
     bn: 'স্থির অগ্নি — সর্বোচ্চ আত্মপ্রকাশ, সৃজনশীল গর্ব এবং উষ্ণতা বিকিরণ করে।',
     ta: 'ஸ்திர நெருப்பு — ஆளுமை, கம்பீரம், படைப்பாற்றல் மற்றும் தாராள குணம்.',
+    mr: 'स्थिर अग्नी — राजेशाही अभिव्यक्ती, सर्जनशीलता आणि उत्साह पसरवतो.',
   },
   'space.zodiac.virgo.desc': {
     en: 'Mutable earth — seeks precision, practical healing, and selfless service.',
@@ -1342,6 +1550,7 @@ const translations = {
     sa: 'परिवर्तनशीलापृथिवी — सटीकतां व्यावहारिकोपचारं च अन्विष्यति।',
     bn: 'পরিবর্তনশীল পৃথিবী — নির্ভুলতা, ব্যবহারিক নিরাময় এবং নিঃস্বার্থ সেবা খোঁজে।',
     ta: 'உபய நிலம் — நேர்த்தி, உண்மை நிலை அறிதல் மற்றும் தன்னலமற்ற சேவை.',
+    mr: 'द्विस्वभाव पृथ्वी — अचूकता, व्यावहारिक उपाय आणि सेवाभावाचा शोध घेतो.',
   },
   'space.zodiac.libra.desc': {
     en: 'Cardinal air — seeks social harmony, balanced relationships, and justice.',
@@ -1349,13 +1558,15 @@ const translations = {
     sa: 'कर्दिनलवायुः — सामाजिकसमरसं सन्तुलितसम्बन्धांश्च अन्विष्यति।',
     bn: 'কার্ডিনাল বায়ু — সামাজিক সামঞ্জস্য, সুষম সম্পর্ক এবং ন্যায়বিচার খোঁজে।',
     ta: 'சர காற்று — அமைதியான உறவுகள், சமநிலை மற்றும் நடுநிலையான நீதி.',
+    mr: 'चर वायू — सामाजिक सलोखा, संतुलित संबंध आणि न्यायाचा पुरस्कार करतो.',
   },
   'space.zodiac.scorpio.desc': {
     en: 'Fixed water — processes intense transformation, deep secrets, and raw power.',
     hi: 'स्थिर जल — तीव्र परिवर्तन, गहरे रहस्य और कच्ची शक्ति को संसाधित करता है।',
     sa: 'स्थिरजलम् — तीव्रपरिवर्तनं गहनरहस्यानि च संसाधयति।',
-    bn: 'স্থির জল — তীব্র রূপান্তর, গভীর रहस्य এবং কাঁচা শক্তি প্রক্রিয়া করে।',
+    bn: 'স্থির জল — তীব্র রূপান্তর, গভীর রহস্য এবং কাঁচা শক্তি প্রক্রিয়া করে।',
     ta: 'ஸ்திர நீர் — ஆன்ம மாற்றம், மர்மங்களின் தேடல் மற்றும் ஆழ்ந்த மன உறுதி.',
+    mr: 'स्थिर जल — तीव्र परिवर्तन, सखोल रहस्ये आणि प्रचंड इच्छाशक्ती निर्माण करतो.',
   },
   'space.zodiac.sagittarius.desc': {
     en: 'Mutable fire — aims for higher learning, travel adventure, and dharmic wisdom.',
@@ -1363,6 +1574,7 @@ const translations = {
     sa: 'परिवर्तनशीलाग्निः — उच्चशिक्षां यात्रासाहसं च लक्षयति।',
     bn: 'পরিবর্তনশীল অগ্নি — উচ্চ শিক্ষা, ভ্রমণ অ্যাডভেঞ্চার এবং ধার্মিক জ্ঞানের লক্ষ্য রাখে।',
     ta: 'உபய நெருப்பு — உயர் கல்வி, ஆன்மீக பயணம் மற்றும் தர்ம நெறி.',
+    mr: 'द्विस्वभाव अग्नी — उच्च शिक्षण, साहसी प्रवास आणि धर्मज्ञानाचा ध्यास घेतो.',
   },
   'space.zodiac.capricorn.desc': {
     en: 'Cardinal earth — builds structured mastery, career ambition, and long-term duty.',
@@ -1370,6 +1582,7 @@ const translations = {
     sa: 'कर्दिनलापृथिवी — संरचितदक्षतां दीर्घकालिककर्तव्यं च निर्मिति।',
     bn: 'কার্ডিনাল পৃথিবী — কাঠামোবদ্ধ দক্ষতা, ক্যারিয়ার উচ্চাকাঙ্ক্ষা এবং দীর্ঘমেয়াদী দায়িত্ব গড়ে তোলে।',
     ta: 'சர நிலம் — திட்டமிட்ட உழைப்பு, தொழில் வெற்றி மற்றும் நிலையான சாதனை.',
+    mr: 'चर पृथ्वी — शिस्तबद्ध कर्तृत्व, उच्च महत्त्वाकांक्षा आणि दीर्घकालीन जबाबदारी घडवतो.',
   },
   'space.zodiac.aquarius.desc': {
     en: 'Fixed air — drives visionary social progress, unconventional innovation, and freedom.',
@@ -1377,6 +1590,7 @@ const translations = {
     sa: 'स्थिरवायुः — दूरदर्शीसामाजिकप्रगतिं स्वतन्त्रतां च प्रेरयति।',
     bn: 'স্থির বায়ু — দূরদর্শী সামাজিক অগ্রগতি, অপ্রচলিত উদ্ভাবন এবং স্বাধীনতা চালিত করে।',
     ta: 'ஸ்திர காற்று — எதிர்கால நோக்கு, சமூக நன்மை மற்றும் சுதந்திர சிந்தனை.',
+    mr: 'स्थिर वायू — दूरगामी सामाजिक प्रगती, नाविन्यपूर्ण विचार आणि स्वातंत्र्याची प्रेरणा देतो.',
   },
   'space.zodiac.pisces.desc': {
     en: 'Mutable water — dissolves boundaries in spiritual oneness, dream artistry, and empathy.',
@@ -1384,6 +1598,7 @@ const translations = {
     sa: 'परिवर्तनशीलजलम् — आध्यात्मिकैकतायां सीमाः विसर्जयति।',
     bn: 'পরিবর্তনশীল জল — আধ্যাত্মিক একতা, স্বপ্ন শিল্পকলা এবং সহানুভূতিতে সীমানা দ্রবীভূত করে।',
     ta: 'உபய நீர் — எல்லையற்ற பக்தி, ஆன்மீக விடுதலை மற்றும் கருணை உள்ளம்.',
+    mr: 'द्विस्वभाव जल — आध्यात्मिक एकात्मता, स्वप्नरंजन आणि अपार करुणेने सीमा विरघळवतो.',
   },
   // Planet astronomy/astrology descriptions
   'space.planet.sun.astronomy': {
@@ -1392,6 +1607,7 @@ const translations = {
     sa: 'अस्माकं सौरमण्डलस्य केन्द्रीयतारः। तस्य विशालनाभिकीयसंलयनक्रियाः प्रकाशं सौरवातांश्च जनयन्ति।',
     bn: 'আমাদের সৌরজগতের কেন্দ্রীয় নক্ষত্র। এর বিশাল পারমাণবিক সংযোজন বিক্রিয়া আলো ও সৌরবায়ু তৈরি করে যা হেলিওস্ফিয়ার গঠন করে।',
     ta: 'சூரிய குடும்பத்தின் மையம். இதன் ஒளியும் வெப்பமும் பூமியின் அனைத்து உயிர்களையும் காத்து வழிநடத்துகிறது.',
+    mr: 'आपल्या सौरमालेचा मध्यवर्ती तारा. त्याच्या प्रचंड अणुसंलयन प्रक्रियेमुळे प्रकाश आणि सौर वारे निर्माण होतात जे पृथ्वीवरील सर्व सजीवांना जीवन देतात.',
   },
   'space.planet.sun.astrology': {
     en: 'Represents the soul (Atman), vital life force, leadership, authority, the father archetype, and your core conscious identity.',
@@ -1399,6 +1615,7 @@ const translations = {
     sa: 'आत्मानं जीवनशक्तिं नेतृत्वं अधिकारं च प्रतिनिधयति।',
     bn: 'আত্মা, জীবনশক্তি, নেতৃত্ব, কর্তৃত্ব, পিতৃ আদর্শ এবং মূল চেতন পরিচয়ের প্রতিনিধিত্ব করে।',
     ta: 'ஆத்மகாரகன், தலைமைப் பண்பு, வீரம், தந்தை, அரசாங்க யோகம் மற்றும் கௌரவத்தை குறிக்கிறது.',
+    mr: 'आत्म्याचा कारक, जीवनशक्ती, नेतृत्व, अधिकार, पित्याचा प्रभाव आणि मूळ चेतन ओळख दर्शवतो.',
   },
   'space.planet.moon.astronomy': {
     en: "Earth's only natural satellite, orbiting at 384,400 km. Its gravitational pull creates ocean tides and stabilizes Earth's axial tilt, enabling a stable climate.",
@@ -1406,6 +1623,7 @@ const translations = {
     sa: 'पृथिव्याः एकमात्रं प्राकृतिकोपग्रहं, 384,400 किमी परिक्रमति। तस्य गुरुत्वाकर्षणं सागरज्वारान् निर्मिति।',
     bn: 'পৃথিবীর একমাত্র প্রাকৃতিক উপগ্রহ, ৩৮৪,৪০০ কিমি দূরত্বে পরিক্রমণ করে। এর মাধ্যাকর্ষণ সমুদ্রের জোয়ার তৈরি করে এবং পৃথিবীর অক্ষীয় হেলানি স্থিতিশীল করে।',
     ta: 'பூமியின் இயற்கை துணைக்கோள். கடலின் அலைகளையும் பருவநிலைகளையும் சமநிலைப்படுத்தும் ஆற்றல் கொண்டது.',
+    mr: 'पृथ्वीचा एकमेव नैसर्गिक उपग्रह, ३८४,४०० किमी अंतरावरून फिरतो. त्याचे गुरुत्वाकर्षण समुद्राच्या भरती-ओहोटीचे नियंत्रण करते आणि पृथ्वीचे हवामान स्थिर ठेवते.',
   },
   'space.planet.moon.astrology': {
     en: 'Governs the mind (Manas), emotional patterns, subconscious memory, maternal instincts, and how we experience inner comfort.',
@@ -1413,6 +1631,7 @@ const translations = {
     sa: 'मनः भावनात्मकपैटर्नं अवचेतनस्मृतिं च शासति।',
     bn: 'মন, আবেগীয় নিদর্শন, অবচেতন স্মৃতি, মাতৃ প্রবৃত্তি এবং আমরা কীভাবে অভ্যন্তরীণ স্বস্তি অনুভব করি তা পরিচালনা করে।',
     ta: 'மனோகாரகன், தாய், பாசம், ஆழ்மன எண்ணங்கள், உள்ளுணர்வு மற்றும் மன அமைதியைக் குறிக்கிறது.',
+    mr: 'मनाचा कारक (मानस), भावनिक प्रवृत्ती, अवचेतन स्मृती, मातृप्रेम आणि मानसिक शांतीचे नियमन करतो.',
   },
   'space.planet.mercury.astronomy': {
     en: 'The smallest and innermost planet, orbiting the Sun in just 88 days. It experiences extreme temperature fluctuations due to lack of a thick atmosphere.',
@@ -1420,6 +1639,7 @@ const translations = {
     sa: 'क्षुद्रतमः आन्तरिकतमश्च ग्रहः, केवलं 88 दिनेषु सूर्यं परिक्रमति।',
     bn: 'ক্ষুদ্রতম ও অভ্যন্তরীণ গ্রহ, মাত্র ৮৮ দিনে সূর্যকে প্রদক্ষিণ করে। পুরু বায়ুমণ্ডলের অভাবে চরম তাপমাত্রা ওঠানামা অনুভব করে।',
     ta: 'சூரியனுக்கு மிக அருகில் உள்ள சிறிய கிரகம். 88 நாட்களில் சூரியனை முழுமையாக சுற்றி முடிக்கிறது.',
+    mr: 'सौरमालेतील सर्वात लहान आणि सर्वात आतला ग्रह, अवघ्या ८८ दिवसांत सूर्याची परिक्रमा पूर्ण करतो.',
   },
   'space.planet.mercury.astrology': {
     en: 'Governs communication, analytical intellect, logic, business commerce, language acquisition, and cognitive speed.',
@@ -1427,6 +1647,7 @@ const translations = {
     sa: 'संचारं विश्लेषणात्मकबुद्धिं व्यापारं च शासति।',
     bn: 'যোগাযোগ, বিশ্লেষণাত্মক বুদ্ধি, যুক্তি, ব্যবসা, ভাষা অধিগ্রহণ এবং জ্ঞানীয় গতি পরিচালনা করে।',
     ta: 'வித்யாகாரகன், பேச்சுத் திறன், வியாபாரம், கணிதம், தர்க்க அறிவு மற்றும் தகவல்தொடர்பைக் குறிக்கிறது.',
+    mr: 'संवाद, विश्लेषक बुद्धी, तर्कशास्त्र, व्यापार, भाषा प्रभुत्व आणि निर्णय क्षमतेचा स्वामी.',
   },
   'space.planet.venus.astronomy': {
     en: 'The hottest planet in our solar system due to a runaway greenhouse effect. Its dense CO2 clouds reflect 70% of sunlight, making it the brightest beacon in the night sky.',
@@ -1434,6 +1655,7 @@ const translations = {
     sa: 'हरितगृहप्रभावेण अस्माकं सौरमण्डलस्य उष्णतमग्रहः।',
     bn: 'গ্রিনহাউস প্রভাবের কারণে আমাদের সৌরজগতের সবচেয়ে উষ্ণ গ্রহ। এর ঘন CO2 মেঘ ৭০% সূর্যালোক প্রতিফলিত করে, রাতের আকাশে উজ্জ্বলতম বাতিঘর করে তোলে।',
     ta: 'இரவு வானில் பிரகாசமாக ஜொலிக்கும் விடிவெள்ளி கிரகம். அடர்ந்த மேகங்களால் சூரிய ஒளியை பிரதிபலிக்கிறது.',
+    mr: 'हरितगृह परिणामामुळे सौरमालेतील सर्वात उष्ण ग्रह. त्याचे दाट ढग ७०% सूर्यप्रकाश परावर्तित करतात, ज्यामुळे तो रात्रीच्या आकाशात अत्यंत तेजस्वी दिसतो.',
   },
   'space.planet.venus.astrology': {
     en: 'Governs romantic relationships, artistic expression, harmony, material luxury, beauty, and how we find value and aesthetic pleasure.',
@@ -1441,6 +1663,7 @@ const translations = {
     sa: 'प्रेमसम्बन्धान् कलात्मकाभिव्यक्तिं सौन्दर्यं च शासति।',
     bn: 'প্রেমিক সম্পর্ক, শিল্পকলার প্রকাশ, সামঞ্জস্য, বৈষয়িক বিলাসিতা, সৌন্দর্য এবং আমরা কীভাবে মূল্য ও নান্দনিক আনন্দ খুঁজি তা পরিচালনা করে।',
     ta: 'களத்திரகாரகன், காதல், கலை, அழகு, சொகுசு வாழ்க்கை, வாகனம் மற்றும் தாம்பத்திய சுகத்தைக் குறிக்கிறது.',
+    mr: 'प्रेम संबंध, कलात्मक आविष्कार, सौंदर्य, भौतिक समृद्धी आणि कलात्मक आनंदाचा कारक.',
   },
   'space.planet.mars.astronomy': {
     en: 'The red planet, covered in iron oxide (rust) dust. It features Olympus Mons (the largest volcano in the solar system) and displays ancient dried water channels.',
@@ -1448,13 +1671,15 @@ const translations = {
     sa: 'लौहिताग्रहः, लौहऑक्साइडधूल्या आवृतः। ओलम्पसमॉन्स तत्र विद्यते।',
     bn: 'লাল গ্রহ, আয়রন অক্সাইড (মরিচা) ধূলিকণায় আবৃত। এতে অলিম্পাস মনস (সৌরজগতের বৃহত্তম আগ্নেয়গিরি) এবং প্রাচীন শুষ্ক জলের চ্যানেল রয়েছে।',
     ta: 'சிவப்பு கிரகம் என அழைக்கப்படுகிறது. இரும்பு தாதுக்கள் நிறைந்த மண் மற்றும் பிரம்மாண்ட எரிமலைகளைக் கொண்டது.',
+    mr: 'लाल ग्रह, आयर्न ऑक्साईडच्या धुळीने वेढलेला. यावर सौरमालेतील सर्वात मोठा ज्वालामुखी ऑलिम्पस मॉन्स स्थित आहे.',
   },
   'space.planet.mars.astrology': {
     en: 'Governs physical vitality, courage, ambition, competitive drive, technical skill (engineering), and assertion of willpower.',
     hi: 'शारीरिक शक्ति, साहस, महत्वाकांक्षा, प्रतिस्पर्धी भावना और इच्छाशक्ति को नियंत्रित करता है।',
     sa: 'शारीरिकशक्तिं साहसं महत्वाकांक्षां च शासति।',
-    bn: 'শারীরিক প্রাণশক্তি, সাহস, উচ্চাকাঙ্ক্ষা, প্রতিযোগিতামূলক মনোভাব, প্রযুক্তিগত দক্ষতা এবং ইচ্ছাশক্তি পরিচালনা করে।',
+    bn: 'শারীরিক প্রাণশক্তি, साहस, উচ্চাকাঙ্ক্ষা, প্রতিযোগিতামূলক মনোভাব, প্রযুক্তিগত দক্ষতা এবং ইচ্ছাশক্তি পরিচালনা করে।',
     ta: 'பூமிகாரகன் & தைரியகாரகன், உடற்பலம், சகோதரர்கள், பூமி சொத்துக்கள் மற்றும் பாதுகாப்புப் பணிகளைக் குறிக்கிறது.',
+    mr: 'शारीरिक ऊर्जा, धैर्य, महत्त्वाकांक्षा, स्पर्धात्मक स्वभाव आणि तांत्रिक कौशल्याचे प्रतीक.',
   },
   'space.planet.jupiter.astronomy': {
     en: "A massive gas giant 11 times Earth's diameter. Its immense gravitational field acts as a cosmic vacuum cleaner, pulling in dangerous asteroids and protecting Earth.",
@@ -1462,6 +1687,7 @@ const translations = {
     sa: 'पृथिव्याः व्यासात् 11 गुणः विशालः गैसदिग्गजः। तस्य विशालगुरुत्वाकर्षणं खतरनाकक्षुद्रग्रहान् आकर্षति।',
     bn: 'পৃথিবীর ব্যাসের ১১ গুণ বড় বিশাল গ্যাস দৈত্য। এর বিশাল মহাকর্ষীয় ক্ষেত্র বিপজ্জনক গ্রহাণু টেনে নিয়ে পৃথিবীকে রক্ষা করে।',
     ta: 'சூரிய குடும்பத்தின் மிகப்பெரிய வாயுக்கோள். இதன் ஈர்ப்பு விசை ஆபத்தான விண்கற்களிலிருந்து பூமியைக் காக்கிறது.',
+    mr: 'पृथ्वीपेक्षा ११ पट मोठा महाकाय वायू ग्रह. त्याचे अफाट गुरुत्वाकर्षण धोकादायक लघुग्रहांना खेचून पृथ्वीचे रक्षण करते.',
   },
   'space.planet.jupiter.astrology': {
     en: 'Represents higher spiritual wisdom, philosophical growth, expansion of knowledge, wealth, teaching, and providential blessings.',
@@ -1469,6 +1695,7 @@ const translations = {
     sa: 'उच्चात्मज्ञानं दार्शनिकविकासं ज्ञानविस्तारं च प्रतिनिधयति।',
     bn: 'উচ্চ আধ্যাত্মিক জ্ঞান, দার্শনিক বিকাশ, জ্ঞানের প্রসার, সম্পদ, শিক্ষণ এবং ঈশ্বরীয় আশীর্বাদের প্রতিনিধিত্ব করে।',
     ta: 'குரு பகவான் (புத்திரகாரகன் & தனகாரகன்), இறையருள், நற்குணங்கள், ஆன்மீக ஞானம் மற்றும் செல்வ செழிப்பைக் குறிக்கிறது.',
+    mr: 'उच्च आध्यात्मिक ज्ञान, तत्त्वज्ञान, संपत्तीचा विस्तार, गुरुतुल्य मार्गदर्शन आणि ईश्वरीय कृपेचा कारक.',
   },
   'space.planet.saturn.astronomy': {
     en: 'Famed for its spectacular, complex ring system composed of trillions of water ice particles. It is the most distant planet visible to the naked human eye.',
@@ -1476,6 +1703,7 @@ const translations = {
     sa: 'खरबजलहिमकणैः निर्मितस्य वलयतन्त्रस्य कृते प्रसिद्धः।',
     bn: 'কোটি কোটি জলীয় বরফ কণা দিয়ে গঠিত দর্শনীয় জটিল বলয় ব্যবস্থার জন্য বিখ্যাত। এটি খালি চোখে দৃশ্যমান সবচেয়ে দূরবর্তী গ্রহ।',
     ta: 'பனி துகள்களாலான அழகான வளையங்களைக் கொண்ட அதிசய கிரகம். மனித கண்களால் காணக்கூடிய தொலைதூர கிரகம்.',
+    mr: 'बर्फाच्या कणांपासून बनलेल्या अप्रतिम वलय प्रणालीसाठी प्रसिद्ध. साध्या डोळ्यांनी दिसणारा सर्वात लांबचा ग्रह.',
   },
   'space.planet.saturn.astrology': {
     en: 'Represents time (Kala), discipline, structural boundaries, heavy responsibilities, patience, and essential lessons of cause and effect (Karma).',
@@ -1483,6 +1711,7 @@ const translations = {
     sa: 'कालं अनुशासनं कर्मफलस्य आवश्यकपाठांश्च प्रतिनिधयति।',
     bn: 'কাল, শৃঙ্খলা, কাঠামোগত সীমানা, ভারী দায়িত্ব, धैर्य এবং কারণ ও প্রতিক্রিয়ার (কর্মের) অপরিহার্য পাঠের প্রতিনিধিত্ব করে।',
     ta: 'ஆயுள்காரகன் & கர்மகாரகன், நேர்மை, கடின உழைப்பு, நீதி தவறாமை மற்றும் கர்ம வினைகளின் பலன்களை அளிப்பவர்.',
+    mr: 'काळ (महाकाल), शिस्त, कर्मफळ, संयम, जबाबदारी आणि जीवनोपयोगी शिकवणुकींचे प्रतीक.',
   },
   // Vedic rulership strings
   'space.rules.sun': {
@@ -1491,6 +1720,7 @@ const translations = {
     sa: 'सिंहः',
     bn: 'সিংহ',
     ta: 'சிம்மம்',
+    mr: 'सिंह',
   },
   'space.rules.moon': {
     en: 'Cancer',
@@ -1498,6 +1728,7 @@ const translations = {
     sa: 'कर्कटः',
     bn: 'কর্কট',
     ta: 'கடகம்',
+    mr: 'कर्क',
   },
   'space.rules.mercury': {
     en: 'Gemini & Virgo',
@@ -1505,6 +1736,7 @@ const translations = {
     sa: 'मिथुनं कन्या च',
     bn: 'মিথুন ও কন্যা',
     ta: 'மிதுனம் & கன்னி',
+    mr: 'मिथुन आणि कन्या',
   },
   'space.rules.venus': {
     en: 'Taurus & Libra',
@@ -1512,6 +1744,7 @@ const translations = {
     sa: 'वृषभः तुला च',
     bn: 'বৃষ ও তুলা',
     ta: 'ரிஷபம் & துலாம்',
+    mr: 'वृषभ आणि तूळ',
   },
   'space.rules.mars': {
     en: 'Aries & Scorpio',
@@ -1519,6 +1752,7 @@ const translations = {
     sa: 'मेषः वृश्चिकः च',
     bn: 'মেষ ও বৃশ্চিক',
     ta: 'மேஷம் & விருச்சிகம்',
+    mr: 'मेष आणि वृश्चिक',
   },
   'space.rules.jupiter': {
     en: 'Sagittarius & Pisces',
@@ -1526,13 +1760,15 @@ const translations = {
     sa: 'धनुः मीनः च',
     bn: 'ধনু ও মীন',
     ta: 'தனுசு & மீனம்',
+    mr: 'धनु आणि मीन',
   },
   'space.rules.saturn': {
     en: 'Capricorn & Aquarius',
     hi: 'मकर और कुम्भ',
     sa: 'मकरः कुम्भः च',
-    bn: 'মকর ও কুম্ভ',
+    bn: 'मकर ও কুম্ভ',
     ta: 'மகரம் & கும்பம்',
+    mr: 'मकर आणि कुंभ',
   },
 
   // ── FOOTER ───────────────────────────────────────────────────
@@ -1542,6 +1778,7 @@ const translations = {
     sa: 'पवित्रं वैदिकं ज्ञानम्',
     bn: 'পবিত্র বৈদিক বুদ্ধিমত্তা',
     ta: 'புனித வேத ஜோதிட ஞானம்',
+    mr: 'पवित्र वैदिक प्रज्ञा',
   },
   'footer.rights': {
     en: 'All rights reserved.',
@@ -1549,6 +1786,7 @@ const translations = {
     sa: 'सर्वाधिकाराः सुरक्षिताः।',
     bn: 'সর্বস্বত্ব সংরক্ষিত।',
     ta: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.',
+    mr: 'सर्व हक्क सुरक्षित.',
   },
 };
 
