@@ -1094,12 +1094,12 @@ const translations = {
     mr: 'तुमचा ईमेल लिहा',
   },
   'form.phone.label': {
-    en: 'Phone (Optional)',
-    hi: 'फ़ोन (वैकल्पिक)',
-    sa: 'दूरभाषः (ऐच्छिकम्)',
-    bn: 'ফোন (ঐচ্ছিক)',
-    ta: 'தொலைபேசி எண் (விருப்பம்)',
-    mr: 'फोन (ऐच्छिक)',
+    en: 'Phone Number',
+    hi: 'फ़ोन नंबर',
+    sa: 'दूरभाषसंख्या',
+    bn: 'ফোন নম্বর',
+    ta: 'தொலைபேசி எண்',
+    mr: 'फोन नंबर',
   },
   'form.phone.placeholder': {
     en: '+91 XXXXX XXXXX',

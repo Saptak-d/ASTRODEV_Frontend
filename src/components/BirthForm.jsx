@@ -164,6 +164,7 @@ export default function BirthForm({ onSubmit, loading }) {
             {t('form.phone.label')}
           </label>
           <input
+            required
             type="tel"
             name="phone"
             value={formData.phone}
@@ -177,7 +178,7 @@ export default function BirthForm({ onSubmit, loading }) {
       {/* Gender */}
       <div className="space-y-1">
         <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
-          {t('form.gender.label')} <span className="text-[#1E1410]">*</span>
+          {t('form.gender.label')}
         </label>
         <div className="flex gap-2">
           {genderOptions.map(({ value, icon, labelKey }) => (
@@ -207,7 +208,7 @@ export default function BirthForm({ onSubmit, loading }) {
       {/* Report Language */}
       <div className="space-y-1">
         <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
-          {t('form.reportLanguage')} <span className="text-[#1E1410]">*</span>
+          {t('form.reportLanguage')}
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {[
@@ -243,12 +244,9 @@ export default function BirthForm({ onSubmit, loading }) {
 
       {/* Date of Birth */}
       <div className="space-y-1">
-        <div className="flex justify-between items-baseline">
-          <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
-            {t('form.dob.label')}
-          </label>
-          <span className="text-[7px] text-gray-400 font-sans">{t('form.dob.hint')}</span>
-        </div>
+        <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
+          {t('form.dob.label')}
+        </label>
         <div className="flex gap-2">
           {/* Day Dropdown */}
           <div className="flex-1">
@@ -385,12 +383,9 @@ export default function BirthForm({ onSubmit, loading }) {
 
       {/* Birth Place */}
       <div className="space-y-1">
-        <div className="flex justify-between items-baseline">
-          <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
-            {t('form.birthplace.label')}
-          </label>
-          <span className="text-[7px] text-gray-400 font-sans">{t('form.birthplace.hint')}</span>
-        </div>
+        <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
+          {t('form.birthplace.label')}
+        </label>
         <input
           required
           type="text"
