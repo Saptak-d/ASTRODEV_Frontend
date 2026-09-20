@@ -31,10 +31,36 @@ export default function AdminDashboard() {
   const [error, setError] = useState(null);
   const [actionLoading, setActionLoading] = useState(null); // reportId being marked as sent/unsent
   const [downloadingId, setDownloadingId] = useState(null); // reportId being downloaded
+  const [selectedJson, setSelectedJson] = useState(null); // JSON object for modal
+  const [copiedId, setCopiedId] = useState(null); // ID of currently copied order
   const [timeNow, setTimeNow] = useState(Date.now());
   const navigate = useNavigate();
 
   const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://astrodev-backend.onrender.com';
+
+  // Helper to format structured JSON for an order
+  const formatUserJson = (o) => ({
+    name: o.name || '',
+    email: o.email || '',
+    phone: o.phone || '',
+    gender: o.gender || 'Not specified',
+    preferredLanguage: o.preferredLanguage || 'hindi',
+    birthDate: o.birthDate ? (typeof o.birthDate === 'string' ? o.birthDate.split('T')[0] : new Date(o.birthDate).toISOString().split('T')[0]) : '',
+    birthTime: o.birthTime || '',
+    birthPlace: o.birthPlace || '',
+    coordinates: {
+      latitude: o.latitude !== null && o.latitude !== undefined ? o.latitude : null,
+      longitude: o.longitude !== null && o.longitude !== undefined ? o.longitude : null,
+    }
+  });
+
+  const handleCopyJson = (o, e) => {
+    if (e) e.stopPropagation();
+    const data = formatUserJson(o);
+    navigator.clipboard.writeText(JSON.stringify(data, null, 2));
+    setCopiedId(o.id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   // ── Auto-refresh countdown timers every second ──────────────────────────────
   useEffect(() => {
@@ -348,6 +374,7 @@ export default function AdminDashboard() {
                     <th className="py-4 px-4 font-bold">Ref / Name</th>
                     <th className="py-4 px-4 font-bold">Contact Details</th>
                     <th className="py-4 px-4 font-bold">Birth Details</th>
+                    <th className="py-4 px-4 font-bold">Data (JSON)</th>
                     <th className="py-4 px-4 font-bold">Paid or Not</th>
                     <th className="py-4 px-4 font-bold text-center">PDF Sent Status</th>
                     <th className="py-4 px-4 font-bold text-right">Actions</th>
@@ -380,6 +407,31 @@ export default function AdminDashboard() {
                         <p className="text-[#9A8B7A] text-[10px] mt-0.5">
                           {o.birthDate ? o.birthDate.split('T')[0] : ''} &bull; {o.birthTime}
                         </p>
+                        <span className="text-[8px] px-1.5 py-0.5 mt-1 inline-block rounded bg-[#2A1B18] border border-[#D4AF37]/20 text-[#C9B99A] uppercase">
+                          🌐 {o.preferredLanguage || 'hindi'}
+                        </span>
+                      </td>
+
+                      {/* Data (JSON) column */}
+                      <td className="py-4 px-4">
+                        <div className="flex flex-col gap-1.5">
+                          <button
+                            onClick={() => setSelectedJson(formatUserJson(o))}
+                            className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] px-2.5 py-1 rounded text-[10px] font-bold tracking-wider uppercase transition-all flex items-center gap-1 w-fit"
+                            title="View full structured JSON data"
+                          >
+                            <span>🔍</span>
+                            <span>View JSON</span>
+                          </button>
+                          <button
+                            onClick={(e) => handleCopyJson(o, e)}
+                            className="bg-[#1A1108] hover:bg-[#0F0A06] border border-[#D4AF37]/25 text-[#C9B99A] hover:text-[#D4AF37] px-2.5 py-1 rounded text-[10px] font-mono transition-all flex items-center gap-1 w-fit"
+                            title="Copy full structured JSON to clipboard"
+                          >
+                            <span>{copiedId === o.id ? '✅' : '📋'}</span>
+                            <span>{copiedId === o.id ? 'Copied!' : 'Copy JSON'}</span>
+                          </button>
+                        </div>
                       </td>
 
                       {/* Paid or Not */}
@@ -494,6 +546,25 @@ export default function AdminDashboard() {
                     </div>
                   </div>
 
+                  {/* Mobile Data JSON Actions */}
+                  <div className="flex items-center justify-between bg-[#0F0A06]/50 p-2 rounded-lg border border-[#D4AF37]/10">
+                    <span className="text-[9px] text-[#9A8B7A] uppercase font-bold tracking-wider">User Data:</span>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setSelectedJson(formatUserJson(o))}
+                        className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] px-2 py-1 rounded text-[9px] font-bold uppercase"
+                      >
+                        🔍 View JSON
+                      </button>
+                      <button
+                        onClick={(e) => handleCopyJson(o, e)}
+                        className="bg-[#1A1108] border border-[#D4AF37]/25 text-[#C9B99A] px-2 py-1 rounded text-[9px] font-mono"
+                      >
+                        {copiedId === o.id ? '✅ Copied' : '📋 Copy'}
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="flex justify-between items-center text-xs pt-1">
                     <div className="flex items-center gap-2">
                       <span className="text-[8px] text-[#9A8B7A] uppercase font-bold tracking-wider">PDF Sent:</span>
@@ -548,6 +619,59 @@ export default function AdminDashboard() {
           </>
         )}
       </main>
+
+      {/* JSON Viewer Modal */}
+      {selectedJson && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-[#1A1108] border border-[#D4AF37]/40 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 border-b border-[#D4AF37]/15 bg-[#0F0A06]">
+              <div className="flex items-center gap-2">
+                <span className="text-lg">📜</span>
+                <h3 className="text-sm font-bold text-[#F5F2E9] uppercase tracking-wider">
+                  User Structured Data JSON
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(JSON.stringify(selectedJson, null, 2));
+                    setCopiedId('modal');
+                    setTimeout(() => setCopiedId(null), 2000);
+                  }}
+                  className="bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all flex items-center gap-1.5"
+                >
+                  <span>{copiedId === 'modal' ? '✅' : '📋'}</span>
+                  <span>{copiedId === 'modal' ? 'Copied!' : 'Copy JSON'}</span>
+                </button>
+                <button
+                  onClick={() => setSelectedJson(null)}
+                  className="text-[#9A8B7A] hover:text-[#F5F2E9] p-1.5 rounded-lg hover:bg-white/5 transition-all text-sm font-bold"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body - Formatted JSON */}
+            <div className="p-4 overflow-y-auto flex-grow bg-[#0A0704]">
+              <pre className="text-xs font-mono text-[#D4AF37] bg-[#0F0A06] p-4 rounded-xl border border-[#D4AF37]/15 overflow-x-auto selection:bg-[#D4AF37]/30">
+                {JSON.stringify(selectedJson, null, 2)}
+              </pre>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-3 bg-[#0F0A06] border-t border-[#D4AF37]/15 flex justify-end">
+              <button
+                onClick={() => setSelectedJson(null)}
+                className="bg-[#2A1B18] hover:bg-[#3A2622] text-[#C9B99A] px-4 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
