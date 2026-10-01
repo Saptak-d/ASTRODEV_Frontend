@@ -617,37 +617,30 @@ export default function Landing() {
             const elColor = elementColors[z.element] || '#D4AF37';
             return (
               <div
-                className="max-w-4xl mx-auto mb-8 rounded-2xl p-5 sm:p-7 md:p-8 border text-left shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="max-w-3xl mx-auto mb-6 rounded-xl p-3.5 sm:p-4 border text-left shadow-lg transition-all duration-300 relative overflow-hidden"
                 style={{
                   background: 'linear-gradient(135deg, #1C120F 0%, #261A16 50%, #1C120F 100%)',
-                  borderColor: elColor + '66',
-                  boxShadow: `0 16px 48px rgba(0,0,0,0.4), 0 0 32px ${elColor}22`,
+                  borderColor: elColor + '55',
+                  boxShadow: `0 8px 24px rgba(0,0,0,0.35), 0 0 16px ${elColor}18`,
                 }}
               >
                 {/* Glowing accent top line */}
                 <div
                   className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-300"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${elColor}, transparent)`,
-                  }}
-                />
-                {/* Subtle bg glow */}
-                <div
-                  className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none opacity-10"
-                  style={{ background: elColor }}
+                  style={{ background: `linear-gradient(90deg, transparent, ${elColor}, transparent)` }}
                 />
 
-                <div className="flex flex-col sm:flex-row items-start gap-5 sm:gap-7 relative">
+                <div className="flex items-start gap-3.5 relative">
                   {/* Zodiac Symbol */}
                   <div
-                    className="shrink-0 flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl select-none"
+                    className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl select-none"
                     style={{
                       background: elColor + '18',
-                      border: `2px solid ${elColor}45`,
+                      border: `1px solid ${elColor}45`,
                       color: elColor,
-                      fontSize: '3rem',
+                      fontSize: '1.6rem',
                       lineHeight: 1,
-                      filter: `drop-shadow(0 0 14px ${elColor}99)`,
+                      filter: `drop-shadow(0 0 8px ${elColor}88)`,
                     }}
                   >
                     {z.sign}
@@ -655,53 +648,46 @@ export default function Landing() {
 
                   {/* Zodiac Details */}
                   <div className="flex-1 min-w-0">
-                    {/* Name row */}
-                    <div className="flex flex-wrap items-baseline gap-2 mb-1.5">
-                      <h3 className="text-lg sm:text-2xl font-bold text-[#F5F2E9] font-serif tracking-wider uppercase">
+                    {/* Name + tagline row */}
+                    <div className="flex flex-wrap items-baseline gap-1.5 mb-0.5">
+                      <h3 className="text-sm font-bold text-[#F5F2E9] font-serif tracking-wider uppercase">
                         {t(z.nameKey)}
                       </h3>
-                      <span className="text-sm font-sans font-bold" style={{ color: elColor }}>
+                      <span className="text-[11px] font-sans font-bold" style={{ color: elColor }}>
                         · {t(z.subKey)}
                       </span>
                     </div>
-
-                    {/* Tagline */}
-                    <p className="text-xs sm:text-sm font-sans italic mb-3" style={{ color: elColor + 'CC' }}>
+                    <p className="text-[10px] font-sans italic mb-2" style={{ color: elColor + 'BB' }}>
                       {z.tagline}
                     </p>
 
-                    {/* Badges row */}
-                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                    {/* Badges + desc in one compact row */}
+                    <div className="flex flex-wrap items-center gap-1.5 mb-2">
                       <span
-                        className="text-[10px] font-sans font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border"
+                        className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border"
                         style={{ color: elColor, borderColor: elColor + '50', backgroundColor: elColor + '15' }}
                       >
                         {t(elementKeyMap[z.element])}
                       </span>
-                      <span className="text-[10px] font-sans font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] bg-[#D4AF37]/10">
+                      <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] bg-[#D4AF37]/10">
                         Ruler: {t(z.rulerKey)}
                       </span>
                     </div>
 
-                    {/* Rich description */}
-                    <p className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed mb-4">
+                    <p className="text-[10px] sm:text-xs text-gray-300 font-sans leading-relaxed mb-2">
                       {z.desc}
                     </p>
 
                     {/* Governs tags */}
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      <span className="text-[9px] font-sans font-bold uppercase tracking-widest text-[#D4AF37]/80 mr-1">
+                    <div className="flex flex-wrap items-center gap-1">
+                      <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-[#D4AF37]/70 mr-0.5">
                         Governs:
                       </span>
                       {z.governs.map((gov, gi) => (
                         <span
                           key={gi}
-                          className="text-[10px] font-sans font-medium px-2 py-0.5 rounded-full"
-                          style={{
-                            color: elColor,
-                            background: elColor + '18',
-                            border: `1px solid ${elColor}35`,
-                          }}
+                          className="text-[9px] font-sans font-medium px-1.5 py-0.5 rounded-full"
+                          style={{ color: elColor, background: elColor + '18', border: `1px solid ${elColor}30` }}
                         >
                           {gov}
                         </span>
