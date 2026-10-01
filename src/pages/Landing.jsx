@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import BirthForm from '../components/BirthForm';
@@ -86,72 +86,44 @@ export default function Landing() {
     {
       symbol: '☉', nameKey: 'planet.sun.name', subKey: 'planet.sun.sub', rulesKey: 'planet.sun.rules',
       color: '#E8730A', bg: 'from-orange-50 to-amber-50',
-      tagline: 'The Eternal Flame of Self',
-      attributes: ['Authority', 'Vitality', 'Confidence', 'Leadership'],
-      mantra: 'Om Hraam Hreem Hraum Sah Suryaya Namah',
-      gemstone: 'Ruby',
-      day: 'Sunday',
-      desc: 'The Sun is your core identity — your soul\'s blueprint, the ego that drives ambition and the light that illuminates your life purpose.',
+      tagline: 'Soul & Identity',
+      desc: 'The Sun represents your core identity, soul purpose, inner strength, and personal authority.',
     },
     {
       symbol: '☽', nameKey: 'planet.moon.name', subKey: 'planet.moon.sub', rulesKey: 'planet.moon.rules',
       color: '#94A3B8', bg: 'from-slate-50 to-gray-50',
-      tagline: 'Mirror of the Inner World',
-      attributes: ['Intuition', 'Emotion', 'Memory', 'Nurturing'],
-      mantra: 'Om Shraam Shreem Shraum Sah Chandraya Namah',
-      gemstone: 'Pearl',
-      day: 'Monday',
-      desc: 'The Moon governs your emotional tides, subconscious patterns and your innate capacity to receive and reflect love and sensitivity.',
+      tagline: 'Mind & Emotion',
+      desc: 'The Moon governs your emotional tides, intuition, peace of mind, and inner subconscious world.',
     },
     {
       symbol: '♂', nameKey: 'planet.mars.name', subKey: 'planet.mars.sub', rulesKey: 'planet.mars.rules',
       color: '#B91C1C', bg: 'from-red-50 to-rose-50',
-      tagline: 'Warrior of Cosmic Will',
-      attributes: ['Courage', 'Energy', 'Passion', 'Action'],
-      mantra: 'Om Kraam Kreem Kraum Sah Bhaumaya Namah',
-      gemstone: 'Red Coral',
-      day: 'Tuesday',
-      desc: 'Mars is your primal fire — the force that propels you into action, ignites your desires and gives you the courage to fight for what you believe.',
+      tagline: 'Drive & Courage',
+      desc: 'Mars ignites ambition, physical vitality, passion, and the courage to conquer obstacles.',
     },
     {
       symbol: '☿', nameKey: 'planet.mercury.name', subKey: 'planet.mercury.sub', rulesKey: 'planet.mercury.rules',
       color: '#15803D', bg: 'from-green-50 to-emerald-50',
-      tagline: 'Swift Messenger of Mind',
-      attributes: ['Logic', 'Communication', 'Adaptability', 'Wit'],
-      mantra: 'Om Braam Breem Braum Sah Budhaya Namah',
-      gemstone: 'Emerald',
-      day: 'Wednesday',
-      desc: 'Mercury rules the intellect and the spoken word. It governs how you think, process information, communicate ideas and navigate daily life.',
+      tagline: 'Intellect & Speech',
+      desc: 'Mercury rules analytical intellect, effective communication, commerce, and sharp logic.',
     },
     {
       symbol: '♃', nameKey: 'planet.jupiter.name', subKey: 'planet.jupiter.sub', rulesKey: 'planet.jupiter.rules',
       color: '#CA8A04', bg: 'from-yellow-50 to-amber-50',
-      tagline: 'Boundless Guru of the Cosmos',
-      attributes: ['Wisdom', 'Expansion', 'Fortune', 'Dharma'],
-      mantra: 'Om Graam Greem Graum Sah Guruve Namah',
-      gemstone: 'Yellow Sapphire',
-      day: 'Thursday',
-      desc: 'Jupiter is the great benefic — bestowing wisdom, abundance, spiritual insight and the grace of divine fortune upon those it blesses.',
+      tagline: 'Wisdom & Dharma',
+      desc: 'Jupiter is the great benefic — bestowing spiritual wisdom, divine grace, fortune, and prosperity.',
     },
     {
       symbol: '♀', nameKey: 'planet.venus.name', subKey: 'planet.venus.sub', rulesKey: 'planet.venus.rules',
       color: '#DB2777', bg: 'from-pink-50 to-rose-50',
-      tagline: 'Goddess of Earthly Delight',
-      attributes: ['Love', 'Beauty', 'Art', 'Harmony'],
-      mantra: 'Om Draam Dreem Draum Sah Shukraya Namah',
-      gemstone: 'Diamond',
-      day: 'Friday',
-      desc: 'Venus rules love and aesthetic sensibility. It governs your capacity for pleasure, romantic attraction, creative expression and inner harmony.',
+      tagline: 'Love & Harmony',
+      desc: 'Venus governs love, aesthetic appreciation, creative expression, relationships, and pleasure.',
     },
     {
       symbol: '♄', nameKey: 'planet.saturn.name', subKey: 'planet.saturn.sub', rulesKey: 'planet.saturn.rules',
       color: '#3730A3', bg: 'from-indigo-50 to-violet-50',
-      tagline: 'Lord of Karma and Time',
-      attributes: ['Discipline', 'Patience', 'Karma', 'Structure'],
-      mantra: 'Om Praam Preem Praum Sah Shanaischaraya Namah',
-      gemstone: 'Blue Sapphire',
-      day: 'Saturday',
-      desc: 'Saturn is the cosmic teacher — through trials and discipline it sculpts character, burns away illusions and rewards those who persevere with mastery.',
+      tagline: 'Karma & Discipline',
+      desc: 'Saturn teaches patience, righteous karma, discipline, and endurance that sculpts true mastery.',
     },
   ];
 
@@ -487,88 +459,50 @@ export default function Landing() {
             ))}
           </div>
 
-          {/* ── Detail Panel: slides in below grid on hover ── */}
-          <div
-            style={{
-              maxHeight: hoveredPlanet !== null ? '600px' : '28px',
-              opacity: 1,
-              transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
-              overflow: 'hidden',
-            }}
-          >
+          {/* ── Compact Planet Detail Box: small, elegant, short description only ── */}
+          <div className="transition-all duration-300" style={{ minHeight: '64px' }}>
             {hoveredPlanet !== null ? (
               (() => {
                 const p = planets[hoveredPlanet];
                 return (
                   <div
-                    className="rounded-2xl overflow-hidden border"
+                    className="max-w-2xl mx-auto rounded-xl px-5 py-3 border flex items-center gap-4 text-left shadow-lg animate-fade-in"
                     style={{
-                      background: 'linear-gradient(135deg, #1C120F 0%, #241810 60%, #1C120F 100%)',
-                      borderColor: p.color + '44',
-                      boxShadow: `0 0 60px ${p.color}15, inset 0 1px 0 ${p.color}20`,
+                      background: 'linear-gradient(135deg, #1C120F 0%, #261A16 100%)',
+                      borderColor: p.color + '55',
+                      boxShadow: `0 8px 24px rgba(0,0,0,0.3), 0 0 16px ${p.color}15`,
                     }}
                   >
-                    {/* Top bar */}
-                    <div style={{ height: '3px', background: `linear-gradient(90deg, transparent, ${p.color}, transparent)` }} />
-
-                    <div className="p-6 md:p-8">
-                      <div className="grid grid-cols-1 md:grid-cols-[120px_1fr_180px] gap-6 md:gap-8 items-start">
-
-                        {/* Col 1: Symbol + name */}
-                        <div className="flex md:flex-col items-center gap-4 md:gap-3">
-                          <div style={{ color: p.color, filter: `drop-shadow(0 0 18px ${p.color}88)`, fontSize: '4.5rem', lineHeight: 1 }}>
-                            {p.symbol}
-                          </div>
-                          <div className="md:text-center">
-                            <div className="text-[#F5F2E9] font-extrabold text-sm font-serif leading-tight">{t(p.nameKey)}</div>
-                            <div className="text-[11px] font-sans italic mt-1" style={{ color: p.color }}>{p.tagline}</div>
-                          </div>
-                        </div>
-
-                        {/* Col 2: Description + attributes */}
-                        <div>
-                          <p className="text-sm text-gray-300 font-sans leading-relaxed mb-5">{p.desc}</p>
-                          <p className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-gray-500 mb-2">Governs</p>
-                          <div className="flex flex-wrap gap-1.5">
-                            {p.attributes.map((attr, ai) => (
-                              <span
-                                key={ai}
-                                className="text-[10px] font-sans font-bold uppercase tracking-wide px-3 py-1 rounded-full"
-                                style={{ color: p.color, background: p.color + '18', border: `1px solid ${p.color}40` }}
-                              >
-                                {attr}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Col 3: Gemstone / Day / Mantra */}
-                        <div className="flex flex-row md:flex-col gap-3">
-                          <div className="flex-1 rounded-xl p-3 text-center" style={{ background: p.color + '12', border: `1px solid ${p.color}28` }}>
-                            <p className="text-[8px] font-sans font-bold uppercase tracking-widest text-gray-500 mb-1">Gemstone</p>
-                            <p className="text-xs font-bold text-[#F5F2E9] font-sans">💎 {p.gemstone}</p>
-                          </div>
-                          <div className="flex-1 rounded-xl p-3 text-center" style={{ background: p.color + '12', border: `1px solid ${p.color}28` }}>
-                            <p className="text-[8px] font-sans font-bold uppercase tracking-widest text-gray-500 mb-1">Ruling Day</p>
-                            <p className="text-xs font-bold text-[#F5F2E9] font-sans">📅 {p.day}</p>
-                          </div>
-                          <div className="flex-1 rounded-xl p-3 text-center" style={{ background: p.color + '10', border: `1px solid ${p.color}28` }}>
-                            <p className="text-[8px] font-sans font-bold uppercase tracking-widest text-gray-500 mb-1">✦ Mantra</p>
-                            <p className="text-[9px] text-[#D4AF37] font-serif italic leading-relaxed">{p.mantra}</p>
-                          </div>
-                        </div>
-
+                    <span
+                      className="shrink-0 select-none"
+                      style={{
+                        color: p.color,
+                        fontSize: '2rem',
+                        lineHeight: 1,
+                        filter: `drop-shadow(0 0 8px ${p.color}88)`,
+                      }}
+                    >
+                      {p.symbol}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="text-xs font-bold text-[#F5F2E9] font-serif uppercase tracking-wider">
+                          {t(p.nameKey)}
+                        </span>
+                        <span className="text-[10px] font-sans italic text-gray-400">
+                          ({p.tagline})
+                        </span>
                       </div>
+                      <p className="text-xs text-gray-300 font-sans leading-relaxed">
+                        {p.desc}
+                      </p>
                     </div>
-
-                    {/* Bottom bar */}
-                    <div style={{ height: '2px', background: `linear-gradient(90deg, transparent, ${p.color}55, transparent)` }} />
                   </div>
                 );
               })()
             ) : (
-              <p className="text-center text-[11px] text-gray-400 font-sans tracking-wider italic py-1">
-                ✦ Hover over a planet to reveal its celestial secrets ✦
+              <p className="text-center text-[11px] text-gray-400 font-sans tracking-wider italic py-3 opacity-60">
+                ✦ Hover over a planet to view its celestial influence ✦
               </p>
             )}
           </div>
