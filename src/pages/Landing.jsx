@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import BirthForm from '../components/BirthForm';
@@ -427,6 +427,7 @@ export default function Landing() {
       </section>
 
       {/* ══════════════════════ PLANETS ══════════════════════ */}
+      {/* ══════════════════════ PLANETS ══════════════════════ */}
       <section className="py-24 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -435,104 +436,105 @@ export default function Landing() {
             <p className="text-base text-gray-500 italic mt-2 font-sans">{t('planets.subtitle')}</p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
-            {planets.map((p, i) => {
-              const isFirst = i === 0;
-              const isLast  = i === planets.length - 1;
-              return (
+          {/* Planet Cards Row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 mb-6">
+            {planets.map((p, i) => (
+              <div
+                key={i}
+                onMouseEnter={() => setHoveredPlanet(i)}
+                onMouseLeave={() => setHoveredPlanet(null)}
+                className={`bg-gradient-to-b ${p.bg} border rounded-xl p-4 text-center cursor-default select-none`}
+                style={{
+                  borderColor: hoveredPlanet === i ? '#D4AF37' : '#E5E7EB',
+                  boxShadow: hoveredPlanet === i ? `0 16px 40px ${p.color}22, 0 0 0 1px ${p.color}22` : '0 1px 4px rgba(0,0,0,0.05)',
+                  transform: hoveredPlanet === i ? 'translateY(-8px) scale(1.06)' : 'translateY(0) scale(1)',
+                  transition: 'all 0.3s cubic-bezier(0.34,1.56,0.64,1)',
+                }}
+              >
                 <div
-                  key={i}
-                  className="relative group"
-                  onMouseEnter={() => setHoveredPlanet(i)}
-                  onMouseLeave={() => setHoveredPlanet(null)}
+                  className="mb-2 select-none"
+                  style={{
+                    color: p.color,
+                    filter: hoveredPlanet === i ? `drop-shadow(0 0 12px ${p.color}99)` : 'none',
+                    transform: hoveredPlanet === i ? 'scale(1.15)' : 'scale(1)',
+                    transition: 'all 0.3s ease',
+                    fontSize: '2.5rem',
+                    lineHeight: 1,
+                    display: 'block',
+                  }}
                 >
-                  {/* Planet Card */}
+                  {p.symbol}
+                </div>
+                <div className="text-[10px] font-sans text-gray-400 tracking-wider mb-1 mt-2">{t(p.subKey)}</div>
+                <h4 className="font-extrabold text-[11px] text-[#2A1B18] leading-tight">{t(p.nameKey)}</h4>
+                <p
+                  className="text-[9px] font-sans tracking-wider uppercase mt-1.5 font-bold"
+                  style={{ color: hoveredPlanet === i ? p.color : '#9CA3AF', transition: 'color 0.3s' }}
+                >
+                  {t(p.rulesKey)}
+                </p>
+                <div
+                  className="mt-2 mx-auto rounded-full"
+                  style={{
+                    background: p.color,
+                    width: '6px', height: '6px',
+                    opacity: hoveredPlanet === i ? 1 : 0,
+                    transform: hoveredPlanet === i ? 'scale(1)' : 'scale(0)',
+                    transition: 'all 0.3s ease',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* ── Detail Panel: slides in below grid on hover ── */}
+          <div
+            style={{
+              maxHeight: hoveredPlanet !== null ? '600px' : '28px',
+              opacity: 1,
+              transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
+              overflow: 'hidden',
+            }}
+          >
+            {hoveredPlanet !== null ? (
+              (() => {
+                const p = planets[hoveredPlanet];
+                return (
                   <div
-                    className={`bg-gradient-to-b ${p.bg} border rounded-xl p-4 text-center card-hover cursor-default transition-all duration-300 ${
-                      hoveredPlanet === i ? 'border-[#D4AF37] shadow-xl' : 'border-gray-200'
-                    }`}
-                    style={hoveredPlanet === i ? { '--ring-color': p.color + '55' } : {}}
+                    className="rounded-2xl overflow-hidden border"
+                    style={{
+                      background: 'linear-gradient(135deg, #1C120F 0%, #241810 60%, #1C120F 100%)',
+                      borderColor: p.color + '44',
+                      boxShadow: `0 0 60px ${p.color}15, inset 0 1px 0 ${p.color}20`,
+                    }}
                   >
-                    {/* Glow ring on hover */}
-                    <div
-                      className={`text-5xl mb-2 transition-all duration-300 select-none ${
-                        hoveredPlanet === i ? 'scale-110' : ''
-                      }`}
-                      style={{ color: p.color, filter: hoveredPlanet === i ? `drop-shadow(0 0 10px ${p.color}88)` : 'none' }}
-                    >
-                      {p.symbol}
-                    </div>
-                    <div className="text-[11px] font-sans text-gray-400 tracking-wider mb-1">{t(p.subKey)}</div>
-                    <h4 className="font-extrabold text-xs text-[#2A1B18] leading-tight">{t(p.nameKey)}</h4>
-                    <p
-                      className="text-[9px] font-sans tracking-wider uppercase mt-1.5 font-bold"
-                      style={{ color: p.color }}
-                    >
-                      {t(p.rulesKey)}
-                    </p>
+                    {/* Top bar */}
+                    <div style={{ height: '3px', background: `linear-gradient(90deg, transparent, ${p.color}, transparent)` }} />
 
-                    {/* Hover pulse line at bottom */}
-                    <div
-                      className="mt-3 h-0.5 rounded-full transition-all duration-500"
-                      style={{
-                        background: `linear-gradient(90deg, transparent, ${p.color}, transparent)`,
-                        opacity: hoveredPlanet === i ? 1 : 0,
-                        transform: hoveredPlanet === i ? 'scaleX(1)' : 'scaleX(0)'
-                      }}
-                    />
-                  </div>
+                    <div className="p-6 md:p-8">
+                      <div className="grid grid-cols-1 md:grid-cols-[120px_1fr_180px] gap-6 md:gap-8 items-start">
 
-                  {/* ── Tooltip Card ── */}
-                  {hoveredPlanet === i && (
-                    <div
-                      className={`planet-tooltip absolute z-50 bottom-[calc(100%+14px)] w-64 rounded-2xl overflow-hidden shadow-2xl border
-                        ${ isLast  ? 'right-0' :
-                           isFirst ? 'left-0'  :
-                           i >= 4  ? 'right-0' : 'left-0'
-                        }`
-                      }
-                      style={{
-                        background: `linear-gradient(145deg, #1C120F, #2A1B18)`,
-                        borderColor: p.color + '55',
-                        boxShadow: `0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px ${p.color}22, inset 0 1px 0 ${p.color}20`,
-                      }}
-                    >
-                      {/* Top color bar */}
-                      <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, transparent, ${p.color}, transparent)` }} />
-
-                      <div className="p-4">
-                        {/* Header */}
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-3xl leading-none" style={{ color: p.color, filter: `drop-shadow(0 0 8px ${p.color}88)` }}>
+                        {/* Col 1: Symbol + name */}
+                        <div className="flex md:flex-col items-center gap-4 md:gap-3">
+                          <div style={{ color: p.color, filter: `drop-shadow(0 0 18px ${p.color}88)`, fontSize: '4.5rem', lineHeight: 1 }}>
                             {p.symbol}
-                          </span>
-                          <div>
-                            <div className="text-[#F5F2E9] font-extrabold text-sm leading-tight font-serif">{t(p.nameKey)}</div>
-                            <div className="text-[10px] font-sans italic mt-0.5" style={{ color: p.color }}>
-                              {p.tagline}
-                            </div>
+                          </div>
+                          <div className="md:text-center">
+                            <div className="text-[#F5F2E9] font-extrabold text-sm font-serif leading-tight">{t(p.nameKey)}</div>
+                            <div className="text-[11px] font-sans italic mt-1" style={{ color: p.color }}>{p.tagline}</div>
                           </div>
                         </div>
 
-                        {/* Description */}
-                        <p className="text-[11px] text-gray-300 font-sans leading-relaxed mb-3">{p.desc}</p>
-
-                        {/* Divider */}
-                        <div className="h-px mb-3" style={{ background: `linear-gradient(90deg, transparent, ${p.color}44, transparent)` }} />
-
-                        {/* Attributes */}
-                        <div className="mb-3">
-                          <p className="text-[9px] font-sans font-bold uppercase tracking-[0.15em] text-gray-500 mb-1.5">Governs</p>
-                          <div className="flex flex-wrap gap-1">
+                        {/* Col 2: Description + attributes */}
+                        <div>
+                          <p className="text-sm text-gray-300 font-sans leading-relaxed mb-5">{p.desc}</p>
+                          <p className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-gray-500 mb-2">Governs</p>
+                          <div className="flex flex-wrap gap-1.5">
                             {p.attributes.map((attr, ai) => (
                               <span
                                 key={ai}
-                                className="text-[9px] font-sans font-bold uppercase tracking-wide px-2 py-0.5 rounded-full"
-                                style={{
-                                  color: p.color,
-                                  background: p.color + '18',
-                                  border: `1px solid ${p.color}35`,
-                                }}
+                                className="text-[10px] font-sans font-bold uppercase tracking-wide px-3 py-1 rounded-full"
+                                style={{ color: p.color, background: p.color + '18', border: `1px solid ${p.color}40` }}
                               >
                                 {attr}
                               </span>
@@ -540,41 +542,37 @@ export default function Landing() {
                           </div>
                         </div>
 
-                        {/* Gemstone + Day */}
-                        <div className="grid grid-cols-2 gap-2 mb-3">
-                          <div className="rounded-lg p-2" style={{ background: p.color + '12', border: `1px solid ${p.color}25` }}>
-                            <p className="text-[8px] font-sans font-bold uppercase tracking-wider text-gray-500 mb-0.5">Gemstone</p>
-                            <p className="text-[11px] font-bold text-[#F5F2E9] font-sans">💎 {p.gemstone}</p>
+                        {/* Col 3: Gemstone / Day / Mantra */}
+                        <div className="flex flex-row md:flex-col gap-3">
+                          <div className="flex-1 rounded-xl p-3 text-center" style={{ background: p.color + '12', border: `1px solid ${p.color}28` }}>
+                            <p className="text-[8px] font-sans font-bold uppercase tracking-widest text-gray-500 mb-1">Gemstone</p>
+                            <p className="text-xs font-bold text-[#F5F2E9] font-sans">💎 {p.gemstone}</p>
                           </div>
-                          <div className="rounded-lg p-2" style={{ background: p.color + '12', border: `1px solid ${p.color}25` }}>
-                            <p className="text-[8px] font-sans font-bold uppercase tracking-wider text-gray-500 mb-0.5">Ruling Day</p>
-                            <p className="text-[11px] font-bold text-[#F5F2E9] font-sans">📅 {p.day}</p>
+                          <div className="flex-1 rounded-xl p-3 text-center" style={{ background: p.color + '12', border: `1px solid ${p.color}28` }}>
+                            <p className="text-[8px] font-sans font-bold uppercase tracking-widest text-gray-500 mb-1">Ruling Day</p>
+                            <p className="text-xs font-bold text-[#F5F2E9] font-sans">📅 {p.day}</p>
+                          </div>
+                          <div className="flex-1 rounded-xl p-3 text-center" style={{ background: p.color + '10', border: `1px solid ${p.color}28` }}>
+                            <p className="text-[8px] font-sans font-bold uppercase tracking-widest text-gray-500 mb-1">✦ Mantra</p>
+                            <p className="text-[9px] text-[#D4AF37] font-serif italic leading-relaxed">{p.mantra}</p>
                           </div>
                         </div>
 
-                        {/* Mantra */}
-                        <div className="rounded-lg p-2.5" style={{ background: p.color + '10', border: `1px solid ${p.color}25` }}>
-                          <p className="text-[8px] font-sans font-bold uppercase tracking-wider text-gray-500 mb-1">✦ Beej Mantra</p>
-                          <p className="text-[10px] text-[#D4AF37] font-serif italic leading-relaxed">{p.mantra}</p>
-                        </div>
                       </div>
-
-                      {/* Bottom arrow */}
-                      <div
-                        className={`absolute -bottom-[7px] w-3.5 h-3.5 rotate-45 border-b border-r ${
-                          isLast ? 'right-6' : isFirst ? 'left-6' : i >= 4 ? 'right-6' : 'left-6'
-                        }`}
-                        style={{
-                          background: '#2A1B18',
-                          borderColor: p.color + '55',
-                        }}
-                      />
                     </div>
-                  )}
-                </div>
-              );
-            })}
+
+                    {/* Bottom bar */}
+                    <div style={{ height: '2px', background: `linear-gradient(90deg, transparent, ${p.color}55, transparent)` }} />
+                  </div>
+                );
+              })()
+            ) : (
+              <p className="text-center text-[11px] text-gray-400 font-sans tracking-wider italic py-1">
+                ✦ Hover over a planet to reveal its celestial secrets ✦
+              </p>
+            )}
           </div>
+
         </div>
       </section>
 
