@@ -146,51 +146,44 @@ export default function Landing() {
     {
       symbol: '☉', nameKey: 'planet.sun.name', subKey: 'planet.sun.sub', rulesKey: 'planet.sun.rules',
       color: '#E8730A', bg: 'from-orange-50 to-amber-50',
-      tagline: 'The Eternal Soul & Core Will',
-      desc: 'Surya is the soul of the cosmos and the sovereign source of all vitality. In your Kundli, the Sun governs self-realization, life purpose, natural leadership, and willpower — bestowing radiant confidence, nobility, and personal authority.',
-      governs: ['Soul Purpose', 'Vitality', 'Willpower', 'Dignity'],
+      taglineKey: 'planet.sun.tagline', descKey: 'planet.sun.desc',
+      governsKeys: ['planet.sun.g1', 'planet.sun.g2', 'planet.sun.g3', 'planet.sun.g4'],
     },
     {
       symbol: '☽', nameKey: 'planet.moon.name', subKey: 'planet.moon.sub', rulesKey: 'planet.moon.rules',
       color: '#94A3B8', bg: 'from-slate-50 to-gray-50',
-      tagline: 'Mirror of Consciousness & Mind',
-      desc: 'Chandra governs the manas (mind), emotional equilibrium, and subconscious intuition. As the reflective cosmic feminine, the Moon shapes how you feel, nurture connections, receive intuition, and maintain inner tranquility.',
-      governs: ['Emotional Peace', 'Intuition', 'Subconscious', 'Nurturing'],
+      taglineKey: 'planet.moon.tagline', descKey: 'planet.moon.desc',
+      governsKeys: ['planet.moon.g1', 'planet.moon.g2', 'planet.moon.g3', 'planet.moon.g4'],
     },
     {
       symbol: '♂', nameKey: 'planet.mars.name', subKey: 'planet.mars.sub', rulesKey: 'planet.mars.rules',
       color: '#B91C1C', bg: 'from-red-50 to-rose-50',
-      tagline: 'Commander of Action & Sacred Fire',
-      desc: 'Mangala represents primal energy, decisive courage, and righteous action. It is the cosmic warrior that fuels ambition, defends truth, and breaks through obstacles — granting the endurance, vitality, and bravery required to conquer goals.',
-      governs: ['Courage', 'Physical Energy', 'Ambition', 'Action'],
+      taglineKey: 'planet.mars.tagline', descKey: 'planet.mars.desc',
+      governsKeys: ['planet.mars.g1', 'planet.mars.g2', 'planet.mars.g3', 'planet.mars.g4'],
     },
     {
       symbol: '☿', nameKey: 'planet.mercury.name', subKey: 'planet.mercury.sub', rulesKey: 'planet.mercury.rules',
       color: '#15803D', bg: 'from-green-50 to-emerald-50',
-      tagline: 'Messenger of Intellect & Speech',
-      desc: 'Budha rules discernment (buddhi), eloquence, and analytical wit. It governs your capacity to assimilate knowledge, negotiate commerce, communicate persuasively, and navigate daily life with swift logic and versatility.',
-      governs: ['Intellect', 'Eloquence', 'Logic', 'Commerce'],
+      taglineKey: 'planet.mercury.tagline', descKey: 'planet.mercury.desc',
+      governsKeys: ['planet.mercury.g1', 'planet.mercury.g2', 'planet.mercury.g3', 'planet.mercury.g4'],
     },
     {
       symbol: '♃', nameKey: 'planet.jupiter.name', subKey: 'planet.jupiter.sub', rulesKey: 'planet.jupiter.rules',
       color: '#CA8A04', bg: 'from-yellow-50 to-amber-50',
-      tagline: 'Supreme Guru of Dharma & Grace',
-      desc: 'Brihaspati (Guru) is the supreme spiritual teacher and great benefic. Bestowing dharma, profound wisdom, optimism, and divine grace, Jupiter expands prosperity, ethical clarity, higher knowledge, and auspicious fortune.',
-      governs: ['Higher Wisdom', 'Dharma', 'Fortune', 'Expansion'],
+      taglineKey: 'planet.jupiter.tagline', descKey: 'planet.jupiter.desc',
+      governsKeys: ['planet.jupiter.g1', 'planet.jupiter.g2', 'planet.jupiter.g3', 'planet.jupiter.g4'],
     },
     {
       symbol: '♀', nameKey: 'planet.venus.name', subKey: 'planet.venus.sub', rulesKey: 'planet.venus.rules',
       color: '#DB2777', bg: 'from-pink-50 to-rose-50',
-      tagline: 'Goddess of Beauty, Love & Harmony',
-      desc: 'Shukra is the celestial guide of beauty, devotion, and refined pleasures. Governing romance, artistic brilliance, wealth, and contentment, Venus illuminates the heart with empathy, marital harmony, and cultural appreciation.',
-      governs: ['Love & Romance', 'Artistic Grace', 'Wealth', 'Harmony'],
+      taglineKey: 'planet.venus.tagline', descKey: 'planet.venus.desc',
+      governsKeys: ['planet.venus.g1', 'planet.venus.g2', 'planet.venus.g3', 'planet.venus.g4'],
     },
     {
       symbol: '♄', nameKey: 'planet.saturn.name', subKey: 'planet.saturn.sub', rulesKey: 'planet.saturn.rules',
       color: '#3730A3', bg: 'from-indigo-50 to-violet-50',
-      tagline: 'Lord of Karma, Time & Mastery',
-      desc: 'Shani is the austere master of time and dispenser of karmic fruits. Through solemn lessons, patience, and rigorous discipline, Saturn dissolves illusions — rewarding persevering souls with profound maturity, resilience, and mastery.',
-      governs: ['Karmic Balance', 'Discipline', 'Patience', 'Endurance'],
+      taglineKey: 'planet.saturn.tagline', descKey: 'planet.saturn.desc',
+      governsKeys: ['planet.saturn.g1', 'planet.saturn.g2', 'planet.saturn.g3', 'planet.saturn.g4'],
     },
   ];
 
@@ -517,19 +510,19 @@ export default function Landing() {
                         {t(p.nameKey)}
                       </h3>
                       <span className="text-xs font-sans italic" style={{ color: p.color }}>
-                        — {p.tagline}
+                        — {t(p.taglineKey)}
                       </span>
                     </div>
 
                     <p className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed mb-3">
-                      {p.desc}
+                      {t(p.descKey)}
                     </p>
 
                     <div className="flex flex-wrap items-center gap-1.5">
                       <span className="text-[9px] font-sans font-bold uppercase tracking-widest text-[#D4AF37]/80 mr-1">
                         Governs:
                       </span>
-                      {p.governs.map((gov, gi) => (
+                      {p.governsKeys.map((key, gi) => (
                         <span
                           key={gi}
                           className="text-[10px] font-sans font-medium px-2 py-0.5 rounded-full"
@@ -539,7 +532,7 @@ export default function Landing() {
                             border: `1px solid ${p.color}35`,
                           }}
                         >
-                          {gov}
+                          {t(key)}
                         </span>
                       ))}
                     </div>
