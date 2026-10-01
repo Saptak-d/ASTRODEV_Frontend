@@ -64,10 +64,6 @@ export default function Navbar() {
 
         {/* Desktop Navigation links */}
         <div className="hidden md:flex gap-4 items-center">
-          <Link to="/" className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider">
-            {t('nav.home')}
-          </Link>
-
           {/* Services Dropdown */}
           <div
             ref={dropdownRef}
@@ -78,7 +74,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setServicesOpen((prev) => !prev)}
-              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1 py-1 focus:outline-none cursor-pointer"
+              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
               aria-expanded={servicesOpen}
             >
               {t('nav.services')}{' '}
@@ -98,26 +94,30 @@ export default function Navbar() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="bg-[#1C120F]/98 border border-[#D4AF37]/35 rounded-xl shadow-2xl py-2 backdrop-blur-md text-left">
+                <div
+                  className="border border-[#D4AF37]/50 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.7)] py-2 text-left"
+                  style={{ backgroundColor: '#1C120F' }}
+                >
                   <Link
                     to="/generate"
                     onClick={() => setServicesOpen(false)}
-                    className="block px-4 py-2.5 text-[11px] font-sans font-bold tracking-wider hover:bg-[#D4AF37] hover:text-[#1E1410] text-[#F5F2E9] transition uppercase flex items-center gap-2 group"
+                    className="block px-4 py-2.5 text-xs font-sans font-bold tracking-wider hover:bg-[#D4AF37] hover:text-[#1E1410] text-[#F5F2E9] transition uppercase flex items-center gap-2 group"
                   >
-                    <span className="text-[#D4AF37] group-hover:text-[#1E1410]">☸</span> {t('nav.kundli')}
+                    <span className="text-[#D4AF37] group-hover:text-[#1E1410] text-sm">☸</span>
+                    <span>{t('nav.kundli')}</span>
                   </Link>
-                  <div className="h-px bg-[#D4AF37]/15 my-1 mx-2"></div>
-                  <div className="px-4 py-2 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center justify-between">
+                  <div className="h-px bg-[#D4AF37]/20 my-1 mx-2"></div>
+                  <div className="px-4 py-2 text-[10.5px] font-sans text-[#EAE6DB] uppercase tracking-wider cursor-not-allowed opacity-80 flex items-center justify-between">
                     <span className="flex items-center gap-2"><span>⚭</span> {t('nav.milan')}</span>
-                    <span className="text-[9px] bg-[#D4AF37]/10 text-[#D4AF37]/70 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">SOON</span>
+                    <span className="text-[9px] bg-[#D4AF37]/20 text-[#D4AF37] px-1.5 py-0.5 rounded border border-[#D4AF37]/40 font-bold">SOON</span>
                   </div>
-                  <div className="px-4 py-2 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center justify-between">
+                  <div className="px-4 py-2 text-[10.5px] font-sans text-[#EAE6DB] uppercase tracking-wider cursor-not-allowed opacity-80 flex items-center justify-between">
                     <span className="flex items-center gap-2"><span>⏳</span> {t('nav.varshaphal')}</span>
-                    <span className="text-[9px] bg-[#D4AF37]/10 text-[#D4AF37]/70 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">SOON</span>
+                    <span className="text-[9px] bg-[#D4AF37]/20 text-[#D4AF37] px-1.5 py-0.5 rounded border border-[#D4AF37]/40 font-bold">SOON</span>
                   </div>
-                  <div className="px-4 py-2 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center justify-between">
+                  <div className="px-4 py-2 text-[10.5px] font-sans text-[#EAE6DB] uppercase tracking-wider cursor-not-allowed opacity-80 flex items-center justify-between">
                     <span className="flex items-center gap-2"><span>💎</span> {t('nav.gemstone')}</span>
-                    <span className="text-[9px] bg-[#D4AF37]/10 text-[#D4AF37]/70 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">SOON</span>
+                    <span className="text-[9px] bg-[#D4AF37]/20 text-[#D4AF37] px-1.5 py-0.5 rounded border border-[#D4AF37]/40 font-bold">SOON</span>
                   </div>
                 </div>
               </div>
@@ -150,16 +150,8 @@ export default function Navbar() {
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 pt-4 border-t border-[#D4AF37]/20 flex flex-col gap-4 bg-[#2A1B18] animate-fade-in">
-          <Link
-            to="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider py-1 border-b border-[#D4AF37]/10"
-          >
-            {t('nav.home')}
-          </Link>
-
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold font-sans">{t('nav.services')}</span>
+            <span className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-bold font-sans">{t('nav.services')}</span>
             <div className="pl-3 flex flex-col gap-3 border-l border-[#D4AF37]/20">
               <Link
                 to="/generate"
@@ -168,14 +160,17 @@ export default function Navbar() {
               >
                 <span>☸</span> {t('nav.kundli')}
               </Link>
-              <span className="text-gray-500 font-sans text-xs tracking-wider flex items-center gap-2 opacity-50 cursor-not-allowed">
-                <span>⚭</span> {t('nav.milan')} ({t('services.soon') || 'soon'})
+              <span className="text-[#EAE6DB]/70 font-sans text-xs tracking-wider flex items-center justify-between opacity-80 cursor-not-allowed">
+                <span className="flex items-center gap-2"><span>⚭</span> {t('nav.milan')}</span>
+                <span className="text-[9px] bg-[#D4AF37]/20 text-[#D4AF37] px-1.5 py-0.5 rounded border border-[#D4AF37]/40 font-bold">SOON</span>
               </span>
-              <span className="text-gray-500 font-sans text-xs tracking-wider flex items-center gap-2 opacity-50 cursor-not-allowed">
-                <span>⏳</span> {t('nav.varshaphal')} ({t('services.soon') || 'soon'})
+              <span className="text-[#EAE6DB]/70 font-sans text-xs tracking-wider flex items-center justify-between opacity-80 cursor-not-allowed">
+                <span className="flex items-center gap-2"><span>⏳</span> {t('nav.varshaphal')}</span>
+                <span className="text-[9px] bg-[#D4AF37]/20 text-[#D4AF37] px-1.5 py-0.5 rounded border border-[#D4AF37]/40 font-bold">SOON</span>
               </span>
-              <span className="text-gray-500 font-sans text-xs tracking-wider flex items-center gap-2 opacity-50 cursor-not-allowed">
-                <span>💎</span> {t('nav.gemstone')} ({t('services.soon') || 'soon'})
+              <span className="text-[#EAE6DB]/70 font-sans text-xs tracking-wider flex items-center justify-between opacity-80 cursor-not-allowed">
+                <span className="flex items-center gap-2"><span>💎</span> {t('nav.gemstone')}</span>
+                <span className="text-[9px] bg-[#D4AF37]/20 text-[#D4AF37] px-1.5 py-0.5 rounded border border-[#D4AF37]/40 font-bold">SOON</span>
               </span>
             </div>
           </div>
