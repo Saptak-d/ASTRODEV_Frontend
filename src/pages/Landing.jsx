@@ -9,7 +9,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 export default function Landing() {
   const [hoveredSector, setHoveredSector] = useState(null);
-  const [hoveredZodiac, setHoveredZodiac] = useState(null);
+  const [activeZodiac, setActiveZodiac] = useState(0);
   const [activePlanet, setActivePlanet] = useState(0);
   const { t } = useLanguage();
   
@@ -543,55 +543,166 @@ export default function Landing() {
       </section>
 
       {/* ══════════════════════ ZODIAC GRID ══════════════════════ */}
-      <section className="bg-[#F0EDE4] py-24 px-6 relative z-10">
+      <section className="bg-[#F0EDE4] py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <span className="text-[#D4AF37] text-xs font-sans font-bold uppercase tracking-[0.3em] block mb-3">{t('zodiac.badge')}</span>
-            <h2 className="text-4xl font-extrabold uppercase tracking-widest text-[#2A1B18]">{t('zodiac.title')}</h2>
-            <p className="text-base text-gray-500 italic mt-2 font-sans">{t('zodiac.subtitle')}</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase tracking-widest text-[#2A1B18]">{t('zodiac.title')}</h2>
+            <p className="text-sm md:text-base text-gray-500 italic mt-2 font-sans">{t('zodiac.subtitle')}</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {zodiacs.map((z, idx) => (
+          {/* ── Zodiac Detail Box ON TOP of the cards ── */}
+          {(() => {
+            const z = zodiacs[activeZodiac] || zodiacs[0];
+            const elColor = elementColors[z.element] || '#D4AF37';
+            return (
               <div
-                key={idx}
-                onMouseEnter={() => setHoveredZodiac(idx)}
-                onMouseLeave={() => setHoveredZodiac(null)}
-                className={`bg-white border rounded-xl p-6 relative overflow-hidden card-hover cursor-default transition-all duration-300 ${
-                  hoveredZodiac === idx ? 'border-[#D4AF37] shadow-xl' : 'border-gray-200 shadow-sm'
-                }`}
+                className="max-w-3xl mx-auto mb-8 rounded-2xl p-4 sm:p-5 md:p-6 border text-left shadow-xl transition-all duration-300 relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, #1C120F 0%, #261A16 50%, #1C120F 100%)',
+                  borderColor: elColor + '66',
+                  boxShadow: `0 12px 36px rgba(0,0,0,0.35), 0 0 24px ${elColor}20`,
+                }}
               >
-                {/* Element color accent bar */}
-                <div className="absolute top-0 left-0 right-0 h-1 rounded-t-xl transition-opacity duration-300"
-                  style={{ backgroundColor: elementColors[z.element], opacity: hoveredZodiac === idx ? 1 : 0.3 }}
-                ></div>
+                {/* Glowing accent top line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-300"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${elColor}, transparent)`,
+                  }}
+                />
 
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-extrabold text-base text-[#2A1B18]">{t(z.nameKey)}</h3>
-                    <p className="text-[12px] text-[#D4AF37] font-sans font-bold">{t(z.subKey)}</p>
-                  </div>
-                  <span className={`text-4xl transition-all duration-300 ${hoveredZodiac === idx ? 'scale-125' : 'opacity-40'}`}
-                    style={{ color: hoveredZodiac === idx ? elementColors[z.element] : '#2A1B18' }}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+                  {/* Zodiac Symbol */}
+                  <div
+                    className="shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl select-none"
+                    style={{
+                      background: elColor + '18',
+                      border: `1px solid ${elColor}45`,
+                      color: elColor,
+                      fontSize: '2.5rem',
+                      lineHeight: 1,
+                      filter: `drop-shadow(0 0 10px ${elColor}88)`,
+                    }}
                   >
                     {z.sign}
-                  </span>
-                </div>
+                  </div>
 
-                <div className="flex gap-2 mb-3">
-                  <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border"
-                    style={{ color: elementColors[z.element], borderColor: elementColors[z.element] + '40', backgroundColor: elementColors[z.element] + '10' }}
-                  >
-                    {t(elementKeyMap[z.element])}
-                  </span>
-                  <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-gray-200 text-gray-500 bg-gray-50">
-                    {t(z.rulerKey)}
-                  </span>
-                </div>
+                  {/* Zodiac Details */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-baseline gap-2 mb-2">
+                      <h3 className="text-base sm:text-xl font-bold text-[#F5F2E9] font-serif tracking-wider uppercase">
+                        {t(z.nameKey)}
+                      </h3>
+                      <span className="text-xs sm:text-sm font-sans font-bold text-[#D4AF37]">
+                        · {t(z.subKey)}
+                      </span>
+                      <div className="flex items-center gap-2 sm:ml-auto">
+                        <span
+                          className="text-[10px] font-sans font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border"
+                          style={{
+                            color: elColor,
+                            borderColor: elColor + '50',
+                            backgroundColor: elColor + '15',
+                          }}
+                        >
+                          {t(elementKeyMap[z.element])}
+                        </span>
+                        <span className="text-[10px] font-sans font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] bg-[#D4AF37]/10">
+                          {t(z.rulerKey)}
+                        </span>
+                      </div>
+                    </div>
 
-                <p className="text-xs text-gray-600 leading-relaxed font-sans">{t(z.descKey)}</p>
+                    <p className="text-xs sm:text-sm text-gray-200 font-sans leading-relaxed">
+                      {t(z.descKey)}
+                    </p>
+                  </div>
+                </div>
               </div>
-            ))}
+            );
+          })()}
+
+          {/* Zodiac Cards Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {zodiacs.map((z, idx) => {
+              const elColor = elementColors[z.element] || '#D4AF37';
+              const isActive = activeZodiac === idx;
+              return (
+                <div
+                  key={idx}
+                  onMouseEnter={() => setActiveZodiac(idx)}
+                  onClick={() => setActiveZodiac(idx)}
+                  className="bg-white border rounded-xl p-3.5 text-center cursor-pointer select-none transition-all duration-300 relative overflow-hidden"
+                  style={{
+                    borderColor: isActive ? elColor : '#E5E7EB',
+                    boxShadow: isActive
+                      ? `0 12px 28px ${elColor}25, 0 0 0 2px ${elColor}55`
+                      : '0 1px 4px rgba(0,0,0,0.05)',
+                    transform: isActive ? 'translateY(-6px) scale(1.04)' : 'translateY(0) scale(1)',
+                  }}
+                >
+                  {/* Element accent top line */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-1 transition-opacity duration-300"
+                    style={{
+                      backgroundColor: elColor,
+                      opacity: isActive ? 1 : 0.35,
+                    }}
+                  />
+
+                  <div className="flex items-center justify-between mb-1 mt-1">
+                    <div className="text-left">
+                      <h4 className="font-extrabold text-xs text-[#2A1B18] leading-tight">
+                        {t(z.nameKey)}
+                      </h4>
+                      <p className="text-[10px] text-[#D4AF37] font-sans font-bold">
+                        {t(z.subKey)}
+                      </p>
+                    </div>
+                    <span
+                      className="text-2xl transition-all duration-300 select-none"
+                      style={{
+                        color: isActive ? elColor : '#2A1B18',
+                        filter: isActive ? `drop-shadow(0 0 8px ${elColor}80)` : 'none',
+                        transform: isActive ? 'scale(1.2)' : 'scale(1)',
+                      }}
+                    >
+                      {z.sign}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-1 mt-2 pt-2 border-t border-gray-100">
+                    <span
+                      className="text-[9px] font-sans font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full border truncate"
+                      style={{
+                        color: elColor,
+                        borderColor: elColor + '40',
+                        backgroundColor: elColor + '10',
+                      }}
+                    >
+                      {t(elementKeyMap[z.element])}
+                    </span>
+                    <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full border border-gray-200 text-gray-500 bg-gray-50 truncate">
+                      {t(z.rulerKey)}
+                    </span>
+                  </div>
+
+                  {/* Indicator Dot */}
+                  <div
+                    className="mt-2 mx-auto rounded-full"
+                    style={{
+                      background: elColor,
+                      width: '6px',
+                      height: '6px',
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? 'scale(1)' : 'scale(0)',
+                      transition: 'all 0.3s ease',
+                    }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
