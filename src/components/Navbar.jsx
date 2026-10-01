@@ -1,13 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t, LANGUAGES } = useLanguage();
+  const dropdownRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setServicesOpen(false);
+    }, 200);
+  };
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <nav className="bg-[#2A1B18] text-[#F5F2E9] border-b-2 border-[#D4AF37] px-6 py-4">
+    <nav className="bg-[#2A1B18] text-[#F5F2E9] border-b-2 border-[#D4AF37] px-6 py-4 relative z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <Link to="/" className="text-xl font-bold tracking-widest flex items-center gap-2">
           <span>🕉</span> ASTRODEV
@@ -15,11 +47,11 @@ export default function Navbar() {
 
         {/* Mobile Menu Button (Hamburger Toggle) */}
         <button
-          onClick={() => setDropdownOpen(!dropdownOpen)}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden flex items-center justify-center p-1.5 text-[#D4AF37] hover:text-[#F5F2E9] focus:outline-none transition-colors border border-[#D4AF37]/35 rounded-lg bg-[#1C120F]/50"
           aria-label="Toggle navigation menu"
         >
-          {dropdownOpen ? (
+          {mobileMenuOpen ? (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -36,38 +68,58 @@ export default function Navbar() {
             {t('nav.home')}
           </Link>
 
+          {/* Services Dropdown */}
           <div
-            className="relative"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+            ref={dropdownRef}
+            className="relative py-1"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            <Link
-              to="/#services"
-              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1 py-1"
-              onClick={() => setDropdownOpen(false)}
+            <button
+              type="button"
+              onClick={() => setServicesOpen((prev) => !prev)}
+              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1 py-1 focus:outline-none cursor-pointer"
+              aria-expanded={servicesOpen}
             >
-              {t('nav.services')} <span className="text-[8px]">▼</span>
-            </Link>
+              {t('nav.services')}{' '}
+              <span
+                className={`text-[8px] inline-block transition-transform duration-200 ${
+                  servicesOpen ? 'rotate-180 text-[#D4AF37]' : ''
+                }`}
+              >
+                ▼
+              </span>
+            </button>
 
-            {dropdownOpen && (
-              <div className="absolute right-0 top-full mt-2 w-56 bg-[#1C120F]/95 border border-[#D4AF37]/35 rounded-xl shadow-2xl py-2 z-50 backdrop-blur-md text-left">
-                <Link
-                  to="/generate"
-                  onClick={() => setDropdownOpen(false)}
-                  className="block px-4 py-2.5 text-[11px] font-sans font-bold tracking-wider hover:bg-[#D4AF37] hover:text-[#1E1410] text-[#F5F2E9] transition uppercase flex items-center gap-2"
-                >
-                  <span>☸</span> {t('nav.kundli')}
-                </Link>
-                <div className="h-px bg-[#D4AF37]/15 my-1"></div>
-                <span className="block px-4 py-2.5 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center gap-2">
-                  <span>⚭</span> {t('nav.milan')}
-                </span>
-                <span className="block px-4 py-2.5 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center gap-2">
-                  <span>⏳</span> {t('nav.varshaphal')}
-                </span>
-                <span className="block px-4 py-2.5 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center gap-2">
-                  <span>💎</span> {t('nav.gemstone')}
-                </span>
+            {/* Seamless dropdown wrapper with padding bridge preventing mouse gap loss */}
+            {servicesOpen && (
+              <div
+                className="absolute right-0 top-full pt-2 w-64 z-50 animate-fade-in"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="bg-[#1C120F]/98 border border-[#D4AF37]/35 rounded-xl shadow-2xl py-2 backdrop-blur-md text-left">
+                  <Link
+                    to="/generate"
+                    onClick={() => setServicesOpen(false)}
+                    className="block px-4 py-2.5 text-[11px] font-sans font-bold tracking-wider hover:bg-[#D4AF37] hover:text-[#1E1410] text-[#F5F2E9] transition uppercase flex items-center gap-2 group"
+                  >
+                    <span className="text-[#D4AF37] group-hover:text-[#1E1410]">☸</span> {t('nav.kundli')}
+                  </Link>
+                  <div className="h-px bg-[#D4AF37]/15 my-1 mx-2"></div>
+                  <div className="px-4 py-2 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><span>⚭</span> {t('nav.milan')}</span>
+                    <span className="text-[9px] bg-[#D4AF37]/10 text-[#D4AF37]/70 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">SOON</span>
+                  </div>
+                  <div className="px-4 py-2 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><span>⏳</span> {t('nav.varshaphal')}</span>
+                    <span className="text-[9px] bg-[#D4AF37]/10 text-[#D4AF37]/70 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">SOON</span>
+                  </div>
+                  <div className="px-4 py-2 text-[10px] font-sans text-gray-500 uppercase tracking-wider cursor-not-allowed opacity-60 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><span>💎</span> {t('nav.gemstone')}</span>
+                    <span className="text-[9px] bg-[#D4AF37]/10 text-[#D4AF37]/70 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">SOON</span>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -96,11 +148,11 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Drawer Overlay */}
-      {dropdownOpen && (
+      {mobileMenuOpen && (
         <div className="md:hidden mt-4 pt-4 border-t border-[#D4AF37]/20 flex flex-col gap-4 bg-[#2A1B18] animate-fade-in">
           <Link
             to="/"
-            onClick={() => setDropdownOpen(false)}
+            onClick={() => setMobileMenuOpen(false)}
             className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider py-1 border-b border-[#D4AF37]/10"
           >
             {t('nav.home')}
@@ -111,8 +163,8 @@ export default function Navbar() {
             <div className="pl-3 flex flex-col gap-3 border-l border-[#D4AF37]/20">
               <Link
                 to="/generate"
-                onClick={() => setDropdownOpen(false)}
-                className="hover:text-[#D4AF37] transition font-sans text-xs tracking-wider flex items-center gap-2 uppercase font-bold"
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[#D4AF37] transition font-sans text-xs tracking-wider flex items-center gap-2 uppercase font-bold text-[#D4AF37]"
               >
                 <span>☸</span> {t('nav.kundli')}
               </Link>
@@ -138,7 +190,7 @@ export default function Navbar() {
                   title={lang.nativeLabel}
                   onClick={() => {
                     setLanguage(lang.code);
-                    setDropdownOpen(false);
+                    setMobileMenuOpen(false);
                   }}
                   className={`
                     relative px-3 py-1 rounded-full text-[11px] font-sans font-bold tracking-wider transition-all duration-300
