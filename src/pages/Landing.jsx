@@ -714,7 +714,7 @@ export default function Landing() {
           })()}
 
           {/* Zodiac Cards Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
             {zodiacs.map((z, idx) => {
               const elColor = elementColors[z.element] || '#D4AF37';
               const isActive = activeZodiac === idx;
@@ -723,38 +723,38 @@ export default function Landing() {
                   key={idx}
                   onMouseEnter={() => setActiveZodiac(idx)}
                   onClick={() => setActiveZodiac(idx)}
-                  className="bg-white border rounded-xl p-3.5 text-center cursor-pointer select-none transition-all duration-300 relative overflow-hidden"
+                  className="bg-white border rounded-2xl p-5 cursor-pointer select-none transition-all duration-300 relative overflow-hidden"
                   style={{
                     borderColor: isActive ? elColor : '#E5E7EB',
                     boxShadow: isActive
                       ? `0 12px 28px ${elColor}25, 0 0 0 2px ${elColor}55`
-                      : '0 1px 4px rgba(0,0,0,0.05)',
-                    transform: isActive ? 'translateY(-6px) scale(1.04)' : 'translateY(0) scale(1)',
+                      : '0 2px 8px rgba(0,0,0,0.06)',
+                    transform: isActive ? 'translateY(-6px) scale(1.03)' : 'translateY(0) scale(1)',
                   }}
                 >
                   {/* Element accent top line */}
                   <div
-                    className="absolute top-0 left-0 right-0 h-1 transition-opacity duration-300"
+                    className="absolute top-0 left-0 right-0 h-1.5 transition-opacity duration-300"
                     style={{
                       backgroundColor: elColor,
                       opacity: isActive ? 1 : 0.35,
                     }}
                   />
 
-                  <div className="flex items-center justify-between mb-1 mt-1">
+                  <div className="flex items-center justify-between mb-3 mt-1">
                     <div className="text-left">
-                      <h4 className="font-extrabold text-xs text-[#2A1B18] leading-tight">
+                      <h4 className="font-extrabold text-sm text-[#2A1B18] leading-tight">
                         {t(z.nameKey)}
                       </h4>
-                      <p className="text-[10px] text-[#D4AF37] font-sans font-bold">
+                      <p className="text-xs text-[#D4AF37] font-sans font-bold mt-0.5">
                         {t(z.subKey)}
                       </p>
                     </div>
                     <span
-                      className="text-2xl transition-all duration-300 select-none"
+                      className="text-4xl transition-all duration-300 select-none"
                       style={{
                         color: isActive ? elColor : '#2A1B18',
-                        filter: isActive ? `drop-shadow(0 0 8px ${elColor}80)` : 'none',
+                        filter: isActive ? `drop-shadow(0 0 10px ${elColor}90)` : 'none',
                         transform: isActive ? 'scale(1.2)' : 'scale(1)',
                       }}
                     >
@@ -762,9 +762,9 @@ export default function Landing() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-1 mt-2 pt-2 border-t border-gray-100">
+                  <div className="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-gray-100">
                     <span
-                      className="text-[9px] font-sans font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full border truncate"
+                      className="text-[10px] font-sans font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border truncate"
                       style={{
                         color: elColor,
                         borderColor: elColor + '40',
@@ -773,7 +773,7 @@ export default function Landing() {
                     >
                       {t(elementKeyMap[z.element])}
                     </span>
-                    <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full border border-gray-200 text-gray-500 bg-gray-50 truncate">
+                    <span className="text-[10px] font-sans font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-gray-200 text-gray-500 bg-gray-50 truncate">
                       {t(z.rulerKey)}
                     </span>
                   </div>
