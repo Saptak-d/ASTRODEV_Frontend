@@ -10,7 +10,7 @@ import { useLanguage } from '../context/LanguageContext';
 export default function Landing() {
   const [hoveredSector, setHoveredSector] = useState(null);
   const [hoveredZodiac, setHoveredZodiac] = useState(null);
-  const [hoveredPlanet, setHoveredPlanet] = useState(null);
+  const [activePlanet, setActivePlanet] = useState(0);
   const { t } = useLanguage();
   
   const navigate = useNavigate();
@@ -86,44 +86,51 @@ export default function Landing() {
     {
       symbol: '☉', nameKey: 'planet.sun.name', subKey: 'planet.sun.sub', rulesKey: 'planet.sun.rules',
       color: '#E8730A', bg: 'from-orange-50 to-amber-50',
-      tagline: 'Soul & Identity',
-      desc: 'The Sun represents your core identity, soul purpose, inner strength, and personal authority.',
+      tagline: 'The Eternal Soul & Core Will',
+      desc: 'Surya is the soul of the cosmos and the sovereign source of all vitality. In your Kundli, the Sun governs self-realization, life purpose, natural leadership, and willpower — bestowing radiant confidence, nobility, and personal authority.',
+      governs: ['Soul Purpose', 'Vitality', 'Willpower', 'Dignity'],
     },
     {
       symbol: '☽', nameKey: 'planet.moon.name', subKey: 'planet.moon.sub', rulesKey: 'planet.moon.rules',
       color: '#94A3B8', bg: 'from-slate-50 to-gray-50',
-      tagline: 'Mind & Emotion',
-      desc: 'The Moon governs your emotional tides, intuition, peace of mind, and inner subconscious world.',
+      tagline: 'Mirror of Consciousness & Mind',
+      desc: 'Chandra governs the manas (mind), emotional equilibrium, and subconscious intuition. As the reflective cosmic feminine, the Moon shapes how you feel, nurture connections, receive intuition, and maintain inner tranquility.',
+      governs: ['Emotional Peace', 'Intuition', 'Subconscious', 'Nurturing'],
     },
     {
       symbol: '♂', nameKey: 'planet.mars.name', subKey: 'planet.mars.sub', rulesKey: 'planet.mars.rules',
       color: '#B91C1C', bg: 'from-red-50 to-rose-50',
-      tagline: 'Drive & Courage',
-      desc: 'Mars ignites ambition, physical vitality, passion, and the courage to conquer obstacles.',
+      tagline: 'Commander of Action & Sacred Fire',
+      desc: 'Mangala represents primal energy, decisive courage, and righteous action. It is the cosmic warrior that fuels ambition, defends truth, and breaks through obstacles — granting the endurance, vitality, and bravery required to conquer goals.',
+      governs: ['Courage', 'Physical Energy', 'Ambition', 'Action'],
     },
     {
       symbol: '☿', nameKey: 'planet.mercury.name', subKey: 'planet.mercury.sub', rulesKey: 'planet.mercury.rules',
       color: '#15803D', bg: 'from-green-50 to-emerald-50',
-      tagline: 'Intellect & Speech',
-      desc: 'Mercury rules analytical intellect, effective communication, commerce, and sharp logic.',
+      tagline: 'Messenger of Intellect & Speech',
+      desc: 'Budha rules discernment (buddhi), eloquence, and analytical wit. It governs your capacity to assimilate knowledge, negotiate commerce, communicate persuasively, and navigate daily life with swift logic and versatility.',
+      governs: ['Intellect', 'Eloquence', 'Logic', 'Commerce'],
     },
     {
       symbol: '♃', nameKey: 'planet.jupiter.name', subKey: 'planet.jupiter.sub', rulesKey: 'planet.jupiter.rules',
       color: '#CA8A04', bg: 'from-yellow-50 to-amber-50',
-      tagline: 'Wisdom & Dharma',
-      desc: 'Jupiter is the great benefic — bestowing spiritual wisdom, divine grace, fortune, and prosperity.',
+      tagline: 'Supreme Guru of Dharma & Grace',
+      desc: 'Brihaspati (Guru) is the supreme spiritual teacher and great benefic. Bestowing dharma, profound wisdom, optimism, and divine grace, Jupiter expands prosperity, ethical clarity, higher knowledge, and auspicious fortune.',
+      governs: ['Higher Wisdom', 'Dharma', 'Fortune', 'Expansion'],
     },
     {
       symbol: '♀', nameKey: 'planet.venus.name', subKey: 'planet.venus.sub', rulesKey: 'planet.venus.rules',
       color: '#DB2777', bg: 'from-pink-50 to-rose-50',
-      tagline: 'Love & Harmony',
-      desc: 'Venus governs love, aesthetic appreciation, creative expression, relationships, and pleasure.',
+      tagline: 'Goddess of Beauty, Love & Harmony',
+      desc: 'Shukra is the celestial guide of beauty, devotion, and refined pleasures. Governing romance, artistic brilliance, wealth, and contentment, Venus illuminates the heart with empathy, marital harmony, and cultural appreciation.',
+      governs: ['Love & Romance', 'Artistic Grace', 'Wealth', 'Harmony'],
     },
     {
       symbol: '♄', nameKey: 'planet.saturn.name', subKey: 'planet.saturn.sub', rulesKey: 'planet.saturn.rules',
       color: '#3730A3', bg: 'from-indigo-50 to-violet-50',
-      tagline: 'Karma & Discipline',
-      desc: 'Saturn teaches patience, righteous karma, discipline, and endurance that sculpts true mastery.',
+      tagline: 'Lord of Karma, Time & Mastery',
+      desc: 'Shani is the austere master of time and dispenser of karmic fruits. Through solemn lessons, patience, and rigorous discipline, Saturn dissolves illusions — rewarding persevering souls with profound maturity, resilience, and mastery.',
+      governs: ['Karmic Balance', 'Discipline', 'Patience', 'Endurance'],
     },
   ];
 
@@ -399,27 +406,101 @@ export default function Landing() {
       </section>
 
       {/* ══════════════════════ PLANETS ══════════════════════ */}
-      {/* ══════════════════════ PLANETS ══════════════════════ */}
-      <section className="py-24 px-6 relative z-10">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <span className="text-[#D4AF37] text-xs font-sans font-bold uppercase tracking-[0.3em] block mb-3">{t('planets.badge')}</span>
-            <h2 className="text-4xl font-extrabold uppercase tracking-widest text-[#2A1B18]">{t('planets.title')}</h2>
-            <p className="text-base text-gray-500 italic mt-2 font-sans">{t('planets.subtitle')}</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase tracking-widest text-[#2A1B18]">{t('planets.title')}</h2>
+            <p className="text-sm md:text-base text-gray-500 italic mt-2 font-sans">{t('planets.subtitle')}</p>
           </div>
 
+          {/* ── Planet Detail Box ON TOP of the cards ── */}
+          {(() => {
+            const p = planets[activePlanet] || planets[0];
+            return (
+              <div
+                className="max-w-3xl mx-auto mb-6 rounded-2xl p-4 sm:p-5 md:p-6 border text-left shadow-xl transition-all duration-300 relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, #1C120F 0%, #261A16 50%, #1C120F 100%)',
+                  borderColor: p.color + '55',
+                  boxShadow: `0 12px 36px rgba(0,0,0,0.35), 0 0 24px ${p.color}20`,
+                }}
+              >
+                {/* Glowing accent top line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-300"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${p.color}, transparent)`,
+                  }}
+                />
+
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+                  {/* Planet Symbol */}
+                  <div
+                    className="shrink-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl select-none"
+                    style={{
+                      background: p.color + '15',
+                      border: `1px solid ${p.color}40`,
+                      color: p.color,
+                      fontSize: '2.25rem',
+                      lineHeight: 1,
+                      filter: `drop-shadow(0 0 10px ${p.color}88)`,
+                    }}
+                  >
+                    {p.symbol}
+                  </div>
+
+                  {/* Planet Details */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-baseline gap-2 mb-1.5">
+                      <h3 className="text-base sm:text-lg font-bold text-[#F5F2E9] font-serif tracking-wider uppercase">
+                        {t(p.nameKey)}
+                      </h3>
+                      <span className="text-xs font-sans italic" style={{ color: p.color }}>
+                        — {p.tagline}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed mb-3">
+                      {p.desc}
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="text-[9px] font-sans font-bold uppercase tracking-widest text-[#D4AF37]/80 mr-1">
+                        Governs:
+                      </span>
+                      {p.governs.map((gov, gi) => (
+                        <span
+                          key={gi}
+                          className="text-[10px] font-sans font-medium px-2 py-0.5 rounded-full"
+                          style={{
+                            color: p.color,
+                            background: p.color + '18',
+                            border: `1px solid ${p.color}35`,
+                          }}
+                        >
+                          {gov}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
           {/* Planet Cards Row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
             {planets.map((p, i) => (
               <div
                 key={i}
-                onMouseEnter={() => setHoveredPlanet(i)}
-                onMouseLeave={() => setHoveredPlanet(null)}
-                className={`bg-gradient-to-b ${p.bg} border rounded-xl p-4 text-center cursor-default select-none`}
+                onMouseEnter={() => setActivePlanet(i)}
+                onClick={() => setActivePlanet(i)}
+                className={`bg-gradient-to-b ${p.bg} border rounded-xl p-3 sm:p-4 text-center cursor-pointer select-none`}
                 style={{
-                  borderColor: hoveredPlanet === i ? '#D4AF37' : '#E5E7EB',
-                  boxShadow: hoveredPlanet === i ? `0 16px 40px ${p.color}22, 0 0 0 1px ${p.color}22` : '0 1px 4px rgba(0,0,0,0.05)',
-                  transform: hoveredPlanet === i ? 'translateY(-8px) scale(1.06)' : 'translateY(0) scale(1)',
+                  borderColor: activePlanet === i ? p.color : '#E5E7EB',
+                  boxShadow: activePlanet === i ? `0 12px 28px ${p.color}30, 0 0 0 2px ${p.color}55` : '0 1px 4px rgba(0,0,0,0.05)',
+                  transform: activePlanet === i ? 'translateY(-6px) scale(1.05)' : 'translateY(0) scale(1)',
                   transition: 'all 0.3s cubic-bezier(0.34,1.56,0.64,1)',
                 }}
               >
@@ -427,21 +508,21 @@ export default function Landing() {
                   className="mb-2 select-none"
                   style={{
                     color: p.color,
-                    filter: hoveredPlanet === i ? `drop-shadow(0 0 12px ${p.color}99)` : 'none',
-                    transform: hoveredPlanet === i ? 'scale(1.15)' : 'scale(1)',
+                    filter: activePlanet === i ? `drop-shadow(0 0 12px ${p.color}99)` : 'none',
+                    transform: activePlanet === i ? 'scale(1.15)' : 'scale(1)',
                     transition: 'all 0.3s ease',
-                    fontSize: '2.5rem',
+                    fontSize: '2.25rem',
                     lineHeight: 1,
                     display: 'block',
                   }}
                 >
                   {p.symbol}
                 </div>
-                <div className="text-[10px] font-sans text-gray-400 tracking-wider mb-1 mt-2">{t(p.subKey)}</div>
+                <div className="text-[10px] font-sans text-gray-400 tracking-wider mb-1 mt-1">{t(p.subKey)}</div>
                 <h4 className="font-extrabold text-[11px] text-[#2A1B18] leading-tight">{t(p.nameKey)}</h4>
                 <p
                   className="text-[9px] font-sans tracking-wider uppercase mt-1.5 font-bold"
-                  style={{ color: hoveredPlanet === i ? p.color : '#9CA3AF', transition: 'color 0.3s' }}
+                  style={{ color: activePlanet === i ? p.color : '#9CA3AF', transition: 'color 0.3s' }}
                 >
                   {t(p.rulesKey)}
                 </p>
@@ -450,63 +531,14 @@ export default function Landing() {
                   style={{
                     background: p.color,
                     width: '6px', height: '6px',
-                    opacity: hoveredPlanet === i ? 1 : 0,
-                    transform: hoveredPlanet === i ? 'scale(1)' : 'scale(0)',
+                    opacity: activePlanet === i ? 1 : 0,
+                    transform: activePlanet === i ? 'scale(1)' : 'scale(0)',
                     transition: 'all 0.3s ease',
                   }}
                 />
               </div>
             ))}
           </div>
-
-          {/* ── Compact Planet Detail Box: small, elegant, short description only ── */}
-          <div className="transition-all duration-300" style={{ minHeight: '64px' }}>
-            {hoveredPlanet !== null ? (
-              (() => {
-                const p = planets[hoveredPlanet];
-                return (
-                  <div
-                    className="max-w-2xl mx-auto rounded-xl px-5 py-3 border flex items-center gap-4 text-left shadow-lg animate-fade-in"
-                    style={{
-                      background: 'linear-gradient(135deg, #1C120F 0%, #261A16 100%)',
-                      borderColor: p.color + '55',
-                      boxShadow: `0 8px 24px rgba(0,0,0,0.3), 0 0 16px ${p.color}15`,
-                    }}
-                  >
-                    <span
-                      className="shrink-0 select-none"
-                      style={{
-                        color: p.color,
-                        fontSize: '2rem',
-                        lineHeight: 1,
-                        filter: `drop-shadow(0 0 8px ${p.color}88)`,
-                      }}
-                    >
-                      {p.symbol}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-xs font-bold text-[#F5F2E9] font-serif uppercase tracking-wider">
-                          {t(p.nameKey)}
-                        </span>
-                        <span className="text-[10px] font-sans italic text-gray-400">
-                          ({p.tagline})
-                        </span>
-                      </div>
-                      <p className="text-xs text-gray-300 font-sans leading-relaxed">
-                        {p.desc}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })()
-            ) : (
-              <p className="text-center text-[11px] text-gray-400 font-sans tracking-wider italic py-3 opacity-60">
-                ✦ Hover over a planet to view its celestial influence ✦
-              </p>
-            )}
-          </div>
-
         </div>
       </section>
 
