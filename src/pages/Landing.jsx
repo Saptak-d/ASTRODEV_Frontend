@@ -83,13 +83,76 @@ export default function Landing() {
   ];
 
   const planets = [
-    { symbol: '☉', nameKey: 'planet.sun.name',     subKey: 'planet.sun.sub',     rulesKey: 'planet.sun.rules',     color: '#E8730A', bg: 'from-orange-50 to-amber-50' },
-    { symbol: '☽', nameKey: 'planet.moon.name',    subKey: 'planet.moon.sub',    rulesKey: 'planet.moon.rules',    color: '#94A3B8', bg: 'from-slate-50 to-gray-50'  },
-    { symbol: '♂', nameKey: 'planet.mars.name',    subKey: 'planet.mars.sub',    rulesKey: 'planet.mars.rules',    color: '#B91C1C', bg: 'from-red-50 to-rose-50'    },
-    { symbol: '☿', nameKey: 'planet.mercury.name', subKey: 'planet.mercury.sub', rulesKey: 'planet.mercury.rules', color: '#15803D', bg: 'from-green-50 to-emerald-50'},
-    { symbol: '♃', nameKey: 'planet.jupiter.name', subKey: 'planet.jupiter.sub', rulesKey: 'planet.jupiter.rules', color: '#CA8A04', bg: 'from-yellow-50 to-amber-50' },
-    { symbol: '♀', nameKey: 'planet.venus.name',   subKey: 'planet.venus.sub',   rulesKey: 'planet.venus.rules',   color: '#DB2777', bg: 'from-pink-50 to-rose-50'   },
-    { symbol: '♄', nameKey: 'planet.saturn.name',  subKey: 'planet.saturn.sub',  rulesKey: 'planet.saturn.rules',  color: '#3730A3', bg: 'from-indigo-50 to-violet-50'},
+    {
+      symbol: '☉', nameKey: 'planet.sun.name', subKey: 'planet.sun.sub', rulesKey: 'planet.sun.rules',
+      color: '#E8730A', bg: 'from-orange-50 to-amber-50',
+      tagline: 'The Eternal Flame of Self',
+      attributes: ['Authority', 'Vitality', 'Confidence', 'Leadership'],
+      mantra: 'Om Hraam Hreem Hraum Sah Suryaya Namah',
+      gemstone: 'Ruby',
+      day: 'Sunday',
+      desc: 'The Sun is your core identity — your soul\'s blueprint, the ego that drives ambition and the light that illuminates your life purpose.',
+    },
+    {
+      symbol: '☽', nameKey: 'planet.moon.name', subKey: 'planet.moon.sub', rulesKey: 'planet.moon.rules',
+      color: '#94A3B8', bg: 'from-slate-50 to-gray-50',
+      tagline: 'Mirror of the Inner World',
+      attributes: ['Intuition', 'Emotion', 'Memory', 'Nurturing'],
+      mantra: 'Om Shraam Shreem Shraum Sah Chandraya Namah',
+      gemstone: 'Pearl',
+      day: 'Monday',
+      desc: 'The Moon governs your emotional tides, subconscious patterns and your innate capacity to receive and reflect love and sensitivity.',
+    },
+    {
+      symbol: '♂', nameKey: 'planet.mars.name', subKey: 'planet.mars.sub', rulesKey: 'planet.mars.rules',
+      color: '#B91C1C', bg: 'from-red-50 to-rose-50',
+      tagline: 'Warrior of Cosmic Will',
+      attributes: ['Courage', 'Energy', 'Passion', 'Action'],
+      mantra: 'Om Kraam Kreem Kraum Sah Bhaumaya Namah',
+      gemstone: 'Red Coral',
+      day: 'Tuesday',
+      desc: 'Mars is your primal fire — the force that propels you into action, ignites your desires and gives you the courage to fight for what you believe.',
+    },
+    {
+      symbol: '☿', nameKey: 'planet.mercury.name', subKey: 'planet.mercury.sub', rulesKey: 'planet.mercury.rules',
+      color: '#15803D', bg: 'from-green-50 to-emerald-50',
+      tagline: 'Swift Messenger of Mind',
+      attributes: ['Logic', 'Communication', 'Adaptability', 'Wit'],
+      mantra: 'Om Braam Breem Braum Sah Budhaya Namah',
+      gemstone: 'Emerald',
+      day: 'Wednesday',
+      desc: 'Mercury rules the intellect and the spoken word. It governs how you think, process information, communicate ideas and navigate daily life.',
+    },
+    {
+      symbol: '♃', nameKey: 'planet.jupiter.name', subKey: 'planet.jupiter.sub', rulesKey: 'planet.jupiter.rules',
+      color: '#CA8A04', bg: 'from-yellow-50 to-amber-50',
+      tagline: 'Boundless Guru of the Cosmos',
+      attributes: ['Wisdom', 'Expansion', 'Fortune', 'Dharma'],
+      mantra: 'Om Graam Greem Graum Sah Guruve Namah',
+      gemstone: 'Yellow Sapphire',
+      day: 'Thursday',
+      desc: 'Jupiter is the great benefic — bestowing wisdom, abundance, spiritual insight and the grace of divine fortune upon those it blesses.',
+    },
+    {
+      symbol: '♀', nameKey: 'planet.venus.name', subKey: 'planet.venus.sub', rulesKey: 'planet.venus.rules',
+      color: '#DB2777', bg: 'from-pink-50 to-rose-50',
+      tagline: 'Goddess of Earthly Delight',
+      attributes: ['Love', 'Beauty', 'Art', 'Harmony'],
+      mantra: 'Om Draam Dreem Draum Sah Shukraya Namah',
+      gemstone: 'Diamond',
+      day: 'Friday',
+      desc: 'Venus rules love and aesthetic sensibility. It governs your capacity for pleasure, romantic attraction, creative expression and inner harmony.',
+    },
+    {
+      symbol: '♄', nameKey: 'planet.saturn.name', subKey: 'planet.saturn.sub', rulesKey: 'planet.saturn.rules',
+      color: '#3730A3', bg: 'from-indigo-50 to-violet-50',
+      tagline: 'Lord of Karma and Time',
+      attributes: ['Discipline', 'Patience', 'Karma', 'Structure'],
+      mantra: 'Om Praam Preem Praum Sah Shanaischaraya Namah',
+      gemstone: 'Blue Sapphire',
+      day: 'Saturday',
+      desc: 'Saturn is the cosmic teacher — through trials and discipline it sculpts character, burns away illusions and rewards those who persevere with mastery.',
+    },
   ];
 
   const elementKeyMap = { Fire: 'zodiac.element.fire', Earth: 'zodiac.element.earth', Air: 'zodiac.element.air', Water: 'zodiac.element.water' };
@@ -178,13 +241,20 @@ export default function Landing() {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes tooltipIn {
+          from { opacity: 0; transform: translateY(8px) scale(0.97); }
+          to   { opacity: 1; transform: translateY(0)   scale(1);    }
+        }
+        @keyframes pulseRing {
+          0%   { box-shadow: 0 0 0 0 var(--ring-color); }
+          70%  { box-shadow: 0 0 0 8px transparent; }
+          100% { box-shadow: 0 0 0 0 transparent; }
+        }
         .cosmic-rotate {
           animation: rotateCosmic 150s linear infinite;
           transform-origin: center center;
         }
-        .cosmic-rotate:hover {
-          animation-play-state: paused;
-        }
+        .cosmic-rotate:hover { animation-play-state: paused; }
         .float-slow { animation: floatSlow 7s ease-in-out infinite; }
         .star-pulse { animation: starGlow 2.5s ease-in-out infinite; }
         .om-glow { animation: omGlow 3s ease-in-out infinite; }
@@ -199,11 +269,18 @@ export default function Landing() {
         .sector-label { transition: all 0.2s ease; }
         .sector-group:hover .sector-label { fill: #D4AF37 !important; }
         .card-hover {
-          transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+          transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease, border-color 0.3s ease;
         }
         .card-hover:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 30px rgba(212,175,55,0.12);
+          transform: translateY(-6px) scale(1.04);
+          box-shadow: 0 16px 36px rgba(212,175,55,0.18);
+        }
+        .planet-tooltip {
+          animation: tooltipIn 0.22s cubic-bezier(.34,1.56,.64,1) forwards;
+          pointer-events: none;
+        }
+        .planet-pulse {
+          animation: pulseRing 1.6s ease-out infinite;
         }
       `}</style>
 
@@ -359,21 +436,144 @@ export default function Landing() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
-            {planets.map((p, i) => (
-              <div
-                key={i}
-                onMouseEnter={() => setHoveredPlanet(i)}
-                onMouseLeave={() => setHoveredPlanet(null)}
-                className={`bg-gradient-to-b ${p.bg} border rounded-xl p-4 text-center card-hover cursor-default ${
-                  hoveredPlanet === i ? 'border-[#D4AF37] shadow-lg' : 'border-gray-200'
-                }`}
-              >
-                <div className="text-4xl mb-2" style={{ color: p.color }}>{p.symbol}</div>
-                <div className="text-[11px] font-sans text-gray-400 tracking-wider mb-1">{t(p.subKey)}</div>
-                <h4 className="font-extrabold text-xs text-[#2A1B18] leading-tight">{t(p.nameKey)}</h4>
-                <p className="text-[9px] text-gray-500 font-sans tracking-wider uppercase mt-1">{t(p.rulesKey)}</p>
-              </div>
-            ))}
+            {planets.map((p, i) => {
+              const isFirst = i === 0;
+              const isLast  = i === planets.length - 1;
+              return (
+                <div
+                  key={i}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredPlanet(i)}
+                  onMouseLeave={() => setHoveredPlanet(null)}
+                >
+                  {/* Planet Card */}
+                  <div
+                    className={`bg-gradient-to-b ${p.bg} border rounded-xl p-4 text-center card-hover cursor-default transition-all duration-300 ${
+                      hoveredPlanet === i ? 'border-[#D4AF37] shadow-xl' : 'border-gray-200'
+                    }`}
+                    style={hoveredPlanet === i ? { '--ring-color': p.color + '55' } : {}}
+                  >
+                    {/* Glow ring on hover */}
+                    <div
+                      className={`text-5xl mb-2 transition-all duration-300 select-none ${
+                        hoveredPlanet === i ? 'scale-110' : ''
+                      }`}
+                      style={{ color: p.color, filter: hoveredPlanet === i ? `drop-shadow(0 0 10px ${p.color}88)` : 'none' }}
+                    >
+                      {p.symbol}
+                    </div>
+                    <div className="text-[11px] font-sans text-gray-400 tracking-wider mb-1">{t(p.subKey)}</div>
+                    <h4 className="font-extrabold text-xs text-[#2A1B18] leading-tight">{t(p.nameKey)}</h4>
+                    <p
+                      className="text-[9px] font-sans tracking-wider uppercase mt-1.5 font-bold"
+                      style={{ color: p.color }}
+                    >
+                      {t(p.rulesKey)}
+                    </p>
+
+                    {/* Hover pulse line at bottom */}
+                    <div
+                      className="mt-3 h-0.5 rounded-full transition-all duration-500"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${p.color}, transparent)`,
+                        opacity: hoveredPlanet === i ? 1 : 0,
+                        transform: hoveredPlanet === i ? 'scaleX(1)' : 'scaleX(0)'
+                      }}
+                    />
+                  </div>
+
+                  {/* ── Tooltip Card ── */}
+                  {hoveredPlanet === i && (
+                    <div
+                      className={`planet-tooltip absolute z-50 bottom-[calc(100%+14px)] w-64 rounded-2xl overflow-hidden shadow-2xl border
+                        ${ isLast  ? 'right-0' :
+                           isFirst ? 'left-0'  :
+                           i >= 4  ? 'right-0' : 'left-0'
+                        }`
+                      }
+                      style={{
+                        background: `linear-gradient(145deg, #1C120F, #2A1B18)`,
+                        borderColor: p.color + '55',
+                        boxShadow: `0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px ${p.color}22, inset 0 1px 0 ${p.color}20`,
+                      }}
+                    >
+                      {/* Top color bar */}
+                      <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, transparent, ${p.color}, transparent)` }} />
+
+                      <div className="p-4">
+                        {/* Header */}
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="text-3xl leading-none" style={{ color: p.color, filter: `drop-shadow(0 0 8px ${p.color}88)` }}>
+                            {p.symbol}
+                          </span>
+                          <div>
+                            <div className="text-[#F5F2E9] font-extrabold text-sm leading-tight font-serif">{t(p.nameKey)}</div>
+                            <div className="text-[10px] font-sans italic mt-0.5" style={{ color: p.color }}>
+                              {p.tagline}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-[11px] text-gray-300 font-sans leading-relaxed mb-3">{p.desc}</p>
+
+                        {/* Divider */}
+                        <div className="h-px mb-3" style={{ background: `linear-gradient(90deg, transparent, ${p.color}44, transparent)` }} />
+
+                        {/* Attributes */}
+                        <div className="mb-3">
+                          <p className="text-[9px] font-sans font-bold uppercase tracking-[0.15em] text-gray-500 mb-1.5">Governs</p>
+                          <div className="flex flex-wrap gap-1">
+                            {p.attributes.map((attr, ai) => (
+                              <span
+                                key={ai}
+                                className="text-[9px] font-sans font-bold uppercase tracking-wide px-2 py-0.5 rounded-full"
+                                style={{
+                                  color: p.color,
+                                  background: p.color + '18',
+                                  border: `1px solid ${p.color}35`,
+                                }}
+                              >
+                                {attr}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Gemstone + Day */}
+                        <div className="grid grid-cols-2 gap-2 mb-3">
+                          <div className="rounded-lg p-2" style={{ background: p.color + '12', border: `1px solid ${p.color}25` }}>
+                            <p className="text-[8px] font-sans font-bold uppercase tracking-wider text-gray-500 mb-0.5">Gemstone</p>
+                            <p className="text-[11px] font-bold text-[#F5F2E9] font-sans">💎 {p.gemstone}</p>
+                          </div>
+                          <div className="rounded-lg p-2" style={{ background: p.color + '12', border: `1px solid ${p.color}25` }}>
+                            <p className="text-[8px] font-sans font-bold uppercase tracking-wider text-gray-500 mb-0.5">Ruling Day</p>
+                            <p className="text-[11px] font-bold text-[#F5F2E9] font-sans">📅 {p.day}</p>
+                          </div>
+                        </div>
+
+                        {/* Mantra */}
+                        <div className="rounded-lg p-2.5" style={{ background: p.color + '10', border: `1px solid ${p.color}25` }}>
+                          <p className="text-[8px] font-sans font-bold uppercase tracking-wider text-gray-500 mb-1">✦ Beej Mantra</p>
+                          <p className="text-[10px] text-[#D4AF37] font-serif italic leading-relaxed">{p.mantra}</p>
+                        </div>
+                      </div>
+
+                      {/* Bottom arrow */}
+                      <div
+                        className={`absolute -bottom-[7px] w-3.5 h-3.5 rotate-45 border-b border-r ${
+                          isLast ? 'right-6' : isFirst ? 'left-6' : i >= 4 ? 'right-6' : 'left-6'
+                        }`}
+                        style={{
+                          background: '#2A1B18',
+                          borderColor: p.color + '55',
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
