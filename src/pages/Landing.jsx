@@ -570,19 +570,15 @@ export default function Landing() {
             const elColor = elementColors[z.element] || '#D4AF37';
             return (
               <div
-                className="max-w-3xl mx-auto mb-6 rounded-xl p-3.5 sm:p-4 border text-left shadow-lg transition-all duration-300 relative overflow-hidden"
+                className="max-w-3xl mx-auto mb-6 rounded-xl p-3.5 sm:p-4 text-left transition-all duration-300 relative overflow-hidden"
                 style={{
-                  background: 'linear-gradient(135deg, #1C120F 0%, #261A16 50%, #1C120F 100%)',
-                  borderColor: elColor + '55',
-                  boxShadow: `0 8px 24px rgba(0,0,0,0.35), 0 0 16px ${elColor}18`,
+                  background: 'rgba(255, 253, 250, 0.35)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.35)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)',
                 }}
               >
-                {/* Glowing accent top line */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-300"
-                  style={{ background: `linear-gradient(90deg, transparent, ${elColor}, transparent)` }}
-                />
-
                 <div className="flex items-start gap-3.5 relative">
                   {/* Zodiac Symbol */}
                   <div
@@ -593,7 +589,6 @@ export default function Landing() {
                       color: elColor,
                       fontSize: '1.6rem',
                       lineHeight: 1,
-                      filter: `drop-shadow(0 0 8px ${elColor}88)`,
                     }}
                   >
                     {z.sign}
@@ -603,18 +598,18 @@ export default function Landing() {
                   <div className="flex-1 min-w-0">
                     {/* Name + tagline row */}
                     <div className="flex flex-wrap items-baseline gap-1.5 mb-0.5">
-                      <h3 className="text-sm font-bold text-[#F5F2E9] font-serif tracking-wider uppercase">
+                      <h3 className="text-sm font-bold text-[#2A1B18] font-serif tracking-wider uppercase">
                         {t(z.nameKey)}
                       </h3>
                       <span className="text-[11px] font-sans font-bold" style={{ color: elColor }}>
                         · {t(z.subKey)}
                       </span>
                     </div>
-                    <p className="text-[10px] font-sans italic mb-2" style={{ color: elColor + 'BB' }}>
+                    <p className="text-[10px] font-sans italic mb-2" style={{ color: elColor + 'CC' }}>
                       {z.tagline}
                     </p>
 
-                    {/* Badges + desc in one compact row */}
+                    {/* Badges */}
                     <div className="flex flex-wrap items-center gap-1.5 mb-2">
                       <span
                         className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border"
@@ -622,18 +617,18 @@ export default function Landing() {
                       >
                         {t(elementKeyMap[z.element])}
                       </span>
-                      <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] bg-[#D4AF37]/10">
+                      <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D4AF37]/30 text-[#B8860B] bg-[#D4AF37]/10">
                         Ruler: {t(z.rulerKey)}
                       </span>
                     </div>
 
-                    <p className="text-[10px] sm:text-xs text-gray-300 font-sans leading-relaxed mb-2">
+                    <p className="text-[10px] sm:text-xs text-[#3D2E28]/80 font-sans leading-relaxed mb-2">
                       {z.desc}
                     </p>
 
                     {/* Governs tags */}
                     <div className="flex flex-wrap items-center gap-1">
-                      <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-[#D4AF37]/70 mr-0.5">
+                      <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-[#B8860B]/80 mr-0.5">
                         Governs:
                       </span>
                       {z.governs.map((gov, gi) => (
