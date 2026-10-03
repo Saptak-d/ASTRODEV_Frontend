@@ -68,78 +68,18 @@ export default function Landing() {
 
 
   const zodiacs = [
-    {
-      sign: '♈', nameKey: 'zodiac.aries.name', subKey: 'zodiac.aries.sub', element: 'Fire', rulerKey: 'ruler.mars',
-      tagline: 'The Trailblazer of the Cosmos',
-      desc: 'Mesha (Aries) is the first sign of the zodiac — a blazing pioneer ruled by fiery Mars. Born leaders of unmatched courage, Aries souls charge into life with raw vitality, spiritual boldness, and an irresistible drive to conquer new frontiers. Their sacred mission is to ignite change.',
-      governs: ['Courage & Initiative', 'Leadership', 'Raw Vitality', 'New Beginnings'],
-    },
-    {
-      sign: '♉', nameKey: 'zodiac.taurus.name', subKey: 'zodiac.taurus.sub', element: 'Earth', rulerKey: 'ruler.venus',
-      tagline: 'The Sacred Builder of Abundance',
-      desc: 'Vrishabha (Taurus) is grounded in the eternal abundance of Earth, governed by the grace of Venus. Patient, devoted, and deeply sensual, Taurus souls build lasting foundations — in wealth, relationships, and art. Their inner stillness holds tremendous creative and material power.',
-      governs: ['Patience & Stability', 'Wealth', 'Sensuality', 'Artistic Grace'],
-    },
-    {
-      sign: '♊', nameKey: 'zodiac.gemini.name', subKey: 'zodiac.gemini.sub', element: 'Air', rulerKey: 'ruler.mercury',
-      tagline: 'The Twin Flame of Intellect',
-      desc: 'Mithuna (Gemini) pulses with Mercury\'s swift wind of intelligence and communication. The cosmic twins embody duality — bridging ideas, cultures, and minds with extraordinary eloquence. Versatile and perpetually curious, they are the messengers of divine thought and the weavers of connection.',
-      governs: ['Intellect & Wit', 'Communication', 'Adaptability', 'Social Bonds'],
-    },
-    {
-      sign: '♋', nameKey: 'zodiac.cancer.name', subKey: 'zodiac.cancer.sub', element: 'Water', rulerKey: 'ruler.moon',
-      tagline: 'Guardian of the Lunar Heart',
-      desc: 'Karka (Cancer) is the nurturing womb of the zodiac, cradled by the Moon\'s ever-changing tides. Gifted with profound intuition and emotional depth, Cancer souls are the sacred keepers of home, family, and ancestral memory — offering boundless compassion and an unbreakable protective love.',
-      governs: ['Intuition', 'Emotional Depth', 'Nurturing', 'Home & Ancestry'],
-    },
-    {
-      sign: '♌', nameKey: 'zodiac.leo.name', subKey: 'zodiac.leo.sub', element: 'Fire', rulerKey: 'ruler.sun',
-      tagline: 'The Sovereign Soul of the Sun',
-      desc: 'Simha (Leo) radiates with the boundless light of the Sun — the cosmic king who commands attention, inspires devotion, and illuminates every room. Born to lead with warmth, Leo souls carry an innate dignity and creative fire, transforming the world through their magnetic presence and noble heart.',
-      governs: ['Royalty & Dignity', 'Creative Fire', 'Generosity', 'Leadership'],
-    },
-    {
-      sign: '♍', nameKey: 'zodiac.virgo.name', subKey: 'zodiac.virgo.sub', element: 'Earth', rulerKey: 'ruler.mercury',
-      tagline: 'The Divine Healer of Precision',
-      desc: 'Kanya (Virgo) channels Mercury\'s analytical mastery through earthly service and sacred craftsmanship. The purest sign of discernment, Virgo souls refine the world through meticulous attention, selfless healing, and unwavering devotion to excellence — turning everyday work into an act of worship.',
-      governs: ['Analytical Mind', 'Healing & Service', 'Perfection', 'Practical Wisdom'],
-    },
-    {
-      sign: '♎', nameKey: 'zodiac.libra.name', subKey: 'zodiac.libra.sub', element: 'Air', rulerKey: 'ruler.venus',
-      tagline: 'The Cosmic Architect of Harmony',
-      desc: 'Tula (Libra) holds Venus\'s scales of cosmic justice and divine beauty. Born diplomats and artists, Libra souls are compelled by an eternal quest for fairness, aesthetic perfection, and meaningful partnership. Their greatest gift is the ability to create harmony where chaos once reigned.',
-      governs: ['Balance & Justice', 'Partnership', 'Aesthetic Beauty', 'Diplomacy'],
-    },
-    {
-      sign: '♏', nameKey: 'zodiac.scorpio.name', subKey: 'zodiac.scorpio.sub', element: 'Water', rulerKey: 'ruler.mars',
-      tagline: 'The Transformer of Hidden Depths',
-      desc: 'Vrishchika (Scorpio) descends into the deepest waters of the psyche, wielding Mars\'s raw power for alchemical transformation. Scorpio souls are fearless investigators of truth, masters of regeneration, and channels of profound mystical intensity — eternally reborn through the fire of their own will.',
-      governs: ['Transformation', 'Mysticism', 'Willpower', 'Hidden Truths'],
-    },
-    {
-      sign: '♐', nameKey: 'zodiac.sagittarius.name', subKey: 'zodiac.sagittarius.sub', element: 'Fire', rulerKey: 'ruler.jupiter',
-      tagline: 'The Cosmic Seeker of Higher Truth',
-      desc: 'Dhanu (Sagittarius) blazes with Jupiter\'s expansive fire — the eternal archer whose arrow points toward the heavens. Philosophers, adventurers, and truth-seekers, Sagittarius souls transcend boundaries, both physical and spiritual, driven by an insatiable hunger for wisdom, freedom, and higher purpose.',
-      governs: ['Higher Wisdom', 'Freedom & Adventure', 'Philosophy', 'Spiritual Growth'],
-    },
-    {
-      sign: '♑', nameKey: 'zodiac.capricorn.name', subKey: 'zodiac.capricorn.sub', element: 'Earth', rulerKey: 'ruler.saturn',
-      tagline: 'The Mountain Climber of Destiny',
-      desc: 'Makara (Capricorn) is sculpted by Saturn\'s patient hand — the relentless mountain climber who earns mastery through discipline, sacrifice, and time. Capricorn souls carry ancient wisdom and karmic authority, building empires of lasting achievement through sheer perseverance and unwavering ambition.',
-      governs: ['Ambition & Mastery', 'Discipline', 'Karmic Duty', 'Long-term Vision'],
-    },
-    {
-      sign: '♒', nameKey: 'zodiac.aquarius.name', subKey: 'zodiac.aquarius.sub', element: 'Air', rulerKey: 'ruler.saturn',
-      tagline: 'The Visionary of the New Age',
-      desc: 'Kumbha (Aquarius) pours Saturn\'s cosmic waters of knowledge upon all of humanity. The great humanitarian and revolutionary thinker, Aquarius souls are centuries ahead of their time — visionaries who shatter outdated systems to usher in a more just, enlightened, and unified world.',
-      governs: ['Humanitarianism', 'Innovation', 'Collective Vision', 'Higher Ideals'],
-    },
-    {
-      sign: '♓', nameKey: 'zodiac.pisces.name', subKey: 'zodiac.pisces.sub', element: 'Water', rulerKey: 'ruler.jupiter',
-      tagline: 'The Mystic Ocean of the Soul',
-      desc: 'Meena (Pisces) dissolves all boundaries in Jupiter\'s infinite oceanic consciousness. The most spiritually evolved sign, Pisces souls float between worlds — gifted with transcendent empathy, visionary dreams, and a divine connection to the unseen realms. They are the universe dreaming of itself.',
-      governs: ['Spiritual Transcendence', 'Empathy & Compassion', 'Dreams & Visions', 'Unity'],
-    },
+    { sign: '♈', nameKey: 'zodiac.aries.name', subKey: 'zodiac.aries.sub', element: 'Fire', rulerKey: 'ruler.mars', descKey: 'zodiac.aries.desc' },
+    { sign: '♉', nameKey: 'zodiac.taurus.name', subKey: 'zodiac.taurus.sub', element: 'Earth', rulerKey: 'ruler.venus', descKey: 'zodiac.taurus.desc' },
+    { sign: '♊', nameKey: 'zodiac.gemini.name', subKey: 'zodiac.gemini.sub', element: 'Air', rulerKey: 'ruler.mercury', descKey: 'zodiac.gemini.desc' },
+    { sign: '♋', nameKey: 'zodiac.cancer.name', subKey: 'zodiac.cancer.sub', element: 'Water', rulerKey: 'ruler.moon', descKey: 'zodiac.cancer.desc' },
+    { sign: '♌', nameKey: 'zodiac.leo.name', subKey: 'zodiac.leo.sub', element: 'Fire', rulerKey: 'ruler.sun', descKey: 'zodiac.leo.desc' },
+    { sign: '♍', nameKey: 'zodiac.virgo.name', subKey: 'zodiac.virgo.sub', element: 'Earth', rulerKey: 'ruler.mercury', descKey: 'zodiac.virgo.desc' },
+    { sign: '♎', nameKey: 'zodiac.libra.name', subKey: 'zodiac.libra.sub', element: 'Air', rulerKey: 'ruler.venus', descKey: 'zodiac.libra.desc' },
+    { sign: '♏', nameKey: 'zodiac.scorpio.name', subKey: 'zodiac.scorpio.sub', element: 'Water', rulerKey: 'ruler.mars', descKey: 'zodiac.scorpio.desc' },
+    { sign: '♐', nameKey: 'zodiac.sagittarius.name', subKey: 'zodiac.sagittarius.sub', element: 'Fire', rulerKey: 'ruler.jupiter', descKey: 'zodiac.sagittarius.desc' },
+    { sign: '♑', nameKey: 'zodiac.capricorn.name', subKey: 'zodiac.capricorn.sub', element: 'Earth', rulerKey: 'ruler.saturn', descKey: 'zodiac.capricorn.desc' },
+    { sign: '♒', nameKey: 'zodiac.aquarius.name', subKey: 'zodiac.aquarius.sub', element: 'Air', rulerKey: 'ruler.saturn', descKey: 'zodiac.aquarius.desc' },
+    { sign: '♓', nameKey: 'zodiac.pisces.name', subKey: 'zodiac.pisces.sub', element: 'Water', rulerKey: 'ruler.jupiter', descKey: 'zodiac.pisces.desc' },
   ];
 
   const planets = [
@@ -596,21 +536,18 @@ export default function Landing() {
 
                   {/* Zodiac Details */}
                   <div className="flex-1 min-w-0">
-                    {/* Name + tagline row */}
-                    <div className="flex flex-wrap items-baseline gap-1.5 mb-0.5">
-                      <h3 className="text-sm font-bold text-[#1A0F0A] font-serif tracking-wider uppercase">
+                    {/* Name + sub name row */}
+                    <div className="flex flex-wrap items-baseline gap-2 mb-1.5">
+                      <h3 className="text-base font-bold text-[#1A0F0A] font-serif tracking-wider uppercase">
                         {t(z.nameKey)}
                       </h3>
-                      <span className="text-[11px] font-sans font-bold" style={{ color: elColor, filter: 'brightness(0.8)' }}>
+                      <span className="text-xs font-sans font-bold" style={{ color: elColor, filter: 'brightness(0.8)' }}>
                         · {t(z.subKey)}
                       </span>
                     </div>
-                    <p className="text-[10px] font-sans italic mb-2" style={{ color: elColor, filter: 'brightness(0.75)' }}>
-                      {z.tagline}
-                    </p>
 
                     {/* Badges */}
-                    <div className="flex flex-wrap items-center gap-1.5 mb-2">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
                       <span
                         className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border"
                         style={{ color: elColor, borderColor: elColor + '70', backgroundColor: elColor + '20', filter: 'brightness(0.85)' }}
@@ -618,29 +555,14 @@ export default function Landing() {
                         {t(elementKeyMap[z.element])}
                       </span>
                       <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D4AF37]/50 text-[#8B6914] bg-[#D4AF37]/15">
-                        Ruler: {t(z.rulerKey)}
+                        {t('zodiac.ruler') || 'Ruler'}: {t(z.rulerKey)}
                       </span>
                     </div>
 
-                    <p className="text-[10px] sm:text-xs font-sans leading-relaxed mb-2 font-medium" style={{ color: '#0F0A06' }}>
-                      {z.desc}
+                    {/* Translated Description */}
+                    <p className="text-xs sm:text-sm font-sans leading-relaxed font-medium" style={{ color: '#0F0A06' }}>
+                      {t(z.descKey)}
                     </p>
-
-                    {/* Governs tags */}
-                    <div className="flex flex-wrap items-center gap-1">
-                      <span className="text-[8px] font-sans font-bold uppercase tracking-widest mr-0.5" style={{ color: '#8B6914' }}>
-                        Governs:
-                      </span>
-                      {z.governs.map((gov, gi) => (
-                        <span
-                          key={gi}
-                          className="text-[9px] font-sans font-medium px-1.5 py-0.5 rounded-full"
-                          style={{ color: elColor, background: elColor + '25', border: `1px solid ${elColor}50`, filter: 'brightness(0.85)' }}
-                        >
-                          {gov}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>

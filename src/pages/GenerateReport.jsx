@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BirthForm from '../components/BirthForm';
 import LoadingScreen from '../components/LoadingScreen';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function GenerateReport() {
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [error,   setError]   = useState(null);
   const navigate = useNavigate();
@@ -52,10 +54,10 @@ export default function GenerateReport() {
       <div className="text-center mb-6">
         <div className="text-3xl text-[#D4AF37] mb-2" style={{ fontFamily: 'serif' }}>ॐ</div>
         <h1 className="text-2xl font-extrabold tracking-widest text-[#2A1B18] uppercase mb-1">
-          जन्म कुंडली
+          {t('generate.title')}
         </h1>
         <p className="text-xs text-[#9A8B7A] tracking-wider">
-          अपना विवरण भरें · पंडितजी द्वारा हस्तलिखित जन्म कुंडली प्राप्त करें
+          {t('generate.subtitle')}
         </p>
       </div>
 
@@ -71,7 +73,7 @@ export default function GenerateReport() {
       <BirthForm onSubmit={handleFormSubmit} loading={loading} />
 
       <p className="mt-5 text-[#B5A898] text-[10px] italic tracking-wider">
-        🕉 भुगतान के बाद आपकी जन्म कुंडली सुरक्षित रूप से तैयार की जाएगी
+        🕉 {t('form.ssl')}
       </p>
     </div>
   );

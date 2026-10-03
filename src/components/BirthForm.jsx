@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function BirthForm({ onSubmit, loading }) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const getLanguageCodeToReportLang = (code) => {
+    switch (code) {
+      case 'en': return 'english';
+      case 'hi': return 'hindi';
+      case 'sa': return 'sanskrit';
+      case 'bn': return 'bengali';
+      case 'ta': return 'tamil';
+      case 'mr': return 'marathi';
+      default: return 'hindi';
+    }
+  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -11,8 +23,16 @@ export default function BirthForm({ onSubmit, loading }) {
     birthDate: '',
     birthPlace: '',
     gender: '',
-    preferredLanguage: 'hindi',
+    preferredLanguage: getLanguageCodeToReportLang(language),
   });
+
+  // Sync preferred report language when UI language changes
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      preferredLanguage: getLanguageCodeToReportLang(language),
+    }));
+  }, [language]);
   const [hours, setHours] = useState('12');
   const [minutes, setMinutes] = useState('00');
   const [seconds, setSeconds] = useState('00');

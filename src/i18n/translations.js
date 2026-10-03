@@ -983,6 +983,23 @@ const translations = {
     ta: 'சனி',
     mr: 'शनी',
   },
+  // Ruler & Governs general labels
+  'zodiac.ruler': {
+    en: 'Ruler',
+    hi: 'स्वामी',
+    sa: 'स्वामी',
+    bn: 'অধিপতি',
+    ta: 'அதிபதி',
+    mr: 'अधिपती',
+  },
+  'zodiac.governs': {
+    en: 'Governs',
+    hi: 'शासन',
+    sa: 'शासनम्',
+    bn: 'শাসন',
+    ta: 'ஆளுமை',
+    mr: 'शासन',
+  },
   // Zodiac element labels
   'zodiac.element.fire': {
     en: 'Fire',
