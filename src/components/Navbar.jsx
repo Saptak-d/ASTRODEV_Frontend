@@ -75,7 +75,7 @@ export default function Navbar() {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-4 items-center">
+        <div className="hidden md:flex gap-6 items-center">
 
           {/* Services Dropdown */}
           <div
@@ -87,10 +87,10 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setServicesOpen((prev) => !prev)}
-              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
+              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1.5 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
               aria-expanded={servicesOpen}
             >
-              {t('nav.services')}{' '}
+              <span>{t('nav.services')}</span>
               <span className={`text-[8px] inline-block transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
                 ▼
               </span>
@@ -132,7 +132,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* ── Language Dropdown ── */}
+          {/* Language Dropdown */}
           <div
             ref={langDropdownRef}
             className="relative py-1"
@@ -142,20 +142,20 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setLangOpen((prev) => !prev)}
-              className="flex items-center gap-1.5 bg-[#1C120F] border border-[#D4AF37]/30 rounded-full px-3 py-1.5 hover:border-[#D4AF37]/70 transition-all duration-200 focus:outline-none cursor-pointer"
+              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1.5 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
               aria-expanded={langOpen}
             >
-              <span className="text-[11px] font-sans font-bold text-[#D4AF37] tracking-wider">
-                {currentLang.label}
-              </span>
-              <span className={`text-[8px] text-[#D4AF37]/60 inline-block transition-transform duration-200 ${langOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
+              <span>🌐</span>
+              <span>{t('nav.languageLabel') || 'LANGUAGE'}</span>
+              <span className="text-[11px] text-[#D4AF37] font-bold">({currentLang.label})</span>
+              <span className={`text-[8px] inline-block transition-transform duration-200 ${langOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
                 ▼
               </span>
             </button>
 
             {langOpen && (
               <div
-                className="absolute right-0 top-full pt-2 w-52 z-50 animate-fade-in"
+                className="absolute right-0 top-full pt-2 w-60 z-50 animate-fade-in"
                 onMouseEnter={handleLangMouseEnter}
                 onMouseLeave={handleLangMouseLeave}
               >
@@ -163,25 +163,43 @@ export default function Navbar() {
                   className="border border-[#D4AF37]/50 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.7)] py-2 text-left"
                   style={{ backgroundColor: '#1C120F' }}
                 >
-                  <div className="px-4 py-1.5 mb-1">
-                    <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#D4AF37]/60">
-                      {t('nav.languageLabel')}
+                  <div className="px-4 py-1.5 mb-1 flex items-center justify-between">
+                    <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#D4AF37]/70 flex items-center gap-1.5">
+                      <span>🌐</span> {t('nav.languageLabel') || 'LANGUAGE'}
+                    </span>
+                    <span className="text-[9px] font-sans font-bold text-[#D4AF37] bg-[#D4AF37]/15 px-1.5 py-0.5 rounded border border-[#D4AF37]/30">
+                      {currentLang.label}
                     </span>
                   </div>
-                  <div className="h-px bg-[#D4AF37]/20 mx-2 mb-1"></div>
+                  <div className="h-px bg-[#D4AF37]/20 my-1 mx-2"></div>
                   {LANGUAGES.map((lang) => (
                     <button
                       key={lang.code}
                       id={`lang-btn-${lang.code}`}
-                      onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                      className={`w-full text-left px-4 py-2 text-xs font-sans font-bold tracking-wider transition-all duration-150 flex items-center justify-between group
-                        ${language === lang.code
-                          ? 'bg-[#D4AF37] text-[#1E1410]'
-                          : 'text-[#F5F2E9] hover:bg-[#D4AF37] hover:text-[#1E1410]'
+                      onClick={() => {
+                        setLanguage(lang.code);
+                        setLangOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 text-xs font-sans font-bold tracking-wider transition-all duration-150 flex items-center justify-between group cursor-pointer
+                        ${
+                          language === lang.code
+                            ? 'bg-[#D4AF37] text-[#1E1410]'
+                            : 'text-[#F5F2E9] hover:bg-[#D4AF37] hover:text-[#1E1410]'
                         }`}
                     >
-                      <span>{lang.nativeLabel}</span>
-                      <span className={`text-[11px] font-bold ${language === lang.code ? 'text-[#1E1410]' : 'text-[#D4AF37]/60 group-hover:text-[#1E1410]'}`}>
+                      <span className="flex items-center gap-2">
+                        <span className={language === lang.code ? 'text-[#1E1410]' : 'text-[#D4AF37] group-hover:text-[#1E1410]'}>
+                          {language === lang.code ? '✓' : '•'}
+                        </span>
+                        <span>{lang.nativeLabel}</span>
+                      </span>
+                      <span
+                        className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${
+                          language === lang.code
+                            ? 'border-[#1E1410]/40 text-[#1E1410]'
+                            : 'border-[#D4AF37]/30 text-[#D4AF37]/70 group-hover:border-[#1E1410]/40 group-hover:text-[#1E1410]'
+                        }`}
+                      >
                         {lang.label}
                       </span>
                     </button>
@@ -223,23 +241,35 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Language Section */}
-          <div className="flex flex-col gap-2 pt-3 border-t border-[#D4AF37]/10">
-            <span className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-bold font-sans">{t('nav.languageLabel')}</span>
-            <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col gap-2 pt-3 border-t border-[#D4AF37]/20">
+            <span className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-bold font-sans flex items-center gap-1.5">
+              <span>🌐</span> {t('nav.languageLabel') || 'LANGUAGE'}
+            </span>
+            <div className="pl-3 flex flex-col gap-1.5 border-l border-[#D4AF37]/20">
               {LANGUAGES.map((lang) => (
                 <button
                   key={lang.code}
                   id={`mobile-lang-btn-${lang.code}`}
-                  title={lang.nativeLabel}
                   onClick={() => { setLanguage(lang.code); setMobileMenuOpen(false); }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-sans font-bold tracking-wider transition-all duration-200 border
+                  className={`w-full text-left px-3 py-2 rounded-lg text-xs font-sans font-bold tracking-wider transition-all duration-150 flex items-center justify-between cursor-pointer
                     ${language === lang.code
-                      ? 'bg-[#D4AF37] text-[#1E1410] border-[#D4AF37]'
-                      : 'border-[#D4AF37]/30 text-[#D4AF37]/80 hover:border-[#D4AF37]/70 hover:text-[#D4AF37] bg-[#1C120F]'
+                      ? 'bg-[#D4AF37] text-[#1E1410]'
+                      : 'text-[#F5F2E9] hover:bg-[#D4AF37]/15 hover:text-[#D4AF37]'
                     }`}
                 >
-                  <span>{lang.nativeLabel}</span>
-                  <span className="text-[9px] opacity-70">{lang.label}</span>
+                  <span className="flex items-center gap-2">
+                    <span className={language === lang.code ? 'text-[#1E1410]' : 'text-[#D4AF37]'}>
+                      {language === lang.code ? '✓' : '•'}
+                    </span>
+                    <span>{lang.nativeLabel}</span>
+                  </span>
+                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${
+                    language === lang.code
+                      ? 'border-[#1E1410]/40 text-[#1E1410]'
+                      : 'border-[#D4AF37]/30 text-[#D4AF37]/80'
+                  }`}>
+                    {lang.label}
+                  </span>
                 </button>
               ))}
             </div>
