@@ -205,40 +205,36 @@ export default function BirthForm({ onSubmit, loading }) {
         </div>
       </div>
 
-      {/* Report Language */}
+      {/* Report Language Dropdown */}
       <div className="space-y-1">
         <label className="block text-[9px] font-bold text-gray-500 uppercase tracking-widest">
           {t('form.reportLanguage')}
         </label>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-          {[
-            { value: 'hindi', label: 'हिन्दी (Hindi)' },
-            { value: 'english', label: 'English' },
-            { value: 'marathi', label: 'मराठी (Marathi)' },
-            { value: 'tamil', label: 'தமிழ் (Tamil)' },
-            { value: 'bengali', label: 'বাংলা (Bengali)' },
-            { value: 'sanskrit', label: 'संस्कृत (Sanskrit)' },
-          ].map((lang) => (
-            <label
-              key={lang.value}
-              className={`flex items-center justify-center gap-1 py-2 px-2 border rounded-lg cursor-pointer text-xs font-bold transition select-none font-sans text-center
-                ${formData.preferredLanguage === lang.value
-                  ? 'bg-[#1E1410] text-[#F5F2E9] border-[#1E1410] shadow-sm'
-                  : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-[#1E1410]/50 hover:bg-gray-100'
-                }`}
-            >
-              <input
-                type="radio"
-                name="preferredLanguage"
-                value={lang.value}
-                checked={formData.preferredLanguage === lang.value}
-                onChange={handleChange}
-                className="sr-only"
-                required
-              />
-              {lang.label}
-            </label>
-          ))}
+        <div className="relative">
+          <select
+            name="preferredLanguage"
+            value={formData.preferredLanguage}
+            onChange={handleChange}
+            style={selectStyle}
+            className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans bg-white appearance-none pr-8 font-semibold text-gray-800 shadow-sm"
+            required
+          >
+            {[
+              { value: 'hindi', label: 'हिन्दी (Hindi)' },
+              { value: 'english', label: 'English' },
+              { value: 'marathi', label: 'मराठी (Marathi)' },
+              { value: 'tamil', label: 'தமிழ் (Tamil)' },
+              { value: 'bengali', label: 'বাংলা (Bengali)' },
+              { value: 'sanskrit', label: 'संस्कृत (Sanskrit)' },
+            ].map((lang) => (
+              <option key={lang.value} value={lang.value}>
+                {lang.label}
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-gray-500 text-[9px]">
+            ▼
+          </div>
         </div>
       </div>
 
