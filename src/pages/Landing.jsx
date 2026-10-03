@@ -474,11 +474,11 @@ export default function Landing() {
               <div
                 className="max-w-3xl mx-auto mb-6 rounded-2xl p-5 sm:p-6 text-left transition-all duration-300"
                 style={{
-                  background: 'rgba(255, 253, 250, 0.35)',
+                  background: 'rgba(255, 255, 255, 0.70)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.35)',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)',
+                  border: '1px solid rgba(255, 255, 255, 0.60)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)',
                 }}
               >
                 {/* Planet Name + Tagline */}
@@ -572,11 +572,11 @@ export default function Landing() {
               <div
                 className="max-w-3xl mx-auto mb-6 rounded-xl p-3.5 sm:p-4 text-left transition-all duration-300 relative overflow-hidden"
                 style={{
-                  background: 'rgba(255, 253, 250, 0.35)',
+                  background: 'rgba(255, 255, 255, 0.70)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.35)',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)',
+                  border: '1px solid rgba(255, 255, 255, 0.60)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)',
                 }}
               >
                 <div className="flex items-start gap-3.5 relative">
