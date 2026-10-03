@@ -474,11 +474,11 @@ export default function Landing() {
               <div
                 className="max-w-3xl mx-auto mb-6 rounded-2xl p-5 sm:p-6 text-left transition-all duration-300"
                 style={{
-                  background: 'rgba(255, 253, 248, 0.72)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.55)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.06)',
+                  background: 'rgba(255, 253, 250, 0.35)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.35)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)',
                 }}
               >
                 {/* Planet Name + Tagline */}
@@ -495,7 +495,7 @@ export default function Landing() {
                 </div>
 
                 {/* Description only */}
-                <p className="text-sm text-[#4A3A34]/90 font-sans leading-relaxed">
+                <p className="text-sm text-[#3D2E28]/80 font-sans leading-relaxed">
                   {t(p.descKey)}
                 </p>
               </div>
