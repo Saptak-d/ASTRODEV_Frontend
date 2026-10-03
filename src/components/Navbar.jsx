@@ -132,6 +132,14 @@ export default function Navbar() {
             )}
           </div>
 
+          {/* How It Works & Team Link */}
+          <Link
+            to="/about-team"
+            className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider py-1 text-[#F5F2E9] uppercase flex items-center gap-1.5"
+          >
+            <span>{t('nav.aboutTeam')}</span>
+          </Link>
+
           {/* Language Dropdown */}
           <div
             ref={langDropdownRef}
@@ -239,6 +247,15 @@ export default function Navbar() {
               </span>
             </div>
           </div>
+
+          {/* Mobile About Team Link */}
+          <Link
+            to="/about-team"
+            onClick={() => setMobileMenuOpen(false)}
+            className="hover:text-[#D4AF37] transition font-sans text-xs tracking-wider uppercase font-bold text-[#F5F2E9] flex items-center gap-2 py-2 border-t border-[#D4AF37]/20"
+          >
+            <span>📜</span> {t('nav.aboutTeam')}
+          </Link>
 
           {/* Mobile Language Section */}
           <div className="flex flex-col gap-2 pt-3 border-t border-[#D4AF37]/20">

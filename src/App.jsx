@@ -13,6 +13,7 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminRoute from './components/AdminRoute';
 import PdfGenerator from './pages/PdfGenerator';
+import AboutTeam from './pages/AboutTeam';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -28,6 +29,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/generate" element={<GenerateReport />} />
+              <Route path="/about-team" element={<AboutTeam />} />
+              <Route path="/how-it-works" element={<AboutTeam />} />
               <Route path="/pdf-generator" element={<PdfGenerator />} />
               <Route path="/report/:id" element={<ReportViewer />} />
 
