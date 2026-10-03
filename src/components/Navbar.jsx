@@ -75,7 +75,7 @@ export default function Navbar() {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-6 items-center">
+        <div className="hidden md:flex gap-8 items-center">
 
           {/* Services Dropdown */}
           <div
@@ -87,11 +87,11 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setServicesOpen((prev) => !prev)}
-              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1.5 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
+              className="hover:text-[#D4AF37] transition font-sans text-base font-bold tracking-wider flex items-center gap-2 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
               aria-expanded={servicesOpen}
             >
               <span>{t('nav.services')}</span>
-              <span className={`text-[8px] inline-block transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
+              <span className={`text-[10px] inline-block transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
                 ▼
               </span>
             </button>
@@ -135,7 +135,7 @@ export default function Navbar() {
           {/* How It Works & Team Link */}
           <Link
             to="/about-team"
-            className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider py-1 text-[#F5F2E9] uppercase flex items-center gap-1.5"
+            className="hover:text-[#D4AF37] transition font-sans text-base font-bold tracking-wider py-1 text-[#F5F2E9] uppercase flex items-center gap-1.5"
           >
             <span>{t('nav.aboutTeam')}</span>
           </Link>
@@ -150,13 +150,13 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setLangOpen((prev) => !prev)}
-              className="hover:text-[#D4AF37] transition font-sans text-sm tracking-wider flex items-center gap-1.5 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
+              className="hover:text-[#D4AF37] transition font-sans text-base font-bold tracking-wider flex items-center gap-2 py-1 focus:outline-none cursor-pointer text-[#F5F2E9]"
               aria-expanded={langOpen}
             >
-              <span>🌐</span>
+              <span className="text-base">🌐</span>
               <span>{t('nav.languageLabel') || 'LANGUAGE'}</span>
-              <span className="text-[11px] text-[#D4AF37] font-bold">({currentLang.label})</span>
-              <span className={`text-[8px] inline-block transition-transform duration-200 ${langOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
+              <span className="text-xs text-[#D4AF37] font-bold bg-[#D4AF37]/15 px-2 py-0.5 rounded border border-[#D4AF37]/30">({currentLang.label})</span>
+              <span className={`text-[10px] inline-block transition-transform duration-200 ${langOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
                 ▼
               </span>
             </button>
