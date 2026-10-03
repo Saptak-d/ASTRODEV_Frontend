@@ -4,39 +4,51 @@ import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t, LANGUAGES } = useLanguage();
   const dropdownRef = useRef(null);
+  const langDropdownRef = useRef(null);
   const timeoutRef = useRef(null);
+  const langTimeoutRef = useRef(null);
 
+  // Services hover handlers
   const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setServicesOpen(true);
   };
-
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setServicesOpen(false);
-    }, 200);
+    timeoutRef.current = setTimeout(() => setServicesOpen(false), 200);
   };
 
-  // Close dropdown on click outside
+  // Language hover handlers
+  const handleLangMouseEnter = () => {
+    if (langTimeoutRef.current) clearTimeout(langTimeoutRef.current);
+    setLangOpen(true);
+  };
+  const handleLangMouseLeave = () => {
+    langTimeoutRef.current = setTimeout(() => setLangOpen(false), 200);
+  };
+
+  // Close dropdowns on click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setServicesOpen(false);
       }
+      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target)) {
+        setLangOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (langTimeoutRef.current) clearTimeout(langTimeoutRef.current);
     };
   }, []);
+
+  const currentLang = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0];
 
   return (
     <nav className="bg-[#2A1B18] text-[#F5F2E9] border-b-2 border-[#D4AF37] px-6 py-4 relative z-50">
@@ -45,7 +57,7 @@ export default function Navbar() {
           <span>🕉</span> ASTRODEV
         </Link>
 
-        {/* Mobile Menu Button (Hamburger Toggle) */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden flex items-center justify-center p-1.5 text-[#D4AF37] hover:text-[#F5F2E9] focus:outline-none transition-colors border border-[#D4AF37]/35 rounded-lg bg-[#1C120F]/50"
@@ -62,8 +74,9 @@ export default function Navbar() {
           )}
         </button>
 
-        {/* Desktop Navigation links */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex gap-4 items-center">
+
           {/* Services Dropdown */}
           <div
             ref={dropdownRef}
@@ -78,16 +91,11 @@ export default function Navbar() {
               aria-expanded={servicesOpen}
             >
               {t('nav.services')}{' '}
-              <span
-                className={`text-[8px] inline-block transition-transform duration-200 ${
-                  servicesOpen ? 'rotate-180 text-[#D4AF37]' : ''
-                }`}
-              >
+              <span className={`text-[8px] inline-block transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
                 ▼
               </span>
             </button>
 
-            {/* Seamless dropdown wrapper with padding bridge preventing mouse gap loss */}
             {servicesOpen && (
               <div
                 className="absolute right-0 top-full pt-2 w-64 z-50 animate-fade-in"
@@ -124,30 +132,69 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* ── Language Switcher ── */}
-          <div className="flex items-center gap-0.5 bg-[#1C120F] border border-[#D4AF37]/30 rounded-full px-1 py-1 ml-2">
-            {LANGUAGES.map((lang) => (
-              <button
-                key={lang.code}
-                id={`lang-btn-${lang.code}`}
-                title={lang.nativeLabel}
-                onClick={() => setLanguage(lang.code)}
-                className={`
-                  relative px-3 py-1 rounded-full text-[11px] font-sans font-bold tracking-wider transition-all duration-300
-                  ${language === lang.code
-                    ? 'bg-[#D4AF37] text-[#1E1410] shadow-[0_0_8px_rgba(212,175,55,0.4)]'
-                    : 'text-[#D4AF37]/60 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10'
-                  }
-                `}
+          {/* ── Language Dropdown ── */}
+          <div
+            ref={langDropdownRef}
+            className="relative py-1"
+            onMouseEnter={handleLangMouseEnter}
+            onMouseLeave={handleLangMouseLeave}
+          >
+            <button
+              type="button"
+              onClick={() => setLangOpen((prev) => !prev)}
+              className="flex items-center gap-1.5 bg-[#1C120F] border border-[#D4AF37]/30 rounded-full px-3 py-1.5 hover:border-[#D4AF37]/70 transition-all duration-200 focus:outline-none cursor-pointer"
+              aria-expanded={langOpen}
+            >
+              <span className="text-[11px] font-sans font-bold text-[#D4AF37] tracking-wider">
+                {currentLang.label}
+              </span>
+              <span className={`text-[8px] text-[#D4AF37]/60 inline-block transition-transform duration-200 ${langOpen ? 'rotate-180 text-[#D4AF37]' : ''}`}>
+                ▼
+              </span>
+            </button>
+
+            {langOpen && (
+              <div
+                className="absolute right-0 top-full pt-2 w-52 z-50 animate-fade-in"
+                onMouseEnter={handleLangMouseEnter}
+                onMouseLeave={handleLangMouseLeave}
               >
-                {lang.label}
-              </button>
-            ))}
+                <div
+                  className="border border-[#D4AF37]/50 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.7)] py-2 text-left"
+                  style={{ backgroundColor: '#1C120F' }}
+                >
+                  <div className="px-4 py-1.5 mb-1">
+                    <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#D4AF37]/60">
+                      {t('nav.languageLabel')}
+                    </span>
+                  </div>
+                  <div className="h-px bg-[#D4AF37]/20 mx-2 mb-1"></div>
+                  {LANGUAGES.map((lang) => (
+                    <button
+                      key={lang.code}
+                      id={`lang-btn-${lang.code}`}
+                      onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                      className={`w-full text-left px-4 py-2 text-xs font-sans font-bold tracking-wider transition-all duration-150 flex items-center justify-between group
+                        ${language === lang.code
+                          ? 'bg-[#D4AF37] text-[#1E1410]'
+                          : 'text-[#F5F2E9] hover:bg-[#D4AF37] hover:text-[#1E1410]'
+                        }`}
+                    >
+                      <span>{lang.nativeLabel}</span>
+                      <span className={`text-[11px] font-bold ${language === lang.code ? 'text-[#1E1410]' : 'text-[#D4AF37]/60 group-hover:text-[#1E1410]'}`}>
+                        {lang.label}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+
         </div>
       </div>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 pt-4 border-t border-[#D4AF37]/20 flex flex-col gap-4 bg-[#2A1B18] animate-fade-in">
           <div className="flex flex-col gap-2">
@@ -175,27 +222,24 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-3 border-t border-[#D4AF37]/10">
-            <span className="text-xs text-gray-400 font-sans">{t('nav.languageLabel')}</span>
-            <div className="flex items-center gap-0.5 bg-[#1C120F] border border-[#D4AF37]/30 rounded-full px-1 py-1">
+          {/* Mobile Language Section */}
+          <div className="flex flex-col gap-2 pt-3 border-t border-[#D4AF37]/10">
+            <span className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-bold font-sans">{t('nav.languageLabel')}</span>
+            <div className="flex flex-wrap gap-2">
               {LANGUAGES.map((lang) => (
                 <button
                   key={lang.code}
                   id={`mobile-lang-btn-${lang.code}`}
                   title={lang.nativeLabel}
-                  onClick={() => {
-                    setLanguage(lang.code);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`
-                    relative px-3 py-1 rounded-full text-[11px] font-sans font-bold tracking-wider transition-all duration-300
+                  onClick={() => { setLanguage(lang.code); setMobileMenuOpen(false); }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-sans font-bold tracking-wider transition-all duration-200 border
                     ${language === lang.code
-                      ? 'bg-[#D4AF37] text-[#1E1410] shadow-[0_0_8px_rgba(212,175,55,0.4)]'
-                      : 'text-[#D4AF37]/60 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10'
-                    }
-                  `}
+                      ? 'bg-[#D4AF37] text-[#1E1410] border-[#D4AF37]'
+                      : 'border-[#D4AF37]/30 text-[#D4AF37]/80 hover:border-[#D4AF37]/70 hover:text-[#D4AF37] bg-[#1C120F]'
+                    }`}
                 >
-                  {lang.label}
+                  <span>{lang.nativeLabel}</span>
+                  <span className="text-[9px] opacity-70">{lang.label}</span>
                 </button>
               ))}
             </div>
