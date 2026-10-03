@@ -472,72 +472,32 @@ export default function Landing() {
             const p = planets[activePlanet] || planets[0];
             return (
               <div
-                className="max-w-3xl mx-auto mb-6 rounded-2xl p-4 sm:p-5 md:p-6 border text-left shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="max-w-3xl mx-auto mb-6 rounded-2xl p-5 sm:p-6 text-left transition-all duration-300"
                 style={{
-                  background: 'linear-gradient(135deg, #1C120F 0%, #261A16 50%, #1C120F 100%)',
-                  borderColor: p.color + '55',
-                  boxShadow: `0 12px 36px rgba(0,0,0,0.35), 0 0 24px ${p.color}20`,
+                  background: 'rgba(255, 253, 248, 0.72)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255, 255, 255, 0.55)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.06)',
                 }}
               >
-                {/* Glowing accent top line */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-300"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${p.color}, transparent)`,
-                  }}
-                />
-
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
-                  {/* Planet Symbol */}
-                  <div
-                    className="shrink-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl select-none"
-                    style={{
-                      background: p.color + '15',
-                      border: `1px solid ${p.color}40`,
-                      color: p.color,
-                      fontSize: '2.25rem',
-                      lineHeight: 1,
-                      filter: `drop-shadow(0 0 10px ${p.color}88)`,
-                    }}
+                {/* Planet Name + Tagline */}
+                <div className="flex flex-wrap items-baseline gap-2 mb-2">
+                  <h3
+                    className="text-base sm:text-lg font-bold font-serif tracking-wider uppercase"
+                    style={{ color: '#2A1B18' }}
                   >
-                    {p.symbol}
-                  </div>
-
-                  {/* Planet Details */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-baseline gap-2 mb-1.5">
-                      <h3 className="text-base sm:text-lg font-bold text-[#F5F2E9] font-serif tracking-wider uppercase">
-                        {t(p.nameKey)}
-                      </h3>
-                      <span className="text-xs font-sans italic" style={{ color: p.color }}>
-                        — {t(p.taglineKey)}
-                      </span>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed mb-3">
-                      {t(p.descKey)}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      <span className="text-[9px] font-sans font-bold uppercase tracking-widest text-[#D4AF37]/80 mr-1">
-                        Governs:
-                      </span>
-                      {p.governsKeys.map((key, gi) => (
-                        <span
-                          key={gi}
-                          className="text-[10px] font-sans font-medium px-2 py-0.5 rounded-full"
-                          style={{
-                            color: p.color,
-                            background: p.color + '18',
-                            border: `1px solid ${p.color}35`,
-                          }}
-                        >
-                          {t(key)}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                    {t(p.nameKey)}
+                  </h3>
+                  <span className="text-xs font-sans italic" style={{ color: p.color }}>
+                    — {t(p.taglineKey)}
+                  </span>
                 </div>
+
+                {/* Description only */}
+                <p className="text-sm text-[#4A3A34]/90 font-sans leading-relaxed">
+                  {t(p.descKey)}
+                </p>
               </div>
             );
           })()}
