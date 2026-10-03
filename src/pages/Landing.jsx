@@ -495,7 +495,7 @@ export default function Landing() {
                 </div>
 
                 {/* Description only */}
-                <p className="text-sm font-sans leading-relaxed" style={{ color: '#2A1B18' }}>
+                <p className="text-sm font-sans leading-relaxed font-medium" style={{ color: '#0F0A06' }}>
                   {t(p.descKey)}
                 </p>
               </div>
@@ -622,7 +622,7 @@ export default function Landing() {
                       </span>
                     </div>
 
-                    <p className="text-[10px] sm:text-xs font-sans leading-relaxed mb-2" style={{ color: '#2A1B18' }}>
+                    <p className="text-[10px] sm:text-xs font-sans leading-relaxed mb-2 font-medium" style={{ color: '#0F0A06' }}>
                       {z.desc}
                     </p>
 
