@@ -485,17 +485,17 @@ export default function Landing() {
                 <div className="flex flex-wrap items-baseline gap-2 mb-2">
                   <h3
                     className="text-base sm:text-lg font-bold font-serif tracking-wider uppercase"
-                    style={{ color: '#2A1B18' }}
+                    style={{ color: '#1A0F0A' }}
                   >
                     {t(p.nameKey)}
                   </h3>
-                  <span className="text-xs font-sans italic" style={{ color: p.color }}>
+                  <span className="text-xs font-sans italic" style={{ color: p.color, filter: 'brightness(0.8)' }}>
                     — {t(p.taglineKey)}
                   </span>
                 </div>
 
                 {/* Description only */}
-                <p className="text-sm text-[#3D2E28]/80 font-sans leading-relaxed">
+                <p className="text-sm font-sans leading-relaxed" style={{ color: '#2A1B18' }}>
                   {t(p.descKey)}
                 </p>
               </div>
@@ -598,14 +598,14 @@ export default function Landing() {
                   <div className="flex-1 min-w-0">
                     {/* Name + tagline row */}
                     <div className="flex flex-wrap items-baseline gap-1.5 mb-0.5">
-                      <h3 className="text-sm font-bold text-[#2A1B18] font-serif tracking-wider uppercase">
+                      <h3 className="text-sm font-bold text-[#1A0F0A] font-serif tracking-wider uppercase">
                         {t(z.nameKey)}
                       </h3>
-                      <span className="text-[11px] font-sans font-bold" style={{ color: elColor }}>
+                      <span className="text-[11px] font-sans font-bold" style={{ color: elColor, filter: 'brightness(0.8)' }}>
                         · {t(z.subKey)}
                       </span>
                     </div>
-                    <p className="text-[10px] font-sans italic mb-2" style={{ color: elColor + 'CC' }}>
+                    <p className="text-[10px] font-sans italic mb-2" style={{ color: elColor, filter: 'brightness(0.75)' }}>
                       {z.tagline}
                     </p>
 
@@ -613,29 +613,29 @@ export default function Landing() {
                     <div className="flex flex-wrap items-center gap-1.5 mb-2">
                       <span
                         className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border"
-                        style={{ color: elColor, borderColor: elColor + '50', backgroundColor: elColor + '15' }}
+                        style={{ color: elColor, borderColor: elColor + '70', backgroundColor: elColor + '20', filter: 'brightness(0.85)' }}
                       >
                         {t(elementKeyMap[z.element])}
                       </span>
-                      <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D4AF37]/30 text-[#B8860B] bg-[#D4AF37]/10">
+                      <span className="text-[9px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D4AF37]/50 text-[#8B6914] bg-[#D4AF37]/15">
                         Ruler: {t(z.rulerKey)}
                       </span>
                     </div>
 
-                    <p className="text-[10px] sm:text-xs text-[#3D2E28]/80 font-sans leading-relaxed mb-2">
+                    <p className="text-[10px] sm:text-xs font-sans leading-relaxed mb-2" style={{ color: '#2A1B18' }}>
                       {z.desc}
                     </p>
 
                     {/* Governs tags */}
                     <div className="flex flex-wrap items-center gap-1">
-                      <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-[#B8860B]/80 mr-0.5">
+                      <span className="text-[8px] font-sans font-bold uppercase tracking-widest mr-0.5" style={{ color: '#8B6914' }}>
                         Governs:
                       </span>
                       {z.governs.map((gov, gi) => (
                         <span
                           key={gi}
                           className="text-[9px] font-sans font-medium px-1.5 py-0.5 rounded-full"
-                          style={{ color: elColor, background: elColor + '18', border: `1px solid ${elColor}30` }}
+                          style={{ color: elColor, background: elColor + '25', border: `1px solid ${elColor}50`, filter: 'brightness(0.85)' }}
                         >
                           {gov}
                         </span>
