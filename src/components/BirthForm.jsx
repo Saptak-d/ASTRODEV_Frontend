@@ -1,20 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function BirthForm({ onSubmit, loading }) {
   const { t, language } = useLanguage();
-
-  const getLanguageCodeToReportLang = (code) => {
-    switch (code) {
-      case 'en': return 'english';
-      case 'hi': return 'hindi';
-      case 'sa': return 'sanskrit';
-      case 'bn': return 'bengali';
-      case 'ta': return 'tamil';
-      case 'mr': return 'marathi';
-      default: return 'hindi';
-    }
-  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -23,16 +11,9 @@ export default function BirthForm({ onSubmit, loading }) {
     birthDate: '',
     birthPlace: '',
     gender: '',
-    preferredLanguage: getLanguageCodeToReportLang(language),
+    preferredLanguage: '',
   });
 
-  // Sync preferred report language when UI language changes
-  useEffect(() => {
-    setFormData(prev => ({
-      ...prev,
-      preferredLanguage: getLanguageCodeToReportLang(language),
-    }));
-  }, [language]);
   const [hours, setHours] = useState('12');
   const [minutes, setMinutes] = useState('00');
   const [seconds, setSeconds] = useState('00');
@@ -95,6 +76,11 @@ export default function BirthForm({ onSubmit, loading }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!formData.preferredLanguage) {
+      alert(t('form.alert.selectLanguage'));
+      return;
+    }
 
     if (!day || !month || !year) {
       alert(t('form.alert.selectDob'));
@@ -235,10 +221,15 @@ export default function BirthForm({ onSubmit, loading }) {
             name="preferredLanguage"
             value={formData.preferredLanguage}
             onChange={handleChange}
-            style={selectStyle}
-            className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans bg-white appearance-none pr-8 font-semibold text-gray-800 shadow-sm"
+            style={formData.preferredLanguage ? selectStyle : { ...selectStyle, color: '#6B7280' }}
+            className={`w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#1E1410] focus:border-[#1E1410] outline-none cursor-pointer font-sans bg-white appearance-none pr-8 shadow-sm ${
+              formData.preferredLanguage ? 'font-semibold text-gray-800' : 'text-gray-500 font-normal'
+            }`}
             required
           >
+            <option value="" disabled>
+              {t('form.reportLanguage.placeholder')}
+            </option>
             {[
               { value: 'hindi', label: 'हिन्दी (Hindi)' },
               { value: 'english', label: 'English' },
@@ -247,7 +238,7 @@ export default function BirthForm({ onSubmit, loading }) {
               { value: 'bengali', label: 'বাংলা (Bengali)' },
               { value: 'sanskrit', label: 'संस्कृत (Sanskrit)' },
             ].map((lang) => (
-              <option key={lang.value} value={lang.value}>
+              <option key={lang.value} value={lang.value} style={selectStyle}>
                 {lang.label}
               </option>
             ))}
