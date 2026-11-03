@@ -30,7 +30,7 @@ export default function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/generate" element={<GenerateReport />} />
               <Route path="/about-team" element={<AboutTeam />} />
-              <Route path="/how-it-works" element={<AboutTeam />} />
+              <Route path="/about-Services" element={<AboutTeam />} />
               <Route path="/pdf-generator" element={<PdfGenerator />} />
               <Route path="/report/:id" element={<ReportViewer />} />
 
